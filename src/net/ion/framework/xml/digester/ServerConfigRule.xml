@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<digester-rules>
+    <object-create-rule pattern="server" classname="madvirus.webserver.config.ServerConfig" />
+    <set-properties-rule pattern="server">
+        <alias attr-name="name" prop-name="serverName" />
+    </set-properties-rule>
+    
+    <bean-property-setter-rule pattern="server/documentRoot" prop-name="documentRoot" />
+    <bean-property-setter-rule pattern="server/port" prop-name="port" />
+    
+    <pattern value="server/virtual-mapping-list/virtual-mapping">
+        <object-create-rule classname="madvirus.webserver.config.VirtualMapping" />
+        <call-method-rule pattern="uri" methodname="setVirtualURI" paramcount="0" />
+        <call-method-rule pattern="path" methodname="setRealPath" paramcount="0" />
+        <set-next-rule methodname="addMapping" />
+   </pattern>
+</digester-rules>

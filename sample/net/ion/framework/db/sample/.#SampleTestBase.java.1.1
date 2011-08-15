@@ -1,0 +1,29 @@
+package net.ion.framework.db.sample;
+
+import net.ion.framework.db.DBController;
+import net.ion.framework.db.manager.DBManager;
+import net.ion.framework.db.manager.MSSQLPoolDBManager;
+import net.ion.framework.db.manager.OracleCacheDBManager;
+import net.ion.framework.db.manager.OracleDBManager;
+import junit.framework.TestCase;
+
+
+public class SampleTestBase extends TestCase{
+
+	protected DBController dc ;
+	public void setUp() throws Exception {
+//		DBManager dbm = new MySQLPoolDBManager("jdbc:mysql://novision/test", "bleu", "redf") ;
+//		DBManager dbm = new MSSQLPoolDBManager("jdbc:microsoft:sqlserver://localhost:1433;DatabaseName=test", "bleu", "redf") ;
+//		DBManager dbm = new OraclePoolDBManager("jdbc:oracle:thin:@novision:1521:bleujin", "setuptest", "setuptest") ;
+//		DBManager dbm = new JTDSDBManager("jdbc:jtds:sqlserver://localhost:1433/test;useLOBs=false", "bleu", "redf") ;
+//		DBManager dbm = new MSSQLPoolDBManager("net.sourceforge.jtds.jdbc.Driver", "jdbc:jtds:sqlserver://localhost:1433/test;useLOBs=false", "bleu", "redf") ;
+//		DBManager dbm = new OracleCacheDBManager("jdbc:oracle:thin:@novision:1521:bleujin", "setuptest", "setuptest") ;
+		DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") ;
+		dc = new DBController(dbm) ;
+		dc.initSelf() ;
+	}
+	
+	public void tearDown() throws Exception {
+		dc.destroySelf() ;
+	}
+}

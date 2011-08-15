@@ -1,0 +1,300 @@
+package net.ion.framework.db;
+
+import java.lang.reflect.Array;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Vector;
+
+import javax.sql.RowSet;
+
+import net.ion.framework.db.bean.handlers.BeanListHandler;
+import net.ion.framework.util.CaseInsensitiveHashMap;
+import net.ion.framework.util.Debug;
+import net.ion.framework.util.InstanceCreationException;
+import net.ion.framework.util.InstanceCreator;
+
+/**
+ * RowSet, Rows 를 사용하기 좋은 형태로 바꾼다.
+ * 
+ * <p>
+ * Title: ICS EV
+ * </p>
+ * <p>
+ * Description:
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2003
+ * </p>
+ * <p>
+ * Company: I-ON Communications
+ * </p>
+ * 
+ * @author Kim Sanghoon wizest@i-on.net
+ * @version 1.0
+ */
+
+public class Transformer {
+	protected final Rows rows;
+	private String[] columnsNames = null;
+
+	/**
+	 * @param rowSet
+	 * @throws SQLException
+	 */
+	public Transformer(Rows rs) {
+		this.rows = rs;
+	}
+
+	/**
+	 * @return columns name은 모두 대문자!
+	 * @throws SQLException
+	 */
+	public synchronized String[] getColumnsNames() throws SQLException {
+		if (this.columnsNames != null)
+			return this.columnsNames;
+		return this.columnsNames = getColumnsNames(this.rows);
+	}
+
+	public static String[] getColumnsNames(RowSet rs) throws SQLException {
+		ResultSetMetaData meta = rs.getMetaData();
+		String[] names = new String[meta.getColumnCount()];
+
+		for (int i = 0; i < names.length; ++i) {
+			names[i] = meta.getColumnName(i + 1).toUpperCase();
+		}
+
+		return names;
+	}
+
+	/**
+	 * row를 key:columns name , value:columns data 인 map으로 표현하여 전체 row를 배열로 리턴한다.
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized HashMap<String, Object>[] transformIntoHashMaps() throws SQLException {
+		return transformIntoHashMaps(this.rows);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static HashMap<String, Object>[] transformIntoHashMaps(RowSet rs) throws SQLException {
+		Vector<HashMap<String, Object>> maps = new Vector<HashMap<String, Object>>();
+		String[] names = getColumnsNames(rs);
+		int columnSize = names.length;
+
+		rs.beforeFirst();
+		while (rs.next()) {
+			HashMap<String, Object> map = new CaseInsensitiveHashMap<Object>();
+			List<Object> row = RowsUtils.getCurrentTuple(rs);
+
+			for (int i = 0; i < columnSize; ++i) {
+				map.put(names[i], row.get(i));
+			}
+
+			maps.add(map);
+		}
+
+		rs.beforeFirst();
+		return maps.toArray(new CaseInsensitiveHashMap[0]);
+	}
+
+	public synchronized HashMap<String, Object>[] transformerIntoHashMapsWithoutNull() throws SQLException {
+		return transformerIntoHashMapsWithoutNull(this.rows);
+	}
+
+	@SuppressWarnings("unchecked")
+	public static HashMap<String, Object>[] transformerIntoHashMapsWithoutNull(RowSet rs) throws SQLException {
+		Vector<HashMap<String, Object>> maps = new Vector<HashMap<String, Object>>();
+		String[] names = getColumnsNames(rs);
+		int columnSize = names.length;
+
+		rs.beforeFirst();
+		while (rs.next()) {
+			HashMap<String, Object> map = new CaseInsensitiveHashMap<Object>();
+
+			List<Object> row = RowsUtils.getCurrentTuple(rs);
+
+			for (int i = 0; i < columnSize; ++i) {
+				Object o = row.get(i);
+				if (o == null)
+					o = ""; // 값이 null일 경우 ""을 넣는다.
+
+				map.put(names[i], o);
+			}
+
+			maps.add(map);
+		}
+
+		rs.beforeFirst();
+		return maps.toArray(new CaseInsensitiveHashMap[0]);
+	}
+
+	/**
+	 * 현재 가리키는 row를 key:columns name , value:columns data 인 map으로 리턴한다.
+	 * 
+	 * @return
+	 * @throws SQLException
+	 */
+	public synchronized HashMap<String, Object> transformIntoHashMap() throws SQLException {
+		HashMap<String, Object> map = new CaseInsensitiveHashMap<Object>();
+		String[] names = getColumnsNames();
+		int columnSize = names.length;
+		List<Object> row = RowsUtils.getCurrentTuple(rows);
+
+		for (int i = 0; i < columnSize; ++i) {
+			map.put(names[i], row.get(i));
+		}
+
+		return map;
+	}
+
+	public synchronized HashMap<String, Object> transformIntoHashMapWithoutNull() throws SQLException {
+		HashMap<String, Object> map = new CaseInsensitiveHashMap<Object>();
+		String[] names = getColumnsNames();
+		int columnSize = names.length;
+		List<Object> row = RowsUtils.getCurrentTuple(rows);
+
+		for (int i = 0; i < columnSize; ++i) {
+			Object o = row.get(i);
+			if (o == null)
+				o = "";
+
+			map.put(names[i], o);
+		}
+
+		return map;
+	}
+
+	// /**
+	// * 현재 가리키는 row를 key:columns name , value:columns data로 주어진 map에 담아서 리턴한다.
+	// * @param map
+	// * @return
+	// * @throws SQLException
+	// */
+	// public synchronized Map transformIntoMapOn(Map map) throws SQLException {
+	// String[] names = getColumnsNames();
+	// int columnSize = names.length;
+	// ArrayList<Object> row = RowsUtils.getCurrentTuple(rows);
+	//
+	// for(int i = 0; i < columnSize; ++i) {
+	// map.put(names[i], row.get(i));
+	// }
+	//
+	// return map;
+	// }
+	//
+	// /**
+	// * 전체 row를 vector 형태의 array로 리턴
+	// *
+	// * @return
+	// * @throws SQLException
+	// */
+	// public synchronized Vector[] transformIntoVectors() throws SQLException {
+	// return transformIntoVectors(this.rows);
+	// }
+	//
+	// public static Vector[] transformIntoVectors(RowSet rs) throws SQLException {
+	// Vector vs = new Vector();
+	//
+	// rs.beforeFirst();
+	// while(rs.next()) {
+	// ArrayList row = RowsUtils.getCurrentTuple(rs);
+	// vs.add(row);
+	// }
+	// rs.beforeFirst();
+	// return(Vector[])vs.toArray(new Vector[0]);
+	// }
+	//
+	/**
+	 * // * 현재 가리키는 row를 list로 리턴 // * // * @return // * @throws SQLException //
+	 */
+	// public synchronized ArrayList transformIntoArrayList() throws SQLException {
+	// return RowsUtils.getCurrentTuple(rows);
+	// }
+	//
+	// public static ArrayList transformIntoArrayList(RowSet rs) throws SQLException {
+	// return RowsUtils.getCurrentTuple(rs);
+	// }
+
+	/**
+	 * 한개의 row를 bean에 담아서 전체 row를 배열로 리턴 bean의 property 이름과 row의 columns name 을 비교해서 같을 경우 해당 property에 값을 대입한다.
+	 * 
+	 * <p>
+	 * 주의! : columns 의 type과 property의 type이 맞아야 한다. 예를 들어 문자열을 대입할 경우 property의 type은 String이어야 하며 날짜형일 경우 java.util.Date형이어야 한다. 또한 숫자의 경우 int,float,double... 등이어야 한다. 자세한 내용은 java.sql.ResultSet.getObject() 의 리턴형을 따른다.
+	 * </p>
+	 * 
+	 * @param beanClass
+	 *            생성할 bean class
+	 * @return
+	 * @throws SQLException
+	 * @throws InstanceCreationException
+	 * 
+	 * @see java.sql.ResultSet
+	 */
+	public synchronized Object[] transformIntoBeans(Class<?> beanClass) throws SQLException, InstanceCreationException {
+		return transformIntoBeans(this.rows, beanClass);
+	}
+
+	public static Object[] transformIntoBeans(Rows rs, Class<?> beanClass) throws SQLException, InstanceCreationException {
+		Vector<Object> objects = new Vector<Object>();
+
+		String[] names = getColumnsNames(rs);
+		// int columnSize = names.length;
+
+		rs.beforeFirst();
+		// List<T> list = (List<T>) rs.toHandle(new BeanListHandler(beanClass)) ;
+		// Debug.debug(list.get(0).getClass()) ;
+		// return (T[]) list.toArray() ;
+		while (rs.next()) {
+			Object object = InstanceCreator.createBeanWithPropertyValues(beanClass, names, RowsUtils.getCurrentTuple(rs).toArray());
+			objects.add(object);
+		}
+		return objects.toArray((Object[]) Array.newInstance(beanClass, 0));
+	}
+
+	/**
+	 * @param rs
+	 * @param beanClass
+	 * @return null if the first row does not exist
+	 * @throws SQLException
+	 * @throws InstanceCreationException
+	 */
+	public static Object transformFirstRowIntoBean(Rows rs, Class<?> beanClass) throws SQLException, InstanceCreationException {
+		rs.beforeFirst();
+		if (rs.next()) {
+			String[] names = getColumnsNames(rs);
+			return InstanceCreator.createBeanWithPropertyValues(beanClass, names, RowsUtils.getCurrentTuple(rs).toArray());
+		} else
+			return null;
+	}
+
+	// /**
+	// * 현재 선택된 row를 bean에 담아서 리턴
+	// *
+	// * @param beanClass 생성할 bean class
+	// * @return
+	// * @throws SQLException
+	// * @throws InstanceCreationException
+	// *
+	// * @see transeformBeans()
+	// */
+	// public synchronized Object transformIntoBean(Class beanClass) throws SQLException, InstanceCreationException {
+	// String[] names = getColumnsNames();
+	// return InstanceCreator.createBeanWithPropertyValues(beanClass, names, RowsUtils.getCurrentTuple(rows).toArray());
+	// }
+	//
+	// /**
+	// * @param beanObject row의 값을 property 값으로 저장할 object
+	// * @return
+	// * @throws SQLException
+	// * @throws InstanceCreationException
+	// */
+	// public synchronized Object transformIntoBeanOn(Object beanObject) throws SQLException, InstanceCreationException {
+	// String[] names = getColumnsNames();
+	// return InstanceCreator.setPropertyValues(beanObject, names, RowsUtils.getCurrentTuple(rows).toArray());
+	// }
+
+}

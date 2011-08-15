@@ -1,0 +1,48 @@
+
+FileRepository 관련해서.. ThothEnv. 항상 ics와 config 파일을 공유하는지...
+
+
+Category@removedListOfUser, removedListOfUserBy 2개 프로시저 위치 바꿈..
+
+DocumentSet.filter speed
+_relation = catId, artId, relKind
+_status=PL/AL
+
+
+
+
+
+
+
+select max(regDate) lastUpdate, max(logId) from index_Log_tblc where typeCd = 'article'
+를 뒤져서 lastUpdate 정보를 알아온다. 
+
+select * from article_search_status_tblc where modDate > v_lastUpdate
+를 대상으로 MergeCollector를 돌리고..
+
+ICSDataCollectior를 실행한다. 
+
+
+Ramdir를 증분인덱싱
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+---
+#exist = fieldId
+dateType value > today - 1
+#default# desc=desc
+_ignoreParent=yes, 
+---
+

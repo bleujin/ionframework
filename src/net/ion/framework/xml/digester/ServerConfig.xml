@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="EUC-KR" ?>
+
+<server name="madvirus.net">
+    <documentRoot>c:/webserver/docRoot</documentRoot>
+    <port>80</port>
+
+    <virtual-mapping-list>
+        <virtual-mapping>
+            <uri>/madvirus</uri>
+            <path>c:/personal/madvirus</path>
+        </virtual-mapping>
+        <virtual-mapping>
+            <uri>/commonImage</uri>
+            <path>c:/webserver/commonImage</path>
+        </virtual-mapping>
+    </virtual-mapping-list>
+</server>
