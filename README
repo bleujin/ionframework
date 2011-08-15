@@ -1,2 +1,34 @@
+<h1>ionframework - System Framework(specially db and parser etc...)</h1>
 
-This is my first commit file
+
+<h2>Quick start</h2>
+
+<p>Start a web server on port 8080 and serve some static files:</p>
+
+DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@hostaddress:1521:devTest", "bleu", "redf");
+IDBController dc = new DBController(dbm);
+dc.changeServant(new StdOutServant());
+dc.initSelf();
+
+Rows rows = dc.getRows("SELECT CONCAT('notice',no) id, no FROM zetyx_board_notice Group by no");
+
+dc.destroySelf();
+
+
+for more example, http://bleujin.tistory.com/153, but that is korean page
+
+
+<p>sample test code. confirm sample/net/ion/framework/db/DBSampleAllTest.java</p>
+<pre><code>
+	String query1 = "select * from copy_sample order by no1" ;
+	public void testDefaultLimit() throws Exception {
+		dc.setLimitedRows(20) ;
+		IUserCommand cmd = dc.createUserCommand(query1) ;
+		
+		Rows rows = cmd.execQuery() ;
+		assertEquals(20, rows.getRowCount()) ;
+
+		rows.absolute(20) ;
+		assertEquals(20, rows.getInt("no2")) ;
+	}
+</code></pre>
