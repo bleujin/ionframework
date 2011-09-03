@@ -3,21 +3,21 @@ package net.ion.framework.db.sample.extend;
 import net.ion.framework.db.Page;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
 
-public class QueryPage extends SampleTestBase{
+public class QueryPage extends TestBaseDB{
 	
 
 	/*
-	 * ¸ðµç IQueryable°´Ã¼¿¡´Â Page¸¦ ¼³Á¤ÇÒ¼ö ÀÖ´Ù. 
-	 * Page¸¦ ¾î¶»°Ô Ã³¸®ÇÏ´Â°¡´Â DB ¸¶´Ù Á¶±Ý¾¿ ´Ù¸£Áö¸¸ °¢ DBManagerÀÇ Á¾·ù¿¡ µû¶ó ÃÖ¼±ÀÇ ¹æ¹ýÀ» ¼±ÅÃÇÏµµ·Ï µÇ¾î ÀÖ´Ù. 
-	 * Page´Â ¼³Á¤Àº Page.creae(listNum, pageNo)ÀÇ Static ¸Þ¼Òµå·Î »ý¼ºÇÏ¿©
-	 * setPage(Page page)·Î ¼³Á¤ÇÑ´Ù. 
-	 * listNumÀÌ 10ÀÌ°í pageNo°¡ 2ÀÌ¸é 10°³¾¿ ÇßÀ»¶§ µÎ¹øÂ° ÆäÀÌÁö(11~20)¸¦ ¶æÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ IQueryableï¿½ï¿½Ã¼ï¿½ï¿½ï¿½ï¿½ Pageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½Ö´ï¿½. 
+	 * Pageï¿½ï¿½ ï¿½î¶»ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï´Â°ï¿½ï¿½ï¿½ DB ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¾ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ DBManagerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ç¾ï¿½ ï¿½Ö´ï¿½. 
+	 * Pageï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Page.creae(listNum, pageNo)ï¿½ï¿½ Static ï¿½Þ¼Òµï¿½ï¿½ ï¿½ï¿½ï¿½Ï¿ï¿½
+	 * setPage(Page page)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. 
+	 * listNumï¿½ï¿½ 10ï¿½Ì°ï¿½ pageNoï¿½ï¿½ 2ï¿½Ì¸ï¿½ 10ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î¹ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(11~20)ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
-	 * ¸¸¾à »ç¿ëÀÚ°¡ ¾Æ¹«·± ÆäÀÌÁöµµ ¼³Á¤ÇÏÁö ¾Ê¾ÒÀ»¶§´Â
-	 * dcÀÇ setLimit¿¡ ¼³Á¤µÈ °¹¼ö¸¸Å­¸¸À» selectÇÑ´Ù. 
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Æ¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * dcï¿½ï¿½ setLimitï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Å­ï¿½ï¿½ï¿½ï¿½ selectï¿½Ñ´ï¿½. 
 	 */
 	
 	public void testRowsPage() throws Exception {
@@ -40,7 +40,7 @@ public class QueryPage extends SampleTestBase{
 	
 	
 	/*
-	 * Á»´õ ÀÚ¼¼ÇÑ page»ç¿ë¹ýÀº com.bleujin.framework.db.sample.rows.RowsPage¿¡ ÀÖ´Ù. 
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½ï¿½ï¿½ pageï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ com.bleujin.framework.db.sample.rows.RowsPageï¿½ï¿½ ï¿½Ö´ï¿½. 
 	 */
 
 	

@@ -5,10 +5,10 @@ import java.sql.SQLException;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserProcedures;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
 
-public class P6_UserProceduresUpdate extends SampleTestBase{
+public class P6_UserProceduresUpdate extends TestBaseDB{
 
 	public void setUp() throws Exception {
 		super.setUp() ;

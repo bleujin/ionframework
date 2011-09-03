@@ -38,4 +38,7 @@ public class MapUtil {
 		return result;
 	}	
 	
+	public static <K, V> ChainMap<K, V> chainMap(){
+		return new ChainMap<K, V>() ;
+	}
 }

@@ -5,10 +5,10 @@ import net.ion.framework.db.manager.CacheDBManager;
 import net.ion.framework.db.procedure.IParameterQueryable;
 import net.ion.framework.db.procedure.IUserProcedure;
 import net.ion.framework.db.procedure.IUserProcedures;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 import net.ion.framework.util.Debug;
 
-public class TestCacheQuery extends SampleTestBase {
+public class TestCacheQuery extends TestBaseDB {
 
 	public void testUserProcedureBatch() throws Exception {
 		CacheConfigImpl config = new CacheConfigImpl(makeCacheConfig());

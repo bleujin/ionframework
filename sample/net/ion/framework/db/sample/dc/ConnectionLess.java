@@ -1,10 +1,10 @@
 package net.ion.framework.db.sample.dc;
 
 import net.ion.framework.db.DBController;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 import net.ion.framework.util.Debug;
 
-public class ConnectionLess extends SampleTestBase {
+public class ConnectionLess extends TestBaseDB {
 
 	public void testThread() throws Exception {
 

@@ -6,9 +6,9 @@ import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.ICombinedUserProcedures;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
-public class CombinedQuery extends SampleTestBase {
+public class CombinedQuery extends TestBaseDB {
 
 	public void setUp() throws Exception {
 		super.setUp();
@@ -17,15 +17,15 @@ public class CombinedQuery extends SampleTestBase {
 	}
 
 	/**
-	 * CombinedProcedure´Â Update¿Í Query¸¦ °°ÀÌ ÇÏ´Â ¸í·É¹® ÁýÇÕÀÌ´Ù. ÁÖ·Î ¸¶ÀÌ±×·¹ÀÌ¼Ç ÀÛ¾÷ÀÌ³ª session scope temp tableÀ» °¡Áö°í ÀÛ¾÷ÇÒ¶§ ¾²ÀÎ´Ù.
+	 * CombinedProcedureï¿½ï¿½ Updateï¿½ï¿½ Queryï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½É¹ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½. ï¿½Ö·ï¿½ ï¿½ï¿½ï¿½Ì±×·ï¿½ï¿½Ì¼ï¿½ ï¿½Û¾ï¿½ï¿½Ì³ï¿½ session scope temp tableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½Î´ï¿½.
 	 * 
-	 * Ã¹¹øÂ° MDL : insert¹® µÎ¹øÂ° Select : ¾Õ¿¡ insertÇÑ°ÍÀ» selectÇÑ´Ù. ¼¼¹øÂ° MDL¹® : Ã¹¹øÂ° insertÇÑ°ÍÀ» Áö¿î´Ù.
+	 * Ã¹ï¿½ï¿½Â° MDL : insertï¿½ï¿½ ï¿½Î¹ï¿½Â° Select : ï¿½Õ¿ï¿½ insertï¿½Ñ°ï¿½ï¿½ï¿½ selectï¿½Ñ´ï¿½. ï¿½ï¿½ï¿½ï¿½Â° MDLï¿½ï¿½ : Ã¹ï¿½ï¿½Â° insertï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 	 * 
-	 * ÀÇ 3°¡Áö ¹®ÀåÀ» ´ã¾Æ ½ÇÇàÇßÀ»¶§.. °á°úÀûÀ¸·Î´Â ¾Æ¹«°Íµµ insertµÇÁö ¾ÊÁö¸¸. 2¹øÂ° select ¹®ÀÇ °á°ú´Â ¾Ë¾Æ³¾¼ö ÀÖ´Ù. combinedProcedure´Â ¾È¿¡ MDL¹®¸¸À» ³Öµç ¼¯¾î³Öµç°£¿¡ execUpdate¸¸À» »ç¿ëÇÑ´Ù.
+	 * ï¿½ï¿½ 3ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î´ï¿½ ï¿½Æ¹ï¿½ï¿½Íµï¿½ insertï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. 2ï¿½ï¿½Â° select ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë¾Æ³ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½. combinedProcedureï¿½ï¿½ ï¿½È¿ï¿½ MDLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Öµï¿½ ï¿½ï¿½ï¿½ï¿½Öµç°£ï¿½ï¿½ execUpdateï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
-	 * ±×¸®°í ¿ª½Ã ÇÏ³ªÀÇ TransactionÀ¸·Î Ã³¸®µÈ´Ù. ´Ü IQueryable °´Ã¼°¡ ¾Æ´Ñ QueryableÀ» »ó¼Ó¹Þ¾Æ¾ß ÇÑ´Ù. ÀÌ°ÍÀÌ Á» ÀÌ»óÇÏ´Ù´Â °ÍÀº ¾ËÁö¸¸ ¿©·¯°³ÀÇ Äõ¸®¸¦ ÇÏ³ªÀÇ Æ®·£Àè¼ÇÀ¸·Î Ã³¸®ÇÏ±âÀ§ÇØ¼± ConnectionÀ» °øÀ¯ÇØ¾ß ÇÏ´Âµ¥ ÀÌ ConnectionÀ» ¿ÜºÎ¿¡ ³ëÃâ½ÃÅ°°í ½ÍÁö ¾Ê¾Ò´Ù.
+	 * ï¿½×¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Transactionï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½È´ï¿½. ï¿½ï¿½ IQueryable ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Æ´ï¿½ Queryableï¿½ï¿½ ï¿½ï¿½Ó¹Þ¾Æ¾ï¿½ ï¿½Ñ´ï¿½. ï¿½Ì°ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½Ï´Ù´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï±ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ Connectionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ï´Âµï¿½ ï¿½ï¿½ Connectionï¿½ï¿½ ï¿½ÜºÎ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò´ï¿½.
 	 * 
-	 * ÇöÀç IQueryable¸¦ ±¸ÇöÇßÁö¸¸ Queryable¸¦ »ó¼Ó¹ÞÁö ¾ÊÀº Å¬·¡½º´Â EmptyQueryable, TimeOutQuery, XAUserProcedure·Î ÀÌ°ÍµéÀº ´Ù¸¥ Queryable°ú °°ÀÌ ÇÏ³ªÀÇ Æ®·£Àè¼ÇÀ¸·Î Ã³¸®µÉ¼ö ¾ø±â ¶§¹®¿¡
+	 * ï¿½ï¿½ï¿½ï¿½ IQueryableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Queryableï¿½ï¿½ ï¿½ï¿½Ó¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ EmptyQueryable, TimeOutQuery, XAUserProcedureï¿½ï¿½ ï¿½Ì°Íµï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ Queryableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½É¼ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 
 	public void testFirst() throws Exception {

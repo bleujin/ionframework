@@ -12,6 +12,17 @@ public class HSQLBean {
 
 	public HSQLBean() {
 	}
+	
+	private HSQLBean(String address, String userId, String pwd) {
+		this.address = address ;
+		this.userId = userId ;
+		this.userPwd= pwd ;
+	}
+
+	public static HSQLBean create(String address, String userId, String pwd) {
+		return new HSQLBean(address, userId, pwd) ;
+	}
+
 
 	public String getAddress() {
 		return address;
@@ -58,4 +69,5 @@ public class HSQLBean {
 		if (id == null) throw new IllegalArgumentException("hsql procedure id is not null");
 		return procedures.get(id.toUpperCase());
 	}
+
 }

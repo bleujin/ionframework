@@ -5,9 +5,9 @@ import java.sql.SQLException;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserCommandBatch;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
-public class P3_BatchCommandQuery extends SampleTestBase {
+public class P3_BatchCommandQuery extends TestBaseDB {
 
 	public void setUp() throws Exception {
 		super.setUp();
@@ -16,8 +16,8 @@ public class P3_BatchCommandQuery extends SampleTestBase {
 	}
 
 	/**
-	 * ¹°·Ð Batch¸¦ ¾²Áö¾Ê°í P4_UserProcedures¸¦ ¾µ¼öµµ ÀÖ´Ù. ±×·¯³ª ¸¸¾à MDL¹®ÀÌ µ¿ÀÏÇÏ°í Param°ª¸¸ ´Ù¸£´Ù¸é.. Batch¸¦ »ç¿ëÇÏ´Â°Ô ´õ ÁÁ´Ù. Æ®·£Àè¼ÇÀ» Áö¿øÇÏ´Â °ÍÀº ¹°·ÐÀÌ°í ÈÎ¾À ´õ ºü¸£´Ù. Æò±ÕÀûÀ¸·Î 10¸¸°Ç´ÜÀ§ÀÇ ¹èÄ¡ Ã³¸®°¡ ÁÁÀ¸¸ç ¾à 10¸¸°Ç insert½Ã 1-3ºÐ Á¤µµ°¡ ¼Ò¸ðµÈ´Ù. P4_UserProcedurs¿¡¼­ ¼³¸íÇÏ´Â UserProcedures´Â ±âº»ÀûÀ¸·Î MDL¹®ÀÌ ´Ù¸¥ °ÍµéÀ» ÇÑ¹ø¿¡
-	 * ½ÇÇàÇÒ¶§ »ç¿ëÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Batchï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ê°ï¿½ P4_UserProceduresï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½. ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ MDLï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ Paramï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½Ù¸ï¿½.. Batchï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½. Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì°ï¿½ ï¿½Î¾ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 10ï¿½ï¿½ï¿½Ç´ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ 10ï¿½ï¿½ï¿½ï¿½ insertï¿½ï¿½ 1-3ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½È´ï¿½. P4_UserProcedursï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ UserProceduresï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MDLï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Íµï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ò¶ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 
 	public void testBatchDefault() throws Exception {
@@ -31,7 +31,7 @@ public class P3_BatchCommandQuery extends SampleTestBase {
 
 		int count = cmd.execUpdate();
 		assertEquals(max, count);
-		cmd.clearParam(); // param ojbect resource ¹ÝÈ¯
+		cmd.clearParam(); // param ojbect resource ï¿½ï¿½È¯
 	}
 
 	public void testAddParamCase1() throws Exception {

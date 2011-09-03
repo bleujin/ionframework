@@ -3,22 +3,22 @@ package net.ion.framework.db.sample.first;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserProcedure;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
-public class P4_UserProcedure extends SampleTestBase {
+public class P4_UserProcedure extends TestBaseDB {
 
 	/*
-	 * Procedure´Â ÆÛÆ÷¸Õ½º ¶óµç°¡ º¸¾È¼ºÀÌ¶óµç°¡ ÇÏ´Â ÀåÁ¡ÀÌ ÀÖ´Âµ¥ ±×ÁßÀÇ °¡Àå Å« ÀåÁ¡Àº ÇÁ·Î±×·¥ÀÇ DBÀÇÁ¸µµ¸¦ ÁÙÀÎ´Ù´Â °ÍÀÌ´Ù. ÀÌ°Ô ¸Õ ¼Ò¸®³Ä¸é - ¹Ý´ë·Î ¾Ë°í ÀÖ´Â »ç¶÷ÀÌ ÀÖ´Âµ¥ select a, b from framework_update_sample ÀÌ¶ó´Â Äõ¸®¸¦ ½ÇÇàÇÏ´Â ÇÁ·Î±×·¥ÀÌ ÀÖÀ»¶§. ÇØ´ç ÇÁ·Î±×·¥Àº framework_update_sampleÅ×ÀÌºí¿¡ ´ëÇØ¼­ ³Ê¹« »ó¼¼È÷ ¾Ë°í ÀÖ¾î¾ß ÇÏ±â ¶§¹®¿¡ DBÂÊ¿¡¼­ º¯µ¿ÀÌ
-	 * ÀÏ¾î³¯¶§ ±× µ¥¹ÌÁö°¡ ½É°¢ÇÏ´Ù. Æ¯È÷³ª SQLÀº ½ºÆ®¸µ º¯¼ö·Î ÀúÀåµÇ±â ¶§¹®¿¡ ±× ¸¹Àº ÇÁ·Î±×·¥À» ´Ù »ìÆìº¸¾Æ¾ß ÇÏ´Â ¼ö°í¸¦ ÇØ¾ß ÇÑ´Ù.
+	 * Procedureï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Õ½ï¿½ ï¿½ï¿½ç°¡ ï¿½ï¿½ï¿½È¼ï¿½ï¿½Ì¶ï¿½ç°¡ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Âµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å« ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î´Ù´ï¿½ ï¿½ï¿½ï¿½Ì´ï¿½. ï¿½Ì°ï¿½ ï¿½ï¿½ ï¿½Ò¸ï¿½ï¿½Ä¸ï¿½ - ï¿½Ý´ï¿½ï¿½ ï¿½Ë°ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Âµï¿½ select a, b from framework_update_sample ï¿½Ì¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½. ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ framework_update_sampleï¿½ï¿½ï¿½Ìº? ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ê¹ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ë°ï¿½ ï¿½Ö¾ï¿½ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	 * ï¿½Ï¾î³¯ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É°ï¿½ï¿½Ï´ï¿½. Æ¯ï¿½ï¿½ï¿½ï¿½ SQLï¿½ï¿½ ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ìº¸ï¿½Æ¾ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½? ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 	 * 
-	 * ÀÌ´Â DB µðÀÚÀÎÀÇ º¯°æ¿¡ ÀÖÀ»°æ¿ì ½É°¢ÇÑ À§Çè¿ä¼Ò¿Í ¸·´ëÇÑ ÀÛ¾÷ÇÇ·Îµµ¸¦ ¹ß»ý½ÃÅ°´Â°É·Î ÀÛ¿ëÇÑ´Ù.
+	 * ï¿½Ì´ï¿½ DB ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½æ¿¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½Ç·Îµï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Å°ï¿½Â°É·ï¿½ ï¿½Û¿ï¿½ï¿½Ñ´ï¿½.
 	 * 
-	 * ¿©±â¼­ Procedure´Â ¿À¶óÅ¬ È¤Àº MSSQL¿¡¼­ º¥´õ µðÆæÅÏÆ® ÇÏ°Ô ½ÇÇàÇÏ´Â procedure¸¦ ¶æÇÏ´Â °ÍÀÌ ¾Æ´Ï´Ù. ÀÏÁ¾ÀÇ message key·Î DB¸¦ ¾ï¼¼½º ÇÏ´Â Ãß»óÀûÀÎ ¹æ¹ýÀ» ¶æÇÏ¸ç. ½ÇÁ¦ procedure¸¦ ¾î¶»°Ô ÇØ¼®ÇÏ°í Àû¿ëÇÏ´Â°¡´Â procedure¸¦ ±¸ÇöÇÏ´Â »ç¶÷¿¡°Ô ÀüÀûÀ¸·Î ´Þ·ÁÀÖ´Ù.
+	 * ï¿½ï¿½ï¿½â¼­ Procedureï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ È¤ï¿½ï¿½ MSSQLï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ procedureï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Æ´Ï´ï¿½. ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ message keyï¿½ï¿½ DBï¿½ï¿½ ï¿½ï¼¼ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï¸ï¿½. ï¿½ï¿½ï¿½ï¿½ procedureï¿½ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½Ø¼ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´Â°ï¿½ï¿½ï¿½ procedureï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ·ï¿½ï¿½Ö´ï¿½.
 	 * 
-	 * ÀÌ¸¦Å×¸é OracleUserProcedure´Â A@B¶ó´Â Procedure¸¦ A¶ó´Â Package¿¡ B¶ó´Â Procedure È¤Àº functionÀÌ¶ó°í ÇØ¼®ÇÏ¸ç MSSQLProcedure¿Í MySQLProcedure´Â A@B¶ó´Â Procedure¸¦ A@B¶ó´Â Procedure È¤Àº functionÀÌ¶ó°í ÇØ¼®ÇÏ¸ç(MSSQL¿¡´Â Package°¡ ¾ø´Ù. ) H2Procedure´Â A@B¶ó´Â Procedure¸¦ Æ¯Á¤ÆÄÀÏ¿¡ key value
-	 * ÇüÅÂ·Î ÀúÀåµÈ SQLÀÇ nameÀ» °¡¸®Å°´Â °ÍÀÌ¶ó°í ÇØ¼®ÇÑ´Ù.
+	 * ï¿½Ì¸ï¿½ï¿½×¸ï¿½ OracleUserProcedureï¿½ï¿½ A@Bï¿½ï¿½ï¿½ Procedureï¿½ï¿½ Aï¿½ï¿½ï¿½ Packageï¿½ï¿½ Bï¿½ï¿½ï¿½ Procedure È¤ï¿½ï¿½ functionï¿½Ì¶ï¿½ï¿½ ï¿½Ø¼ï¿½ï¿½Ï¸ï¿½ MSSQLProcedureï¿½ï¿½ MySQLProcedureï¿½ï¿½ A@Bï¿½ï¿½ï¿½ Procedureï¿½ï¿½ A@Bï¿½ï¿½ï¿½ Procedure È¤ï¿½ï¿½ functionï¿½Ì¶ï¿½ï¿½ ï¿½Ø¼ï¿½ï¿½Ï¸ï¿½(MSSQLï¿½ï¿½ï¿½ï¿½ Packageï¿½ï¿½ ï¿½ï¿½ï¿½. ) H2Procedureï¿½ï¿½ A@Bï¿½ï¿½ï¿½ Procedureï¿½ï¿½ Æ¯ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ key value
+	 * ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ SQLï¿½ï¿½ nameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½ï¿½ï¿½Ì¶ï¿½ï¿½ ï¿½Ø¼ï¿½ï¿½Ñ´ï¿½.
 	 * 
-	 * ¾î¶² Procedure¸¦ ¼±ÅÃÇÏ´Â °ÍÀº ÀüÀûÀ¸·Î DBManager°¡ »ç¿ëÇÏ´Â RepositoryService¿¡ ´Þ·ÁÀÖÀ¸¸ç.. Select È¤Àº MDLÀ» ÇÏ´Â Procedure¿Í FunctionÀ» ¾î¶»°Ô ¸¸µé¾î¾ß ÇÏ´Â °ÍÀº UserProcedureÀÇ ±¸Çö¿¡ ´Þ·ÁÀÖ´Ù. ¸¸¾à ´Ù¸¥ ÇØ¼®¹æ½ÄÀ» Àû¿ëÇÏÀÚ¸é »õ·Î¿î DBManager¿Í RepositoryService¸¦ ±¸ÇöÇÏ¸é µÈ´Ù.
+	 * ï¿½î¶² Procedureï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBManagerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ RepositoryServiceï¿½ï¿½ ï¿½Þ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.. Select È¤ï¿½ï¿½ MDLï¿½ï¿½ ï¿½Ï´ï¿½ Procedureï¿½ï¿½ Functionï¿½ï¿½ ï¿½î¶»ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ UserProcedureï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Þ·ï¿½ï¿½Ö´ï¿½. ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½Ø¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú¸ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ DBManagerï¿½ï¿½ RepositoryServiceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½.
 	 */
 
 	public void setUp() throws Exception {
@@ -47,7 +47,7 @@ public class P4_UserProcedure extends SampleTestBase {
 	}
 
 	/*
-	 * MySQLÀÇ °æ¿ì ¾Æ·¡¿Í °°ÀÌ ÀÛ¼ºÇÑ´Ù.
+	 * MySQLï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Û¼ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * 
 	 * delimiter //
@@ -63,17 +63,17 @@ public class P4_UserProcedure extends SampleTestBase {
 	 */
 
 	/*
-	 * OracleÀÇ °æ¿ì
+	 * Oracleï¿½ï¿½ ï¿½ï¿½ï¿½
 	 * 
 	 * 
-	 * // ¸ÕÀú °ø¿ëÇÒ return cursor Å¸ÀÔÀ» Á¤ÀÇÇÑ´Ù. CREATE OR REPLACE PACKAGE Types as type cursorType is ref cursor ; FUNCTION dummy return number ; END ;
+	 * // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ return cursor Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. CREATE OR REPLACE PACKAGE Types as type cursorType is ref cursor ; FUNCTION dummy return number ; END ;
 	 * 
 	 * CREATE OR REPLACE PACKAGE BODY Types as
 	 * 
 	 * FUNCTION dummy return Number is BEGIN return 1 ; End dummy ; END ;
 	 * 
 	 * 
-	 * // ¾Æ·¡¿Í °°ÀÌ Àû´çÇÑ Package·Î ¹­¾î¼­ »ç¿ëÇÑ´Ù. // ¾Æ·¡ÀÇ testSelectByÀÇ ProcedureÅ°´Â Sample@selectBy() ÀÌ´Ù.
+	 * // ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ Packageï¿½ï¿½ ï¿½ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. // ï¿½Æ·ï¿½ï¿½ï¿½ testSelectByï¿½ï¿½ ProcedureÅ°ï¿½ï¿½ Sample@selectBy() ï¿½Ì´ï¿½.
 	 * 
 	 * CREATE OR REPLACE PACKAGE Sample is function selectBy(v_a number) return Types.cursorType ; function insertWith(v_a number, v_b varchar2) return number ; END Sample; /
 	 * 

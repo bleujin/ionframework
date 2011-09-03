@@ -67,7 +67,7 @@ import org.apache.commons.io.IOUtils;
 public class DBController implements IDBController { // implements Configurable
 // public static DBController TEST_CONTROLLER = new DBController("test", new OracleCacheDBManager("jdbc:oracle:thin:@bleujin:1521:bleujin", "ipub40","ics4_r3" ,5), new StdOutServant(StdOutServant.All)) ;
 	public static DBController TEST_CONTROLLER = new DBController("test", new MSSQLPoolDBManager(
-			"jdbc:microsoft:sqlserver://dev_sql.i-on.net:1433;DatabaseName=HK_NEWS_ICS5", "HK_NEWS_ICS5", "HK_NEWS_ICS5"), new StdOutServant(StdOutServant.All));
+			"jdbc:microsoft:sqlserver://dev_sql.i-on.net:1433;DatabaseName=HK_NEWS_ICS5", "HK_NEWS_ICS5", "HK_NEWS_ICS5"), StdOutServant.ALL);
 	protected DBManager dbm = null;
 	protected int limitRows = Page.ALL.getListNum();
 	protected String name = null;
@@ -85,7 +85,7 @@ public class DBController implements IDBController { // implements Configurable
 			throw new DBControllerInstantiationException("invalid configuration.");
 
 		try {
-			// ¹Ýµå½Ã ÇÊ¿äÇÑ °Íµé...
+			// 
 			this.name = dbconfig.getChild("controller-name").getValue();
 			this.dbm = (DBManager) InstanceCreator.createConfiguredInstance(dbconfig.getChild("database-manager.configured-object"));
 
@@ -110,7 +110,7 @@ public class DBController implements IDBController { // implements Configurable
 			}
 			log.info(this.name + " [---DBController Start---] ..............");
 
-			// ÀÖÀ¸¸é ÁÁ°í ¾øÀ¸¸é ±×¸¸...
+			// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×¸ï¿½...
 			try {
 				this.limitRows = dbconfig.getChild("limit-rows").getValueAsInt();
 			} catch (NotFoundXmlTagException ignore) {

@@ -4,10 +4,10 @@ import net.ion.framework.db.Page;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserProcedures;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
 
-public class P5_UserProceduresQuery extends SampleTestBase{
+public class P5_UserProceduresQuery extends TestBaseDB{
 	
 	
 	public void setUp() throws Exception {

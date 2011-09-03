@@ -24,6 +24,8 @@ public class StdOutServant extends ExtraServant {
 	public StdOutServant(int showLevel) {
 		this.showLevel = showLevel;
 	}
+	
+	public final static StdOutServant ALL = new StdOutServant(All) ;
 
 	protected void handle(AfterTask atask) {
 		println(atask.getStart(), atask.getEnd(), atask.getQueryable());
@@ -34,7 +36,7 @@ public class StdOutServant extends ExtraServant {
 		String queryStr = query.toString();
 
 		// ibr_12077
-		if (queryStr.startsWith("CMSUSER@")) { // ºñ¹Ð¹øÈ£ ³ëÃâÀ» ¹æÁöÇÏ±â À§ÇØ¼­..
+		if (queryStr.startsWith("CMSUSER@")) { // ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½..
 			List<?> params = ((IParameterQueryable) query).getParams();
 			if (params.size() > 0) {
 				if (queryStr.startsWith("CMSUSER@logInBy")) {

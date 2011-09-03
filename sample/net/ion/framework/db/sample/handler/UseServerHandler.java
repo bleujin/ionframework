@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 import net.ion.framework.util.Debug;
 
-public class UseServerHandler extends SampleTestBase {
+public class UseServerHandler extends TestBaseDB {
 
 	String query = "select * from millon_tblc where rownum < 10000";
 

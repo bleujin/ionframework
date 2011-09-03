@@ -71,16 +71,9 @@
 	</target>
 	
 	<target name="copy" depends="publish">
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICS6/ics/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICSS5/icss/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICS6Extend/lib/common/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICS6License/license/WEB-INF/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Aradon/aradon_lib/aradon/embed/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../MongoNode/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../WebSocket/libs/" />
 	</target>	
 
-	<target name="copy_aradon" depends="publish">
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Aradon/aradon_lib/aradon/embed/" />
-	</target>	
 </project>

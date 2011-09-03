@@ -6,11 +6,11 @@ import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserCommandBatch;
 import net.ion.framework.db.procedure.IUserProcedure;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 import net.ion.framework.util.RandomUtil;
 
 
-public class TestNamedParameter extends SampleTestBase{
+public class TestNamedParameter extends TestBaseDB{
 
 
 	public void setUp() throws Exception {

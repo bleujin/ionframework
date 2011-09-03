@@ -8,10 +8,10 @@ import net.ion.framework.db.procedure.IParameterQueryable;
 import net.ion.framework.db.procedure.IUserProcedure;
 import net.ion.framework.db.procedure.IUserProcedureBatch;
 import net.ion.framework.db.procedure.IUserProcedures;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
 
-public class CachedRows extends SampleTestBase{
+public class CachedRows extends TestBaseDB{
 
 	public void xtestUseCache() throws Exception {
 		Rows rows = dc.getRows("select * from copy_tblc") ;

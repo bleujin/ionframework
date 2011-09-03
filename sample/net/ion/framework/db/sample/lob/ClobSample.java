@@ -7,7 +7,7 @@ import java.io.StringReader;
 
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserProcedure;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 import net.ion.framework.rope.Rope;
 import net.ion.framework.rope.RopeBuilder;
 import net.ion.framework.rope.RopeReader;
@@ -15,7 +15,7 @@ import net.ion.framework.util.Debug;
 import net.ion.framework.util.RandomUtil;
 import junit.framework.TestCase;
 
-public class ClobSample extends SampleTestBase{
+public class ClobSample extends TestBaseDB{
 
 	
 	public void testInsertClobString() throws Exception {

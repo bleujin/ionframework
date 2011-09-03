@@ -2,9 +2,9 @@ package net.ion.framework.db.sample.rows;
 
 import net.ion.framework.db.Row;
 import net.ion.framework.db.Rows;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
-public class RowsFirstRow extends SampleTestBase {
+public class RowsFirstRow extends TestBaseDB {
 
 	String query = "select * from copy_sample";
 

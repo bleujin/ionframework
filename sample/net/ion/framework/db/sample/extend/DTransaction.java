@@ -7,27 +7,27 @@ import net.ion.framework.db.procedure.MSSQL2000TxTransaction;
 import net.ion.framework.db.procedure.OracleTxTransaction;
 import net.ion.framework.db.procedure.Queryable;
 import net.ion.framework.db.procedure.TxTransaction;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 import net.ion.framework.db.xa.XAUserProcedure;
 
-public class DTransaction extends SampleTestBase {
+public class DTransaction extends TestBaseDB {
 
 	/*
-	 * ÇÏ³ªÀÇ Connection¿¡ ´ëÇÑ ¿©·¯°³ÀÇ DML¿¡ ´ëÇÑ Æ®·£Àè¼ÇÀº ±×³É UserProcedures¿¡´Ù Áý¾î³Ö¾î¼­ ´øÁö¸é µÇ´Â ¾ÆÁÖ ½¬¿î ¹®Á¦ÀÌ´Ù.
+	 * ï¿½Ï³ï¿½ï¿½ï¿½ Connectionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DMLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×³ï¿½ UserProceduresï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¾î¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 	 * 
-	 * ¿©±â¼­´Â ¿©·¯°³ÀÇ Connection(¾Æ¸¶µµ ÀÌ±âÁ¾DB)¿¡ ´ëÇÑ ¿©·¯°³ÀÇ DML Æ®·£Àè¼Ç¿¡ ´ëÇÑ ºÐ»êÆ®·£Àè¼Ç¿¡ ´ëÇÑ ¿¹Á¦ÀÌ´Ù.
+	 * ï¿½ï¿½ï¿½â¼­ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Connection(ï¿½Æ¸ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½DB)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DML Æ®ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ð»ï¿½Æ®ï¿½ï¿½ï¿½ï¿½Ç¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 	 */
 
 	/*
-	 * ºÐ»ê Æ®·£Àè¼Ç ¿¹Á¦´Â MySQLÀÌ ¾Æ´Ï¶ó MSSQL°ú Oracle¸¦ »ç¿ëÇÑ ¿¹Á¦ÀÌ´Ù. MySQLÀº ¾ó¸¶Àü±îÁö XaTransactionÀ» Áö¿øÇÏÁö ¾Ê¾Ò°í ÇöÀçµµ InnoDB storage engine¿¡¼­¸¸ Áö¿øÇÏ´Â °É·Î ¾Ë°í ÀÖ´Ù. ¶Ç ºÐ»êÆ®·£Àè¼ÇÀ» ½á¾ßÇÒ Á¤µµ·Î Áß¿äÇÑ ÇÁ·ÎÁ§Æ®¿¡¼­´Â MySQLÀ» »ç¿ëÇØº»ÀûÀÌ ¾ø¾î¼­ ±»ÀÌ ¸¸µé ÇÊ¿ä¼ºµµ ¾ø¾ú±â ¶§¹®ÀÌ±âµµ ÇÏ´Ù. ±âÅ¸ µîµîÀÇ ÀÌÀ¯·Î °ü·ÃÀÚ·áµµ °ÅÀÇ ¾ø±â ¶§¹®¿¡ ¾Æ·¡ÀÇ ¿¹Á¦´Â ¿À¶óÅ¬°ú
-	 * MSSQL¿¡¼­ÀÇ ºÐ»êÆ®·£Àè¼ÇÀ» »ç¿ëÇÏ±â À§ÇØ¼­ ÇÁ·¹ÀÓ¿öÅ© »ç¿ë¹æ¹ýÀÌ´Ù.
+	 * ï¿½Ð»ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MySQLï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ MSSQLï¿½ï¿½ Oracleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½. MySQLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ XaTransactionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò°ï¿½ ï¿½ï¿½ï¿½çµµ InnoDB storage engineï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½É·ï¿½ ï¿½Ë°ï¿½ ï¿½Ö´ï¿½. ï¿½ï¿½ ï¿½Ð»ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MySQLï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Øºï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½î¼­ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä¼ºï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ì±âµµ ï¿½Ï´ï¿½. ï¿½ï¿½Å¸ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú·áµµ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½
+	 * MSSQLï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð»ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó¿ï¿½Å© ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½.
 	 * 
 	 * 
-	 * MSSQL¿¡¼­ XaTransactionÀ» »ç¿ëÇÏ±â À§ÇØ. Be sure that you have copied your sqljdbc.dll file from C:\Program Files\Microsoft SQL Server 2000 Driver for JDBC\SQLServer JTA\ to your SQL Server's "binn" directory (most likely C:\Program Files\Microsoft SQL
+	 * MSSQLï¿½ï¿½ï¿½ï¿½ XaTransactionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½. Be sure that you have copied your sqljdbc.dll file from C:\Program Files\Microsoft SQL Server 2000 Driver for JDBC\SQLServer JTA\ to your SQL Server's "binn" directory (most likely C:\Program Files\Microsoft SQL
 	 * Server\MSSQL\Binn). Then open your instjdbc.sql script from C:\Program Files\Microsoft SQL Server 2000 Driver for JDBC\SQLServerJTA\ within Query Analyzer and run the script. This will install the extended stored procedures into SQL Server so
 	 * that it can reference the sqljdbc.dll file.
 	 * 
-	 * ÀÌ»óÀÇ °úÁ¤À» ÅëÇØ º¸µíÀÌ ÀÌ±âÁ¾ DB°£ÀÇ Æ®·£Àè¼ÇÀº ¸Å¿ì ¹ø°Å·Ó°í »çÀüÀÛ¾÷µµ ÇÊ¿ä·Î ÇÏ´Â DB°¡ ÀÖ°í ¶Ç ÀÌ°Íµµ ¹öÀüº°·Î ´Ù¸£´Ù. µû¶ó¼­ °¢°¢ÀÇ »óÈ²¿¡ ¸Â°Ô À¯µ¿ÀûÀ¸·Î ´ëÀÀÇØ¾ß ÇÑ´Ù.
+	 * ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ì±ï¿½ï¿½ï¿½ DBï¿½ï¿½ï¿½ï¿½ Æ®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Å¿ï¿½ ï¿½ï¿½Å·Ó°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ ï¿½Ï´ï¿½ DBï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ ï¿½Ì°Íµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½. ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²ï¿½ï¿½ ï¿½Â°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.
 	 */
 
 	public void testSimple() throws Exception {

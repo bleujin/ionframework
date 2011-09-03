@@ -9,10 +9,10 @@ import net.ion.framework.db.bean.handlers.BeanListHandler;
 import net.ion.framework.db.bean.handlers.MapHandler;
 import net.ion.framework.db.bean.handlers.MapListHandler;
 import net.ion.framework.db.bean.handlers.ScalarHandler;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
 
-public class UseHandler extends SampleTestBase {
+public class UseHandler extends TestBaseDB {
 
 	String query = "select * from copy_sample order by no1" ;
 	
@@ -24,8 +24,8 @@ public class UseHandler extends SampleTestBase {
 		assertEquals(2, results.size()) ;
 
 		assertEquals("1", results.get("no1").toString()) ; 
-		// ¿Ö int 1ÀÌ ¾Æ´Ï³Ä¸é DB¸¶´Ù ¼ýÀÚ¸¦ Ç¥ÇöÇÏ´Â ¹æ½ÄÀÌ Á¶±Ý¾¿ ´Ù¸¥µ¥ 
-		// ¿À¶óÅ¬ÀÇ Number´Â java.math.BigDecimial·Î Ä¡È¯µÈ´Ù.
+		// ï¿½ï¿½ int 1ï¿½ï¿½ ï¿½Æ´Ï³Ä¸ï¿½ DBï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ Ç¥ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ý¾ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ 
+		// ï¿½ï¿½ï¿½ï¿½Å¬ï¿½ï¿½ Numberï¿½ï¿½ java.math.BigDecimialï¿½ï¿½ Ä¡È¯ï¿½È´ï¿½.
 		assertEquals("01", results.get("no2")) ;
 	}
 	

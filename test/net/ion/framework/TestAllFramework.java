@@ -3,7 +3,7 @@ package net.ion.framework;
 import junit.framework.TestCase;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
-import net.ion.framework.db.sample.DBSampleAllTest;
+import net.ion.framework.db.sample.TestAllDB;
 import net.ion.framework.parse.html.HTagAllTest;
 import net.ion.framework.rope.RopeAllTest;
 import net.ion.framework.util.Debug;
@@ -19,7 +19,7 @@ public class TestAllFramework extends TestCase{
 		
 		ts.addTest(HTagAllTest.suite()) ;
 		ts.addTest(RopeAllTest.suite()) ;
-		ts.addTest(DBSampleAllTest.suite()) ;
+		ts.addTest(TestAllDB.suite()) ;
 		
 
 		return ts ;

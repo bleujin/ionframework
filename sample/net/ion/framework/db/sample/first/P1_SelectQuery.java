@@ -3,16 +3,16 @@ package net.ion.framework.db.sample.first;
 import net.ion.framework.db.RepositoryException;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
-public class P1_SelectQuery extends SampleTestBase {
+public class P1_SelectQuery extends TestBaseDB {
 
 	private String query1 = "select * from copy_sample";
 	private String query2 = "select * from copy_sample no union all Select * from copy_sample";
 
 	/**
-	 * °¡Àå ±âº»ÀûÀÎ Äõ¸® »ç¿ë¹æ¹ýÀº dc.create.. ¸Þ¼Òµå·Î IQuery °´Ã¼¸¦ ¸¸µé¾î¼­ execQuery¸¦ ½ÇÇàÇÏ°Å³ª.. ´Ü¼øÇÑ Äí¸®´Â dc.getRows¸¦ ½ÇÇàÇÏ¸é µÈ´Ù. ¹ÝÈ¯°ªÀÎ Rows´Â ÀÌÈÄ¿¡ Á»´õ ÀÚ¼¼È÷ ¼³¸íµÇ°ÚÁö¸¸.. ResultSet Interface¸¦ ±¸ÇöÇÑ ´Ü¼øÇÑ ValueObject °´Ã¼ÀÌ´Ù. µû¶ó¼­ java.sql.PrepareStatement¿¡¼­ ¹ÝÈ¯ÇÏ´Â ResultSet°ú´Â ´Þ¸® close¸¦ ÇØÁÖÁö ¾Ê¾Æµµ
-	 * »ó°ü¾ø°í Rows¸¦ ¹ÝÈ¯¹Þ´Â ¼ø°£ ConnectionÀº Pool¿¡ ÀÌ¹Ì ¹ÝÈ¯µÇ¾î ÀÖ±â ¶§¹®¿¡ ´Ù¸¥ °´Ã¼¿¡ ÆÄ¶ó¹ÌÅÍ·Î »ç¿ëÇØµµ »ó°ü¾ø´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ dc.create.. ï¿½Þ¼Òµï¿½ï¿½ IQuery ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î¼­ execQueryï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°Å³ï¿½.. ï¿½Ü¼ï¿½ï¿½ï¿½ ï¿½?ï¿½ï¿½ dc.getRowsï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½È´ï¿½. ï¿½ï¿½È¯ï¿½ï¿½ï¿½ï¿½ Rowsï¿½ï¿½ ï¿½ï¿½ï¿½Ä¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½.. ResultSet Interfaceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ü¼ï¿½ï¿½ï¿½ ValueObject ï¿½ï¿½Ã¼ï¿½Ì´ï¿½. ï¿½ï¿½ï¿½ java.sql.PrepareStatementï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ï´ï¿½ ResultSetï¿½ï¿½ï¿½ ï¿½Þ¸ï¿½ closeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Æµï¿½
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ Rowsï¿½ï¿½ ï¿½ï¿½È¯ï¿½Þ´ï¿½ ï¿½ï¿½ Connectionï¿½ï¿½ Poolï¿½ï¿½ ï¿½Ì¹ï¿½ ï¿½ï¿½È¯ï¿½Ç¾ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¸ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½Í·ï¿½ ï¿½ï¿½ï¿½ï¿½Øµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 	 */
 
 	public void testDefault() throws Exception {

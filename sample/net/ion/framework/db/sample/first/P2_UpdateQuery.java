@@ -1,9 +1,9 @@
 package net.ion.framework.db.sample.first;
 
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.SampleTestBase;
+import net.ion.framework.db.sample.TestBaseDB;
 
-public class P2_UpdateQuery extends SampleTestBase {
+public class P2_UpdateQuery extends TestBaseDB {
 
 	public void setUp() throws Exception {
 		super.setUp();
