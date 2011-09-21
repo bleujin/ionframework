@@ -31,10 +31,10 @@ import net.ion.framework.db.procedure.IUserProcedures;
 import net.ion.framework.db.procedure.Queryable;
 import net.ion.framework.db.procedure.RepositoryService;
 import net.ion.framework.db.servant.AfterTask;
-import net.ion.framework.db.servant.ExtraServant;
-import net.ion.framework.db.servant.NoneServant;
+import net.ion.framework.db.servant.ChannelServant;
+import net.ion.framework.db.servant.IExtraServant;
 import net.ion.framework.db.servant.PrimaryServant;
-import net.ion.framework.db.servant.ServantChannel;
+import net.ion.framework.db.servant.ServantChain;
 import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.logging.LogBroker;
 import net.ion.framework.util.CaseInsensitiveHashMap;
@@ -67,11 +67,11 @@ import org.apache.commons.io.IOUtils;
 public class DBController implements IDBController { // implements Configurable
 // public static DBController TEST_CONTROLLER = new DBController("test", new OracleCacheDBManager("jdbc:oracle:thin:@bleujin:1521:bleujin", "ipub40","ics4_r3" ,5), new StdOutServant(StdOutServant.All)) ;
 	public static DBController TEST_CONTROLLER = new DBController("test", new MSSQLPoolDBManager(
-			"jdbc:microsoft:sqlserver://dev_sql.i-on.net:1433;DatabaseName=HK_NEWS_ICS5", "HK_NEWS_ICS5", "HK_NEWS_ICS5"), StdOutServant.ALL);
+			"jdbc:microsoft:sqlserver://dev_sql.i-on.net:1433;DatabaseName=HK_NEWS_ICS5", "HK_NEWS_ICS5", "HK_NEWS_ICS5"), new StdOutServant(StdOutServant.All));
 	protected DBManager dbm = null;
 	protected int limitRows = Page.ALL.getListNum();
 	protected String name = null;
-	private ServantChannel echannel = null;
+	private final ServantChain schain ;
 
 	private HashMap<String, String> midgard = new CaseInsensitiveHashMap<String>(); // etc property...
 	private PrimaryServant pservant = null;
@@ -85,29 +85,20 @@ public class DBController implements IDBController { // implements Configurable
 			throw new DBControllerInstantiationException("invalid configuration.");
 
 		try {
-			// 
+			// �ݵ�� �ʿ��� �͵�...
 			this.name = dbconfig.getChild("controller-name").getValue();
 			this.dbm = (DBManager) InstanceCreator.createConfiguredInstance(dbconfig.getChild("database-manager.configured-object"));
 
 			Configuration[] configOfServant = dbconfig.getChildren("extra-servant.configured-object");
-			ExtraServant eservant = null;
 
-			// None Channel...
-			if (configOfServant.length == 0) {
-				echannel = new ServantChannel(new NoneServant());
-			} else {
-				for (int i = 0; i < configOfServant.length; i++) {
-					if (i == 0) {
-						eservant = (ExtraServant) InstanceCreator.createConfiguredInstance(configOfServant[i]);
-						echannel = new ServantChannel(eservant);
-						eservant.setChannel(echannel);
-					} else {
-						ExtraServant nextServant = (ExtraServant) InstanceCreator.createConfiguredInstance(configOfServant[i]);
-						eservant.setNext(nextServant);
-						eservant = nextServant;
-					}
-				}
+			this.schain = new ServantChain() ;
+			ChannelServant echannel = new ChannelServant();
+			for (int i = 0; i < configOfServant.length; i++) {
+				IExtraServant eservant = (IExtraServant) InstanceCreator.createConfiguredInstance(configOfServant[i]);
+				echannel.add(eservant) ;
 			}
+			schain.addServant(echannel) ;
+			
 			log.info(this.name + " [---DBController Start---] ..............");
 
 			// ������ ���� ������ �׸�...
@@ -167,16 +158,13 @@ public class DBController implements IDBController { // implements Configurable
 	 * @param dataBaseManager
 	 */
 	public DBController(String name, DBManager dbm) {
-		this(name, dbm, null);
+		this(name, dbm, IExtraServant.BLANK);
 	}
 
-	public DBController(String name, DBManager dataBaseManager, ExtraServant servant) {
+	public DBController(String name, DBManager dataBaseManager, IExtraServant servant) {
 		this.name = name;
 		this.dbm = dataBaseManager;
-		this.echannel = new ServantChannel(servant);
-
-		if (servant != null)
-			servant.setChannel(this.echannel); // �߰��� ��
+		this.schain =  (servant instanceof ServantChain) ? ((ServantChain)servant) : new ServantChain().addServant(servant);
 	}
 
 	public void setDBManager(DBManager dbm) {
@@ -192,20 +180,13 @@ public class DBController implements IDBController { // implements Configurable
 		this.dbm = dbm;
 	}
 
-	public void setServantChannel(ServantChannel channel) {
-		this.echannel.stopServant();
-
-		log.info(this.name + " DBController Change Servant[" + channel.toString() + "]");
-		this.echannel = channel;
-	}
-
 	public void setMidgardProperty(String key, String value) {
 		log.info(this.name + " DBController Midgard Property[" + key + " : " + value + "]");
 		midgard.put(key, value);
 	}
 
-	public ExtraServant getServant() {
-		return this.echannel.getExtraServant();
+	public ServantChain getServantChain() {
+		return this.schain;
 	}
 
 	private boolean initialized = false;
@@ -219,7 +200,6 @@ public class DBController implements IDBController { // implements Configurable
 			return;
 
 		getDBManager().initPool(this);
-		echannel.restartWorker();
 		this.initialized = true;
 	}
 
@@ -253,7 +233,6 @@ public class DBController implements IDBController { // implements Configurable
 	}
 
 	public synchronized void destroySelf() {
-		echannel.stopServant();
 		try {
 			if (dbm != null)
 				dbm.destroyPool(this);
@@ -267,16 +246,8 @@ public class DBController implements IDBController { // implements Configurable
 		initialized = false;
 	}
 
-	// FOR TEST
-	public synchronized void changeServant(ExtraServant servant) {
-		this.echannel.stopServant();
-		this.echannel = new ServantChannel(servant);
-		servant.setChannel(this.echannel);
-		this.echannel.startWorker();
-	}
-
-	public void addServant(ExtraServant addServant) {
-		echannel.addServant(addServant);
+	public void addServant(IExtraServant addServant) {
+		schain.addServant(addServant);
 	}
 
 	private Connection getConnection() {
@@ -350,13 +321,7 @@ public class DBController implements IDBController { // implements Configurable
 				handleServant(start, end, uprocs.getQuery(i), execType);
 			}
 		} else {
-			try {
-
-				echannel.putTask(new AfterTask(start, end, this.dbm, query, execType));
-			} catch (InterruptedException ex) {
-				log.warning("channel is interrupted..");
-				ex.printStackTrace();
-			}
+			schain.support(new AfterTask(start, end, this.dbm, query, execType));
 		}
 	}
 

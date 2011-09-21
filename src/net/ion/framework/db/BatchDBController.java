@@ -4,7 +4,7 @@ import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.IUserProcedures;
 import net.ion.framework.db.servant.AfterTask;
-import net.ion.framework.db.servant.ExtraServant;
+import net.ion.framework.db.servant.IExtraServant;
 import net.ion.framework.db.servant.NoneServant;
 
 /**
@@ -19,13 +19,13 @@ import net.ion.framework.db.servant.NoneServant;
 public class BatchDBController extends DBController { // implements
 														// Configurable
 
-	private ExtraServant servant = null;
+	private IExtraServant servant = null;
 
 	public BatchDBController(String name, DBManager dbm) {
 		this(name, dbm, new NoneServant());
 	}
 
-	public BatchDBController(String name, DBManager dataBaseManager, ExtraServant servant) {
+	public BatchDBController(String name, DBManager dataBaseManager, IExtraServant servant) {
 		super(name, dataBaseManager);
 		this.servant = servant;
 	}

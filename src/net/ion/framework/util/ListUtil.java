@@ -37,6 +37,14 @@ public class ListUtil extends ListUtils{
 		return Arrays.asList(objs) ;
 	}
 	
+	public final static <T> List<T> syncList(T... objs){
+		List<T> result = new ArrayList<T>() ;
+		for (T obj : objs) {
+			result.add(obj) ;
+		}
+		return Collections.synchronizedList(result) ;
+	}
+	
 
 	public static Object[] toArray(Object object) {
 		if (object instanceof List) {

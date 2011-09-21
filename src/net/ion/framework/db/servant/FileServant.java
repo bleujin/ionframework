@@ -4,7 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileServant extends ExtraServant {
+public class FileServant implements IExtraServant {
 	private boolean isTrace = false;
 	private int limitMilisecond;
 	private String fileName;
@@ -15,23 +15,24 @@ public class FileServant extends ExtraServant {
 		this.fileName = fileName;
 	}
 
-	protected void handle(AfterTask atask) {
-		try {
-			BufferedWriter writer = new BufferedWriter(new FileWriter(fileName, true));
-			writer.write(atask.getQueryable().toString());
-			writer.newLine();
-			writer.flush();
-			writer.close();
-		} catch (IOException ex) {
-			ex.printStackTrace();
+	public void support(AfterTask atask) {
+		if (isDealWith(atask)) {
+			try {
+				BufferedWriter writer = new BufferedWriter(new FileWriter(
+						fileName, true));
+				writer.write(atask.getQueryable().toString());
+				writer.newLine();
+				writer.flush();
+				writer.close();
+			} catch (IOException ex) {
+				ex.printStackTrace();
+			}
 		}
 	}
 
 	protected boolean isDealWith(AfterTask atask) {
-		return this.isTrace && atask.getEnd() - atask.getStart() > this.limitMilisecond;
+		return this.isTrace
+				&& atask.getEnd() - atask.getStart() > this.limitMilisecond;
 	}
 
-	public ExtraServant newCloneInstance() {
-		return new FileServant(this.isTrace, this.limitMilisecond, this.fileName);
-	}
 }

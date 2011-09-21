@@ -7,7 +7,7 @@ import net.ion.framework.db.procedure.IParameterQueryable;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.QueryType;
 
-public class StdOutServant extends ExtraServant {
+public class StdOutServant implements IExtraServant {
 	private int showLevel;
 	public final static int ONLY_USERPROCEDURE = 1;
 	public final static int ONLY_USERCOMMAND = 2;
@@ -24,11 +24,11 @@ public class StdOutServant extends ExtraServant {
 	public StdOutServant(int showLevel) {
 		this.showLevel = showLevel;
 	}
-	
-	public final static StdOutServant ALL = new StdOutServant(All) ;
 
-	protected void handle(AfterTask atask) {
-		println(atask.getStart(), atask.getEnd(), atask.getQueryable());
+	public void support(AfterTask atask) {
+		if (isDealWith(atask)) {
+			println(atask.getStart(), atask.getEnd(), atask.getQueryable());
+		}
 	}
 
 	private void println(long start, long end, IQueryable query) {
@@ -36,7 +36,7 @@ public class StdOutServant extends ExtraServant {
 		String queryStr = query.toString();
 
 		// ibr_12077
-		if (queryStr.startsWith("CMSUSER@")) { // ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½..
+		if (queryStr.startsWith("CMSUSER@")) { // ºñ¹Ð¹øÈ£ ³ëÃâÀ» ¹æÁöÇÏ±â À§ÇØ¼­..
 			List<?> params = ((IParameterQueryable) query).getParams();
 			if (params.size() > 0) {
 				if (queryStr.startsWith("CMSUSER@logInBy")) {
@@ -66,7 +66,8 @@ public class StdOutServant extends ExtraServant {
 		msg.append("\n");
 		long actual_time = (end - start);
 		if (actual_time > 1000000) {
-			msg.append("actual time(ms) : " + (int) (actual_time / 1000000) + "\n");
+			msg.append("actual time(ms) : " + (int) (actual_time / 1000000)
+					+ "\n");
 		} else {
 			// System.out.println("actual time(ns) : " + actual_time + "\n");
 			msg.append("actual time(ms) : 0\n");
@@ -79,17 +80,15 @@ public class StdOutServant extends ExtraServant {
 		return Calendar.getInstance().getTime().toString();
 	}
 
-	protected boolean isDealWith(AfterTask atask) {
+	private boolean isDealWith(AfterTask atask) {
 		IQueryable query = atask.getQueryable();
 		return (this.showLevel == StdOutServant.All)
 				|| (((showLevel / 32) % 2 == 1 && query.getQueryType() == QueryType.CUSTOM_QUERY)
 						|| ((showLevel / 16) % 2 == 1 && query.getQueryType() == QueryType.USER_COMMAND_BATCH)
 						|| ((showLevel / 8) % 2 == 1 && query.getQueryType() == QueryType.USER_PROCEDURES)
 						|| ((showLevel / 4) % 2 == 1 && query.getQueryType() == QueryType.USER_PROCEDURE_BATCH)
-						|| ((showLevel / 2) % 2 == 1 && query.getQueryType() == QueryType.USER_COMMAND) || ((showLevel / 1) % 2 == 1 && query.getQueryType() == QueryType.USER_PROCEDURE));
+						|| ((showLevel / 2) % 2 == 1 && query.getQueryType() == QueryType.USER_COMMAND) || ((showLevel / 1) % 2 == 1 && query
+						.getQueryType() == QueryType.USER_PROCEDURE));
 	}
 
-	public ExtraServant newCloneInstance() {
-		return new StdOutServant(this.showLevel);
-	}
 }

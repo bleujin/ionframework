@@ -20,7 +20,7 @@ import net.ion.framework.db.sample.plan.ViewPlan;
 import net.ion.framework.db.sample.rows.RowsFirstRow;
 import net.ion.framework.db.sample.rows.RowsGet;
 import net.ion.framework.db.sample.rows.RowsPage;
-import net.ion.framework.db.sample.servant.TestServant;
+import net.ion.framework.db.sample.servant.TestExtraServant;
 import net.ion.framework.util.Debug;
 
 public class TestAllDB {
@@ -33,6 +33,7 @@ public class TestAllDB {
 		suite.addTestSuite(DCInit.class);
 		suite.addTestSuite(ConnectionLess.class);
 
+		suite.addTestSuite(TestExtraServant.class) ;
 		// first
 		suite.addTestSuite(P1_SelectQuery.class);
 		suite.addTestSuite(P2_UpdateQuery.class);
@@ -59,8 +60,6 @@ public class TestAllDB {
 		suite.addTestSuite(RowsGet.class);
 		suite.addTestSuite(RowsPage.class);
 
-		suite.addTestSuite(TestServant.class) ;
-		
 		return suite;
 	}
 
