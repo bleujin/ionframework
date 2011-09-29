@@ -30,6 +30,7 @@ import net.ion.framework.db.procedure.IUserProcedureBatch;
 import net.ion.framework.db.procedure.IUserProcedures;
 import net.ion.framework.db.procedure.Queryable;
 import net.ion.framework.db.procedure.RepositoryService;
+import net.ion.framework.db.procedure.SerializedQuery;
 import net.ion.framework.db.servant.AfterTask;
 import net.ion.framework.db.servant.ChannelServant;
 import net.ion.framework.db.servant.IExtraServant;
@@ -384,6 +385,10 @@ public class DBController implements IDBController { // implements Configurable
 
 	public int execUpdate(IQueryable upt) {
 		try {
+			if (upt instanceof SerializedQuery){
+				return ((SerializedQuery)upt).deserializable(this).execUpdate() ;
+			}
+
 			return upt.execUpdate();
 		} catch (SQLException e) {
 			throw RepositoryException.throwIt(e);
@@ -392,6 +397,9 @@ public class DBController implements IDBController { // implements Configurable
 
 	public Rows getRows(IQueryable query) {
 		try {
+			if (query instanceof SerializedQuery){
+				return ((SerializedQuery)query).deserializable(this).execQuery() ;
+			}
 			return query.execQuery();
 		} catch (SQLException e) {
 			throw RepositoryException.throwIt(e);
@@ -400,6 +408,10 @@ public class DBController implements IDBController { // implements Configurable
 
 	public Object execHandlerQuery(IQueryable query, ResultSetHandler handler) {
 		try {
+			if (query instanceof SerializedQuery){
+				return ((SerializedQuery)query).deserializable(this).execHandlerQuery(handler) ;
+			}
+
 			return query.execHandlerQuery(handler);
 		} catch (SQLException e) {
 			throw RepositoryException.throwIt(e);

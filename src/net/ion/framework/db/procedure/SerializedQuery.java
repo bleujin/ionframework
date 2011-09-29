@@ -1,8 +1,5 @@
 package net.ion.framework.db.procedure;
 
-import java.beans.DesignMode;
-import java.io.InputStream;
-import java.io.Reader;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -14,12 +11,9 @@ import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Page;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
-import net.ion.framework.db.sample.extend.CombinedQuery;
-import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.MapUtil;
 import net.ion.framework.util.ObjectUtil;
-import edu.emory.mathcs.backport.java.util.Collections;
 
 public class SerializedQuery implements Serializable, Queryable {
 
@@ -68,6 +62,17 @@ public class SerializedQuery implements Serializable, Queryable {
 		return serialQuery;
 	}
 
+	public static <T extends IQueryable> T deserial(T query, IDBController dc){
+		if (query instanceof UserProcedures){
+			return (T)createUserProcedures((UserProcedures)query).deserializable(dc) ;
+		} else if (query instanceof CombinedUserProcedures){
+			return (T)createCombinedUserProcedures((CombinedUserProcedures)query).deserializable(dc) ;
+		} else {
+			return (T)createParameterQuery((ParameterQueryable)query).deserializable(dc) ;
+		}
+		
+	}
+	
 	static SerializedQuery createCombinedUserProcedures(CombinedUserProcedures cupts) {
 
 		final SerializedQuery serialQuery = new SerializedQuery(cupts, SerialType.CombinedUserProcedures);
@@ -108,7 +113,7 @@ public class SerializedQuery implements Serializable, Queryable {
 		} else if (this.serialType == SerialType.CombinedUserProcedures) {
 			ICombinedUserProcedures result = remoteDC.createCombinedUserProcedures(this.procSQL);
 
-			for (Query query : getCombiedQuery()) {
+			for (Query query : getCombinedQuery()) {
 				result.add( ((SerializedQuery)query.getQuery()).deserializable(remoteDC) , query.getName(), query.getQueryType());
 			}
 			this.deserializedQuery = result ;
@@ -118,7 +123,7 @@ public class SerializedQuery implements Serializable, Queryable {
 		throw new IllegalArgumentException("unknown type : " + this);
 	}
 
-	private List<Query> getCombiedQuery() {
+	private List<Query> getCombinedQuery() {
 		return ObjectUtil.coalesce((List) queryParam.get(CQUERY), ListUtil.EMPTY);
 
 	}

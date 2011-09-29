@@ -4,11 +4,13 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 public class MessageChannel {
 	private final ExecutorService eservice;
-
+	private ScheduledExecutorService ses ;
+	
 	public MessageChannel() {
 		this.eservice = Executors.newCachedThreadPool();
 	}
@@ -37,4 +39,11 @@ public class MessageChannel {
 		return eservice ;
 	}
 	
+	public synchronized ScheduledExecutorService loadScheduleService(){
+		if (ses != null){
+			return ses ;
+		}
+		this.ses = Executors.newScheduledThreadPool(5) ;
+		return loadScheduleService() ;
+	}
 }
