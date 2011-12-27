@@ -3,14 +3,20 @@ package net.ion.framework.schedule;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.Hashtable;
+import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import com.mongodb.util.ThreadPool;
 
 import net.ion.framework.logging.LogBroker;
 import net.ion.framework.util.StackTrace;
 
 /**
- * Æ¯Á¤½Ã°¢¿¡ ÁöÁ¤µÈ ÀÛ¾÷À» ÇÏµµ·Ï ÇÑ´Ù.
+ * Æ¯ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Ïµï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -18,19 +24,21 @@ import net.ion.framework.util.StackTrace;
 
 public class Scheduler extends Thread {
 	private String name = null;
+	private static IExecutor EXECUTOR = new IExecutor(5, 2) ;
 
 	private Hashtable<String, Job> jobs = null;
 	private Logger logger = null;
 
 	public Scheduler() {
-		this("Anonymous scheduler(" + System.currentTimeMillis() + ")"); // ÀÓÀÇ·Î ÀÌ¸§ ¸¸µé¾î ÁØ´Ù.
+		this("Anonymous scheduler(" + System.currentTimeMillis() + ")"); // ï¿½ï¿½ï¿½Ç·ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½.
+		
 	}
 
 	/**
-	 * ½ºÄÉÁÙ·¯¸¦ »ý¼ºÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param name
-	 *            String ½ºÄÉÁÙ·¯ ÀÌ¸§
+	 *            String ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ ï¿½Ì¸ï¿½
 	 */
 	public Scheduler(String name) {
 		super(name);
@@ -41,11 +49,11 @@ public class Scheduler extends Thread {
 	}
 
 	/**
-	 * »õ·Î¿î ÀÛ¾÷À» Ãß°¡ÇÑ´Ù. <br/>
-	 * ÁÖÀÇ: jobÀÇ nameÀÌ °°À» °æ¿ì ±âÁ¸ÀÇ jobÀÌ ±³Ã¼µÈ´Ù.
+	 * ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½. <br/>
+	 * ï¿½ï¿½ï¿½ï¿½: jobï¿½ï¿½ nameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ jobï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½È´ï¿½.
 	 * 
 	 * @param job
-	 *            Ãß°¡ÇÒ job
+	 *            ï¿½ß°ï¿½ï¿½ï¿½ job
 	 */
 	public synchronized void addJob(Job job) {
 		this.jobs.put(job.getName(), job);
@@ -53,20 +61,20 @@ public class Scheduler extends Thread {
 	}
 
 	/**
-	 * jobÀ» Á¦°ÅÇÑ´Ù.
+	 * jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param job
-	 *            Job Á¦°ÅÇÒ job
+	 *            Job ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ job
 	 */
 	public void removeJob(Job job) {
 		removeJob(job.getName());
 	}
 
 	/**
-	 * jobÀ» Á¦°ÅÇÑ´Ù.
+	 * jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param jobName
-	 *            String Á¦°ÅÇÒ job ÀÌ¸§
+	 *            String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ job ï¿½Ì¸ï¿½
 	 */
 	public synchronized void removeJob(String jobName) {
 		Job job = getJob(jobName);
@@ -75,10 +83,10 @@ public class Scheduler extends Thread {
 	}
 
 	/**
-	 * Æ¯Á¤ jobÀ» ¸®ÅÏ
+	 * Æ¯ï¿½ï¿½ jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param jobName
-	 *            String jobÀÌ¸§
+	 *            String jobï¿½Ì¸ï¿½
 	 * @return Job
 	 */
 	public Job getJob(String jobName) {
@@ -86,7 +94,7 @@ public class Scheduler extends Thread {
 	}
 
 	/**
-	 * µî·ÏµÈ ÀüÃ¼ jobÀ» ¸®ÅÏÇÑ´Ù.
+	 * ï¿½ï¿½Ïµï¿½ ï¿½ï¿½Ã¼ jobï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @return Job[]
 	 */
@@ -95,7 +103,7 @@ public class Scheduler extends Thread {
 	}
 
 	/**
-	 * µî·ÏµÈ ÀüÃ¼ jobÀÇ ÀÌ¸§ ¸ñ·ÏÀ» ¸®ÅÏÇÑ´Ù.
+	 * ï¿½ï¿½Ïµï¿½ ï¿½ï¿½Ã¼ jobï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @return String[]
 	 */
@@ -133,7 +141,7 @@ public class Scheduler extends Thread {
 
 				// System.out.println("####" + minute + " != "+
 				// cal.get(Calendar.MINUTE));
-				// 1ºÐ ¸¶´Ù ÇÑ¹ø¾¿ jobsÀ» °Ë»öÇØ¼­ ½ÇÇàÇÑ´Ù.
+				// 1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ¹ï¿½ jobsï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 				if (minute != cal.get(Calendar.MINUTE)) {
 					minute = cal.get(Calendar.MINUTE);
 
@@ -146,10 +154,7 @@ public class Scheduler extends Thread {
 
 							if (at.match()) {
 								try {
-									RunnableThreadBox tb = new RunnableThreadBox(r);
-									tb.setDaemon(true);
-									tb.setPriority(j.getPriority());
-									tb.start();
+									EXECUTOR.runTask(r) ;
 								} catch (Throwable t) {
 									logger.log(Level.SEVERE, j.toString() + ":" + StackTrace.trace(t));
 								}
@@ -170,21 +175,21 @@ public class Scheduler extends Thread {
 	}
 
 	/**
-	 * ½ºÄÉÁÙ·¯¸¦ ½ÃÀÛÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	public void start() {
 		super.start();
 	}
 
 	/**
-	 * ½ºÄÉÁÙ·¯¸¦ Á¾·áÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½Ù·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 */
 	public void interrupt() {
 		super.interrupt();
 	}
 
 	/**
-	 * serialized µÈ job ¹®ÀÚ¿­À» job object·Î °¡Á®¿Â´Ù.
+	 * serialized ï¿½ï¿½ job ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ job objectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param serializedJobs
 	 * @return
@@ -200,7 +205,7 @@ public class Scheduler extends Thread {
 	// return js ;
 	// }
 	/**
-	 * scheduler°¡ °¡Áö°í ÀÖ´Â jobs À» StringÀ¸·Î serialization ÇÑ´Ù.
+	 * schedulerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ jobs ï¿½ï¿½ Stringï¿½ï¿½ï¿½ï¿½ serialization ï¿½Ñ´ï¿½.
 	 * 
 	 * @return
 	 * @throws SerializedStringException
@@ -212,7 +217,7 @@ public class Scheduler extends Thread {
 	// return s;
 	// }
 	/**
-	 * serializedµÈ job ¹®ÀÚ¿­À» object·Î º¹¿øÇÏ¿© scheduler¿¡ Ãß°¡ÇÑ´Ù.
+	 * serializedï¿½ï¿½ job ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ objectï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ schedulerï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param serializedJobs
 	 * @throws SerializedStringException

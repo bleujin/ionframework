@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
+import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 
 public class ServantThread extends Thread {
@@ -14,7 +15,8 @@ public class ServantThread extends Thread {
 	public ServantThread(IExtraServant[] servants, ChannelServant channel) {
 		super("ServantThread");
 		this.children = ListUtil.syncList(servants);
-		if (servants.length == 0) this.children.add(IExtraServant.BLANK);
+		if (servants.length == 0)
+			this.children.add(IExtraServant.BLANK);
 		this.channel = channel;
 	}
 
@@ -29,7 +31,11 @@ public class ServantThread extends Thread {
 
 				synchronized (this) {
 					for (IExtraServant servant : children) {
-						servant.support(atask);
+						try {
+							servant.support(atask);
+						} catch (Throwable ignore) {
+							Debug.warn(ignore.getMessage()) ;
+						}
 					}
 				}
 			} catch (InterruptedException ignore) {
@@ -40,6 +46,6 @@ public class ServantThread extends Thread {
 	}
 
 	public List<IExtraServant> getServantList() {
-		return children ;
+		return children;
 	}
 }

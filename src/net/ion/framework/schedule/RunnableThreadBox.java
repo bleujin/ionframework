@@ -6,12 +6,13 @@ import java.util.logging.Logger;
 import net.ion.framework.logging.LogBroker;
 
 /**
- * scheduler °¡ runnableÀ» ½ÇÇàÇÒ ¶§ log¸¦ ³²±â±âÀ§ÇÑ ²®µ¥±â Thread·Î »ç¿ëÇÑ´Ù.
+ * scheduler ï¿½ï¿½ runnableï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ logï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Threadï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
  */
 
+@Deprecated
 class RunnableThreadBox extends Thread {
 	Logger logger = null;
 	Runnable runner = null;

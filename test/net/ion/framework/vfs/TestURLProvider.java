@@ -5,7 +5,6 @@ import java.io.OutputStream;
 import net.ion.framework.util.Debug;
 
 import org.apache.commons.vfs.provider.url.UrlFileProvider;
-import org.restlet.engine.http.WebDavProtocolHelper;
 
 public class TestURLProvider extends TestVFSBase{
 

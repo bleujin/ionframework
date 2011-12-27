@@ -15,6 +15,8 @@ import net.ion.framework.rope.RopeWriter;
 import net.ion.framework.util.StringUtil;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+import net.sf.json.util.CycleDetectionStrategy;
 
 import org.json.JSONException;
 import org.restlet.data.CharacterSet;
@@ -24,6 +26,11 @@ import org.restlet.representation.Representation;
 import org.restlet.resource.ResourceException;
 public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandler, IMapListRepresentationHandler {
 
+	private static JsonConfig JCONFIG = new JsonConfig() ;
+	static {
+		JCONFIG.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT) ;
+	}
+	
 	public Object handle(ResultSet rs) throws SQLException {
 		JSONObject result = new JSONObject();
 
@@ -54,7 +61,7 @@ public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandle
 		JSONObject result = new JSONObject();
 		result.put(REQUEST, StringUtil.toString(req.toJSON()));
 		result.put(RESPONSE, StringUtil.toString(res.toJSON()));
-		result.put(NODES, JSONArray.fromObject(datas));
+		result.put(NODES, JSONArray.fromObject(datas, JCONFIG));
 
 		JSONObject root = new JSONObject();
 		root.put(RESULT, result);
@@ -79,7 +86,7 @@ public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandle
 
 		List<Map> rmap = (List<Map>) new MapListHandler().handle(rs);
 
-		JSONArray rows = JSONArray.fromObject(rmap);
+		JSONArray rows = JSONArray.fromObject(rmap, JCONFIG);
 		parent.put(TYPE, types);
 		parent.put("header", cols);
 		parent.put(NODES, rows);

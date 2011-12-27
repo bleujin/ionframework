@@ -8,11 +8,13 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.Enumeration; 
+import java.util.Enumeration;
 import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Logger;
 
 import net.ion.framework.logging.LogBroker;
+import net.ion.framework.parse.html.HTag;
 import net.ion.framework.util.PathMaker;
 import net.ion.framework.util.StringUtil;
 import net.ion.framework.util.UTF8FileUtils;
@@ -21,7 +23,7 @@ import org.apache.commons.digester.Digester;
 import org.xml.sax.SAXException;
 
 public class XMLResourceFactory {
-	private final static String[] USABLE_LOCALE = new String[] { "ko", "en", "ja", "zh", "zh_tw" };
+	private final static String[] USABLE_LOCALE = new String[] { "ko", "en", "ja", "zh", "zh_tw", "my", "in", "fr", "es" };
 	static XMLResourceFactory self = null;
 
 	private HashMap<String, XMLResources> resource = new HashMap<String, XMLResources>();
@@ -58,20 +60,7 @@ public class XMLResourceFactory {
 		}
 		return res;
 	}
-
-	private Digester getDigester(String localeStr) {
-		Digester digester = new Digester();
-		digester.setValidating(false);
-		digester.setUseContextClassLoader(true);
-
-		digester.addObjectCreate("messages", Messages.class);
-		digester.addObjectCreate("messages/message", Message.class);
-		digester.addSetProperties("messages/message");
-		digester.addBeanPropertySetter("messages/message/" + localeStr, "value");
-		digester.addSetNext("messages/message", "addMessage");
-		return digester;
-	}
-
+	
 	private XMLResources makeResource(String path, String localeStr) {
 		XMLResources res = null;
 		try {
@@ -129,14 +118,41 @@ public class XMLResourceFactory {
 		// getInstance().resource = resourceMapTemp;
 	}
 
-	private Messages makeMessages(String localeStr, Reader reader) throws SAXException, IOException {
-		Digester digester = getDigester(localeStr);
-		Messages messages = (Messages) digester.parse(reader);
-		messages.setLocale(localeStr);
+//	private Messages makeMessages(String localeStr, Reader reader) throws SAXException, IOException {
+//		Digester digester = getDigester(localeStr);
+//		Messages messages = (Messages) digester.parse(reader);
+//		messages.setLocale(localeStr);
+//		return messages;
+//	}
+
+	private Messages makeMessages(String localeStr, Reader reader) throws IOException {
+		Messages messages = new Messages();
+		HTag rootTag = HTag.createGeneral(reader, "messages");
+		List<HTag> contents = rootTag.getChildren("message");
+		for (HTag content : contents) {
+			Message message = new Message();
+			message.setKey(content.getAttributeValue("key"));
+			message.setValue(content.getDefaultValue(localeStr));
+			messages.addMessage(message);
+		}
 		return messages;
 	}
 
-	public void extractResourceXml(String resFile, String localeStr) throws FileNotFoundException, IOException, SAXException {
+
+	private Digester getDigester(String localeStr) {
+		Digester digester = new Digester();
+		digester.setValidating(false);
+		digester.setUseContextClassLoader(true);
+
+		digester.addObjectCreate("messages", Messages.class);
+		digester.addObjectCreate("messages/message", Message.class);
+		digester.addSetProperties("messages/message");
+		digester.addBeanPropertySetter("messages/message/" + localeStr, "value");
+		digester.addSetNext("messages/message", "addMessage");
+		return digester;
+	}
+	
+	private void extractResourceXml(String resFile, String localeStr) throws FileNotFoundException, IOException, SAXException {
 		File file = new File(resFile);
 
 		Messages koMessages = (Messages) getDigester("ko").parse(file);
@@ -191,7 +207,7 @@ public class XMLResourceFactory {
 
 	}
 
-	public void makeResourceXml(String orgFile, String changeFile, String localeStr) throws FileNotFoundException, IOException, SAXException {
+	private void makeResourceXml(String orgFile, String changeFile, String localeStr) throws FileNotFoundException, IOException, SAXException {
 		File file = new File(orgFile);
 
 		Messages koMessages = (Messages) getDigester("ko").parse(file);

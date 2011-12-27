@@ -36,7 +36,7 @@ public class ListUtil extends ListUtils{
 	public final static <T> List<T> toList(T... objs){
 		return Arrays.asList(objs) ;
 	}
-	
+
 	public final static <T> List<T> syncList(T... objs){
 		List<T> result = new ArrayList<T>() ;
 		for (T obj : objs) {
@@ -45,7 +45,16 @@ public class ListUtil extends ListUtils{
 		return Collections.synchronizedList(result) ;
 	}
 	
-
+	public final static List<Integer> rangeNum(int... range){
+		int from = (range.length == 1) ? 0 : range[0] ;
+		int to = (range.length == 1) ? range[0] : range[1] ;
+		List<Integer> result = newList() ;
+		for (int i = from ; i < to ; i++) {
+			result.add(i) ;
+		}
+		return result ;
+	}
+	
 	public static Object[] toArray(Object object) {
 		if (object instanceof List) {
 			return ((List)object).toArray() ;
