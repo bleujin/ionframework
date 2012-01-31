@@ -3,9 +3,11 @@ package net.ion.framework.db.cache;
 import java.util.ArrayList;
 import java.util.List;
 
+import net.ion.framework.parse.gson.JsonArray;
+import net.ion.framework.parse.gson.JsonElement;
+import net.ion.framework.parse.gson.JsonObject;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.StringUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 // Thread Unsafe
 // not modify in running 
@@ -20,28 +22,29 @@ public class CacheConfigImpl implements CacheConfig {
 	private void init(String configString) {
 		if (StringUtil.isBlank(configString))
 			return;
-		JSONObject root = JSONObject.fromObject(configString);
+		JsonObject root = JsonParser.fromString(configString).getAsJsonObject();
 
-		if (root.isEmpty() || root.isNullObject())
+		if ( (! root.has("cache")) || (! root.get("cache").isJsonArray()) || root.asJsonArray("cache").size() == 0)
 			return;
 
-		JSONArray group = root.getJSONArray("cache");
+		JsonArray group = root.asJsonArray("cache");
 
-		for (int i = 0, last = group.size(); i < last; i++) {
-			JSONObject jobj = group.getJSONObject(i);
-			String groupId = jobj.getString("groupId");
+		for (JsonElement jele : group.toArray()) {
+			if (! jele.isJsonObject()) continue ;
+			JsonObject jobj = (JsonObject) jele ;
+			String groupId = jobj.asString("groupId");
 
-			int count = jobj.getInt("count");
-			JSONArray adds = jobj.getJSONArray("add");
-			JSONArray resets = jobj.getJSONArray("reset");
+			int count = jobj.asInt("count");
+			JsonArray adds = jobj.asJsonArray("add");
+			JsonArray resets = jobj.asJsonArray("reset");
 
 			CacheGroup cgroup = new CacheGroup(groupId, count);
-			for (int k = 0, klast = adds.size(); k < klast; k++) {
-				cgroup.addProc(adds.getString(k));
+			for (JsonElement addEle : adds.toArray()) {
+				cgroup.addProc(addEle.getAsString());
 			}
 
-			for (int m = 0, mlast = resets.size(); m < mlast; m++) {
-				cgroup.resetProc(resets.getString(m));
+			for (JsonElement resetEle : resets.toArray()) {
+				cgroup.resetProc(resetEle.getAsString());
 			}
 
 			this.addGroup(cgroup);

@@ -8,8 +8,8 @@ import java.util.List;
 
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import net.ion.framework.parse.gson.JsonObject;
+import net.ion.framework.parse.gson.JsonParser;
 
 import org.apache.commons.lang.ArrayUtils;
 
@@ -46,21 +46,20 @@ public class JSONNodeHandler implements ResultSetHandler {
 			}
 		}
 
-		List<Object[]> rmap = (List<Object[]>) new ArrayListHandler().handleString(rs, attrColNames);
+		List<Object[]> list = (List<Object[]>) new ArrayListHandler().handleString(rs, attrColNames);
 
-		JSONArray rows = JSONArray.fromObject(rmap);
-		JSONObject body = new JSONObject();
+		JsonObject body = new JsonObject();
 
-		body.put("type", types);
-		body.put("header", cols);
-		body.put("rows", rows);
+		body.add("type", JsonParser.fromList(types));
+		body.add("header", JsonParser.fromList(cols));
+		body.add("rows", JsonParser.fromList(list));
 
-		JSONObject result = new JSONObject();
-		result.put((props == null) ? "property" : "node", body);
+		JsonObject result = new JsonObject();
+		result.add((props == null) ? "property" : "node", body);
 
 		if (props != null && (props.getRowCount() != 0)) {
-			JSONObject nextObj = (JSONObject) props.toHandle(new JSONNodeHandler(null, propAttrNames, propColNames, null, null));
-			result.put("next", nextObj);
+			JsonObject nextObj = (JsonObject) props.toHandle(new JSONNodeHandler(null, propAttrNames, propColNames, null, null));
+			result.add("next", nextObj);
 		}
 
 		return result;

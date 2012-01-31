@@ -15,6 +15,8 @@ import net.htmlparser.jericho.Attributes;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
 import net.htmlparser.jericho.StartTagType;
+import net.htmlparser.jericho.Tag;
+import net.htmlparser.jericho.TagType;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.StringUtil;
 
@@ -102,6 +104,21 @@ public class HTag {
 		return value.startsWith("<![CDATA[") && value.endsWith("]]>");
 	}
 
+	public String getElementText() throws IOException {
+		StringWriter writer = new StringWriter();
+		
+		if (element.getContent().getFirstElement() == null && element.getAttributes().size() == 0  && element.getStartTag().getTagType().equals(StartTagType.NORMAL)){
+			return getTagText() ;
+		} else if (element.getContent().getFirstStartTag().getTagType().equals(StartTagType.CDATA_SECTION)) {
+			//element.getContent().getFirstStartTag().getTagContent().getTextExtractor().writeTo(writer) ;
+			element.getContent().getFirstStartTag().getTagContent();
+			writer.append(element.getContent().getFirstStartTag().getTagContent().toString());
+		} else {
+			return "" ;
+		}
+		return writer.getBuffer().toString();
+	}
+	
 	public String getOnlyText() throws IOException {
 		StringWriter writer = new StringWriter();
 
@@ -403,6 +420,14 @@ public class HTag {
 		for (HTag tag : children) {
 			tag.visit(visitor);
 		}
+	}
+
+	public List<TagAttribute> getAttributes() {
+		List<TagAttribute> result = ListUtil.newList() ;
+		for (Attribute attr : element.getAttributes().toArray(new Attribute[0])) {
+			result.add(new TagAttribute(attr)) ;
+		}
+		return result;
 	}
 
 }

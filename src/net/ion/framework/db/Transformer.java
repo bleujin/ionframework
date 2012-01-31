@@ -4,7 +4,6 @@ import java.lang.reflect.Array;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Vector;
@@ -12,8 +11,10 @@ import java.util.Vector;
 import javax.sql.RowSet;
 
 import net.ion.framework.db.bean.handlers.BeanListHandler;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.CaseInsensitiveHashMap;
-import net.sf.json.JSONObject;
+import net.ion.framework.util.ListUtil;
+import net.ion.framework.util.MapUtil;
 
 public class Transformer {
 
@@ -89,18 +90,18 @@ public class Transformer {
 	public static String toJSONObjectString(RowSet rows) {
 		try {
 			rows.beforeFirst();
-			ArrayList<JSONObject> jList = new ArrayList<JSONObject>();
+			List<Map> jList = ListUtil.newList() ;
 			ResultSetMetaData rsmd = rows.getMetaData();
 			int cols = rsmd.getColumnCount();
 
 			while (rows.next()) {
-				JSONObject jsonRow = new JSONObject();
+				Map<String, Object> map = MapUtil.newMap() ;
 				for (int i = 1; i <= cols; i++) {
-					jsonRow.put(rsmd.getColumnName(i).toUpperCase(), getNullObjectValue(rows, i, rsmd));
+					map.put(rsmd.getColumnName(i).toUpperCase(), getNullObjectValue(rows, i, rsmd));
 				}
-				jList.add(jsonRow);
+				jList.add(map);
 			}
-			return jList.toString();
+			return JsonParser.fromList(jList).toString();
 		} catch (SQLException ex) {
 			throw RepositoryException.throwIt(ex);
 		}

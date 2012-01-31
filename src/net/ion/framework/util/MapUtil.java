@@ -41,4 +41,9 @@ public class MapUtil {
 	public static <K, V> ChainMap<K, V> chainMap(){
 		return new ChainMap<K, V>() ;
 	}
+
+	public static <V> ChainMap<String, V> chainKeyMap(){
+		return new ChainMap<String, V>() ;
+	}
+	
 }

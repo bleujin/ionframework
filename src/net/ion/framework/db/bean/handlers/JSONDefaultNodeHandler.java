@@ -9,9 +9,9 @@ import java.util.Map;
 
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
+import net.ion.framework.parse.gson.JsonObject;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.Debug;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
 
 public class JSONDefaultNodeHandler extends AbstractXMLHandler implements ResultSetHandler {
 
@@ -35,23 +35,22 @@ public class JSONDefaultNodeHandler extends AbstractXMLHandler implements Result
 			cols.add(meta.getColumnName(column).toLowerCase());
 		}
 
-		List<Map> rmap = (List<Map>) new MapListHandler().handleString(rs, cols.toArray(new String[0]), cols.toArray(new String[0]));
+		List<Map> list = (List<Map>) new MapListHandler().handleString(rs, cols.toArray(new String[0]), cols.toArray(new String[0]));
 
-		JSONArray rows = JSONArray.fromObject(rmap);
-		JSONObject body = new JSONObject();
+		JsonObject body = new JsonObject();
 
 		Debug.debug("=+=");
 
-		body.put("type", types);
-		body.put("header", cols);
-		body.put("rows", rows);
+		body.add("type", JsonParser.fromList(types));
+		body.add("header", JsonParser.fromList(cols));
+		body.add("rows", JsonParser.fromList(list));
 
-		JSONObject result = new JSONObject();
-		result.put((props == null) ? "property" : "node", body);
+		JsonObject result = new JsonObject();
+		result.add((props == null) ? "property" : "node", body);
 
 		if (props != null && (props.getRowCount() != 0)) {
-			JSONObject nextObj = (JSONObject) props.toHandle(new JSONDefaultNodeHandler(null));
-			result.put("next", nextObj);
+			JsonObject nextObj = (JsonObject) props.toHandle(new JSONDefaultNodeHandler(null));
+			result.add("next", nextObj);
 		}
 
 		return result;

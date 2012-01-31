@@ -1,7 +1,6 @@
 package net.ion.framework.rest;
 
-import static net.ion.framework.rest.MyConstant.*;
-
+import java.io.StringWriter;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -11,68 +10,79 @@ import java.util.Map;
 
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.bean.handlers.MapListHandler;
-import net.ion.framework.rope.RopeWriter;
+import net.ion.framework.parse.gson.Gson;
+import net.ion.framework.parse.gson.JsonArray;
+import net.ion.framework.parse.gson.JsonObject;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.StringUtil;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JsonConfig;
-import net.sf.json.util.CycleDetectionStrategy;
 
-import org.json.JSONException;
-import org.restlet.data.CharacterSet;
-import org.restlet.data.Language;
 import org.restlet.data.MediaType;
+import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.representation.Representation;
+import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ResourceException;
-public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandler, IMapListRepresentationHandler {
 
-	private static JsonConfig JCONFIG = new JsonConfig() ;
-	static {
-		JCONFIG.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT) ;
-	}
+public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandler, IMapListRepresentationHandler, MyConstant {
+
+	private static final long serialVersionUID = 6113762745155031544L;
+//	private static JsonConfig JCONFIG = new JsonConfig() ;
+//	static {
+//		JCONFIG.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT) ;
+//	}
 	
 	public Object handle(ResultSet rs) throws SQLException {
-		JSONObject result = new JSONObject();
+		JsonObject result = new JsonObject();
 
 		return toJSON(rs, result);
 	}
 
-	public Representation toRepresentation(IRequest req, ResultSet rs, IResponse res) throws ResourceException, JSONException {
+	public Representation toRepresentation(IRequest req, ResultSet rs, IResponse res) throws ResourceException {
 		try {
-			JSONObject result = new JSONObject();
-			result.put("request", StringUtil.toString(req.toJSON()));
-			result.put("response", StringUtil.toString(res.toJSON()));
+			JsonObject result = new JsonObject();
+			result.addProperty("request", StringUtil.toString(req.toJSON()));
+			result.addProperty("response", StringUtil.toString(res.toJSON()));
 			toJSON(rs, result);
 
-			JSONObject root = new JSONObject();
-			root.put("result", result);
+			JsonObject root = new JsonObject();
+			root.add("result", result);
 
-			RopeWriter rw = new RopeWriter();
-			root.write(rw);
+			StringWriter rw = new StringWriter();
+			new Gson().toJson(root, rw) ;
 
-			return new RopeRepresentation(rw.getRope(), MediaType.APPLICATION_JSON, Language.ALL, CharacterSet.UTF_8);
+			return new StringRepresentation(rw.getBuffer(), MediaType.APPLICATION_JSON);
 		} catch (SQLException e) {
 			throw new ResourceException(e);
 		}
 	}
 
-	public Representation toRepresentation(IRequest req, List<Map<String, ? extends Object>> datas, IResponse res) throws ResourceException, JSONException {
+	public Representation toRepresentation(IRequest req, List<Map<String, ? extends Object>> datas, IResponse res) throws ResourceException  {
 
-		JSONObject result = new JSONObject();
-		result.put(REQUEST, StringUtil.toString(req.toJSON()));
-		result.put(RESPONSE, StringUtil.toString(res.toJSON()));
-		result.put(NODES, JSONArray.fromObject(datas, JCONFIG));
+		JsonObject result = new JsonObject();
+		result.addProperty(REQUEST, StringUtil.toString(req.toJSON()));
+		result.addProperty(RESPONSE, StringUtil.toString(res.toJSON()));
+		result.add(NODES, JsonParser.fromList(datas));
 
-		JSONObject root = new JSONObject();
-		root.put(RESULT, result);
+		JsonObject root = new JsonObject();
+		root.add(RESULT, result);
 
-		RopeWriter rw = new RopeWriter();
-		root.write(rw);
+		StringWriter rw = new StringWriter();
+		new Gson().toJson(root, rw) ;
+//		long start = System.currentTimeMillis() ;
+//		RopeWriter rw = new RopeWriter();
+//		root.write(rw);
+//		Debug.line(System.currentTimeMillis() - start) ;
+//		return new RopeRepresentation(sw.get, MediaType.APPLICATION_JSON, Language.ALL, CharacterSet.UTF_8);
 
-		return new RopeRepresentation(rw.getRope(), MediaType.APPLICATION_JSON, Language.ALL, CharacterSet.UTF_8);
+//		long start = System.currentTimeMillis() ;
+//		StringWriter sw = new StringWriter(); 
+//		root.write(sw) ;
+//		Debug.line(System.currentTimeMillis() - start) ;
+		
+		return new StringRepresentation(rw.getBuffer(), MediaType.APPLICATION_JSON);
+		// return new RopeRepresentation(sw.get, MediaType.APPLICATION_JSON, Language.ALL, CharacterSet.UTF_8);
 	}
 
-	private JSONObject toJSON(ResultSet rs, JSONObject parent) throws SQLException {
+	private JsonObject toJSON(ResultSet rs, JsonObject parent) throws SQLException {
 		ResultSetMetaData meta = rs.getMetaData();
 
 		List<String> types = new ArrayList<String>();
@@ -84,12 +94,11 @@ public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandle
 			cols.add(meta.getColumnName(column));
 		}
 
-		List<Map> rmap = (List<Map>) new MapListHandler().handle(rs);
-
-		JSONArray rows = JSONArray.fromObject(rmap, JCONFIG);
-		parent.put(TYPE, types);
-		parent.put("header", cols);
-		parent.put(NODES, rows);
+		List<Map> list = (List<Map>) new MapListHandler().handle(rs);
+		
+		parent.add(TYPE, JsonParser.fromList(types));
+		parent.add("header", JsonParser.fromList(cols));
+		parent.add(NODES, JsonParser.fromList(list));
 
 		return parent;
 	}

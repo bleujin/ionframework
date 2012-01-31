@@ -1,19 +1,21 @@
 package net.ion.framework.rest;
 
-import static net.ion.framework.rest.MyConstant.*;
+import static net.ion.framework.rest.MyConstant.NAME;
+import static net.ion.framework.rest.MyConstant.PROPERTY;
+import static net.ion.framework.rest.MyConstant.REQUEST;
 
 import java.io.Serializable;
+import java.io.StringWriter;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import net.ion.framework.rope.RopeWriter;
+import net.ion.framework.parse.gson.JsonObject;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.StringUtil;
 
 import org.apache.commons.lang.StringEscapeUtils;
 import org.apache.ecs.xml.XML;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class IRequest implements Serializable {
 
@@ -30,8 +32,8 @@ public class IRequest implements Serializable {
 		return new IRequest(req);
 	}
 
-	public JSONObject toJSON() throws JSONException {
-		return new JSONObject(req);
+	public JsonObject toJSON() {
+		return JsonParser.fromMap(req);
 	}
 
 	public Map<String, Object> getAttributes() {
@@ -50,8 +52,11 @@ public class IRequest implements Serializable {
 	}
 
 	public CharSequence toHTML() {
-		RopeWriter writer = new RopeWriter();
-		toXML().output(writer);
-		return writer.getRope();
+		StringWriter writer = new StringWriter();
+		//toXML().output(writer);
+		for (Entry<String, ?> entry : req.entrySet()) {
+			writer.append(entry.getKey()).append(" : ").append(StringUtil.toString(entry.getValue())).append("<br/>\n");
+		}
+		return writer.getBuffer();
 	}
 }

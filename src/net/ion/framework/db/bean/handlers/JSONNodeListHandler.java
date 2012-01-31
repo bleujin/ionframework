@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Map;
 
 import net.ion.framework.db.bean.ResultSetHandler;
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
+import net.ion.framework.parse.gson.JsonObject;
+import net.ion.framework.parse.gson.JsonParser;
 
 public class JSONNodeListHandler extends AbstractListHandler implements ResultSetHandler {
 
@@ -34,17 +34,16 @@ public class JSONNodeListHandler extends AbstractListHandler implements ResultSe
 			}
 		}
 
-		List<Map> rmap = (List<Map>) new MapListHandler().handleString(rs, getAttributeNames(), getColumnNames());
+		List<Map> list = (List<Map>) new MapListHandler().handleString(rs, getAttributeNames(), getColumnNames());
 
-		JSONArray rows = JSONArray.fromObject(rmap);
-		JSONObject body = new JSONObject();
+		JsonObject body = new JsonObject();
 
-		body.put("type", types);
-		body.put("header", cols);
-		body.put("rows", rows);
+		body.add("type", JsonParser.fromList(types));
+		body.add("header", JsonParser.fromList(cols));
+		body.add("rows", JsonParser.fromList(list));
 
-		JSONObject result = new JSONObject();
-		result.put("nodes", body);
+		JsonObject result = new JsonObject();
+		result.add("nodes", body);
 
 		return result;
 	}
