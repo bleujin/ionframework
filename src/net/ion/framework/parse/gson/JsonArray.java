@@ -22,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+import net.ion.framework.util.ListUtil;
+
 /**
  * A class representing an array type in Json. An array is a list of {@link JsonElement}s each of which can be of a different type. This is an ordered list, meaning that the order in which elements are added is preserved.
  * 
@@ -357,6 +359,14 @@ public final class JsonArray extends JsonElement implements Iterable<JsonElement
 
 	public int asInt(int key) {
 		return get(key).getAsInt();
+	}
+
+	public Object[] toObjectArray() {
+		List result = ListUtil.newList() ;
+		for (JsonElement ele : toArray()) {
+			result.add(JsonUtil.toSimpleObject(ele)) ;
+		}
+		return result.toArray();
 	}
 
 }

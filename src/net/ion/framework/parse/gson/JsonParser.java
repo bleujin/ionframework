@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -28,6 +30,8 @@ import net.ion.framework.parse.gson.reflect.TypeToken;
 import net.ion.framework.parse.gson.stream.JsonReader;
 import net.ion.framework.parse.gson.stream.JsonToken;
 import net.ion.framework.parse.gson.stream.MalformedJsonException;
+import net.ion.framework.util.ChainMap;
+import net.ion.framework.util.StringUtil;
 
 /**
  * A parser to parse Json into a parse tree of {@link JsonElement}s
@@ -117,10 +121,21 @@ public final class JsonParser {
 	}
 
 	public final static JsonElement fromString(String json) throws JsonSyntaxException {
+		if (StringUtil.isBlank(json)) return new JsonObject() ;
 		return new JsonParser().parse(json);
 	}
 
 	public static JsonElement fromObject(Object src) {
+		if (src == null) return JsonNull.INSTANCE ;
+		if (src instanceof JsonElement) return (JsonElement) src ; 
+		if (src instanceof ChainMap) return fromMap(((ChainMap)src).toMap()) ;
+		if (src instanceof Map) return fromMap((Map<String, Object>)src) ;
+		if (src instanceof Collection) return fromList(new ArrayList((Collection)src)) ;
+		if (src instanceof JsonString) return fromString(((JsonString)src).toJsonString()) ;
+		if (src instanceof String) {
+			if (StringUtil.isBlank((String)src)) return new JsonObject() ; 
+			return fromString((String)src) ;
+		}
 		return fromString(new Gson().toJson(src));
 	}
 

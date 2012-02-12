@@ -337,4 +337,8 @@ public final class JsonPrimitive extends JsonElement {
 		}
 		return false;
 	}
+	
+	public Object getValue(){
+		return value ;
+	}
 }

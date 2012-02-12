@@ -16,15 +16,15 @@
 
 package net.ion.framework.parse.gson;
 
-import java.lang.reflect.Type;
 import java.math.BigDecimal;
 import java.util.Iterator;
-import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import net.ion.framework.parse.gson.internal.$Gson$Preconditions;
-import net.ion.framework.parse.gson.reflect.TypeToken;
+import net.ion.framework.util.LinkedCaseInsensitiveMap;
+import net.ion.framework.util.MapUtil;
 
 /**
  * A class representing an object type in Json. An object consists of name-value pairs where names are strings, and values are any other type of {@link JsonElement}. This allows for a creating a tree of JsonElements. The member elements of this object are maintained in order they were added.
@@ -37,7 +37,7 @@ public final class JsonObject extends JsonElement {
 	// the order in which elements are inserted. This is needed to ensure
 	// that the fields of an object are inserted in the order they were
 	// defined in the class.
-	private final Map<String, JsonElement> members = new LinkedHashMap<String, JsonElement>();
+	private final Map<String, JsonElement> members = new LinkedCaseInsensitiveMap<JsonElement>();
 
 	/**
 	 * Creates an empty JsonObject.
@@ -188,6 +188,10 @@ public final class JsonObject extends JsonElement {
 		return (JsonArray) members.get(memberName);
 	}
 
+	public <T> T getAsObject(Class<T> clz) {
+		return new Gson().fromJson(this, clz);
+	}
+
 	/**
 	 * Convenience method to get the specified member as a JsonObject.
 	 * 
@@ -208,66 +212,119 @@ public final class JsonObject extends JsonElement {
 	public int hashCode() {
 		return members.hashCode();
 	}
+	
+	
+	private JsonElement getIfNotExist(String memberName) {
+		JsonElement result = get(memberName);
+		return result == null ? NotFoundJsonElement.NOT_FOUND : result;
+	}
+
 
 	public String asString(String key) {
-		return get(key).getAsString();
+		return getIfNotExist(key).getAsString();
 	}
 
 	public long asLong(String key) {
-		return get(key).getAsLong();
+		return getIfNotExist(key).getAsLong();
 	}
 
 	public JsonObject asJsonObject(String key) {
-		return get(key).getAsJsonObject();
+		return getIfNotExist(key).getAsJsonObject();
 	}
 
 	public JsonArray asJsonArray(String key) {
-		return get(key).getAsJsonArray();
+		return getIfNotExist(key).getAsJsonArray();
 	}
 
 	public BigDecimal asBigDecimal(String key) {
-		return get(key).getAsBigDecimal();
+		return getIfNotExist(key).getAsBigDecimal();
 	}
 
 	public byte asByte(String key) {
-		return get(key).getAsByte();
+		return getIfNotExist(key).getAsByte();
 	}
 
 	public char asChar(String key) {
-		return get(key).getAsCharacter();
+		return getIfNotExist(key).getAsCharacter();
 	}
 
 	public double asDouble(String key) {
-		return get(key).getAsDouble();
+		return getIfNotExist(key).getAsDouble();
 	}
 
 	public float asFloat(String key) {
-		return get(key).getAsFloat();
+		return getIfNotExist(key).getAsFloat();
 	}
 
 	public Number asNumber(String key) {
-		return get(key).getAsNumber();
+		return getIfNotExist(key).getAsNumber();
 	}
 
 	public short asShort(String key) {
-		return get(key).getAsShort();
+		return getIfNotExist(key).getAsShort();
+	}
+
+	public Iterator<JsonElement> asJsonArrayElement(String key) {
+		return getIfNotExist(key).getAsJsonArray().iterator();
+	}
+
+	public boolean asBoolean(String key) {
+		return getIfNotExist(key).getAsBoolean();
+	}
+
+	public int asInt(String key) {
+		return getIfNotExist(key).getAsInt();
 	}
 
 	public <T> T asObject(String key, Class<T> clz) {
 		return new Gson().fromJson(get(key), clz);
 	}
 
-	public Iterator<JsonElement> asJsonArrayElement(String key) {
-		return get(key).getAsJsonArray().iterator();
+	public Map<String, Object> toMap() {
+		Map<String, Object> result = MapUtil.newCaseInsensitiveMap();
+
+		for (Entry<String, JsonElement> entry : members.entrySet()) {
+			Object simpleObject = JsonUtil.toSimpleObject(entry.getValue());
+			result.put(entry.getKey(), simpleObject) ;
+		}
+
+		return result;
 	}
 
-	public boolean asBoolean(String key) {
-		return get(key).getAsBoolean();
+	public int childSize() {
+		return members.size();
 	}
 
-	public int asInt(String key) {
-		return get(key).getAsInt();
+	public JsonObject put(String property, Object value) {
+		add(property, JsonUtil.toProperElement(value));
+		return this;
 	}
 
+	public JsonObject accumulate(String property, Object value) {
+		JsonElement properElement = JsonUtil.toProperElement(value);
+		if (has(property)) {
+			JsonElement ele = get(property);
+			if (ele.isJsonArray()) {
+				ele.getAsJsonArray().add(properElement);
+			} else {
+				JsonArray newArray = new JsonArray();
+				newArray.add(get(property));
+				newArray.add(properElement);
+				add(property, newArray);
+			}
+		} else {
+			add(property, properElement);
+		}
+		return this;
+	}
+
+	
+	public final static JsonObject fromString(String jsonString){
+		return JsonParser.fromString(jsonString).getAsJsonObject() ;
+	}
+
+	public final static JsonObject fromObject(Object obj){
+		return JsonParser.fromObject(obj).getAsJsonObject() ;
+	}
 
 }
