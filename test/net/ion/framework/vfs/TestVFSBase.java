@@ -1,10 +1,7 @@
 package net.ion.framework.vfs;
 
 import java.io.File;
-import java.net.MalformedURLException;
 import java.net.URL;
-
-import org.apache.commons.vfs.FileSystemException;
 
 import junit.framework.TestCase;
 

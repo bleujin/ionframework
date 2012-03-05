@@ -1,6 +1,6 @@
 package net.ion.framework.vfs;
 
-import org.apache.commons.vfs.FileSystemException;
+import org.apache.commons.vfs2.FileSystemException;
 
 /**
  * <p>Title: VFileVisitor.java</p>

@@ -26,8 +26,7 @@ public class JsonUtil {
 			return jsonElement.getAsJsonObject().toMap();
 		} else if (jsonElement.isJsonPrimitive()) {
 			if (jsonElement.getAsJsonPrimitive().getValue() instanceof LazilyParsedNumber) {
-				long longValue = ((LazilyParsedNumber) jsonElement.getAsJsonPrimitive().getValue()).longValue();
-				return longValue ;
+				return ((LazilyParsedNumber) jsonElement.getAsJsonPrimitive().getValue()).estimate() ;
 			} else {
 				return jsonElement.getAsJsonPrimitive().getValue();
 			}
@@ -39,10 +38,12 @@ public class JsonUtil {
 	}
 
 	public static JsonElement toProperElement(Object value) {
-		if (value.getClass().isPrimitive()) {
+		if (value == null) {
+			return JsonNull.INSTANCE;
+		} else if (value.getClass().isPrimitive()) {
 			return new JsonPrimitive(value);
 		} else if (value instanceof CharSequence || value instanceof Number || value instanceof Boolean || value instanceof Character) {
-			return value == null ? JsonNull.INSTANCE : new JsonPrimitive(value);
+			return new JsonPrimitive(value);
 		} else if (value instanceof List) {
 			return JsonParser.fromList((List) value);
 		} else if (value instanceof Map) {

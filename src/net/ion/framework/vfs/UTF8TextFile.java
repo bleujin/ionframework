@@ -10,7 +10,7 @@ import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.vfs.FileSystemException;
+import org.apache.commons.vfs2.FileSystemException;
 
 public class UTF8TextFile {
 

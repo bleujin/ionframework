@@ -1,9 +1,11 @@
 package net.ion.framework.io;
 
+import java.io.File;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -11,13 +13,12 @@ import junit.framework.TestCase;
 import net.ion.framework.util.Debug;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.vfs.FileObject;
-import org.apache.commons.vfs.FileSystemException;
-import org.apache.commons.vfs.FileSystemManager;
-import org.apache.commons.vfs.FileType;
-import org.apache.commons.vfs.FilesCache;
-import org.apache.commons.vfs.VFS;
-import org.apache.commons.vfs.impl.DefaultFileSystemManager;
+import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileSystemManager;
+import org.apache.commons.vfs2.FileType;
+import org.apache.commons.vfs2.FilesCache;
+import org.apache.commons.vfs2.VFS;
 
 public class TestVfs extends TestCase {
 
@@ -31,7 +32,6 @@ public class TestVfs extends TestCase {
 	public void testLocal() throws Exception {
 		FileObject fo = fsm.resolveFile("file:///c:/a/README.HTM");
 		Debug.debug(IOUtils.toString(fo.getContent().getInputStream()), "EUC-KR");
-
 		
 		
 		FileObject fo2 = fsm.createVirtualFileSystem("file:///c:/a/README.HTM") ;
@@ -69,7 +69,7 @@ public class TestVfs extends TestCase {
 		FileObject fo = fsm.resolveFile("tmp://mydic/abc");
 		OutputStream output = fo.getContent().getOutputStream();
 		Writer writer = new OutputStreamWriter(output, "UTF-8");
-		writer.write("Hi ºí·çÁø");
+		writer.write("Hi ï¿½ï¿½ï¿½ï¿½ï¿½");
 		writer.close();
 
 		InputStream input = fo.getContent().getInputStream();
@@ -77,7 +77,7 @@ public class TestVfs extends TestCase {
 	}
 
 	public void testZip() throws Exception {
-		FileObject fo = fsm.resolveFile("zip:file:///d:/temp/À±»óÁØ.zip!/MyMember.java");
+		FileObject fo = fsm.resolveFile("zip:file:///d:/temp/ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.zip!/MyMember.java");
 //		Debug.debug(true, fo.exists(), fsm.getCacheStrategy(), fo.getContent().getLastModifiedTime()) ;
 		
 		
@@ -87,6 +87,18 @@ public class TestVfs extends TestCase {
 		
 		writer.write("Hello bleujin") ;
 		writer.close();
+	}
+	
+	
+	public void testPercentFilename() throws Exception {
+		
+		FileObject fo = fsm.resolveFile("file:///c:/abc#.txt");
+		fo.createFolder() ;
+		
+		
+		Debug.line(URLEncoder.encode("abc%.txt", "euc-kr")) ;
+		
+		Debug.debug(fo.getURL(), fo.getName(), new File("abc%d.txt").toURI()) ;
 	}
 	
 	

@@ -28,8 +28,7 @@ public class OracleParamUtils {
 	OracleParamUtils() {
 	}
 
-	static void setParam(Connection conn, PreparedStatement pstmt, List<Object> _param, List<Integer> _types, int mediateLoc, ArrayList<CLOB> clobList,
-			ArrayList<BLOB> blobList) throws SQLException, IOException {
+	static void setParam(Connection conn, PreparedStatement pstmt, List<Object> _param, List<Integer> _types, int mediateLoc, List<CLOB> clobList, List<BLOB> blobList) throws SQLException, IOException {
 		Object[] params = _param.toArray(new Object[0]);
 		int[] types = ArrayUtils.toPrimitive((Integer[]) _types.toArray(new Integer[0]));
 
@@ -67,18 +66,26 @@ public class OracleParamUtils {
 		}
 	}
 
-	static void freeLOB(ArrayList<CLOB> clobList, ArrayList<BLOB> blobList) throws SQLException {
+	static void freeLOB(List<CLOB> clobList, List<BLOB> blobList){
 		if (clobList != null) {
-			for (int i = 0; i < clobList.size(); i++) {
-				CLOB clob = clobList.get(i);
-				clob.freeTemporary();
+			for (CLOB clob : clobList) {
+				try {
+					//clob.freeTemporary();
+					CLOB.freeTemporary(clob) ;
+				} catch (SQLException ignore) {
+					ignore.printStackTrace();
+				}
 			}
 		}
 
 		if (blobList != null) {
-			for (int i = 0; i < blobList.size(); i++) {
-				BLOB blob = blobList.get(i);
-				blob.freeTemporary();
+			for (BLOB blob : blobList) {
+				try {
+					blob.freeTemporary();
+					BLOB.freeTemporary(blob) ;
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
 		}
 	}
@@ -97,7 +104,7 @@ public class OracleParamUtils {
 
 }
 
-// 9204 ÀÌÀü Lob Insert or UpdateÇÏ´Â Function ÀÛ¼º ¿¹Á¦
+// 9204 ï¿½ï¿½ï¿½ï¿½ Lob Insert or Updateï¿½Ï´ï¿½ Function ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 // CREATE OR REPLACE FUNCTION SCOTT.Insert_Test_Clob5(
 // clob_Id in out Number,
 // clob_text1 in out CLOB,
@@ -116,7 +123,7 @@ public class OracleParamUtils {
 //
 // return 1;
 // END;
-// ´Ü Lob°¡ µé¾î°¡´Â ¹èÄ¡´Â ÇÒ¼ö°¡ ¾øÀ½...
+// ï¿½ï¿½ Lobï¿½ï¿½ ï¿½ï¿½î°¡ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ò¼ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½...
 
 // Code Sample
 // UserProcedure upt = new UserProcedure( "Insert_Test_Clob5(?,?,?,?,?)" );

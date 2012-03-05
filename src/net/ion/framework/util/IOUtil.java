@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Reader;
-import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.Date;
@@ -26,13 +25,14 @@ public class IOUtil extends IOUtils {
 		try {
 			if (cl != null) cl.close();
 		} catch (IOException ignore) {
-
+			ignore.printStackTrace() ;
+			throw new IllegalStateException(ignore) ;
 		}
 	}
 
 	public static void copyNClose(InputStream input, OutputStream output) throws IOException {
 		try {
-			IOUtil.copy(input, output) ;
+			IOUtil.copyLarge(input, output) ;
 		} finally {
 			IOUtil.close(input, output) ;
 		}
@@ -40,7 +40,7 @@ public class IOUtil extends IOUtils {
 
 	public static void copyNClose(Reader reader, Writer writer) throws IOException {
 		try {
-			IOUtil.copy(reader, writer) ;
+			IOUtil.copyLarge(reader, writer) ;
 		} finally {
 			IOUtil.close(reader, writer) ;
 		}

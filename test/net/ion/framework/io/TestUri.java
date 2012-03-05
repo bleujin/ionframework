@@ -1,7 +1,6 @@
 package net.ion.framework.io;
 
 import java.io.File;
-import java.io.Reader;
 import java.net.URI;
 import java.net.URL;
 
@@ -13,7 +12,6 @@ import net.ion.framework.dio.Path;
 import net.ion.framework.util.Debug;
 
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.vfs.provider.url.UrlFileSystem;
 
 public class TestUri extends TestCase{
 

@@ -17,6 +17,8 @@ package net.ion.framework.parse.gson.internal;
 
 import java.math.BigInteger;
 
+import net.ion.framework.util.StringUtil;
+
 /**
  * This class holds a number value that is lazily converted to a specific number type
  *
@@ -62,8 +64,18 @@ public final class LazilyParsedNumber extends Number {
     return Double.parseDouble(value);
   }
 
+  public Object estimate(){
+	  if (StringUtil.isBlank(StringUtil.substringAfter(value, "."))){
+		  return longValue() ;
+	  } else {
+		  return doubleValue() ;
+	  }
+  }
+  
   @Override
   public String toString() {
     return value;
   }
+  
+  
 }

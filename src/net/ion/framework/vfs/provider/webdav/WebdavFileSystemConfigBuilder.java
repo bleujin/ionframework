@@ -1,13 +1,13 @@
 package net.ion.framework.vfs.provider.webdav;
 
-import org.apache.commons.vfs.FileSystemConfigBuilder;
-import org.apache.commons.vfs.FileSystemOptions;
+import org.apache.commons.vfs2.FileSystemConfigBuilder;
+import org.apache.commons.vfs2.FileSystemOptions;
 
 /**
  * Configuration options for WebDav
  * 
  * @author <a href="mailto:imario@apache.org">Mario Ivankovits</a>
- * @version $Revision: 1.3 $ $Date: 2011/03/13 04:30:10 $
+ * @version $Revision: 1.4 $ $Date: 2012/02/19 02:26:18 $
  */
 public class WebdavFileSystemConfigBuilder extends FileSystemConfigBuilder {
 	private final static WebdavFileSystemConfigBuilder builder = new WebdavFileSystemConfigBuilder();

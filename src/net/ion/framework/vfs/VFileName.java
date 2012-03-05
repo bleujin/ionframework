@@ -1,7 +1,7 @@
 package net.ion.framework.vfs;
 
-import org.apache.commons.vfs.FileName;
-import org.apache.commons.vfs.FileType;
+import org.apache.commons.vfs2.FileName;
+import org.apache.commons.vfs2.FileType;
 
 public class VFileName {
 

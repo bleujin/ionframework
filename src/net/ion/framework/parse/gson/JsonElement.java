@@ -17,10 +17,11 @@
 package net.ion.framework.parse.gson;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.io.StringWriter;
 import java.math.BigDecimal;
 import java.math.BigInteger;
-
+ 
 import net.ion.framework.parse.gson.internal.Streams;
 import net.ion.framework.parse.gson.stream.JsonWriter;
 

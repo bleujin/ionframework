@@ -3,10 +3,10 @@ package net.ion.framework.vfs;
 import java.io.InputStream;
 import java.util.Map;
 
-import org.apache.commons.vfs.FileContent;
-import org.apache.commons.vfs.FileSystemException;
-import org.apache.commons.vfs.RandomAccessContent;
-import org.apache.commons.vfs.util.RandomAccessMode;
+import org.apache.commons.vfs2.FileContent;
+import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.RandomAccessContent;
+import org.apache.commons.vfs2.util.RandomAccessMode;
 
 public class VFileContent {
 

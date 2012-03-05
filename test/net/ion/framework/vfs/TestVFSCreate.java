@@ -17,8 +17,8 @@ public class TestVFSCreate extends TestCase {
 		LocalSubDirFileProvider aprovider = new LocalSubDirFileProvider();
 		aprovider.setPrefixDir("c:/working/") ;
 		if (! entry.hasProvider("afield")) entry.addProvider("afield", aprovider);
-		if (! entry.hasProvider("temp")) entry.addProvider("temp", new org.apache.commons.vfs.provider.temp.TemporaryFileProvider());
-		if (! entry.hasProvider("ram")) entry.addProvider("ram", new org.apache.commons.vfs.provider.ram.RamFileProvider());
+		if (! entry.hasProvider("temp")) entry.addProvider("temp", new org.apache.commons.vfs2.provider.temp.TemporaryFileProvider());
+		if (! entry.hasProvider("ram")) entry.addProvider("ram", new org.apache.commons.vfs2.provider.ram.RamFileProvider());
 	}
 
 	public void testCreate() throws Exception {

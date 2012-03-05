@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ion.framework.db.IDBController;
-import oracle.jdbc.driver.OracleCallableStatement;
+import oracle.jdbc.OracleCallableStatement;
 import oracle.sql.BLOB;
 import oracle.sql.CLOB;
 
@@ -27,7 +27,7 @@ public class StdOracleUserProcedureBatch extends UserProcedureBatch {
 
 	public int myUpdate(Connection conn) throws SQLException {
 		int[] updateRow;
-		// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.
+		// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.
 		ArrayList<CLOB> clobList = new ArrayList<CLOB>();
 		ArrayList<BLOB> blobList = new ArrayList<BLOB>();
 		try {
@@ -55,7 +55,7 @@ public class StdOracleUserProcedureBatch extends UserProcedureBatch {
 			throw ex;
 		} finally {
 			closeSilence(cstmt);
-			// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.(ÇØÁ¦ ½ÃÁ¡ÀÌ Áß¿äÇÔ)
+			// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½)
 			OracleParamUtils.freeLOB(clobList, blobList);
 		}
 

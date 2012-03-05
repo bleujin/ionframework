@@ -26,12 +26,6 @@ public class H2EmbedDBManager extends DBManager {
 		service = new H2EmbedRepositoryService(bean);
 		this.bean = bean;
 	}
-	
-	public final static H2EmbedDBManager testMem(){
-		HSQLBean bean = HSQLBean.create("jdbc:h2:mem:mytest", "sa", "") ;
-		return new H2EmbedDBManager(bean);
-	}
-	
 
 	public H2EmbedDBManager(String filePath) {
 		try {

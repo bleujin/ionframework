@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ion.framework.db.IDBController;
-import oracle.jdbc.driver.OraclePreparedStatement;
+import net.ion.framework.util.ListUtil; 
+import oracle.jdbc.OraclePreparedStatement;
 import oracle.sql.BLOB;
 import oracle.sql.CLOB;
 
@@ -21,9 +22,9 @@ public class OracleUserCommandBatch extends UserCommandBatch {
 
 	public int myUpdate(Connection conn) throws SQLException {
 		int updateCount;
-		// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.
-		ArrayList<CLOB> clobList = new ArrayList<CLOB>();
-		ArrayList<BLOB> blobList = new ArrayList<BLOB>();
+		// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.
+		List<CLOB> clobList = ListUtil.newList() ;
+		List<BLOB> blobList = ListUtil.newList() ;
 		try {
 			pstmt = (OraclePreparedStatement) conn.prepareStatement(getProcSQL());
 			pstmt.clearBatch();
@@ -32,23 +33,20 @@ public class OracleUserCommandBatch extends UserCommandBatch {
 			setParams(conn, clobList, blobList);
 			updateCount = pstmt.sendBatch();
 
-			pstmt.close();
-			pstmt = null;
-
 		} catch (IOException ex) {
 			throw new SQLException(ex.getMessage());
 		} catch (SQLException ex) {
 			throw ex;
 		} finally {
+			OracleParamUtils.freeLOB(clobList, blobList);
 			closeSilence(pstmt);
 
-			// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.(ÇØÁ¦ ½ÃÁ¡ÀÌ Áß¿äÇÔ)
-			OracleParamUtils.freeLOB(clobList, blobList);
+			// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½)
 		}
 		return updateCount;
 	}
 
-	private void setParams(Connection conn, ArrayList<CLOB> clobList, ArrayList<BLOB> blobList) throws IOException, SQLException {
+	private void setParams(Connection conn, List<CLOB> clobList, List<BLOB> blobList) throws IOException, SQLException {
 		Object[][] values = getParamsAsArray(); // [a][b] a : rows, b : column
 		for (int row = 0, rlast = values.length > 0 ? values[0].length : 0; row < rlast; row++) {
 			List<Object> list = new ArrayList<Object>();

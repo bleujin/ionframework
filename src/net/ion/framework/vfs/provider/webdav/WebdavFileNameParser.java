@@ -1,7 +1,7 @@
 package net.ion.framework.vfs.provider.webdav;
 
-import org.apache.commons.vfs.provider.FileNameParser;
-import org.apache.commons.vfs.provider.URLFileNameParser;
+import org.apache.commons.vfs2.provider.FileNameParser;
+import org.apache.commons.vfs2.provider.URLFileNameParser;
 
 /**
  * Implementation for the webdav filesystem.

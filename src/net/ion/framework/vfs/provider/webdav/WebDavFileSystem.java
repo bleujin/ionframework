@@ -1,22 +1,23 @@
 package net.ion.framework.vfs.provider.webdav;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.vfs.FileName;
-import org.apache.commons.vfs.FileObject;
-import org.apache.commons.vfs.FileSystem;
-import org.apache.commons.vfs.FileSystemException;
-import org.apache.commons.vfs.FileSystemOptions;
-import org.apache.commons.vfs.provider.AbstractFileSystem;
-import org.apache.commons.vfs.provider.GenericFileName;
-import org.apache.webdav.lib.WebdavFile;
-
 import java.util.Collection;
+
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.vfs2.Capability;
+import org.apache.commons.vfs2.FileName;
+import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSystem;
+import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileSystemOptions;
+import org.apache.commons.vfs2.provider.AbstractFileName;
+import org.apache.commons.vfs2.provider.AbstractFileSystem;
+import org.apache.commons.vfs2.provider.GenericFileName;
 
 /**
  * A WebDAV file system.
  * 
  * @author <a href="mailto:adammurdoch@apache.org">Adam Murdoch</a>
- * @version $Revision: 1.4 $ $Date: 2011/03/13 04:30:10 $
+ * @version $Revision: 1.6 $ $Date: 2012/02/20 01:21:49 $
  */
 public class WebDavFileSystem extends AbstractFileSystem implements FileSystem {
 	private final HttpClient client;
@@ -41,10 +42,8 @@ public class WebDavFileSystem extends AbstractFileSystem implements FileSystem {
 		return client;
 	}
 
-	/**
-	 * Creates a file object. This method is called only if the requested file is not cached.
-	 */
-	protected FileObject createFile(final FileName name) {
+	@Override
+	protected FileObject createFile(AbstractFileName name) throws Exception {
 		final GenericFileName fileName = (GenericFileName) name;
 		return new WebdavFileObject(fileName, this);
 	}

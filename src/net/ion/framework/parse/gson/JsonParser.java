@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import net.ion.framework.parse.gson.internal.Streams;
 import net.ion.framework.parse.gson.reflect.TypeToken;
@@ -110,14 +111,24 @@ public final class JsonParser {
 	}
 	
 	public final static JsonObject fromMap(Map<String, ? extends Object> map){
-		Type mapType = new TypeToken<Map<String, ? extends Object>>() {}.getType();
-		
-		JsonElement jso = new Gson().toJsonTree(map, mapType) ;
-		return jso.getAsJsonObject() ;
+		JsonObject jso = new JsonObject() ;
+		for (Entry<String, ? extends Object> entry : map.entrySet()) {
+			jso.add(entry.getKey(), fromObject(entry.getValue())) ;
+		}
+		return jso ;
+//		Type mapType = new TypeToken<Map<String, ? extends Object>>() {}.getType();
+//		JsonElement jso = new Gson().toJsonTree(map, mapType) ;
+//		return jso.getAsJsonObject() ;
 	}
 	
 	public final static JsonArray fromList(List list){
-		return new Gson().toJsonTree(list, new TypeToken<List>(){}.getType()).getAsJsonArray() ;
+		JsonArray array = new JsonArray() ;
+		for (Object object : list) {
+			array.add(fromObject(object)) ;
+		}
+		return array ;
+		
+		// return new Gson().toJsonTree(list, new TypeToken<List>(){}.getType()).getAsJsonArray() ;
 	}
 
 	public final static JsonElement fromString(String json) throws JsonSyntaxException {
@@ -132,11 +143,11 @@ public final class JsonParser {
 		if (src instanceof Map) return fromMap((Map<String, Object>)src) ;
 		if (src instanceof Collection) return fromList(new ArrayList((Collection)src)) ;
 		if (src instanceof JsonString) return fromString(((JsonString)src).toJsonString()) ;
-		if (src instanceof String) {
-			if (StringUtil.isBlank((String)src)) return new JsonObject() ; 
-			return fromString((String)src) ;
-		}
-		return fromString(new Gson().toJson(src));
+//		if (src instanceof String) {
+//			if (StringUtil.isBlank((String)src)) return new JsonPrimitive("") ; 
+//			return new JsonPrimitive((String)src) ;
+//		}
+		return new Gson().toJsonTree(src) ;
 	}
 
 	

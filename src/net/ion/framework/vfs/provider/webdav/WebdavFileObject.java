@@ -1,39 +1,5 @@
 package net.ion.framework.vfs.provider.webdav;
 
-import java.net.URL;
-import java.util.List;
-
-import net.ion.framework.util.Debug;
-
-import org.apache.commons.vfs.FileContent;
-import org.apache.commons.vfs.FileName;
-import org.apache.commons.vfs.FileObject;
-import org.apache.commons.vfs.FileSelector;
-import org.apache.commons.vfs.FileSystem;
-import org.apache.commons.vfs.FileSystemException;
-import org.apache.commons.vfs.FileType;
-import org.apache.commons.vfs.NameScope;
-import org.apache.commons.vfs.operations.FileOperations;
-
-import org.apache.commons.httpclient.HttpException;
-import org.apache.commons.httpclient.HttpStatus;
-import org.apache.commons.httpclient.HttpURL;
-import org.apache.commons.vfs.FileObject;
-import org.apache.commons.vfs.FileSystemException;
-import org.apache.commons.vfs.FileType;
-import org.apache.commons.vfs.NameScope;
-import org.apache.commons.vfs.provider.AbstractFileObject;
-import org.apache.commons.vfs.provider.GenericFileName;
-import org.apache.commons.vfs.provider.UriParser;
-import org.apache.commons.vfs.util.MonitorOutputStream;
-import org.apache.webdav.lib.BaseProperty;
-import org.apache.webdav.lib.WebdavResource;
-import org.apache.webdav.lib.methods.DepthSupport;
-import org.apache.webdav.lib.methods.OptionsMethod;
-import org.apache.webdav.lib.methods.XMLResponseMethodBase;
-import org.apache.webdav.lib.methods.DeleteMethod;
-import org.apache.webdav.lib.properties.ResourceTypeProperty;
-
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -44,11 +10,31 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 
+import net.ion.framework.util.Debug;
+
+import org.apache.commons.httpclient.HttpException;
+import org.apache.commons.httpclient.HttpStatus;
+import org.apache.commons.httpclient.HttpURL;
+import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileType;
+import org.apache.commons.vfs2.NameScope;
+import org.apache.commons.vfs2.provider.AbstractFileObject;
+import org.apache.commons.vfs2.provider.GenericFileName;
+import org.apache.commons.vfs2.provider.UriParser;
+import org.apache.commons.vfs2.util.MonitorOutputStream;
+import org.apache.webdav.lib.BaseProperty;
+import org.apache.webdav.lib.WebdavResource;
+import org.apache.webdav.lib.methods.DepthSupport;
+import org.apache.webdav.lib.methods.OptionsMethod;
+import org.apache.webdav.lib.methods.XMLResponseMethodBase;
+import org.apache.webdav.lib.properties.ResourceTypeProperty;
+
 /**
  * A WebDAV file.
  * 
  * @author <a href="mailto:adammurdoch@apache.org">Adam Murdoch</a>
- * @version $Revision: 1.3 $ $Date: 2011/03/13 04:30:10 $
+ * @version $Revision: 1.4 $ $Date: 2012/02/19 02:26:17 $
  */
 public class WebdavFileObject extends AbstractFileObject implements FileObject {
 	private final WebDavFileSystem fileSystem;

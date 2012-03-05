@@ -4,7 +4,7 @@ import java.io.OutputStream;
 
 import net.ion.framework.util.Debug;
 
-import org.apache.commons.vfs.provider.url.UrlFileProvider;
+import org.apache.commons.vfs2.provider.url.UrlFileProvider;
 
 public class TestURLProvider extends TestVFSBase{
 

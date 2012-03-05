@@ -4,15 +4,15 @@ import java.io.IOException;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpURL;
-import org.apache.commons.vfs.FileSystemException;
-import org.apache.commons.vfs.FileSystemOptions;
+import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileSystemOptions;
 import org.apache.webdav.lib.WebdavResource;
 
 /**
  * Create a HttpClient instance
  * 
  * @author <a href="mailto:imario@apache.org">Mario Ivankovits</a>
- * @version $Revision: 1.4 $ $Date: 2011/03/13 04:30:10 $
+ * @version $Revision: 1.5 $ $Date: 2012/02/19 02:26:17 $
  */
 public class WebdavClientFactory {
 	private WebdavClientFactory() {

@@ -3,16 +3,11 @@ package net.ion.framework.vfs;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.io.Reader;
 import java.io.Writer;
 import java.util.List;
 
-import org.apache.commons.vfs.FileSystemException;
-
 import net.ion.framework.util.Debug;
-import net.ion.framework.util.IOUtil;
 
 public class TestVFileName extends TestVFSBase{
 

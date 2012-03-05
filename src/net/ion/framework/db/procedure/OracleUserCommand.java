@@ -4,10 +4,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.List;
 
 import net.ion.framework.db.IDBController;
+import net.ion.framework.util.ListUtil;
 import oracle.sql.BLOB;
 import oracle.sql.CLOB;
 
@@ -28,9 +28,9 @@ public class OracleUserCommand extends UserCommand {
 
 	public int myUpdate(Connection conn) throws SQLException {
 		int updateCount;
-		// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.
-		ArrayList<CLOB> clobList = new ArrayList<CLOB>();
-		ArrayList<BLOB> blobList = new ArrayList<BLOB>();
+		// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.
+		List<CLOB> clobList = ListUtil.newList();
+		List<BLOB> blobList = ListUtil.newList();
 		try {
 			pstmt = conn.prepareStatement(getProcSQL());
 			OracleParamUtils.setParam(conn, pstmt, getParams(), getTypes(), OracleParamUtils.COMMAND_LOC, clobList, blobList);
@@ -40,10 +40,9 @@ public class OracleUserCommand extends UserCommand {
 		} catch (IOException ex) {
 			throw new SQLException(ex.getMessage());
 		} finally {
-			if (pstmt != null)
-				pstmt.close();
-			// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.(ÇØÁ¦ ½ÃÁ¡ÀÌ Áß¿äÇÔ)
 			OracleParamUtils.freeLOB(clobList, blobList);
+			closeSilence(pstmt) ;
+			// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.(ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß¿ï¿½ï¿½ï¿½)
 		}
 		return updateCount;
 	}

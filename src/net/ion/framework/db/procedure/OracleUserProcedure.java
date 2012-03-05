@@ -5,13 +5,14 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
+import java.util.List;
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
-import oracle.jdbc.driver.OracleCallableStatement;
-import oracle.jdbc.driver.OracleTypes;
+import net.ion.framework.util.ListUtil;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 import oracle.sql.BLOB;
 import oracle.sql.CLOB;
 
@@ -66,9 +67,9 @@ public class OracleUserProcedure extends UserProcedure {
 
 	public int myUpdate(Connection conn) throws SQLException {
 		int updateRow = 0;
-		// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.
-		ArrayList<CLOB> clobList = new ArrayList<CLOB>();
-		ArrayList<BLOB> blobList = new ArrayList<BLOB>();
+		// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.
+		List<CLOB> clobList = ListUtil.newList();
+		List<BLOB> blobList = ListUtil.newList();
 		try {
 
 			cstmt = (OracleCallableStatement) conn.prepareCall("{? = call " + getProcedureSQL() + "}");

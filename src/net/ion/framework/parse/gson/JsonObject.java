@@ -276,6 +276,12 @@ public final class JsonObject extends JsonElement {
 		return getIfNotExist(key).getAsInt();
 	}
 
+	public int asInt(String key, int dftvalue) {
+		JsonElement ele = getIfNotExist(key);
+		if (ele == NotFoundJsonElement.NOT_FOUND) return dftvalue ;
+		return ele.getAsInt();
+	}
+
 	public <T> T asObject(String key, Class<T> clz) {
 		return new Gson().fromJson(get(key), clz);
 	}

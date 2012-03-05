@@ -11,19 +11,16 @@ public class MongoRepositoryService extends RepositoryService {
 
 	@Override
 	public IUserCommandBatch createUserCommandBatch(IDBController idc, String sql) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public IUserProcedure createUserProcedure(IDBController idc, String sql) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public IUserProcedureBatch createUserProcedureBatch(IDBController idc, String sql) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

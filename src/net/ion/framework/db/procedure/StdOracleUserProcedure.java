@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
-import oracle.jdbc.driver.OracleCallableStatement;
-import oracle.jdbc.driver.OracleTypes;
+import oracle.jdbc.OracleCallableStatement;
+import oracle.jdbc.OracleTypes;
 import oracle.sql.BLOB;
 import oracle.sql.CLOB;
 
@@ -77,7 +77,7 @@ public class StdOracleUserProcedure extends UserProcedure {
 
 	public int myUpdate(Connection conn) throws SQLException {
 		int updateRow = 0;
-		// oracle 9.2 ÀÌÈÄ ¹öÀü ºÎÅÍ ¸í½ÃÀûÀ¸·Î ÀÓ½ÃLOB¸¦ ÇØÁ¦ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.
+		// oracle 9.2 ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ó½ï¿½LOBï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.
 		ArrayList<CLOB> clobList = new ArrayList<CLOB>();
 		ArrayList<BLOB> blobList = new ArrayList<BLOB>();
 		try {

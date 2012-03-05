@@ -5,7 +5,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 
-import org.apache.commons.digester.Digester;
+import net.ion.framework.parse.gson.JsonParser;
+import net.ion.framework.util.IOUtil;
+
 import org.xml.sax.SAXException;
 
 public class HSQLParser {
@@ -27,21 +29,8 @@ public class HSQLParser {
 
 		if (isFinished && hbean != null)
 			return hbean;
-
-		Digester digester = new Digester();
-		digester.setValidating(false);
-		digester.setUseContextClassLoader(true);
-
-		digester.addObjectCreate("hsql", HSQLBean.class);
-		digester.addSetProperties("hsql/server");
-
-		digester.addObjectCreate("hsql/procedures/procedure", ProcedureBean.class);
-		digester.addSetProperties("hsql/procedures/procedure");
-		digester.addBeanPropertySetter("hsql/procedures/procedure", "cmd");
-
-		digester.addSetNext("hsql/procedures/procedure", "addProcedure");
-
-		hbean = (HSQLBean) digester.parse(reader);
+		
+		hbean = JsonParser.fromString(IOUtil.toString(reader)).getAsJsonObject().getAsObject(HSQLBean.class) ;
 		isFinished = true;
 
 		return hbean;

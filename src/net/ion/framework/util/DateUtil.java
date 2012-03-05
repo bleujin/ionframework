@@ -259,6 +259,16 @@ public class DateUtil {
 		return sdf.format(date);
 	}
 
+	private static ThreadLocal<SimpleDateFormat> httpFormatter = new ThreadLocal<SimpleDateFormat>();
+
+    public static SimpleDateFormat getHttpDateFormatter() {
+        if (httpFormatter.get() == null) {
+            httpFormatter.set(new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz", Locale.US));
+            httpFormatter.get().setTimeZone(TimeZone.getTimeZone("GMT"));
+        }
+        return httpFormatter.get();
+    }
+	
 	private static Hashtable dateFormatter = new Hashtable();
 	private static final String STD_FORMAT = "yyyyMMdd-HHmmss";
 

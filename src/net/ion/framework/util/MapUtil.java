@@ -46,4 +46,22 @@ public class MapUtil {
 		return new ChainMap<String, V>() ;
 	}
 	
+	public static <K, V> Map<K, V> filterMap(Map<K, V> map, String keypattern) {
+        try {
+            Map<K, V> filtered = map.getClass().newInstance();
+            for (Map.Entry<K, V> entry : map.entrySet()) {
+                K key = entry.getKey();
+                if (key.toString().matches(keypattern)) {
+                    filtered.put(key, entry.getValue());
+                }
+            }
+            return filtered;
+        } catch (IllegalAccessException iex) {
+            throw new IllegalArgumentException(iex) ;
+        } catch (InstantiationException iex) {
+        	throw new IllegalArgumentException(iex) ;
+		}
+    }
+
+	
 }

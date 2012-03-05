@@ -9,7 +9,7 @@ import java.util.Map;
 
 import net.ion.framework.util.IOUtil;
 
-import org.apache.commons.vfs.FileSystemException;
+import org.apache.commons.vfs2.FileSystemException;
 
 public class VFS {
 
@@ -25,6 +25,7 @@ public class VFS {
 			writer.write("<providers></providers>") ;
 			writer.close() ;
 			FileSystemEntry entry = getManger(file.toURL()) ;
+			file.delete();
 			return entry;
 		} catch (FileSystemException e) {
 			throw new IllegalStateException(e);

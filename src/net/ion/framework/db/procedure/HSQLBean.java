@@ -1,6 +1,11 @@
 package net.ion.framework.db.procedure;
 
-import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import net.ion.framework.util.ListUtil;
+import net.ion.framework.util.MapUtil;
 
 public class HSQLBean {
 	private String address = "127.0.0.1";
@@ -8,22 +13,11 @@ public class HSQLBean {
 	private String userId = "sa";
 	private String userPwd = "";
 
-	private HashMap<String, ProcedureBean> procedures = new HashMap<String, ProcedureBean>();
+	private Map<String, String> procedures = MapUtil.newMap() ;
 
 	public HSQLBean() {
 	}
 	
-	private HSQLBean(String address, String userId, String pwd) {
-		this.address = address ;
-		this.userId = userId ;
-		this.userPwd= pwd ;
-	}
-
-	public static HSQLBean create(String address, String userId, String pwd) {
-		return new HSQLBean(address, userId, pwd) ;
-	}
-
-
 	public String getAddress() {
 		return address;
 	}
@@ -58,16 +52,19 @@ public class HSQLBean {
 
 	public void addProcedure(ProcedureBean proc) {
 		if (proc.getId() == null) throw new IllegalArgumentException("hsql procedure id is not null");
-		procedures.put(proc.getId().toUpperCase(), proc);
+		procedures.put(proc.getId(), proc.getCmd());
 	}
 
 	public ProcedureBean[] getProcedures() {
-		return procedures.values().toArray(new ProcedureBean[0]);
+		List<ProcedureBean> result = ListUtil.newList() ; 
+		for (Entry<String, String> entry: procedures.entrySet()) {
+			result.add(ProcedureBean.create(entry.getKey(), entry.getValue())) ;
+		}
+		return result.toArray(new ProcedureBean[0]);
 	}
 
 	public ProcedureBean getProcedure(String id) {
-		if (id == null) throw new IllegalArgumentException("hsql procedure id is not null");
-		return procedures.get(id.toUpperCase());
+		if (id == null || (! procedures.containsKey(id))) throw new IllegalArgumentException("hsql procedure id is not null");
+		return  ProcedureBean.create(id, procedures.get(id));
 	}
-
 }

@@ -14,6 +14,7 @@ import net.ion.framework.db.manager.DBManager;
 
 public abstract class AbstractQueryable implements Queryable {
 
+	private static final long serialVersionUID = -8986472247268128909L;
 	private final transient IDBController dc;
 	private final String procSQL;
 	private final int queryType;
@@ -74,9 +75,6 @@ public abstract class AbstractQueryable implements Queryable {
 
 	public abstract int myUpdate(Connection conn) throws SQLException;
 
-	/**
-	 * 지원을 안하는 Queryable이 많아서 final을 풀었음. 괜히 Connection 얻었다 해제해야 하기 때문에...
-	 */
 	public Object execHandlerQuery(ResultSetHandler handler) throws SQLException {
 		Connection conn = null;
 		long start = 0, end = 0;
@@ -204,6 +202,7 @@ public abstract class AbstractQueryable implements Queryable {
 			if (stmt != null)
 				stmt.close();
 		} catch (SQLException ignore) {
+			ignore.printStackTrace() ;
 		}
 	}
 

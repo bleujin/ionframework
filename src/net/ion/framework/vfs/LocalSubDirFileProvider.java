@@ -1,24 +1,19 @@
 package net.ion.framework.vfs;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-import org.apache.commons.vfs.Capability;
-import org.apache.commons.vfs.FileName;
-import org.apache.commons.vfs.FileObject;
-import org.apache.commons.vfs.FileSystem;
-import org.apache.commons.vfs.FileSystemException;
-import org.apache.commons.vfs.FileSystemOptions;
-import org.apache.commons.vfs.provider.AbstractOriginatingFileProvider;
-import org.apache.commons.vfs.provider.LocalFileProvider;
-import org.apache.commons.vfs.provider.UriParser;
-import org.apache.commons.vfs.provider.local.GenericFileNameParser;
-import org.apache.commons.vfs.provider.local.LocalFileName;
-import org.apache.commons.vfs.provider.local.LocalFileNameParser;
-import org.apache.commons.vfs.provider.local.LocalFileSystem;
-import org.apache.commons.vfs.util.Os;
+import org.apache.commons.vfs2.Capability;
+import org.apache.commons.vfs2.FileName;
+import org.apache.commons.vfs2.FileSystem;
+import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileSystemOptions;
+import org.apache.commons.vfs2.provider.AbstractOriginatingFileProvider;
+import org.apache.commons.vfs2.provider.local.GenericFileNameParser;
+import org.apache.commons.vfs2.provider.local.LocalFileName;
+import org.apache.commons.vfs2.provider.local.LocalFileNameParser;
+import org.apache.commons.vfs2.provider.local.LocalFileSystem;
 
 // Referenced classes of package org.apache.commons.vfs.provider.local:
 //            WindowsFileNameParser, GenericFileNameParser, LocalFileNameParser, LocalFileName, 

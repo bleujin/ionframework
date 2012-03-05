@@ -2,7 +2,7 @@ package net.ion.framework.vfs;
 
 import net.ion.framework.util.StringUtil;
 
-import org.apache.commons.vfs.FileSystemException;
+import org.apache.commons.vfs2.FileSystemException;
 
 public class DefaultRenamePolicy implements RenamePolicy {
 

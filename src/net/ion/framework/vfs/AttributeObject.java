@@ -1,6 +1,6 @@
 package net.ion.framework.vfs;
 
-import org.apache.commons.vfs.FileName;
+import org.apache.commons.vfs2.FileName;
 
 public class AttributeObject {
 
