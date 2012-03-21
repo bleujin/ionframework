@@ -3,11 +3,12 @@ package net.ion.framework.parse.html;
 import java.io.StringReader;
 import java.util.Date;
 
+import org.apache.http.impl.cookie.DateUtils;
+
 import junit.framework.TestCase;
 import net.htmlparser.jericho.Element;
+import net.ion.framework.util.DateUtil;
 import net.ion.framework.util.Debug;
-
-import org.apache.commons.httpclient.util.DateUtil;
 
 public class HTMLTest extends TestCase{
 
@@ -89,7 +90,7 @@ public class HTMLTest extends TestCase{
 		String s = "<root><p><center><img src=''/>gacdd</center><br><br><br></p><p></p></root>" ;
 		HTag root = GeneralParser.parseHTML(new StringReader(s)) ;
 		
-		Debug.debug(DateUtil.formatDate(new Date(), "yyyyMMdd") + "/DEFAULT") ; 
+		Debug.debug(DateUtils.formatDate(new Date(), "yyyyMMdd") + "/DEFAULT") ; 
 		
 		for (HTag child : root.getChildren()) {
 			Element celement = child.getElement();

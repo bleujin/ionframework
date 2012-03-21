@@ -21,7 +21,7 @@ public class IOUtil extends IOUtils {
 		}
 	}
 
-	private static void closeQuietly(Closeable cl) {
+	public static void closeQuietly(Closeable cl) {
 		try {
 			if (cl != null) cl.close();
 		} catch (IOException ignore) {

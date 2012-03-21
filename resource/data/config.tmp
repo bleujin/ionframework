@@ -1,0 +1,42 @@
+<root>
+ <database-controller>
+        <controller-name>framework default database service</controller-name>
+        <database-manager>
+            <description>Oracle database manager</description>
+            <configured-object>
+                <class-name>net.ion.framework.db.manager.OraclePoolDBManager</class-name>
+                <constructor>
+                    <constructor-param>
+                        <description>jdbc URL</description>
+                        <type>java.lang.String</type>
+                        <value>jdbc:oracle:thin:@dev-oracle.i-on.net:1521:DEV10G</value>
+                        <!-- value>jdbc:oracle:thin:@211.119.128.253:1521:orcl</value-->
+                    </constructor-param>
+                    <constructor-param>
+                        <description>User</description>
+                        <type>java.lang.String</type>
+                        <value>dev_ics6</value>
+                    </constructor-param>
+                    <constructor-param>
+                        <description>Passwd</description>
+                        <type>java.lang.String</type>
+                        <value>dev_ics6</value>
+                    </constructor-param>
+                    <constructor-param>
+                        <description>ConnectionLimit</description>
+                        <type>int</type>
+                        <value>50</value>
+                    </constructor-param>
+                </constructor>
+            </configured-object>
+        </database-manager>
+        <skipped-rows>0</skipped-rows>
+        <limited-rows>100</limited-rows>
+        <extra-servant>
+            <configured-object>
+                <class-name>net.ion.framework.db.servant.NoneServant</class-name>
+            </configured-object>
+           
+        </extra-servant>
+    </database-controller>
+</root>    
