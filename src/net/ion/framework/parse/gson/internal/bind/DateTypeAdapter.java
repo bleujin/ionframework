@@ -84,11 +84,12 @@ public final class DateTypeAdapter extends TypeAdapter<Date> {
   }
 
   @Override public synchronized void write(JsonWriter out, Date value) throws IOException {
-    if (value == null) {
-      out.nullValue();
-      return;
-    }
-    String dateFormatAsString = enUsFormat.format(value);
-    out.value(dateFormatAsString);
+//    if (value == null) {
+//      out.nullValue();
+//      return;
+//    }
+//    String dateFormatAsString = enUsFormat.format(value);
+//    out.value(dateFormatAsString);
+    out.value(value == null ? null : value.getTime()) ;
   }
 }

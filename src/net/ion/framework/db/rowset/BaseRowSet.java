@@ -449,53 +449,43 @@ public abstract class BaseRowSet implements Serializable, Cloneable {
 	// jdk 1.5 higher..
 
 	public java.net.URL getURL(int columnIndex) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public java.net.URL getURL(String columnName) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void updateArray(int columnIndex, Array x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void updateArray(String columnName, Array x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void updateBlob(int columnIndex, Blob x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void updateBlob(String columnName, Blob x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void updateClob(int columnIndex, Clob x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void updateClob(String columnName, Clob x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void updateRef(int columnIndex, Ref x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	public void updateRef(String columnName, Ref x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 }

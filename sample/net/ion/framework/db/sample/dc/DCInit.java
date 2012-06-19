@@ -2,33 +2,33 @@ package net.ion.framework.db.sample.dc;
 
 import net.ion.framework.db.DBController;
 import net.ion.framework.db.Rows;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 import net.ion.framework.db.servant.StdOutServant;
 
 
-public class DCInit extends TestBaseDB{
+public class DCInit extends TestBaseSample{
 
 	/*
-	 * IDBControllerï¿½ï¿½ IQueryable ï¿½ï¿½ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ä¸® ï¿½ï¿½È°ï¿½ï¿½ 
-	 * ServantHandle ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
+	 * IDBController´Â IQueryable ±¸ÇöÃ¼¸¦ »ý¼ºÇÏ´Â ÆÑÅä¸® ¿ªÈ°°ú 
+	 * ServantHandle ¿ªÇÒÀ» °¡Áö°í ÀÖ´Ù.
 	 * 
-	 *  ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ò·ï¿½ ï¿½ï¿½ï¿½Î´Ù¸ï¿½ DBManagerï¿½ï¿½ Wrappingï¿½Ø¼ï¿½ ï¿½Ù¾ï¿½ï¿½ï¿½ ï¿½ï¿½È²ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ï¿½Ì´ï¿½. 
+	 *  Á»´õ Ãß»óÀûÀ¸·Î ÇÏ³ªÀÇ ¿ªÇÒ·Î ÁÙÀÎ´Ù¸é DBManager¸¦ WrappingÇØ¼­ ´Ù¾çÇÑ »óÈ²¿¡ µðÆæ´øÆ®ÇÑ ºÎºÐÀ» Ã³¸®ÇÏ±â À§ÇØ¼­ÀÌ´Ù. 
 	 *  
-	 *  ï¿½ï¿½ï¿½ï¿½ PooledConnectionï¿½ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½ IDBControllerï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ç¹Ì°ï¿½ ï¿½Ö´ï¿½. 
-	 *  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ init ï¿½ÎºÐ¿ï¿½ dc.initSelfï¿½ï¿½ È£ï¿½ï¿½ï¿½Ï°ï¿½
-	 *  ï¿½ï¿½ï¿½Î±×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ dc.destorySelfï¿½ï¿½ È£ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½. 
-	 *  ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½È´Ù¸ï¿½ servlet initï¿½ï¿½ destoryï¿½Ã¿ï¿½ È£ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½É°ï¿½ï¿½Ì´ï¿½. 
-	 *  PoolConnectionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ dcï¿½ï¿½ ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Static ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½×»ï¿½ ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ ï¿½ï¿½ï¿½.   
+	 *  ¸ÕÀú PooledConnectionÀ» ¾´´Ù¸é IDBController´Â ÇÏ³ª¸¸ Á¸ÀçÇØ¾ß ÀÇ¹Ì°¡ ÀÖ´Ù. 
+	 *  º¸ÅëÀº ÇÁ·Î±×·¥ÀÇ init ºÎºÐ¿¡ dc.initSelfÀ» È£ÃâÇÏ°í
+	 *  ÇÁ·Î±×·¥ÀÇ Á¾·á½Ã¿¡ dc.destorySelf¸¦ È£ÃâÇØ¾ß ÇÑ´Ù. 
+	 *  ¸¸¾à À¥¿¡ »ç¿ëµÈ´Ù¸é servlet init°ú destory½Ã¿¡ È£ÃâÇÏ°Ô µÉ°ÍÀÌ´Ù. 
+	 *  PoolConnectionÀº º¸Åë Àü¿ªÀûÀ¸·Î »ç¿ëµÇ±â ¶§¹®¿¡ dc´Â ÀÏ¹ÝÀûÀ¸·Î Static ÇüÀ¸·Î ÂüÁ¶°¡ µÇÁö¸¸ Ç×»ó ±×·¡¾ß ÇÒ ÇÊ¿ä´Â ¾ø´Ù.   
 	 */
 	
 	
 	
 	/*
-	 * ï¿½Æ·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDBControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ DBManagerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½  IDBControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½.
-	 * ï¿½×·ï¿½ï¿½ï¿½ DBManagerï¿½ï¿½ Owner DBControllerï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï°ï¿½ ï¿½Ö±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IDBControllerï¿½ï¿½ init È¤ï¿½ï¿½ destroy ï¿½Ñ´Ù°ï¿½ ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBControllerï¿½ï¿½ DBMangerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´Â´ï¿½.
+	 * ¾Æ·¡¿Í °°ÀÌ ÀÌÀüÀÇ IDBController°¡ »ç¿ëÇÏ´Â DBManager¸¦ °¡Á®¿Í¼­ »õ·Î¿î  IDBController¸¦ ¸¸µé¼ö ÀÖ´Ù.
+	 * ±×·¯³ª DBManager´Â Owner DBControllerÀ» ÀÎ½ÄÇÏ°í ÀÖ±â ¶§¹®¿¡
+	 * ºô·Á¾²´Â IDBController°¡ init È¤Àº destroy ÇÑ´Ù°í ÇØ¼­ ±âÁ¸ÀÇ DBControllerÀÇ DBManger¸¦ ÇØÁ¦ÇÏÁö ¾Ê´Â´Ù.
 	 * 
-	 * DBControllerï¿½ï¿½ Init ï¿½Þ¼Òµï¿½ï¿½ DBMangerï¿½ï¿½ Ç®ï¿½ï¿½ È°ï¿½ï¿½È­ï¿½ï¿½Å°ï¿½ï¿½ Servant ï¿½ï¿½ï¿½ï¿½ï¿½å¸¦ ï¿½ï¿½ï¿½Û½ï¿½Å²ï¿½ï¿½. 
+	 * DBControllerÀÇ Init ¸Þ¼Òµå´Â DBMangerÀÇ Ç®À» È°¼ºÈ­½ÃÅ°°í Servant ¾²·¹µå¸¦ ½ÃÀÛ½ÃÅ²´Ù. 
 	 */
 	public void testDCInit() throws Exception {
 		DBController newDc = new DBController("newDC", dc.getDBManager()) ;
@@ -42,19 +42,19 @@ public class DCInit extends TestBaseDB{
 	
 	
 	/*
-	 * ï¿½ï¿½ï¿½ï¿½ DBMangerï¿½ï¿½ Ownerï¿½ï¿½ï¿½ï¿½ initï¿½ï¿½ destoryï¿½ï¿½ ï¿½ï¿½Å²ï¿½Ù¸ï¿½ 
-	 * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ DBMangerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ DBControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ò±ï¿½ï¿½ï¿½ ï¿½Ç¹ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½. 
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Connection Poolï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ùµï¿½ ï¿½ï¿½ï¿½Ì´ï¿½. 
+	 * ¿ÀÁ÷ DBMangerÀÇ Owner¸¸ÀÌ init°ú destory¸¦ ½ÃÅ²´Ù¸é 
+	 * ±»ÀÌ °°Àº DBManger¸¦ °øÀ¯ÇÏ´Â ¿©·¯°³ÀÇ DBController¸¦ Çã¿ëÇØ¾ß ÇÒ±î¶ó´Â ÀÇ¹®À» ´øÁú¼ö ÀÖ´Ù. 
+	 * ¾îÂ÷ÇÇ °°Àº Connection PoolÀ» »ç¿ëÇÒÅÙµ¥ ¸»ÀÌ´Ù. 
 	 * 
-	 * ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ ï¿½ï¿½ï¿½ï¿½ DBMangerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Øµï¿½ ï¿½Ù¸ï¿½ Servantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ DBControllerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ò¼ï¿½ ï¿½Ö´ï¿½. 
-	 * Servantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç°ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½î¶²ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Ì´ï¿½. 
+	 * ±×·¯³ª »ç¿ëÀÚ´Â °°Àº DBManger¸¦ »ç¿ëÇØµµ ´Ù¸¥ Servant¸¦ »ç¿ëÇÏ´Â DBController¸¦ Á¤ÀÇÇÒ¼ö ÀÖ´Ù. 
+	 * Servant´Â Äõ¸®°¡ ½ÇÇàµÇ°í ³­µÚ¿¡ ½ÇÇàÇÒ ¾î¶²°ÍÀ» ±¸ÇöÇÏ´Â Å¬·¡½ºÀÌ´Ù. 
 	 * 
-	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ StdOutServantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ StdOutï¿½ï¿½ ï¿½ï¿½Â´ï¿½.
+	 * ¿¹ÄÁµ¥ StdOutServant´Â Äõ¸®¸¦ ½ÇÇàÇÑÈÄ Äõ¸®ÀÇ °£´ÜÇÑ Á¤º¸¿Í ½ÇÇà½Ã°£À» StdOut¿¡ Âï´Â´Ù.
 	 */
 	
 	public void testServant() throws Exception {
 		DBController newDc = new DBController("newDC", dc.getDBManager()) ;
-		newDc.addServant(new StdOutServant(StdOutServant.All)) ; // ï¿½ï¿½ï¿½ IQueryableï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï´ï¿½ Servantï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½. 
+		newDc.addServant(new StdOutServant(StdOutServant.All)) ; // ¸ðµç IQueryable¸¦ È­¸é¿¡ ÇÁ¸°Æ®ÇÏ´Â Servant¸¦ Ãß°¡ÇÑ´Ù. 
 		newDc.initSelf() ;
 		
 		newDc.getRows("select 1 from copy_sample") ;
@@ -65,21 +65,21 @@ public class DCInit extends TestBaseDB{
 	
 
 	/*
-	 * Servantï¿½ï¿½ Chainï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ Servantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ addï¿½ï¿½ï¿½ï¿½ï¿½Ö¸ï¿½ 
-	 * ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½ Chainï¿½ï¿½ Servantï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½È´ï¿½. 
+	 * Servant´Â ChainÀ¸·Î ¿¬°áµÇ±â ¶§¹®¿¡ »õ·Î¿î Servant¸¦ Á¤ÀÇÇØ¼­ add½ÃÄÑÁÖ¸é 
+	 * ÇÏ³ªÀÇ Äû¸®°¡ ½ÇÇàµÉ¶§¸¶´Ù ChainµÈ ServantµéÀÌ Ã³¸®µÈ´Ù. 
 	 * 
-	 * ï¿½âº»ï¿½ï¿½ï¿½ï¿½ DBControllerï¿½ï¿½ Sevantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Threadï¿½ï¿½ Ã³ï¿½ï¿½ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Servantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¼ï¿½È­ï¿½È´ï¿½.
+	 * ±âº»ÀûÀÎ DBController´Â Sevant¸¦ º°µµÀÇ Thread·Î Ã³¸®ÇÏ±â ¶§¹®¿¡ Servant·Î ÀÎÇÑ Äõ¸®ÀÇ Áö¿¬ÀÌ ÃÖ¼ÒÈ­µÈ´Ù.
 	 * 
-	 *  Servantï¿½ï¿½ È°ï¿½ï¿½ï¿½ï¿½ ï¿½Ù¾ï¿½ï¿½Ï´ï¿½. 
-	 *  Æ¯ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½É¶ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½Ï°Å³ï¿½ ï¿½î¶² ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ Servantï¿½ï¿½ ï¿½Ò¼ï¿½ ï¿½Ö°ï¿½..
-	 *  ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½  ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ExtraServantï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½. 
+	 *  ServantÀÇ È°¿ëÀº ´Ù¾çÇÏ´Ù. 
+	 *  Æ¯Á¤ Äõ¸®°¡ ½ÇÇàµÉ¶§¸¶´Ù ¸ð´ÏÅÍ¸µ ÇÏ°Å³ª ¾î¶² µ¿ÀÛÀ» ÇÏ´Â Servant¸¦ ÇÒ¼ö ÀÖ°í..
+	 *  ¾ó¸¶ ÀÌ»óÀÇ Äõ¸® ½ÇÇà½Ã°£À» ±â·ÏÇÏ´Â Äõ¸®¸¸À» º°µµ·Î  ±â·ÏÇÏ´Â ExtraServant¸¦ ¸¸µé¼öµµ ÀÖ´Ù. 
 	 *  
 	 */
 
 	public void testServantChain() throws Exception {
 		DBController newDc = new DBController("newDC", dc.getDBManager()) ;
-		newDc.addServant(new StdOutServant(StdOutServant.All)) ; // ï¿½ï¿½ï¿½ IQueryableï¿½ï¿½ È­ï¿½é¿¡ ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ï´ï¿½ Servantï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½. 
-		newDc.addServant(new StdOutServant(StdOutServant.All)) ; // ï¿½Ñ°ï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½. 
+		newDc.addServant(new StdOutServant(StdOutServant.All)) ; // ¸ðµç IQueryable¸¦ È­¸é¿¡ ÇÁ¸°Æ®ÇÏ´Â Servant¸¦ Ãß°¡ÇÑ´Ù. 
+		newDc.addServant(new StdOutServant(StdOutServant.All)) ; // ÇÑ°³ ´õ Ãß°¡ÇÑ´Ù. 
 		newDc.initSelf() ;
 		
 		newDc.getRows("select 1 from copy_sample") ;

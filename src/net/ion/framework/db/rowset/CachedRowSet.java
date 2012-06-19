@@ -45,6 +45,8 @@ import javax.sql.RowSetMetaData;
 import javax.sql.RowSetReader;
 import javax.sql.RowSetWriter;
 
+import net.ion.framework.util.IOUtil;
+
 // Referenced classes of package sun.jdbc.rowset:
 //            BaseRowSet, BaseRow, InsertRow, Row, 
 //            RowSetMetaDataImpl, RowSetReaderImpl, RowSetWriterImpl, SQLInputImpl, 
@@ -669,7 +671,7 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 		if (onInsertRow)
 			return insertRow;
 		else
-			return (Row) cachedRows.get(cursorPos - 1);
+			return (Row) cachedRows.get(Math.max(cursorPos - 1, 0));
 	}
 
 	public String getCursorName() throws SQLException {
@@ -1493,6 +1495,15 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 				} else if (obj instanceof Clob) {
 					SerialClob serialClob = new SerialClob((Clob) obj);
 					obj = serialClob;
+
+//					try {
+//						Reader reader = ((Clob)obj).getCharacterStream();
+//						String str = IOUtil.toString(reader);
+//						obj = str ;
+//						reader.close() ;
+//					} catch (IOException e) {
+//						throw new SQLException(e.getMessage()) ;
+//					}
 				} else if (obj instanceof Array)
 					obj = new SerialArray((Array) obj, map);
 				row.initColumnObject(k, obj);

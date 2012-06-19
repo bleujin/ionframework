@@ -12,6 +12,7 @@ import net.ion.framework.db.manager.DBManager;
 import org.h2.tools.Server;
 import org.xml.sax.SAXException;
 
+@Deprecated
 public class H2EmbedDBManager extends DBManager {
 
 	private Server server = null;

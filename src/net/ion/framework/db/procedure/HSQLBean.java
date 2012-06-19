@@ -64,7 +64,7 @@ public class HSQLBean {
 	}
 
 	public ProcedureBean getProcedure(String id) {
-		if (id == null || (! procedures.containsKey(id))) throw new IllegalArgumentException("hsql procedure id is not null");
+		if (id == null || (! procedures.containsKey(id))) throw new IllegalArgumentException("not found procedure id");
 		return  ProcedureBean.create(id, procedures.get(id));
 	}
 }

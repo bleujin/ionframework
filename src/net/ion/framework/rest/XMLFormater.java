@@ -1,12 +1,15 @@
 package net.ion.framework.rest;
 
-import static net.ion.framework.rest.MyConstant.*;
+import static net.ion.framework.rest.MyConstant.NAME;
+import static net.ion.framework.rest.MyConstant.NODES;
+import static net.ion.framework.rest.MyConstant.PROPERTY;
+import static net.ion.framework.rest.MyConstant.TYPE;
 
+import java.io.StringWriter;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -14,9 +17,6 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import net.ion.framework.db.bean.ResultSetHandler;
-import net.ion.framework.rope.RopeWriter;
-import net.ion.framework.util.ListUtil;
-import net.ion.framework.util.ObjectUtil;
 import net.ion.framework.util.StringUtil;
 
 import org.apache.ecs.xml.XML;
@@ -24,9 +24,12 @@ import org.restlet.data.CharacterSet;
 import org.restlet.data.Language;
 import org.restlet.data.MediaType;
 import org.restlet.representation.Representation;
+import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ResourceException;
 
 public class XMLFormater implements ResultSetHandler, XMLHandler, IRowsRepresentationHandler, IMapListRepresentationHandler {
+
+	private static final long serialVersionUID = -8164513968960809763L;
 	public final static String XML_HEADER = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n";
 
 	public XML toXML(ResultSet rs) throws SQLException {
@@ -41,6 +44,7 @@ public class XMLFormater implements ResultSetHandler, XMLHandler, IRowsRepresent
 			types.add(meta.getColumnTypeName(column));
 			names.add(meta.getColumnName(column));
 		}
+		
 
 		while (rs.next()) {
 			XML node = new XML("node");
@@ -76,12 +80,17 @@ public class XMLFormater implements ResultSetHandler, XMLHandler, IRowsRepresent
 		result.addElement(res.toXML());
 		result.addElement(nodes);
 
-		RopeWriter rw = new RopeWriter();
-		rw.append(XML_HEADER);
-		result.output(rw);
+//		RopeWriter rw = new RopeWriter();
+//		rw.append(XML_HEADER);
+//		result.output(rw);
+//
+//		return  new RopeRepresentation(rw.getRope(), MediaType.APPLICATION_XML, Language.ALL, CharacterSet.UTF_8);
+		
+		StringWriter rw = new StringWriter(512) ;
+		rw.append(XML_HEADER) ;
+		result.output(rw) ;
 
-		Representation entity = new RopeRepresentation(rw.getRope(), MediaType.APPLICATION_XML, Language.ALL, CharacterSet.UTF_8);
-		return entity;
+		return new StringRepresentation(rw.getBuffer(), MediaType.APPLICATION_XML, Language.ALL, CharacterSet.UTF_8) ;
 	}
 
 	public Object handle(ResultSet rs) throws SQLException {
@@ -96,11 +105,11 @@ public class XMLFormater implements ResultSetHandler, XMLHandler, IRowsRepresent
 			result.addElement(res.toXML());
 			result.addElement(nodes);
 
-			RopeWriter rw = new RopeWriter();
+			StringWriter rw = new StringWriter(512);
 			rw.append(XML_HEADER);
 			result.output(rw);
 
-			return new RopeRepresentation(rw.getRope(), MediaType.APPLICATION_XML, Language.ALL, CharacterSet.UTF_8);
+			return new StringRepresentation(rw.getBuffer(), MediaType.APPLICATION_XML, Language.ALL, CharacterSet.UTF_8);
 		} catch (SQLException e) {
 			throw new ResourceException(e);
 		}

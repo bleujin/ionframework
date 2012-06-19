@@ -3,10 +3,10 @@ package net.ion.framework.db.sample.rows;
 import net.ion.framework.db.Page;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 
 
-public class RowsPage extends TestBaseDB{
+public class RowsPage extends TestBaseSample{
 	
 	String query1 = "select * from copy_sample order by no1" ;
 	

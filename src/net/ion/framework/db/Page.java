@@ -116,7 +116,7 @@ public class Page implements Serializable{
 
 	public int getPreScreenEndPageNo() {
 		//return (getCurrentScreen() - 1) * getListNum();
-		return (getCurrentScreen() - 1) ;
+		return (getCurrentScreen() - 1) * screenCount;
 	}
 
 }

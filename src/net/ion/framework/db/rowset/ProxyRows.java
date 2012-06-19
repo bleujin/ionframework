@@ -134,6 +134,10 @@ public class ProxyRows extends RowsImpl implements Rows {
 	public int getRow() throws SQLException {
 		return pos;
 	}
+	
+	protected BaseRow getCurrentRow() {
+		return this.getRow(pos);
+	}
 
 	public boolean absolute(int i) throws SQLException {
 		if (i < maxrow)

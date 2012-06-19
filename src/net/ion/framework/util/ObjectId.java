@@ -234,6 +234,19 @@ public class ObjectId implements Comparable, Serializable {
 		return z * 1000L;
 	}
 
+	public static int _flip(int x) {
+		int z = 0;
+		z |= x << 24 & -16777216;
+		z |= x << 8 & 16711680;
+		z |= x >> 8 & 65280;
+		z |= x >> 24 & 255;
+		return z;
+	}
+
+	private static int _curtime() {
+		return _flip((int) (System.currentTimeMillis() / 1000L));
+	}
+	
 	public int getInc() {
 		return _inc;
 	}
@@ -258,18 +271,6 @@ public class ObjectId implements Comparable, Serializable {
 		_new = false;
 	}
 
-	public static int _flip(int x) {
-		int z = 0;
-		z |= x << 24 & -16777216;
-		z |= x << 8 & 16711680;
-		z |= x >> 8 & 65280;
-		z |= x >> 24 & 255;
-		return z;
-	}
-
-	private static int _curtime() {
-		return _flip((int) (System.currentTimeMillis() / 1000L));
-	}
 
 	public static void main(String args[]) {
 		int z = _nextInc.getAndIncrement();

@@ -3,8 +3,8 @@ package net.ion.framework.vfs;
 import java.io.InputStream;
 
 import net.ion.framework.util.Debug;
-import net.ion.framework.vfs.VFS;
-import net.ion.framework.vfs.provider.webdav.WebdavFileProvider;
+
+import org.apache.commons.vfs2.provider.webdav.WebdavFileProvider;
 
 public class TestWebdav extends TestVFSBase{
 

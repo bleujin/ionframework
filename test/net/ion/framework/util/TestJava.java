@@ -1,7 +1,19 @@
 package net.ion.framework.util;
 
+import java.io.File;
+import java.net.InetAddress;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+
+import javax.swing.filechooser.FileView;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
+import org.apache.commons.lang.ArrayUtils;
 
 import junit.framework.TestCase;
 
@@ -29,4 +41,64 @@ public class TestJava extends TestCase{
 		Debug.debug(sa) ;
 		
 	}
+	
+	
+	public void testHostAddress() throws Exception {
+		Debug.line(InetAddress.getLocalHost().getHostAddress()) ;
+		
+		
+	}
+
+	public void testObjectId() throws Exception {
+		Debug.line(new ObjectId()) ;
+	}
+	
+	
+	public void testVisitor() throws Exception {
+		IOFileFilter date = FileFilterUtils.ageFileFilter(DateUtil.stringToDate("20110920-111111")) ;
+		IOFileFilter dir = new IOFileFilter() {
+			
+			public boolean accept(File arg0, String arg1) {
+				return true;
+			}
+			
+			public boolean accept(File arg0) {
+				return true;
+			}
+		};
+		
+		Iterator i = FileUtils.iterateFiles(new File("C:/temp"), date, dir) ;
+		
+		while(i.hasNext()){
+			Debug.debug(i.next()) ;
+		}
+	}
+	
+	public enum Order {
+		ASCEND, DESCEND ; 
+
+	}
+	
+	public void testEnum() throws Exception {
+		String order = "Ascend" ;
+		
+		Order ord = Order.valueOf(order.toUpperCase()) ;
+		Debug.debug(ord) ;
+		
+	}
+	
+	public void testList() throws Exception {
+		List list = ListUtil.newList() ;
+		
+		list.add("1") ;
+		list.add("2") ;
+		list.add("1") ;
+		
+		assertEquals(3, list.size()) ;
+		
+		list.remove("1") ;
+		assertEquals(2, list.size()) ;
+		
+	}
+	
 }

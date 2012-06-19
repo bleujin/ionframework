@@ -3,8 +3,9 @@ package net.ion.framework.convert.test;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import junit.framework.TestCase;
 import net.ion.framework.util.Debug;
+
+import junit.framework.TestCase;
 
 public class TestHttpParsing extends TestCase {
 

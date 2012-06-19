@@ -63,6 +63,7 @@ public final class SqlDateTypeAdapter extends TypeAdapter<java.sql.Date> {
 
   @Override
   public synchronized void write(JsonWriter out, java.sql.Date value) throws IOException {
-    out.value(value == null ? null : format.format(value));
+//    out.value(value == null ? null : format.format(value));
+	  out.value(value == null ? null : value.getTime()) ;
   }
 }

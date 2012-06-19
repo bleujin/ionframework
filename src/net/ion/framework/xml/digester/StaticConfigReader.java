@@ -6,13 +6,6 @@ import java.io.IOException;
 import org.apache.commons.digester.Digester;
 import org.xml.sax.SAXException;
 
-/**
- * 고정된 config Rule정보에 따르는 config 파일을 읽어들여 config정보를 설정한다.
- * 
- * @author bleujin
- * @version 1.0
- */
-
 public class StaticConfigReader implements ConfigReader {
 
 	String configFile;
@@ -21,13 +14,6 @@ public class StaticConfigReader implements ConfigReader {
 		this.configFile = configFile;
 	}
 
-	/**
-	 * configFile을 읽어들여 ServerConfig 인스턴스를 생성하고 생성한 인스턴스를 return 한다.
-	 * 
-	 * @throws IOException
-	 * @throws SAXException
-	 * @return ServerConfig
-	 */
 	public ServerConfig readConfig() throws IOException, SAXException {
 		Digester digester = new Digester();
 		digester.setValidating(false);

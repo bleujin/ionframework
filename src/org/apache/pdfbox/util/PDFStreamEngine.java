@@ -26,6 +26,8 @@ import java.util.Properties;
 import java.util.Stack;
 import java.util.Vector;
 
+import net.ion.framework.util.ListUtil;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.pdfbox.cos.COSObject;
@@ -41,7 +43,7 @@ import org.apache.pdfbox.util.operator.OperatorProcessor;
  * This class will run through a PDF content stream and execute certain operations and provide a callback interface for clients that want to do things with the stream. See the PDFTextStripper class for an example of how to use this class.
  * 
  * @author <a href="mailto:ben@benlitchfield.com">Ben Litchfield</a>
- * @version $Revision: 1.9 $
+ * @version $Revision: 1.10 $
  */
 public class PDFStreamEngine {
 
@@ -195,7 +197,7 @@ public class PDFStreamEngine {
 			streamResourcesStack.push(sr);
 		}
 		try {
-			List arguments = new ArrayList();
+			List arguments = ListUtil.newList() ;
 			List tokens = cosStream.getStreamTokens();
 			if (tokens != null) {
 				Iterator iter = tokens.iterator();
@@ -205,7 +207,7 @@ public class PDFStreamEngine {
 						arguments.add(((COSObject) next).getObject());
 					} else if (next instanceof PDFOperator) {
 						processOperator((PDFOperator) next, arguments);
-						arguments = new ArrayList();
+						arguments = ListUtil.newList() ;
 					} else {
 						arguments.add(next);
 					}

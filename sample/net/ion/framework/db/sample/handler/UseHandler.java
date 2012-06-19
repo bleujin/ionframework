@@ -9,10 +9,10 @@ import net.ion.framework.db.bean.handlers.BeanListHandler;
 import net.ion.framework.db.bean.handlers.MapHandler;
 import net.ion.framework.db.bean.handlers.MapListHandler;
 import net.ion.framework.db.bean.handlers.ScalarHandler;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 
 
-public class UseHandler extends TestBaseDB {
+public class UseHandler extends TestBaseSample {
 
 	String query = "select * from copy_sample order by no1" ;
 	

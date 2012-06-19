@@ -348,6 +348,14 @@ public final class JsonArray extends JsonElement implements Iterable<JsonElement
 	public <T> T asObject(int key, Class<T> clz) {
 		return new Gson().fromJson(get(key), clz);
 	}
+	
+	public <T> List<T> asList(Class<T> clz){
+		List<T> result = ListUtil.newList() ;
+		for (JsonElement ele : toArray()) {
+			result.add(ele.getAsJsonObject().getAsObject(clz)) ;
+		} 
+		return result ;
+	}
 
 	public Iterator<JsonElement> asJsonArrayElement(int key) {
 		return get(key).getAsJsonArray().iterator();

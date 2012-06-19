@@ -5,10 +5,10 @@ import java.sql.SQLException;
 
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 import net.ion.framework.util.Debug;
 
-public class UseServerHandler extends TestBaseDB {
+public class UseServerHandler extends TestBaseSample {
 
 	String query = "select * from millon_tblc where rownum < 10000";
 
@@ -32,12 +32,5 @@ class OutHandler implements ResultSetHandler {
 		}
 		System.out.println();
 		return (System.currentTimeMillis() - startTime);
-	}
-}
-
-class Pair {
-
-	Pair() {
-
 	}
 }

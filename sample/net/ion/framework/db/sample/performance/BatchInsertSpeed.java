@@ -2,29 +2,29 @@ package net.ion.framework.db.sample.performance;
 
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserCommandBatch;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.RandomUtil;
 
 import org.apache.commons.lang.time.StopWatch;
 
 
-public class BatchInsertSpeed extends TestBaseDB {
+public class BatchInsertSpeed extends TestBaseSample {
 	
 	public void setUp() throws Exception {
 		super.setUp() ;
 		// dc.execUpdate("create table if not exists performance_sample(a int, b char(150), c varchar(50)) ;") ;
-		// row lengthï¿½ï¿½ ï¿½ë·« 150 - 200 ï¿½ï¿½ï¿½Ì·ï¿½..
+		// row lengthÀ» ´ë·« 150 - 200 »çÀÌ·Î..
 	}
 	
 	public void tearDown() throws Exception {
-		dc.execUpdate("delete from performance_sample") ; // Space Resizing ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Þ°ï¿½ ï¿½Ï±ï¿½ ï¿½ï¿½ï¿½ï¿½ deleteï¿½ï¿½..
+		dc.execUpdate("delete from performance_sample") ; // Space Resizing ¿µÇâÀ» ´ú¹Þ°Ô ÇÏ±â À§ÇØ delete·Î..
 		// dc.execUpdate("truncate table performace_sample") ;
 		super.tearDown() ;
 	}
 	
 	/*
-	 * ï¿½Ï¹ï¿½ï¿½ï¿½ï¿½ï¿½ insertï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½Ç´ï¿½ 50 ms ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ûµï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½. 
+	 * ÀÏ¹ÝÀûÀÎ insert´Â ÃÖ¼Ò °Ç´ç 50 ms ÀÌÇÏ·Î ÀÛµ¿ÇØ¾ß ÇÑ´Ù. 
 	 */
 	public void testCommandInsert() throws Exception {
 		// required : 50 ms per 1 unit
@@ -46,7 +46,7 @@ public class BatchInsertSpeed extends TestBaseDB {
 	
 	
 	/*
-	 * Batch Insertï¿½ï¿½ ï¿½Ö¼ï¿½ ï¿½Ç´ï¿½ 1 ms ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½Ûµï¿½ï¿½Ø¾ï¿½ ï¿½Ñ´ï¿½.  
+	 * Batch Insert´Â ÃÖ¼Ò °Ç´ç 1 ms ÀÌÇÏ·Î ÀÛµ¿ÇØ¾ß ÇÑ´Ù.  
 	 */
 	public void testBatchInsert() throws Exception {
 		

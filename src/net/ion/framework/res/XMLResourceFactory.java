@@ -24,6 +24,7 @@ import org.xml.sax.SAXException;
 
 public class XMLResourceFactory {
 	private final static String[] USABLE_LOCALE = new String[] { "ko", "en", "ja", "zh", "zh_tw", "my", "in", "fr", "es" };
+	private final static String DEFAULT_LOCALE_KEY = "en";
 	static XMLResourceFactory self = null;
 
 	private HashMap<String, XMLResources> resource = new HashMap<String, XMLResources>();
@@ -47,10 +48,13 @@ public class XMLResourceFactory {
 	}
 
 	static XMLResources getResource(String path) {
-		return (XMLResources) getResource(path, "en");
+		return (XMLResources) getResource(path, DEFAULT_LOCALE_KEY);
 	}
 
 	static synchronized XMLResources getResource(String path, String localeStr) {
+		if (StringUtil.isEmpty(localeStr) || "n/a".equalsIgnoreCase(localeStr)) {
+			localeStr = DEFAULT_LOCALE_KEY;
+		}
 		String key = path + "_" + localeStr;
 		XMLResources res = (XMLResources) getInstance().resource.get(key);
 		if (res == null) {
@@ -60,7 +64,7 @@ public class XMLResourceFactory {
 		}
 		return res;
 	}
-	
+
 	private XMLResources makeResource(String path, String localeStr) {
 		XMLResources res = null;
 		try {
@@ -118,12 +122,12 @@ public class XMLResourceFactory {
 		// getInstance().resource = resourceMapTemp;
 	}
 
-//	private Messages makeMessages(String localeStr, Reader reader) throws SAXException, IOException {
-//		Digester digester = getDigester(localeStr);
-//		Messages messages = (Messages) digester.parse(reader);
-//		messages.setLocale(localeStr);
-//		return messages;
-//	}
+	// private Messages makeMessages(String localeStr, Reader reader) throws SAXException, IOException {
+	// Digester digester = getDigester(localeStr);
+	// Messages messages = (Messages) digester.parse(reader);
+	// messages.setLocale(localeStr);
+	// return messages;
+	// }
 
 	private Messages makeMessages(String localeStr, Reader reader) throws IOException {
 		Messages messages = new Messages();
@@ -138,7 +142,6 @@ public class XMLResourceFactory {
 		return messages;
 	}
 
-
 	private Digester getDigester(String localeStr) {
 		Digester digester = new Digester();
 		digester.setValidating(false);
@@ -151,7 +154,7 @@ public class XMLResourceFactory {
 		digester.addSetNext("messages/message", "addMessage");
 		return digester;
 	}
-	
+
 	private void extractResourceXml(String resFile, String localeStr) throws FileNotFoundException, IOException, SAXException {
 		File file = new File(resFile);
 

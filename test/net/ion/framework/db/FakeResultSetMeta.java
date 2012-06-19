@@ -24,12 +24,10 @@ public class FakeResultSetMeta implements ResultSetMetaData {
 	}
 
 	public String getCatalogName(int idx) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public String getColumnClassName(int idx) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -38,7 +36,6 @@ public class FakeResultSetMeta implements ResultSetMetaData {
 	}
 
 	public int getColumnDisplaySize(int idx) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -59,67 +56,54 @@ public class FakeResultSetMeta implements ResultSetMetaData {
 	}
 
 	public int getPrecision(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int getScale(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public String getSchemaName(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public String getTableName(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public boolean isAutoIncrement(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isCaseSensitive(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isCurrency(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isDefinitelyWritable(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public int isNullable(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public boolean isReadOnly(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isSearchable(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isSigned(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public boolean isWritable(int arg0) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

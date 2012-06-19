@@ -15,6 +15,7 @@ import net.ion.framework.convert.html.HtmlSerializer;
 import net.ion.framework.convert.html.TagNode;
 import net.ion.framework.convert.html.Utils;
 import net.ion.framework.util.Debug;
+import net.ion.framework.util.ListUtil;
 
 
 public class MyHtmlSerializer extends HtmlSerializer {
@@ -26,7 +27,7 @@ public class MyHtmlSerializer extends HtmlSerializer {
 	public MyHtmlSerializer(CleanerProperties props, String indentString) {
 		super(props);
 		this.indentString = "\t";
-		indents = new ArrayList();
+		indents = ListUtil.newList() ;
 		this.indentString = indentString;
 	}
 

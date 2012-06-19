@@ -14,8 +14,11 @@ import net.ion.framework.util.ListUtil;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.vfs2.AllFileSelector;
 import org.apache.commons.vfs2.FileObject;
+import org.apache.commons.vfs2.FileSelector;
 import org.apache.commons.vfs2.FileSystemException;
 import org.apache.commons.vfs2.FileType;
+import org.apache.commons.vfs2.operations.FileOperations;
+import org.apache.tools.ant.taskdefs.Sleep;
 
 public class VFile implements Closeable {
 
@@ -175,6 +178,10 @@ public class VFile implements Closeable {
 	public FileObject getFileObject() {
 		return fo ;
 	}
+	
+	public FileOperations getFileOperations() throws FileSystemException{
+		return fo.getFileOperations() ;
+	}
 
 	public long getETag() throws FileSystemException {
 		return Math.abs(HashFunction.hashGeneral(getName().getPath()) + (isFile() ? getContent().getSize() : 0));
@@ -182,6 +189,26 @@ public class VFile implements Closeable {
 
 	public void setAttribute(String key, Object value) throws FileSystemException {
 		fo.getFileSystem().setAttribute(key, AttributeObject.create(fo.getName(), value)) ;
+	}
+
+	public VFile[] findFiles(FileSelector selector) throws FileSystemException {
+		FileObject[] fos = fo.findFiles(selector) ;
+		if (fos == null) return new VFile[0] ;
+		
+		List<VFile> result = ListUtil.newList() ;
+		for (FileObject fo : fos) {
+			result.add(new VFile(fo)) ;
+		}
+
+		return result.toArray(new VFile[0]);
+	}
+
+	public void copyFrom(VFile src, FileSelector selector) throws FileSystemException {
+		fo.copyFrom(src.fo, selector) ;
+	}
+
+	public int delete(FileSelector selector) throws FileSystemException {
+		return fo.delete(selector) ;
 	}
 
 }

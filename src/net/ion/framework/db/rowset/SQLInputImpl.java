@@ -296,7 +296,6 @@ public class SQLInputImpl implements SQLInput {
 
 	// jdk 1.5 higher..
 	public URL readURL() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

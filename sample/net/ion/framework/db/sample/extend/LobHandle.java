@@ -9,14 +9,14 @@ import java.io.Writer;
 
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.IOUtil;
 
 import org.apache.commons.io.FileUtils;
 
 
-public class LobHandle extends TestBaseDB{
+public class LobHandle extends TestBaseSample{
 
 	File k100File = null ;
 	public void setUp() throws Exception {

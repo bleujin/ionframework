@@ -16,13 +16,18 @@ import net.ion.framework.util.StringUtil;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileSystemOptions;
+import org.apache.commons.vfs2.FileType;
+import org.apache.commons.vfs2.VFS;
 import org.apache.commons.vfs2.VfsLog;
 import org.apache.commons.vfs2.impl.DefaultFileReplicator;
 import org.apache.commons.vfs2.impl.DefaultFileSystemManager;
 import org.apache.commons.vfs2.impl.PrivilegedFileReplicator;
 import org.apache.commons.vfs2.operations.FileOperationProvider;
 import org.apache.commons.vfs2.provider.FileProvider;
+import org.apache.commons.vfs2.provider.UriParser;
 import org.apache.commons.vfs2.util.Messages;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -34,11 +39,11 @@ public class MyFileSystemManager extends DefaultFileSystemManager {
 
 	private Log log = LogFactory.getLog(MyFileSystemManager.class);
 
-	private URL configUri ;
+	private URL configUri;
 	private ClassLoader classLoader;
 
 	MyFileSystemManager(URL url) throws FileSystemException {
-		setConfiguration(url) ;
+		setConfiguration(url);
 	}
 
 	/**
@@ -82,6 +87,7 @@ public class MyFileSystemManager extends DefaultFileSystemManager {
 	 *             if an error occurs.
 	 */
 	public void init() throws FileSystemException {
+		super.init(); // Initialise super-class
 		// Set the replicator and temporary file store (use the same component)
 		final DefaultFileReplicator replicator = createDefaultFileReplicator();
 		setReplicator(new PrivilegedFileReplicator(replicator));
@@ -97,7 +103,6 @@ public class MyFileSystemManager extends DefaultFileSystemManager {
 		}
 		configure(configUri); // Configure
 		configurePlugins(); // Configure Plugins
-		super.init(); // Initialise super-class
 	}
 
 	/**
@@ -318,7 +323,7 @@ public class MyFileSystemManager extends DefaultFileSystemManager {
 		}
 
 		// Create and register the provider
-		final FileProvider provider = (FileProvider) createInstance(providerDef);
+		final FileProvider provider = createInstance(providerDef, FileProvider.class);
 		final String[] schemas = getSchemas(providerDef);
 		if (schemas.length > 0) {
 			addProvider(schemas, provider);
@@ -341,12 +346,12 @@ public class MyFileSystemManager extends DefaultFileSystemManager {
 		for (int i = 0; i < schemas.length; i++) {
 			final String schema = schemas[i];
 			if (hasProvider(schema)) {
-				final FileOperationProvider operationProvider = (FileOperationProvider) createInstance(providerDef);
+				final FileOperationProvider operationProvider = createInstance(providerDef, FileOperationProvider.class);
 				addOperationProvider(schema, operationProvider);
 			}
 		}
 	}
-	
+
 	/**
 	 * Tests if a class is available.
 	 */
@@ -410,26 +415,26 @@ public class MyFileSystemManager extends DefaultFileSystemManager {
 	/**
 	 * Creates a provider.
 	 */
-	private FileProvider createInstance(final Element ele) throws FileSystemException {
-		try { 
+	private <T> T createInstance(final Element ele, Class<T> clz) throws FileSystemException {
+		try {
 			final Class clazz = findClassLoader().loadClass(ele.getAttribute("class-name"));
-			
-			FileProvider fp = (FileProvider)clazz.newInstance() ;
-			NodeList children = ele.getChildNodes() ;
-			for (int i = 0 ; i < children.getLength() ; i++) {
+
+			T fp = (T) clazz.newInstance();
+			NodeList children = ele.getChildNodes();
+			for (int i = 0; i < children.getLength(); i++) {
 				final Node node = children.item(i);
 				if ("property".equals(node.getNodeName())) {
-					Element enode = (Element)node ;
-					final Method method = fp.getClass().getMethod("set" + StringUtil.capitalize(enode.getAttribute("name")), String.class) ;
-					method.invoke(fp, enode.getAttribute("value")) ;
+					Element enode = (Element) node;
+					final Method method = fp.getClass().getMethod("set" + StringUtil.capitalize(enode.getAttribute("name")), String.class);
+					method.invoke(fp, enode.getAttribute("value"));
 				}
 			}
-			
-			
-			
+
 			return fp;
 		} catch (final Exception e) {
 			throw new FileSystemException("vfs.impl/create-provider.error", ele, e);
 		}
 	}
+
+
 }

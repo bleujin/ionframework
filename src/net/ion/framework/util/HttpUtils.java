@@ -9,12 +9,13 @@ import java.util.Locale;
 
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.servlet.jsp.PageContext;
 
 import net.htmlparser.jericho.Segment;
 import net.htmlparser.jericho.Source;
 
 /**
- * HttpServletï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ * HttpServlet¿¡¼­ À¯¿ëÇÏ°Ô »ç¿ëÇÒ ¼ö ÀÖ´Â ±â´É Á¦°ø
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -26,28 +27,28 @@ public class HttpUtils {
 	private HttpUtils() {
 	}
 
-//	/**
-//	 * JSP capsulation
-//	 * 
-//	 * <%response.setContentType("text/html");%> <%response.setLocale(java.util.Locale.KOREA);%> <%session.setAttribute(org.apache.struts.Globals.LOCALE_KEY,java.util.Locale.KOREA);%>
-//	 * 
-//	 * @param locale
-//	 *            HTTP responselocale, character set.
-//	 * @param pageContext
-//	 */
-//	public static void setHttpResponseLocale(Locale locale, PageContext pageContext) {
-//		setHttpResponseLocale(locale, pageContext.getSession(), pageContext.getResponse());
-//	}
-
 	/**
-	 * http reponseï¿½ï¿½ localeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	 * JSP ¿¡¼­ ´Ù±¹¾î Áö¿øÀ» À§ÇØ »ó´Ü¿¡ ÀÔ·ÂÇÏ´Â ´ÙÀ½ÀÇ ÄÚµå¸¦ capsulationÇÔ
+	 * 
+	 * <%response.setContentType("text/html");%> <%response.setLocale(java.util.Locale.KOREA);%> <%session.setAttribute(org.apache.struts.Globals.LOCALE_KEY,java.util.Locale.KOREA);%>
 	 * 
 	 * @param locale
-	 *            Locale ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ locale
+	 *            HTTP response ¿¡ ÁöÁ¤ÇÒ locale, ÀÌ°Í¿¡ µû¶ó À¥ºê¶ó¿ìÀúÀÇ character setÀÌ °áÁ¤µÈ´Ù.
+	 * @param pageContext
+	 */
+	public static void setHttpResponseLocale(Locale locale, PageContext pageContext) {
+		setHttpResponseLocale(locale, pageContext.getSession(), pageContext.getResponse());
+	}
+
+	/**
+	 * http reponseÀÇ localeÀ» °áÁ¤ÇÑ´Ù.
+	 * 
+	 * @param locale
+	 *            Locale ÁöÁ¤ÇÒ locale
 	 * @param session
-	 *            HttpSession ï¿½Û¾ï¿½ http session
+	 *            HttpSession ÀÛ¾÷ http session
 	 * @param response
-	 *            ServletResponse ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ reponse
+	 *            ServletResponse ¼³Á¤ÇÒ reponse
 	 */
 	public static void setHttpResponseLocale(Locale locale, HttpSession session, ServletResponse response) {
 		response.setLocale(locale);
@@ -58,7 +59,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * http responseï¿½ï¿½ charse
+	 * http responseÀÇ charsetÀ» ¼³Á¤ÇÑ´Ù.
 	 * 
 	 * @param response
 	 *            ServletResponse
@@ -73,7 +74,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * html tagï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	 * html tag¸¦ Á¦°ÅÇÑ´Ù.
 	 * 
 	 * @param value
 	 *            String
@@ -116,7 +117,7 @@ public class HttpUtils {
 		value = StringUtil.replace(value, "&nbsp;", " ");
 		value = value.replaceAll("<!--.*?-->", "");
 		value = replaceBlockAll("<", ">", value, " ");
-		value = value.replaceAll("\\s+", " "); //
+		value = value.replaceAll("\\s+", " "); // ¿¬¼ÓµÈ ½ºÆäÀÌ½º Á¦°Å
 
 		return value.trim();
 	}
@@ -225,7 +226,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * '\n' ï¿½ï¿½ html BR tagï¿½ï¿½ Ä¡È¯
+	 * '\n' À» html BR tag·Î Ä¡È¯
 	 * 
 	 * @param value
 	 *            String
@@ -260,7 +261,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ length ï¿½ï¿½Å­ ï¿½ï¿½ï¿½Ì·ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ...ï¿½ï¿½ ï¿½ï¿½ï¿½Î´ï¿½.
+	 * ¹®ÀÚ¿­À» length ¸¸Å­ ±æÀÌ·Î ÀÚ¸£°í ...À» ºÙÀÎ´Ù.
 	 * 
 	 * @param value
 	 *            String
@@ -280,7 +281,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * html ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¸ï¿½ &amp ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½È£ï¿½ï¿½ Ä¡È¯ï¿½Ñ´ï¿½.
+	 * html Á¦ÇÑ ¹®ÀÚ¸¦ &amp ·Î ½ÃÀÛÇÏ´Â ±âÈ£·Î Ä¡È¯ÇÑ´Ù.
 	 * 
 	 * @param value
 	 *            String
@@ -322,7 +323,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * space ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ filterHTML() ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+	 * space ¹®ÀÚ Ã³¸®¸¦ Á¦¿ÜÇÏ°í filterHTML() °ú µ¿ÀÏ
 	 * 
 	 * @param value
 	 *            String
@@ -361,7 +362,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * valueï¿½ï¿½ï¿½ï¿½ startBlockï¿½ï¿½ endBlock ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
+	 * value¿¡¼­ startBlock¿Í endBlock ¹®ÀÚ¿­¿¡ ÇØ´çµÇ´Â »çÀÌ ºÎºÐÀ» Á¦¿ÜÇÑ ¹®ÀÚ¿­À» ¸®ÅÏÇÑ´Ù.
 	 * 
 	 * @param value
 	 *            String
@@ -388,7 +389,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * &amp ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½Ú·ï¿½ ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½.
+	 * &amp ·Î ½ÃÀÛÇÏ´Â ±âÈ£¸¦ ¿ø·¡ ¹®ÀÚ·Î µÇµ¹¸°´Ù.
 	 * 
 	 * @param value
 	 *            String

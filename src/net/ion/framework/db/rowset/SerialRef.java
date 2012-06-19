@@ -24,17 +24,14 @@ class SerialRef implements Ref, Serializable, Cloneable {
 
 	// jdk 1.5 higher...
 	public Object getObject() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Object getObject(Map<String, Class<?>> map) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void setObject(Object value) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 }

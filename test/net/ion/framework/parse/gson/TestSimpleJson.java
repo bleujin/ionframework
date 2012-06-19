@@ -1,24 +1,31 @@
 package net.ion.framework.parse.gson;
 
-import java.io.StringWriter;
-import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Map;
 
-import net.ion.framework.parse.gson.reflect.TypeToken;
-import net.ion.framework.parse.gson.stream.JsonWriter;
+import junit.framework.TestCase;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.MapUtil;
 
-import junit.framework.TestCase;
-
 public class TestSimpleJson extends TestCase{
+	
+	public void testFromObject() throws Exception {
+		Debug.line(JsonParser.fromObject(MapUtil.chainMap().put("name", "bleujin").put("age", 20))) ;
+		
+	}
+	
+	public void testCase() throws Exception {
+		JsonObject jso =  JsonParser.fromString("{Name:'bleujin', age:20, loc:{city:'seoul'}, color:['red', 'blue']}").getAsJsonObject() ;
+		jso.put("Circle", 1) ;
+		
+		
+		Debug.line(jso) ;
+	}
 	
 	public void testParseSimple() throws Exception {
 		JsonObject jso =  JsonParser.fromString("{name:'bleujin', age:20, loc:{city:'seoul'}, color:['red', 'blue']}").getAsJsonObject() ;
-		
-		assertEquals("bleujin", jso.asString("name")) ; 
+		assertEquals("bleujin", jso.asString("Name")) ; 
 		assertEquals("20", jso.get("age").getAsString()) ;
 		assertEquals(20, jso.get("age").getAsInt()) ;
 		assertEquals("red", jso.get("color").getAsJsonArray().iterator().next().getAsString()) ;
@@ -45,10 +52,14 @@ public class TestSimpleJson extends TestCase{
 	
 	public void testWrite() throws Exception {
 		JsonObject ja = new JsonParser().parse("{name:'bleujin', age:20, loc:{city:'seoul'}, color:['red', 'blue']}").getAsJsonObject() ;
-		
 		assertEquals("{\"name\":\"bleujin\",\"age\":20,\"loc\":{\"city\":\"seoul\"},\"color\":[\"red\",\"blue\"]}", ja.toString()) ;
 	}
 	
+	public void testToMap() throws Exception {
+		JsonObject ja = new JsonParser().parse("{name:'bleujin', age:20, loc:{city:'seoul'}, color:['red', 'blue'], array:[{name:1}, {name:2}]}").getAsJsonObject() ;
+		Map<String, ? extends Object> map = ja.toMap() ;
+		Debug.line(ja, String.class.isPrimitive()) ;
+	}
 	
 	public void testArray() throws Exception {
 		List list = ListUtil.newList() ;
@@ -62,5 +73,7 @@ public class TestSimpleJson extends TestCase{
 		assertEquals("hero", ja.asJsonObject(1).asString("name")) ;
 		assertEquals("novi", ja.asJsonObject(2).asString("name")) ;
 	}
+	
+	
 	
 }

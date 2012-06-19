@@ -71,9 +71,20 @@
 	</target>
 	
 	<target name="copy" depends="publish">
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../IBR/ibr/WEB-INF/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ISearcher/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICS6/ics/WEB-INF/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICSS5/icss/WEB-INF/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICSS6/icss/WEB-INF/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICS6Extend/lib/common/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ICS6License/license/WEB-INF/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Aradon/aradon_lib/aradon/embed/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../AradonExtend/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../MongoNode/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../WebSocket/libs/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ToonServer/lib_source/aradon/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../MongoSearch/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../fluffy/trunk/fluffy/lib/common/" />
 	</target>	
-
+	
 </project>

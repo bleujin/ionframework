@@ -26,13 +26,6 @@ import net.ion.framework.logging.LogBroker;
 import net.ion.framework.util.CharsetMapper;
 import net.ion.framework.util.StringUtil;
 
-/**
- * smtp 서버에 접속하여 메일을 보낸다.
- * 
- * @author Kim, Sanghoon (wizest@i-on.net)
- * @version 1.0
- */
-
 public class SendMail {
 	final String smtpHost;
 	final int smtpPort;
@@ -51,19 +44,6 @@ public class SendMail {
 		this(smtpHost, smtpPort, smtpUser, smtpPass, new NoneMailExceptionReceiver());
 	}
 
-	/**
-	 * @param smtpHost
-	 *            smtp 서버 주소
-	 * @param smtpPort
-	 *            서버 포트
-	 * @param smtpUser
-	 *            서버 login id
-	 * @param smtpPass
-	 *            null일 경우 유저 인증을 하지 않는다 (이 경우 smtpUser의 값은 의미없다. (무시))
-	 * @param exceptionReceiver
-	 *            non-blocking으로 메일을 보낼때 에러가 날 경우 발생된 MailException을 전달할 객체, null일 경우 발생하는 exception을 무시해버린다.
-	 */
-	@SuppressWarnings("static-access")
 	public SendMail(String smtpHost, int smtpPort, final String smtpUser, final String smtpPass, MailExceptionReceiver exceptionReceiver) {
 		this.smtpHost = smtpHost;
 		this.smtpPort = smtpPort;
@@ -81,8 +61,7 @@ public class SendMail {
 		return "<" + System.currentTimeMillis() + "." + SendMail.uniqueId + "." + from + ">";
 	}
 
-	public void send(String from, String[] to, String[] cc, String[] bcc, String charset, String contentType, String subject, String text, File[] attachments)
-			throws MailException {
+	public void send(String from, String[] to, String[] cc, String[] bcc, String charset, String contentType, String subject, String text, File[] attachments) throws MailException {
 		if (to == null || to.length == 0)
 			return;
 		boolean doAuth = (smtpPass == null) ? false : true;
@@ -195,9 +174,8 @@ public class SendMail {
 			if (contentType == null || "".equals(contentType)) {
 				message.setContent(multipart);
 			} else {
-				message.setContent(text, contentType); // HTML 형식
+				message.setContent(text, contentType); // HTML 占쏙옙占�
 				// message.setContent(text,"text/html; charset=euc-kr"); // HTML
-				// 형식
 			}
 
 			// System.out.println(message.getEncoding());
@@ -217,8 +195,7 @@ public class SendMail {
 		}
 	}
 
-	public void sendWithSendMail(String from, String[] to, String[] cc, String[] bcc, String charset, String subject, String text, File[] attachments)
-			throws MailException {
+	public void sendWithSendMail(String from, String[] to, String[] cc, String[] bcc, String charset, String subject, String text, File[] attachments) throws MailException {
 		SendMail sm = new SendMail(smtpHost, smtpPort, smtpUser, smtpPass, null);
 		sm.send(from, to, cc, bcc, charset, null, subject, text, attachments);
 		sm = null;
@@ -228,9 +205,6 @@ public class SendMail {
 		enqueueSend(from, new String[] { to }, null, null, null, subject, text, null);
 	}
 
-	/**
-	 * 메일을 보낸다. (non-blocking mode)
-	 */
 	public void enqueueSend(String from, String[] to, String[] cc, String[] bcc, String charset, String subject, String text, File[] attachments) {
 		WaitingTicket ticket = new WaitingTicket(from, to, cc, bcc, charset, subject, text, attachments);
 		Thread sendingThread = null;
@@ -249,42 +223,12 @@ public class SendMail {
 		}
 	}
 
-	public static void send(String smtpHost, int smtpPort, final String smtpUser, final String smtpPass, String from, String to, String charset,
-			String subject, String text) throws MailException {
+	public static void send(String smtpHost, int smtpPort, final String smtpUser, final String smtpPass, String from, String to, String charset, String subject, String text) throws MailException {
 		SendMail.send(smtpHost, smtpPort, smtpUser, smtpPass, from, new String[] { to }, null, null, charset, subject, text, null);
 	}
 
-	/**
-	 * 메일을 보낸다. (blocking mode)
-	 * 
-	 * @param smtpHost
-	 *            smtp host address
-	 * @param smtpPort
-	 *            smtp server port, 알려진 기본값: 25
-	 * @param smtpUser
-	 *            smtp login id
-	 * @param smtpPass
-	 *            smtp password, null일 경우 사용자 인증을 하지 않는다
-	 * @param from
-	 *            보내는 사람(메일주소)
-	 * @param to
-	 *            받는 사람
-	 * @param cc
-	 *            같이 받는 사람(공개), null일 경우 무시
-	 * @param bcc
-	 *            같이 받는 사람(비공개), null일 경우 무시
-	 * @param charset
-	 *            문자셋, null일 경우 system default locale 의 charset
-	 * @param subject
-	 *            제목
-	 * @param text
-	 *            메일본문
-	 * @param attachments
-	 *            첨부파일, null일 경우 무시
-	 * @throws MailException
-	 */
-	public static void send(String smtpHost, int smtpPort, final String smtpUser, final String smtpPass, String from, String[] to, String[] cc, String[] bcc,
-			String charset, String subject, String text, File[] attachments) throws MailException {
+	public static void send(String smtpHost, int smtpPort, final String smtpUser, final String smtpPass, String from, String[] to, String[] cc, String[] bcc, String charset, String subject,
+			String text, File[] attachments) throws MailException {
 		SendMail sm = new SendMail(smtpHost, smtpPort, smtpUser, smtpPass, null);
 		sm.send(from, to, cc, bcc, charset, null, subject, text, attachments);
 		sm = null;
@@ -297,7 +241,6 @@ class SendingRunner implements Runnable {
 	private final Logger log;
 
 	protected SendingRunner(SendMail owner) {
-		// System.out.println("created");
 		this.owner = owner;
 		this.log = LogBroker.getLogger(this);
 	}
@@ -311,12 +254,8 @@ class SendingRunner implements Runnable {
 						break;
 					t = (WaitingTicket) owner.waitLine.removeFirst();
 				}
-				// 매번 접속하는데 session을 끊지 않고 보내게 손을 쓰는게 좋을까?
-				// 동시 발송할 메일량이 많지 않으니깐 일단 그냥 두자
 				owner.send(t.from, t.to, t.cc, t.bcc, t.charset, null, t.subject, t.text, t.attachments);
 
-				// System.out.println(owner.waitLine);
-				// System.out.println(t.subject);
 			} catch (MailException me) {
 				if (owner.exceptionReceiver != null)
 					owner.exceptionReceiver.receive(me);

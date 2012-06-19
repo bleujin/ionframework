@@ -17,6 +17,7 @@ import java.sql.Ref;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.Map;
 
 import org.restlet.representation.InputRepresentation;
 
@@ -26,6 +27,8 @@ import net.ion.framework.db.procedure.Queryable;
 import net.ion.framework.db.procedure.SerializedQuery;
 import net.ion.framework.db.rowset.WebRowSet;
 import net.ion.framework.db.rowset.XmlWriter;
+import net.ion.framework.util.Closure;
+import net.ion.framework.util.Debug;
 import net.ion.framework.util.IOUtil;
 import net.ion.framework.util.StringUtil;
 
@@ -140,23 +143,6 @@ public class RowsImpl extends WebRowSet implements Rows {
 
 	public int getRowCount() {
 		return super.size();
-		// try {
-		// int result = 0;
-		// int currLoc = super.getRow();
-		// if(!last()) {
-		// return 0;
-		// }
-		// result = super.getRow();
-		//
-		// if(currLoc > 0) {
-		// absolute(currLoc);
-		// } else {
-		// beforeFirst();
-		// }
-		// return result;
-		// } catch(SQLException ex) {
-		// throw RepositoryException.throwIt(ex) ;
-		// }
 	}
 
 	public Rows setNextRows(Rows rows) {
@@ -228,7 +214,7 @@ public class RowsImpl extends WebRowSet implements Rows {
 		return rsh.handle(this);
 	}
 
-	// TODO ... Cache 과연 사용할까 =ㅅ=?
+	// @TODO ... Cache 
 	public synchronized Rows refreshRows(boolean useCache) throws SQLException {
 		if (useCache && query.getCurrentModifyCount() >= 0 && (query.getCurrentModifyCount() == this.modifyCount)) {
 			return this;
@@ -308,4 +294,12 @@ public class RowsImpl extends WebRowSet implements Rows {
 			throw new IOException(e.getMessage());
 		}
 	}
+
+	public void each(Closure<Rows> clos) throws SQLException {
+		
+		while(next()){
+			clos.execute(this) ;
+		}
+	}
+
 }

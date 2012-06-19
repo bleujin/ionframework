@@ -5,10 +5,10 @@ import java.sql.Date;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.db.procedure.IUserProcedure;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 
 
-public class RowsGet extends TestBaseDB{
+public class RowsGet extends TestBaseSample{
 
 
 	

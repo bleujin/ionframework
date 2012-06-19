@@ -76,22 +76,18 @@ class SerialBlob implements Blob, Serializable, Cloneable {
 
 	// jdk 1.5 higher
 	public OutputStream setBinaryStream(long pos) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public int setBytes(long pos, byte[] bytes) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int setBytes(long pos, byte[] bytes, int offset, int len) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public void truncate(long len) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 }

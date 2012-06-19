@@ -155,7 +155,6 @@ public class SQLOutputImpl implements SQLOutput {
 
 	// jdk 1.5 higher.
 	public void writeURL(URL x) throws SQLException {
-		// TODO Auto-generated method stub
-
+		
 	}
 }

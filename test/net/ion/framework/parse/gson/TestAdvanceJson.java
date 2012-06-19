@@ -2,17 +2,22 @@ package net.ion.framework.parse.gson;
 
 import java.util.List;
 
+import org.apache.ecs.xml.XML;
+
 import junit.framework.TestCase;
 import net.ion.framework.parse.gson.annotations.SerializedName;
 import net.ion.framework.parse.gson.annotations.Since;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
+import net.ion.framework.util.XMLToJSON;
 
 public class TestAdvanceJson extends TestCase {
 
 	public void testObject() throws Exception {
 		JsonObject json = JsonParser.fromObject(new People("bleujin", 20)).getAsJsonObject();
 
+		Debug.line(json.toString()) ;
+		
 		assertEquals("bleujin", json.asString("username"));
 		assertEquals(20, json.asInt("age"));
 	}
@@ -25,7 +30,9 @@ public class TestAdvanceJson extends TestCase {
 		
 		Debug.line(json.toString()) ;
 		
-		People people = json.asObject("people", People.class) ;
+		Student student = json.getAsObject(Student.class) ;
+		
+		People people = student.people ;
 		assertEquals("bleujin", people.name) ;
 		Address address = json.asObject("address", Address.class) ;
 		assertEquals("seoul", address.city.get(0)) ;
@@ -55,6 +62,22 @@ public class TestAdvanceJson extends TestCase {
 		// {"s":null,"i":5}
 		// null
 	}
+	
+	
+	public void testXMLToJson() throws Exception {
+		XML xml = new XML("greeting") ;
+		xml.addElement(new XML("name").addElement("bleujin")) ;
+		xml.addElement(new XML("msg").addElement("hello")) ;
+		JsonObject jso = XMLToJSON.toJSONObject(xml.toString()) ;
+		
+		assertEquals("bleujin", jso.asJsonObject("greeting").asString("name")) ;
+		assertEquals("hello", jso.asJsonObject("greeting").asString("msg")) ;
+		
+		Gson gson = new GsonBuilder().setPrettyPrinting().create() ;
+		Debug.line(gson.toJson(jso)) ;
+	}
+	
+	
 
 }
 
@@ -78,7 +101,7 @@ class Address {
 
 class Student {
 
-	private People people;
+	People people;
 	private Address address;
 
 	Student(People peo, Address add) {

@@ -6,11 +6,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 import java.util.ArrayList;
+import java.util.List;
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.RepositoryException;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
+import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.StringUtil;
 
 public class H2ChainUserProcedure extends UserProcedure {
@@ -18,7 +20,7 @@ public class H2ChainUserProcedure extends UserProcedure {
 	private String procName;
 	private String chainedSQL;
 	private IUserProcedures chain;
-	private ArrayList querys = new ArrayList();
+	private List<Queryable> querys = ListUtil.newList() ;
 
 	protected H2ChainUserProcedure(IDBController dc, String procName, String stmtSQL) {
 		super(dc, procName);
@@ -63,7 +65,7 @@ public class H2ChainUserProcedure extends UserProcedure {
 	}
 
 	public Queryable getQuery(int i) {
-		return (Queryable) querys.get(i);
+		return querys.get(i);
 	}
 
 	private void setParam(PreparedStatement modifyps, int i) throws SQLException {

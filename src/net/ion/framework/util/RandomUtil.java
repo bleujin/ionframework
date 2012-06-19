@@ -171,4 +171,7 @@ public class RandomUtil extends RandomUtils {
 		return cal;
 	}
 
+	public static <T> T random(T... ts){
+		return ts[nextRandomInt(ts.length)] ;
+	}
 }

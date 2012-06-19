@@ -9,7 +9,7 @@ import oracle.jdbc.pool.OracleConnectionPoolDataSource;
 
 /**
  * <p>
- * Title: Oracle Connection PoolÀ» »ç¿ëÇÏ´Â DBManager
+ * Title: Oracle Connection Poolï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ DBManager
  * </p>
  * <p>
  * Description:
@@ -36,15 +36,19 @@ public class OraclePoolDBManager extends OracleDBManager {
 	public OraclePoolDBManager(String jdbcURL, String user, String passwd) {
 		super(jdbcURL, user, passwd);
 	}
+	public OraclePoolDBManager(String jdbcURL, String user, String passwd, int ignore) {
+		super(jdbcURL, user, passwd);
+	}
+
 
 	public void myInitPool() throws SQLException {
 		ocpds = new OracleConnectionPoolDataSource();
 		ocpds.setURL(getJdbcURL());
 		ocpds.setUser(getUserId());
 		ocpds.setPassword(getUserPwd());
+		
 		pc = ocpds.getPooledConnection();
-		// to resolve a rowset bug; http://developer.java.sun.com/developer/bugParade/bugs/4625851.html
-		// NumberFormatException
+		// to resolve a rowset bug; http://developer.java.sun.com/developer/bugParade/bugs/4625851.html NumberFormatException
 		System.setProperty("oracledatabasemetadata.get_lob_precision", "false");
 	}
 

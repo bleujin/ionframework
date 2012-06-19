@@ -44,22 +44,18 @@ public class MongoResultSetMetaData implements ResultSetMetaData{
 	}
 
 	public int getPrecision(int i) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public int getScale(int i) throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	public String getSchemaName(int i) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public String getTableName(int i) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

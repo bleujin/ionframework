@@ -28,6 +28,14 @@ public class StringUtil extends org.apache.commons.lang.StringUtils {
 		return true;
 	}
 
+	public static String coalesce(String... strs) {
+		for (String str : strs) {
+			if (isNotBlank(str))
+				return str;
+		}
+		return null;
+	}
+
 	public static boolean isSmallAlphaNumUnderBar(String str) {
 
 		if (str == null) {
@@ -235,4 +243,11 @@ public class StringUtil extends org.apache.commons.lang.StringUtils {
 		return (value == null) ? defaultString : value.toString();
 	}
 
+	public static String toHexString(byte[] b) throws Exception {
+		String result = "";
+		for (int i = 0; i < b.length; i++) {
+			result += Integer.toString((b[i] & 0xff) + 0x100, 16).substring(1);
+		}
+		return result;
+	}
 }

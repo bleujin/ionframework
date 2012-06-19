@@ -11,7 +11,9 @@ import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
 import org.apache.commons.vfs2.FileSystemOptions;
 import org.apache.commons.vfs2.impl.DefaultFileSystemManager;
+import org.apache.commons.vfs2.operations.FileOperationProvider;
 import org.apache.commons.vfs2.provider.FileProvider;
+import org.apache.poi.hssf.record.formula.OperationPtg;
 
 public class FileSystemEntry {
 	
@@ -33,6 +35,7 @@ public class FileSystemEntry {
 	}
 
 	public VFile resolveFile(String path) throws FileSystemException {
+		
 		return resolveFile(VPath.create(path));
 	} 
 	
@@ -41,6 +44,7 @@ public class FileSystemEntry {
 	}
 	
 	public VFile resolveFile(VPath vpath, FileSystemOptions options) throws FileSystemException {
+		
 		FileObject resolveFile = fsm.resolveFile(vpath.stringPath(), options);
 		return VFile.create(resolveFile);
 	}
@@ -61,9 +65,13 @@ public class FileSystemEntry {
 	public void addProvider(String[] scheme, FileProvider provider) throws FileSystemException {
 		fsm.addProvider(scheme, provider) ;
 	}
-	
+
 	public void addProvider(String scheme, FileProvider provider) throws FileSystemException {
 		addProvider(new String[]{scheme}, provider) ;
+	}
+	
+	public void addOperationProvider(String scheme, FileOperationProvider operationProvider) throws FileSystemException{
+		fsm.addOperationProvider(scheme, operationProvider) ;
 	}
 
 	public VFile write(InputStream input, String name) throws IOException {
@@ -88,6 +96,10 @@ public class FileSystemEntry {
 	
 	public boolean hasProvider(String scheme) {
 		return fsm.hasProvider(scheme);
+	}
+
+	public VFile resolveFile(VFile baseFile, String uri) throws FileSystemException {
+		return VFile.create(fsm.resolveFile(baseFile.getFileObject(), uri));
 	}
 
 	

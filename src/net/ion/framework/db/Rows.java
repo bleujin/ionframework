@@ -10,8 +10,11 @@ import java.util.Collection;
 import javax.sql.RowSet;
 import javax.sql.RowSetInternal;
 
+import com.qbox.util.PageBean;
+
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IQueryable;
+import net.ion.framework.util.Closure;
 
 /**
  * CLOB precessing and Adapter Pattern
@@ -84,6 +87,7 @@ public interface Rows extends RowSet, RowSetInternal, Serializable, Cloneable {
 	public ScreenInfo getScreenInfo();
 	
 	public Rows toClone() throws IOException ;
+	
 }
 
 // MSSQL
@@ -95,7 +99,7 @@ public interface Rows extends RowSet, RowSetInternal, Serializable, Cloneable {
 //
 // UserProcedure upt = new UserProcedure( "Insert_Test_Clob3 (?,?,?) " );
 // upt.addParam( 0, 999 );
-// upt.addParam( 1, "³ª³ª³ª³ª³ª" );
+// upt.addParam( 1, "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½" );
 // upt.addBlob( 2, "c:\\odbcconf.log" );
 // dc.execProcedureUpdate( upt );
 //
@@ -190,7 +194,7 @@ public interface Rows extends RowSet, RowSetInternal, Serializable, Cloneable {
 // public boolean equals(Object o)
 
 /**
- * Adapter Pattern(MS½Ä Iterator) MoveNext, MovePrevious, MoveLast, MoveFirst, MoveBeforeFirst, MoveAfterLast, MoveAt
+ * Adapter Pattern(MSï¿½ï¿½ Iterator) MoveNext, MovePrevious, MoveLast, MoveFirst, MoveBeforeFirst, MoveAfterLast, MoveAt
  * 
  * @return
  */

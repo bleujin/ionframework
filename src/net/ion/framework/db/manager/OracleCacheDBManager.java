@@ -48,7 +48,7 @@ public class OracleCacheDBManager extends OracleDBManager {
 		properties.setProperty("AbandonedConnectionTimeout", "600");
 		properties.setProperty("ConnectionWaitTimeout", "120");
 		properties.setProperty("ValidateConnection", "true");
-		properties.setProperty("PropertyCheckInterval", "600");
+		properties.setProperty("PropertyCheckInterval", "60");
 
 		connMgr.createCache(CACHE_NAME, cpds, properties);
 		System.setProperty("oracledatabasemetadata.get_lob_precision", "false");
@@ -88,7 +88,7 @@ public class OracleCacheDBManager extends OracleDBManager {
 		cpds.setUser(getUserId());
 		cpds.setPassword(getUserPwd());
 		Properties prop = new Properties() ;
-		prop.put("sec_case_sensitive_logon", "false") ;
+		prop.put("sec_case_sensitive_logon", "true") ;
 		cpds.setConnectionProperties(prop) ;
 		
 	}

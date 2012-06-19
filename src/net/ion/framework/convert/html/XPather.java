@@ -39,6 +39,8 @@ package net.ion.framework.convert.html;
 
 import java.util.*;
 
+import net.ion.framework.util.ListUtil;
+
 /**
  * <p>Utility for searching cleaned document tree with XPath expressions.</p>
  * Examples of supported axes:
@@ -273,7 +275,7 @@ public class XPather {
                                         int last,
                                         boolean isFilterContext) throws XPatherException {
         String name = tokenArray[from].trim();
-        ArrayList result = new ArrayList();
+        List result = ListUtil.newList() ;
 
         final int size = source.size();
         Iterator iterator = source.iterator();
@@ -321,7 +323,7 @@ public class XPather {
      * @param to
      */
     private Collection filterByCondition(Collection source, int from, int to) throws XPatherException {
-        ArrayList result = new ArrayList();
+        List result = ListUtil.newList() ;
         Iterator iterator = source.iterator();
         int index = 0;
         int size = source.size();
@@ -329,7 +331,7 @@ public class XPather {
             Object curr = iterator.next();
             index++;
 
-            ArrayList logicValueList = new ArrayList(evaluateAgainst(singleton(curr), from, to, false, index, size, true, singleton(curr)));
+            List logicValueList = new ArrayList(evaluateAgainst(singleton(curr), from, to, false, index, size, true, singleton(curr)));
             if (logicValueList.size() >= 1) {
                 Object first = logicValueList.get(0);
                 if (first instanceof Boolean) {
@@ -422,7 +424,7 @@ public class XPather {
      * @param element
      */
     private Collection singleton(Object element) {
-        ArrayList result = new ArrayList();
+    	List result = new ArrayList();
         result.add(element);
         return result;
     }

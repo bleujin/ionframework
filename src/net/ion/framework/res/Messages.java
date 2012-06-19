@@ -17,7 +17,9 @@ public class Messages {
 	}
 
 	public void addMessage(Message message) {
-		map.put(message.getKey(), message.getValue());
+		if(message != null ){
+			map.put(message.getKey(), message.getValue());
+		}
 	}
 
 	public String get(String key) {

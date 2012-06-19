@@ -69,7 +69,7 @@ public class TestVfs extends TestCase {
 		FileObject fo = fsm.resolveFile("tmp://mydic/abc");
 		OutputStream output = fo.getContent().getOutputStream();
 		Writer writer = new OutputStreamWriter(output, "UTF-8");
-		writer.write("Hi �����");
+		writer.write("Hi bleujin");
 		writer.close();
 
 		InputStream input = fo.getContent().getInputStream();
@@ -77,7 +77,7 @@ public class TestVfs extends TestCase {
 	}
 
 	public void testZip() throws Exception {
-		FileObject fo = fsm.resolveFile("zip:file:///d:/temp/������.zip!/MyMember.java");
+		FileObject fo = fsm.resolveFile("zip:file:///d:/temp/test.zip!/MyMember.java");
 //		Debug.debug(true, fo.exists(), fsm.getCacheStrategy(), fo.getContent().getLastModifiedTime()) ;
 		
 		

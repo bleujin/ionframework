@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import net.ion.framework.db.AradonConnection;
 import net.ion.framework.db.IDBController;
 import net.ion.framework.util.StringUtil;
 

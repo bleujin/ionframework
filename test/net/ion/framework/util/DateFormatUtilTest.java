@@ -14,7 +14,7 @@ public class DateFormatUtilTest extends TestCase{
 		
 		//Debug.debug(DateFormatUtil.date2String(DateFormatUtil.string2Date("20111124-000001"), "F"));
 		Calendar cal = Calendar.getInstance();
-		String[] week = {"일","월","화","수","목","금","토"};
+		String[] week = {"Mon","Tue","Wed","Thu","Fri","Sat","Sun"};
 		for (int i = 20; i < 30; i++) {
 			cal.set(2011, 10, i);
 			Debug.line(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE));

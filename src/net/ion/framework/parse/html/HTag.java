@@ -14,9 +14,11 @@ import net.htmlparser.jericho.Attribute;
 import net.htmlparser.jericho.Attributes;
 import net.htmlparser.jericho.Element;
 import net.htmlparser.jericho.Source;
+import net.htmlparser.jericho.StartTag;
 import net.htmlparser.jericho.StartTagType;
 import net.htmlparser.jericho.Tag;
 import net.htmlparser.jericho.TagType;
+import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.StringUtil;
 
@@ -65,7 +67,6 @@ public class HTag {
 		htmlElement = (Element) allElements.get(0);
 		return new HTag(htmlElement);
 	}
-
 	private HTag prefixTag = null;
 
 	private void setPrfixTag(StringBuilder buffer) throws IOException {

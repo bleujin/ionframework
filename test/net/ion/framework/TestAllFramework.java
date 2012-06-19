@@ -3,9 +3,9 @@ package net.ion.framework;
 import junit.framework.TestCase;
 import junit.framework.TestResult;
 import junit.framework.TestSuite;
-import net.ion.framework.db.sample.TestAllDB;
-import net.ion.framework.parse.html.HTagAllTest;
-import net.ion.framework.rope.RopeAllTest;
+import net.ion.framework.db.sample.DBSampleAllTest;
+import net.ion.framework.parse.ParseSuite;
+import net.ion.framework.rope.RopeSuite;
 import net.ion.framework.util.Debug;
 
 public class TestAllFramework extends TestCase{
@@ -17,9 +17,9 @@ public class TestAllFramework extends TestCase{
 		System.setProperty(Debug.PROPERTY_KEY, "off") ;
 		TestSuite ts = new TestSuite("Framework Test ALL") ;
 		
-		ts.addTest(HTagAllTest.suite()) ;
-		ts.addTest(RopeAllTest.suite()) ;
-		ts.addTest(TestAllDB.suite()) ;
+		ts.addTest(ParseSuite.suite()) ;
+		ts.addTest(RopeSuite.suite()) ;
+		ts.addTest(DBSampleAllTest.suite()) ;
 		
 
 		return ts ;

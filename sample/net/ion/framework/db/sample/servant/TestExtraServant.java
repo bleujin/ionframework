@@ -1,19 +1,23 @@
 package net.ion.framework.db.sample.servant;
 
+import java.io.IOException;
 import java.util.List;
+
+import org.apache.commons.chain.web.ChainServlet;
 
 import net.ion.framework.db.DBController;
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 import net.ion.framework.db.servant.AfterTask;
 import net.ion.framework.db.servant.ChannelServant;
 import net.ion.framework.db.servant.IExtraServant;
 import net.ion.framework.db.servant.ServantChain;
 import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.util.Debug;
+import junit.framework.TestCase;
 
-public class TestExtraServant extends TestBaseDB{
+public class TestExtraServant extends TestBaseSample{
 
 
 	public void testFirst() throws Exception {

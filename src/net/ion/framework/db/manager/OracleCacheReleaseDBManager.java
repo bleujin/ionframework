@@ -30,7 +30,7 @@ public class OracleCacheReleaseDBManager extends OracleCacheDBManager {
 		properties.setProperty("MinLimit", "0");
 		properties.setProperty("MaxLimit", String.valueOf(this.InitConnectionCount <= 3 ? 3 : this.InitConnectionCount));
 		properties.setProperty("InitialLimit", String.valueOf(this.InitConnectionCount / 4 <= 3 ? 3 : this.InitConnectionCount / 4));
-		properties.setProperty("InactivityTimeout", "60");
+		properties.setProperty("InactivityTimeout", "600");
 		properties.setProperty("AbandonedConnectionTimeout", "600");
 		properties.setProperty("ConnectionWaitTimeout", "120");
 		properties.setProperty("ValidateConnection", "true");

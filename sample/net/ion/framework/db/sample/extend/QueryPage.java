@@ -3,10 +3,10 @@ package net.ion.framework.db.sample.extend;
 import net.ion.framework.db.Page;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.procedure.IUserCommand;
-import net.ion.framework.db.sample.TestBaseDB;
+import net.ion.framework.db.sample.TestBaseSample;
 
 
-public class QueryPage extends TestBaseDB{
+public class QueryPage extends TestBaseSample{
 	
 
 	/*
