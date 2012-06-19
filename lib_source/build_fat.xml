@@ -1,0 +1,328 @@
+<?xml version="1.0"?>
+<project name="Make FatJar(experimental)" default="jdbc" basedir=".">
+<!-- ====================================================================== 
+     2009. 4. 11. 오전 10:59:20                                                        
+
+     project framework core     
+     description
+                   
+     by bleujin(bleujin@gmail.com)                                                                
+     ====================================================================== -->
+    <!--
+        <property name="fjepPath" value="reference:file:plugins\net.sf.fjep.fatjar_0.0.31.jarfatjar.jar"/>
+        <taskdef name="fatjar.build" classname="net.sf.fjep.anttask.FJBuildTask" classpath="${fjepPath}"/>
+        <typedef name="fatjar.manifest" classname="net.sf.fjep.anttask.FJManifestType" classpath="${fjepPath}"/>
+        <typedef name="fatjar.exclude" classname="net.sf.fjep.anttask.FJExcludeType" classpath="${fjepPath}"/>
+        <typedef name="fatjar.jarsource" classname="net.sf.fjep.anttask.FJJarSourceType" classpath="${fjepPath}"/>
+        <typedef name="fatjar.filesource" classname="net.sf.fjep.anttask.FJFileSourceType" classpath="${fjepPath}"/>
+    -->
+    <!-- uncomment the above lines to use ANT outside of Eclipse -->
+	
+	<property name="baseDir" value="." />
+	<property name="targetDir" value="../lib" />
+	
+	<target name="jdbc">
+		<delete file="${targetDir}/jdbc_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/jdbc_fat.jar">
+            <fatjar.manifest/>
+            <fatjar.jarsource file="${basedir}\jdbc\jdbc2_0-stdext.jar" relpath=""/>
+
+            <!-- mssql 2000 -->
+            <fatjar.jarsource file="${basedir}\jdbc\msbase.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\jdbc\mssqlserver.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\jdbc\msutil.jar" relpath=""/>
+
+        	<!-- mysql 5.1-->
+        	<fatjar.jarsource file="${basedir}\jdbc\mysql-connector-java-5.1.6-bin.jar" relpath=""/>
+
+        	<!-- mongo 2.1-->
+        	<fatjar.jarsource file="${basedir}\jdbc\mongo-2.6.3.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\jdbc\jsqlparser.jar" relpath=""/>
+
+        	<!-- h2 1.2.137-->
+        	<fatjar.jarsource file="${basedir}\jdbc\h2-1.2.137.jar" relpath=""/>
+        	
+        	<!-- oracle 10g -->
+        	<fatjar.jarsource file="${basedir}\jdbc\ojdbc14.jar" relpath=""/>
+        </fatjar.build>
+    </target>
+
+	
+    <target name="struts">
+    	<delete file="${targetDir}/struts135_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/struts135_fat.jar">
+            <fatjar.manifest/>
+            <fatjar.jarsource file="${basedir}\strut135\struts-core-1.3.5.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\strut135\struts-el-1.3.5.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\strut135\struts-extras-1.3.5.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\strut135\struts-faces-1.3.5.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\strut135\struts-mailreader-dao-1.3.5.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\strut135\struts-scripting-1.3.5.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\strut135\struts-taglib-1.3.5.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\strut135\struts-tiles-1.3.5.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\strut135\antlr-2.7.2.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\strut135\bsf-2.3.0.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\strut135\jstl-1.0.2.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\strut135\oro-2.0.8.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\strut135\standard-1.0.6.jar" relpath=""/>
+        </fatjar.build>
+    </target>
+
+	
+    <target name="common_apache">
+    	<delete file="${targetDir}/common_apache_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/common_apache_fat.jar">
+            <fatjar.manifest/>
+
+            <fatjar.jarsource file="${basedir}\common-apache\commons-beanutils-1.8.0.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\common-apache\commons-chain-1.2.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\common-apache\commons-cli-1.0.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-dbcp-1.2.1.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-digester-1.8.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-discovery-0.4.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-fileupload-1.2.1.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-io-2.1.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-jexl-1.1.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-jxpath-1.2.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-lang-2.5.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-logging-1.1.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-net-1.4.1.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-pool-1.3.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-validator-1.3.1.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-vfs2-2.0.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-collections-3.2.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\common-apache\commons-codec-1.4.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\httpclient-4.1.3.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\httpcore-4.1.4.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\common-apache\httpmime-4.1.3.jar" relpath=""/>
+
+        </fatjar.build>
+    </target>
+
+
+    <target name="velocity">
+    	<delete file="${targetDir}/velocity_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/velocity_fat.jar">
+            <fatjar.manifest/>
+        	<fatjar.jarsource file="${basedir}\velocity\velocity-1.7.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\velocity\velocity-tools-2.0.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\velocity\velocity-tools-generic-2.0.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\velocity\velocity-tools-view-2.0.jar" relpath=""/> 
+        </fatjar.build>
+    </target>
+
+    <target name="json">
+    	<delete file="${targetDir}/json_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/json_fat.jar">
+            <fatjar.manifest/>
+        	<fatjar.jarsource file="${basedir}\json\json.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\json\json-lib-2.2.2-jdk15.jar" relpath=""/> 
+        </fatjar.build>
+    </target>
+	
+    <target name="xml">
+    	<delete file="${targetDir}/xml_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/xml_fat.jar">
+            <fatjar.manifest/>
+
+            <fatjar.jarsource file="${basedir}\xml\jdom.jar" relpath=""/> 
+            <fatjar.jarsource file="${basedir}\xml\xmlgraphics-commons-1.3.1.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\xml\xsltc.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\xml\serializer.jar" relpath=""/> <!--  XML Serializer-->
+
+        </fatjar.build>
+    </target>
+
+    <target name="search">
+    	<delete file="${targetDir}/search_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/search_fat.jar">
+            <fatjar.manifest/>
+        	<fatjar.jarsource file="${basedir}\search\tm-extractors-0.4.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\search\lucene-analyzers-2.9.1.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\search\lucene-core-2.9.1.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\search\metadata-extractor-2.3.1.jar" relpath=""/>  
+        </fatjar.build>
+    </target>
+
+
+    <target name="webservice">
+		<delete file="${targetDir}/webservice_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/webservice_fat.jar">
+            <fatjar.manifest/>
+
+            <fatjar.jarsource file="${basedir}\webservice\axis-ant.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\webservice\axis-schema.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\webservice\axis.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\webservice\wsdl4j.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\webservice\jaxrpc.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\webservice\saaj.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\webservice\xercesImpl.jar" relpath=""/>
+        	
+        	<!--fatjar.jarsource file="${basedir}\webservice\axis2.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\webservice\xml-apis.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\webservice\jsse.jar" relpath=""/-->
+        </fatjar.build>
+    </target>
+
+    <target name="rest_fat">
+    	<delete file="${targetDir}/rest_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/rest_fat.jar">
+            <fatjar.manifest/>
+
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.ext.crypto.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.ext.fileupload.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.ext.json.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.ext.servlet.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.ext.net.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.ext.velocity.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.ext.freemarker.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\rest\org.restlet.jar" relpath=""/> 
+        	<!-- fatjar.jarsource file="${basedir}\rest\standalone_fat.jar" relpath=""/ -->
+        	
+
+        </fatjar.build>
+    </target>
+
+    <target name="jetty_fat">
+    	<delete file="${targetDir}/jetty_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/jetty_fat.jar">
+            <fatjar.manifest/>
+            <fatjar.jarsource file="${basedir}\jetty\servlet-api.jar" relpath=""/> 
+
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-ajp-7.1.6.v20100715.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-annotations-7.1.6.v20100715.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-client-7.1.6.v20100715.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-continuation-7.1.6.v20100715.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-deploy-7.1.6.v20100715.jar" relpath=""/> 
+
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-http-7.1.6.v20100715.jar" relpath=""/> 
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-io-7.1.6.v20100715.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-jmx-7.1.6.v20100715.jar" relpath=""/> 
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-jndi-7.1.6.v20100715.jar" relpath=""/> 
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-plus-7.1.6.v20100715.jar" relpath=""/> 
+
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-policy-7.1.6.v20100715.jar" relpath=""/> 
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-rewrite-7.1.6.v20100715.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\jetty\jetty-security-7.1.6.v20100715.jar" relpath=""/> 
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-server-7.1.6.v20100715.jar" relpath=""/> 
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-servlet-7.1.6.v20100715.jar" relpath=""/>
+        	
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-util-7.1.6.v20100715.jar" relpath=""/>
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-webapp-7.1.6.v20100715.jar" relpath=""/>
+           	<fatjar.jarsource file="${basedir}\jetty\jetty-websocket-7.1.6.v20100715.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\jetty\jetty-xml-7.1.6.v20100715.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\jetty\org.restlet.ext.jetty.jar" relpath=""/>
+        </fatjar.build>
+    </target>
+	
+    <target name="convert">
+    	<delete file="${targetDir}/convert_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/convert_fat.jar">
+            <fatjar.manifest/>
+
+            <fatjar.jarsource file="${basedir}\convert\fontbox-0.8.0-incubating.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\convert\fop.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\convert\jempbox-1.0.0.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\convert\pdfbox-0.8.0-incubating.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\convert\jxl.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\convert\tidy.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\convert\poi-3.2-FINAL-20081019.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\convert\ezmorph-1.0.5.jar" relpath=""/> <!-- EZMorph is simple java library for transforming an Object to another Object. -->
+        </fatjar.build>
+    </target>
+
+
+	<target name="pdf">
+	   	<delete file="${targetDir}/pdf_fat.jar"></delete>
+	    <fatjar.build output="${targetDir}/pdf_fat.jar">
+	    <fatjar.manifest/>
+	
+		<fatjar.jarsource file="${basedir}\convert\core-renderer-minimal.jar" relpath=""/> <!-- convert pdf -->
+		<fatjar.jarsource file="${basedir}\convert\core-renderer.jar" relpath=""/><!-- convert pdf -->
+		<fatjar.jarsource file="${basedir}\convert\iText-2.0.8.jar" relpath=""/><!-- convert pdf -->
+		<fatjar.jarsource file="${basedir}\convert\xml-apis-xerces-2.9.1.jar" relpath=""/><!-- convert pdf -->
+	
+	</fatjar.build>
+	</target>
+	
+	
+   <target name="util">
+    	<delete file="${targetDir}/util_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/util_fat.jar">
+            <fatjar.manifest/>
+
+        	<fatjar.jarsource file="${basedir}\util\avalon-framework-4.2.0.jar" relpath=""/>
+
+            <fatjar.jarsource file="${basedir}\util\jai_codec.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\util\jai_core.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\util\log4j-1.2.8.jar" relpath=""/>
+
+        	<fatjar.jarsource file="${basedir}\util\jlibdiff.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\util\batik-all-1.7.jar" relpath=""/><!-- Batik is a Java-based toolkit for applications or applets that want to use images in the Scalable Vector Graphics (SVG)-->
+			<fatjar.jarsource file="${basedir}\util\cos.jar" relpath=""/> <!-- multipart requset upload file -->
+			<fatjar.jarsource file="${basedir}\util\ecs-1.4.2.jar" relpath=""/> <!-- Element Construction Set-->
+			<fatjar.jarsource file="${basedir}\util\ij.jar" relpath=""/> <!-- Image Processing and Analysis in java-->
+
+			<fatjar.jarsource file="${basedir}\util\jdtcore-2.1.0.jar" relpath=""/> <!-- the plug-in that defines the core Java elements and API -->
+			<fatjar.jarsource file="${basedir}\util\jericho-html-3.1.jar" relpath=""/> <!-- html parser -->
+			<fatjar.jarsource file="${basedir}\util\jmock-1.1.0.jar" relpath=""/> 
+			<fatjar.jarsource file="${basedir}\util\jms-1.0.2a.jar" relpath=""/> 
+
+			<fatjar.jarsource file="${basedir}\util\syntax.jar" relpath=""/> <!-- syntax highliter(template highliter) --> 
+			<fatjar.jarsource file="${basedir}\util\qboxlib.jar" relpath=""/>  <!-- -_-? -->
+        	<fatjar.jarsource file="${basedir}\util\webdavlib-2.1M1.jar" relpath=""/>  <!-- -_-? -->        	
+        </fatjar.build>
+    </target>
+
+    <target name="mail">
+        <delete file="${targetDir}/mail_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/mail_fat.jar">
+            <fatjar.manifest/>
+            <fatjar.jarsource file="${basedir}\mail\mail.jar" relpath=""/> 
+            <fatjar.jarsource file="${basedir}\mail\activation.jar" relpath=""/> 
+        </fatjar.build>
+    </target>
+
+    <target name="mongo">
+    	<delete file="${targetDir}/mongo_fat.jar"></delete>
+        <fatjar.build output="${targetDir}/mongo_fat.jar">
+            <fatjar.manifest/>
+        	<fatjar.jarsource file="${basedir}\jdbc\mongo-2.1.jar" relpath=""/> 
+        	<fatjar.jarsource file="${basedir}\jdbc\jsqlparser.jar" relpath=""/> 
+        </fatjar.build>
+    </target>
+	
+	<!--path id="framework.classpath">
+		  <pathelement location="${baseDir}/test/junit4_3.jar"/>
+		  <pathelement location="${webLibDir}/jdbc_fat.jar"/>
+		  <pathelement location="${webLibDir}/util_fat.jar"/>
+		  <pathelement location="${webLibDir}/common_apache_fat.jar"/>
+	  	  <pathelement location="${binDir}/"/>
+	</path-->
+	<!--target name="unitTest_framework">
+		<echo>classpath: ${framework.classpath}</echo>
+		<junit printsummary="yes" fork="yes" haltonfailure="no">
+			<classpath refid="framework.classpath" />
+			<formatter type="xml"/>
+			<test name="net.ion.framework.FrameworkAllTest" todir="../data"/>
+		</junit>
+		<junitreport todir="../data">
+            <fileset dir="../data">
+                <include name="TEST-*.xml"/>
+            </fileset>
+            <report format="frames" todir="../data/html"/>
+		</junitreport>
+	</target-->
+
+	<target name="all" depends="jdbc,struts,common_apache,velocity,json,xml,search,webservice,rest_fat,jetty_fat,convert,pdf,util,mail">
+		<delete dir="${basedir}/__" />
+	</target>
+</project>
