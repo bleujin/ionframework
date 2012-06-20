@@ -3,7 +3,7 @@
 
 <h2>Quick start</h2>
 
-<p>Start a web server on port 8080 and serve some static files:</p>
+<p>View TestCode in sample/, test/</p>
 
 DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@hostaddress:1521:devTest", "bleu", "redf");
 IDBController dc = new DBController(dbm);
