@@ -45,10 +45,20 @@ public class TestJava extends TestCase{
 	
 	public void testHostAddress() throws Exception {
 		Debug.line(InetAddress.getLocalHost().getHostAddress()) ;
-		
-		
 	}
 
+	public void testNumber() throws Exception {
+		
+		int sum = 0 ;
+		for (int i = 1; i < 10000 ; i++) {
+			String s = String.valueOf(i) ;
+			int mcount = StringUtil.countMatches(s, "0");
+			if (mcount > 0) Debug.debug(s) ;
+			sum += mcount ;
+		}
+		Debug.line(sum) ;
+	}
+	
 	public void testObjectId() throws Exception {
 		Debug.line(new ObjectId()) ;
 	}
