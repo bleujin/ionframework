@@ -77,10 +77,10 @@
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICSS6/icss/WEB-INF/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6Extend/lib/common/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6License/license/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/WebSocket/libs/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ToonServer/lib_source/aradon/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/fluffy/trunk/fluffy/lib/common/" />
 
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../WebSocketPlug/libs/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ISearcher/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../MongoSearch/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Aradon/aradon_lib/aradon/embed/" />

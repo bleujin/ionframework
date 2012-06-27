@@ -49,7 +49,7 @@ public class LobHandle extends TestBaseSample{
 		int result = cmd.execUpdate();
 	}
 	
-	public void testInsert() throws Exception {
+	public void xtestInsert() throws Exception {
 		dc.createUserCommand("truncate table lob_sample").execUpdate() ;
 		IUserCommand cmd = dc.createUserCommand("insert into lob_sample(a, b, c, d, e) values(:a, :b, :c, :d, :e)") ;
 		cmd.addParam("a", 1) ;
