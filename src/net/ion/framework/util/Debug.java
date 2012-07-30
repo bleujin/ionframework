@@ -123,10 +123,10 @@ public class Debug extends OutputStream {
 	}
 
 	public static void line(Object... objs) {
-		line('=', objs);
+		linec('=', objs);
 	}
 
-	public static void line(char c, Object... objs) {
+	public static void linec(char c, Object... objs) {
 		String s = StringUtil.repeat(String.valueOf(c), 20);
 		print(s, objs);
 	}
