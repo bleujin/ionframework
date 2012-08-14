@@ -1,5 +1,6 @@
 package net.ion.framework.db;
 
+import java.io.Closeable;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
@@ -65,7 +66,7 @@ import org.apache.commons.io.IOUtils;
  * @version 1.0
  */
 
-public class DBController implements IDBController { // implements Configurable
+public class DBController implements IDBController, Closeable { // implements Configurable
 // public static DBController TEST_CONTROLLER = new DBController("test", new OracleCacheDBManager("jdbc:oracle:thin:@bleujin:1521:bleujin", "ipub40","ics4_r3" ,5), new StdOutServant(StdOutServant.All)) ;
 	public static DBController TEST_CONTROLLER = new DBController("test", new MSSQLPoolDBManager(
 			"jdbc:microsoft:sqlserver://dev_sql.i-on.net:1433;DatabaseName=HK_NEWS_ICS5", "HK_NEWS_ICS5", "HK_NEWS_ICS5"), new StdOutServant(StdOutServant.All));
@@ -435,5 +436,9 @@ public class DBController implements IDBController { // implements Configurable
 
 	public void setMidgard(HashMap<String, String> midgard) {
 		this.midgard = midgard;
+	}
+
+	public void close() throws IOException {
+		destroySelf() ;
 	}
 }

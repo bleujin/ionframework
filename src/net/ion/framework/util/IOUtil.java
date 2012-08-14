@@ -26,7 +26,7 @@ public class IOUtil extends IOUtils {
 			if (cl != null) cl.close();
 		} catch (IOException ignore) {
 			ignore.printStackTrace() ;
-			throw new IllegalStateException(ignore) ;
+//			throw new IllegalStateException(ignore) ;
 		}
 	}
 
