@@ -1,7 +1,7 @@
 package net.ion.framework.configuration;
 
 /**
- * È¯°æº¯¼öµéÀ» °¡Á®¿À°í ÀúÀåÇÏ´Â ±âº»ÀûÀÎ Á¢±Ù ¸Þ¼ÒµåµéÀ» Á¤ÀÇÇÏ´Â Interface
+ * È¯ï¿½æº¯ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¼Òµï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Interface
  * 
  * @author Choi sei hwan <a href="mailto:sehan@i-on.net">Choi sei hwan</a>
  * @version 1.0
@@ -9,31 +9,31 @@ package net.ion.framework.configuration;
 
 public interface Configuration {
 	/**
-	 * ÇöÀç Configuration ¿¡¼­ childElementNameÀÌ¸§ÀÇ ÀÚ½Ä Element ¸¦ ÇÏ³ª°¡Á®¿Â´Ù. childElementNameÀ» °¡Áö´Â ÀÚ½ÄÀÌ ÇÏ³ªÀÌ»óÀÏ°æ¿ì¿¡´Â °¡ÀåÃ³À½¿¡ ¹ß°ßµÇ´Â ÀÚ½Ä¸¸À» °¡Á®¿Â´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ï¿½ï¿½ childElementNameï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½. childElementNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½Ì»ï¿½ï¿½Ï°ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ßµÇ´ï¿½ ï¿½Ú½Ä¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param childElementName
-	 *            String ÀÚ½Ä Element ÀÇ ÀÌ¸§
+	 *            String ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 * @throws NotFoundXmlTagException
-	 *             childElementNameÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì ¹ß»ý
+	 *             childElementNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws NotBuildException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ(.xml)ÀÌ ¾ÆÁ÷ Build µÇ¾îÀÖÁö ¾ÊÀº °æ¿ì ¹ß»ý
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(.xml)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Build ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws ConfigurationException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ Ã³¸®½Ã ¹®Á¦°¡ ¹ß»ýÇÏ¿´À» °æ¿ì ¹ß»ý
-	 * @return Configuration ÇØ´ç Child ElementÀÇ Configuration ÀÎ½ºÅÏ½º
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return Configuration ï¿½Ø´ï¿½ Child Elementï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	 */
 	Configuration getChild(String childElementName) throws NotFoundXmlTagException, NotBuildException, ConfigurationException;
 
 	/**
-	 * ÇöÀç Configuration ¿¡¼­ childElementNameÀÌ¸§ÀÇ ÀÚ½Ä Element ¸¦ ¸ðµÎ °¡Á®¿Â´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ï¿½ï¿½ childElementNameï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param childElementName
-	 *            String ÀÚ½Ä Element ÀÇ ÀÌ¸§
+	 *            String ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 * @throws NotFoundXmlTagException
-	 *             childElementNameÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì ¹ß»ý
+	 *             childElementNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws NotBuildException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ(.xml)ÀÌ ¾ÆÁ÷ Build µÇ¾îÀÖÁö ¾ÊÀº °æ¿ì ¹ß»ý
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(.xml)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Build ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws ConfigurationException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ Ã³¸®½Ã ¹®Á¦°¡ ¹ß»ýÇÏ¿´À» °æ¿ì ¹ß»ý
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @return Configuration[]
 	 */
 	Configuration[] getChildren(String childElementName) throws NotFoundXmlTagException, NotBuildException, ConfigurationException;
@@ -43,171 +43,172 @@ public interface Configuration {
 	// String getLocation();
 
 	/**
-	 * ÇöÀç Configuration ÀÇ Tag ÀÌ¸§À» °¡Á®¿Â´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ Tag ï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
-	 * @return ÇöÀç Tag ÀÇ ÀÌ¸§
+	 * @return ï¿½ï¿½ï¿½ï¿½ Tag ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 */
 	String getTagName();
 
 	/**
-	 * Attribute °ªÀ» °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
-	 * @return String Attribute °ª
+	 *            String Attribute ï¿½Ì¸ï¿½
+	 * @return String Attribute ï¿½ï¿½
 	 */
 	String getAttribute(String attributeName);
 
 	/**
-	 * Attribute °ªÀ» °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ï¿½Ì¸ï¿½
 	 * @param defaultValue
-	 *            String Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return String Attribute °ª
+	 *            String Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½âº»ï¿½ï¿½
+	 * @return String Attribute ï¿½ï¿½
 	 */
 	String getAttribute(String attributeName, String defaultValue);
 
 	/**
-	 * Attribute °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ intï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ï¿½Ì¸ï¿½
 	 * @throws ConfigurationException
-	 *             Attribute °ªÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò°Å³ª, Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì, ¶Ç´Â °ªÀÌ int ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ý
-	 * @return int Attribute °ª
+	 *             Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò°Å³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ int ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ castingï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return int Attribute ï¿½ï¿½
 	 */
 	int getAttributeAsInt(String attributeName) throws ConfigurationException;
 
 	/**
-	 * Attribute °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ intï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ï¿½Ì¸ï¿½
 	 * @param defaultValue
-	 *            int Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return int Attribute °ª
+	 *            int Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½âº»ï¿½ï¿½
+	 * @return int Attribute ï¿½ï¿½
 	 */
 	int getAttributeAsInt(String attributeName, int defaultValue);
 
 	/**
-	 * Attribute °ªÀ» floatÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ floatï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ï¿½Ì¸ï¿½
 	 * @throws ConfigurationException
-	 *             Attribute °ªÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò°Å³ª, Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì, ¶Ç´Â °ªÀÌ float ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ý
-	 * @return float Attribute °ª
+	 *             Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò°Å³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½, ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ float ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ castingï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return float Attribute ï¿½ï¿½
 	 */
 	float getAttributeAsFloat(String attributeName) throws ConfigurationException;
 
 	/**
-	 * Attribute °ªÀ» float ÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ float ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ï¿½Ì¸ï¿½
 	 * @param defaultValue
-	 *            float Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return float Attribute °ª
+	 *            float Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½âº»ï¿½ï¿½
+	 * @return float Attribute ï¿½ï¿½
 	 */
 	float getAttributeAsFloat(String attributeName, float defaultValue);
 
 	/**
-	 * Attribute °ªÀ» Boolean ÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ Boolean ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ï¿½Ì¸ï¿½
 	 * @throws ConfigurationException
-	 *             Attribute °ªÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò°Å³ª, Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì ¹ß»ý
-	 * @return boolean Attribute °ª
+	 *             Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò°Å³ï¿½, ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return boolean Attribute ï¿½ï¿½
 	 */
 	boolean getAttributeAsBoolean(String attributeName) throws ConfigurationException;
 
 	/**
-	 * Attribute °ªÀ» Boolean ÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ Boolean ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ï¿½Ì¸ï¿½
 	 * @param defaultValue
-	 *            boolean Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return boolean Attribute °ª
+	 *            boolean Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½âº»ï¿½ï¿½
+	 * @return boolean Attribute ï¿½ï¿½
 	 */
 	boolean getAttributeAsBoolean(String attributeName, boolean defalutValue);
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
-	 * @return String ÅÂ±× °ª
+	 * @return String ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	String getValue();
 
 	String getValue(String defaultValue);
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ intï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @throws ConfigurationException
-	 *             °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì, ¶Ç´Â °ªÀÌ int ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ý
-	 * @return int ÅÂ±× °ª
+	 *             ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ int ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ castingï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return int ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	int getValueAsInt() throws ConfigurationException;
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ intï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param defaultValue
-	 *            int °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return int ÅÂ±× °ª
+	 *            int ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½âº»ï¿½ï¿½
+	 * @return int ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	int getValueAsInt(int defaultValue);
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» floatÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ floatï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @throws ConfigurationException
-	 *             °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì, ¶Ç´Â °ªÀÌ float ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ý
-	 * @return float ÅÂ±× °ª
+	 *             ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½, ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½ï¿½ float ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ castingï¿½ï¿½ ï¿½Ò°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return float ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	float getValueAsFloat() throws ConfigurationException;
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» floatÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ floatï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param defaultValue
-	 *            float °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return float ÅÂ±× °ª
+	 *            float ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½âº»ï¿½ï¿½
+	 * @return float ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	float getValueAsFloat(float defaultValue);
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» booleanÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ booleanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @throws ConfigurationException
-	 *             °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ¹ß»ý
-	 * @return boolean ÅÂ±× °ª
+	 *             ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return boolean ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	boolean getValueAsBoolean() throws ConfigurationException;
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» booleanÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ booleanï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ casting ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param defaultValue
-	 *            boolean °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return boolean ÅÂ±× °ª
+	 *            boolean ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ç´ï¿½ ï¿½âº»ï¿½ï¿½
+	 * @return boolean ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	boolean getValueAsBoolean(boolean defaultValue);
 
 	/**
-	 * ÇöÀç Tag ¿¡ attributeNameÀ» °¡Áö´Â attribute°¡ Á¸ÀçÇÏ¸é °ªÀ» attributeValue ·Î ¼³Á¤ÇÏ°í Á¸ÀçÇÏÁö ¾ÊÀ¸¸é attribute ¸¦ Ãß°¡ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Tag ï¿½ï¿½ attributeNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ attributeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ attributeValue ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ attribute ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param attributeName
 	 * @param attributeValue
 	 * @throws ConfigurationException
-	 *             attributeName ¿¡ illegal character°¡ Æ÷ÇÔµÇ¾îÀÖÀ»¶§
+	 *             attributeName ï¿½ï¿½ illegal characterï¿½ï¿½ ï¿½ï¿½ï¿½ÔµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	void setAttribute(String attributeName, String attributeValue) throws ConfigurationException;
 
 	// void setValue( String value );
 
+	String getXML() throws ConfigurationException;
 }

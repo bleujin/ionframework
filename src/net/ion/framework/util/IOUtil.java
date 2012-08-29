@@ -30,6 +30,13 @@ public class IOUtil extends IOUtils {
 		}
 	}
 
+	public static void closeSilent(Closeable cl) {
+		try {
+			if (cl != null) cl.close();
+		} catch (IOException ignore) {
+		}
+	}
+	
 	public static void copyNClose(InputStream input, OutputStream output) throws IOException {
 		try {
 			IOUtil.copyLarge(input, output) ;

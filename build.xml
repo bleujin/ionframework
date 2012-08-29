@@ -72,11 +72,6 @@
 	
 	<target name="copy" depends="publish">
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/IBR/ibr/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6/ics/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICSS5/icss/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICSS6/icss/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6Extend/lib/common/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6License/license/WEB-INF/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ToonServer/lib_source/aradon/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/fluffy/trunk/fluffy/lib/common/" />
 
@@ -86,7 +81,14 @@
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Aradon/aradon_lib/aradon/embed/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../AradonExtend/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../MongoNode/lib/" />
-
 	</target>	
-	
+
+	<target name="copy_novision" depends="publish">
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/IBR/ibr/WEB-INF/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6/ics/WEB-INF/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6Extend/lib/common/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICSS6/icss/WEB-INF/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICSS6Extend/lib/common/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ICS6License/license/WEB-INF/lib/" />
+	</target>	
 </project>
