@@ -111,4 +111,12 @@ public class TestJava extends TestCase{
 		
 	}
 	
+	public void testUTF() throws Exception {
+		String s = "a한" ;
+		
+		assertEquals(4, s.getBytes("UTF-8").length) ;
+		
+		
+	}
+	
 }

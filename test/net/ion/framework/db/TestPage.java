@@ -22,4 +22,10 @@ public class TestPage extends TestCase {
         Debug.line(rows) ;
         dc.destroySelf() ;
 	}
+	
+	
+	public void testPage() throws Exception {
+		Page page = Page.create(2, 2) ;
+		Debug.line(page.getStartLoc(), page.getEndLoc()) ;
+	}
 }
