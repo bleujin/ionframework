@@ -1,28 +1,34 @@
 package net.ion.framework.configuration;
 
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.StringTokenizer;
 
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
+import com.sun.org.apache.xml.internal.serialize.OutputFormat;
+import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
+
 /**
  * @author Choi sei hwan <a href="mailto:sehan@i-on.net">Choi sei hwan</a>
  * @version 1.0
  * 
  *          <pre>
- * ±âº» Configuration Å¬·¡½º
+ * ï¿½âº» Configuration Å¬ï¿½ï¿½ï¿½ï¿½
  * 
- * XML ÀÇ Tag Element ¿Í DefaultConfiguration Å¬·¡½ºÇÏ³ª°¡ ¸ÅÇÎµÈ´Ù.
+ * XML ï¿½ï¿½ Tag Element ï¿½ï¿½ DefaultConfiguration Å¬ï¿½ï¿½ï¿½ï¿½ï¿½Ï³ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ÎµÈ´ï¿½.
  * ex)
  *  <tag attributeName=attributeValue>value</tag>
  * 
- * xml ÀÇ attribute´Â getAttribute(...) ·Î value´Â getValue()·Î Á¢±ÙÇÑ´Ù.
+ * xml ï¿½ï¿½ attributeï¿½ï¿½ getAttribute(...) ï¿½ï¿½ valueï¿½ï¿½ getValue()ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
  * 
  * ex)
  *      ConfigurationFactory factory = ConfigurationFactory.newinstance();
- *      factory.build( "È¯°æ¼³Á¤ XML ÆÄÀÏ" );
- *      // <config><sys type="unix">Solaris</sys></config> ÀÏ¶§
+ *      factory.build( "È¯ï¿½æ¼³ï¿½ï¿½ XML ï¿½ï¿½ï¿½ï¿½" );
+ *      // <config><sys type="unix">Solaris</sys></config> ï¿½Ï¶ï¿½
  *      DefaultConfiguration config = factory.getConfiguration( "config.sys" );
  *      String attribute =  config.getAttribute( "type" );
  *      String value = config.getValue();
@@ -41,12 +47,12 @@ public class DefaultConfiguration extends AbstractConfiguration {
 
 	/**
 	 * @param element
-	 *            ÇöÀç Configuration ÀÌ °¡Áö´Â Element
+	 *            ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Element
 	 * @param elementPathString
-	 *            ÇöÀç ElementÀÇ À§Ä¡¸¦ ³ªÅ¸³»´Â path ¹®ÀÚ¿­
+	 *            ï¿½ï¿½ï¿½ï¿½ Elementï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ path ï¿½ï¿½ï¿½Ú¿ï¿½
 	 * @param elementIndexString
-	 *            ÇöÀç ElementÀÇ À§Ä¡¸¦ ³ªÅ¸³»´Â index ¹®ÀÚ¿­ path ¹®ÀÚ¿­ÀÌ <br>
-	 *            aaa.bbb.ccc ¶ó¸é aaa °¡ ¸î¹øÂ° ÀÎÁö, bbb°¡ ¸é¹øÂ° ÀÎÁö¸¦ ³ªÅ¸³½´Ù. 0.0.0 ÀÌ¶ó¸é aaa Ã¹¹øÂ°, bbb Ã¹¹øÂ°, ccc Ã¹¹øÂ°¸¦ ³ªÅ¸³½´Ù.
+	 *            ï¿½ï¿½ï¿½ï¿½ Elementï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ index ï¿½ï¿½ï¿½Ú¿ï¿½ path ï¿½ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ <br>
+	 *            aaa.bbb.ccc ï¿½ï¿½ï¿½ aaa ï¿½ï¿½ ï¿½ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½, bbbï¿½ï¿½ ï¿½ï¿½ï¿½Â° ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½. 0.0.0 ï¿½Ì¶ï¿½ï¿½ aaa Ã¹ï¿½ï¿½Â°, bbb Ã¹ï¿½ï¿½Â°, ccc Ã¹ï¿½ï¿½Â°ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½.
 	 * @param factoryInstanceKeyName
 	 * @throws ConfigurationException
 	 */
@@ -62,33 +68,33 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	}
 
 	/**
-	 * ÇöÀç Configuration ¿¡¼­ childElementNameÀÌ¸§ÀÇ ÀÚ½Ä Element ¸¦ ÇÏ³ª°¡Á®¿Â´Ù. childElementNameÀ» °¡Áö´Â ÀÚ½ÄÀÌ ÇÏ³ªÀÌ»óÀÏ°æ¿ì¿¡´Â °¡ÀåÃ³À½¿¡ ¹ß°ßµÇ´Â ÀÚ½Ä¸¸À» °¡Á®¿Â´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ï¿½ï¿½ childElementNameï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½. childElementNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½Ì»ï¿½ï¿½Ï°ï¿½ì¿¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ßµÇ´ï¿½ ï¿½Ú½Ä¸ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param childElementName
-	 *            String ÀÚ½Ä Element ÀÇ ÀÌ¸§
+	 *            String ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 * @throws NotFoundXmlTagException
-	 *             childElementNameÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì ¹ß»ý
+	 *             childElementNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws NotBuildException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ(.xml)ÀÌ ¾ÆÁ÷ Build µÇ¾îÀÖÁö ¾ÊÀº °æ¿ì ¹ß»ý
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(.xml)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Build ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws ConfigurationException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ Ã³¸®½Ã ¹®Á¦°¡ ¹ß»ýÇÏ¿´À» °æ¿ì ¹ß»ý
-	 * @return Configuration ÇØ´ç Child ElementÀÇ Configuration ÀÎ½ºÅÏ½º
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
+	 * @return Configuration ï¿½Ø´ï¿½ Child Elementï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	 */
 	public Configuration getChild(String childElementName) throws NotFoundXmlTagException, NotBuildException, ConfigurationException {
 		return factory.getConfiguration(childElementName, this);
 	}
 
 	/**
-	 * ÇöÀç Configuration ¿¡¼­ childElementNameÀÌ¸§ÀÇ ÀÚ½Ä Element ¸¦ ¸ðµÎ °¡Á®¿Â´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ï¿½ï¿½ childElementNameï¿½Ì¸ï¿½ï¿½ï¿½ ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param childElementName
-	 *            String ÀÚ½Ä Element ÀÇ ÀÌ¸§
+	 *            String ï¿½Ú½ï¿½ Element ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 * @throws NotFoundXmlTagException
-	 *             childElementNameÀÌ Á¸ÀçÇÏÁö ¾Ê´Â °æ¿ì ¹ß»ý
+	 *             childElementNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê´ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws NotBuildException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ(.xml)ÀÌ ¾ÆÁ÷ Build µÇ¾îÀÖÁö ¾ÊÀº °æ¿ì ¹ß»ý
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(.xml)ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Build ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @throws ConfigurationException
-	 *             È¯°æ¼³Á¤ÆÄÀÏ Ã³¸®½Ã ¹®Á¦°¡ ¹ß»ýÇÏ¿´À» °æ¿ì ¹ß»ý
+	 *             È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ß»ï¿½ï¿½Ï¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ß»ï¿½
 	 * @return Configuration[]
 	 */
 	public Configuration[] getChildren(String childElementName) throws NotFoundXmlTagException, NotBuildException, ConfigurationException {
@@ -96,9 +102,9 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» °¡Á®¿Â´Ù.
+	 * ï¿½Â±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
-	 * @return String ÅÂ±× °ª
+	 * @return String ï¿½Â±ï¿½ ï¿½ï¿½
 	 */
 	public String getValue() {
 		if (element.hasChildNodes()) {
@@ -114,23 +120,23 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	}
 
 	/**
-	 * Attribute °ªÀ» °¡Á®¿Â´Ù.
+	 * Attribute ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
-	 * @return String Attribute °ª
+	 *            String Attribute ï¿½Ì¸ï¿½
+	 * @return String Attribute ï¿½ï¿½
 	 */
 	public String getAttribute(String attributeName) {
 		return element.getAttribute(attributeName).trim();
 	}
 
 	/**
-	 * ÇöÀç Tag ¿¡ attributeNameÀ» °¡Áö´Â attribute°¡ Á¸ÀçÇÏ¸é °ªÀ» attributeValue ·Î ¼³Á¤ÇÏ°í Á¸ÀçÇÏÁö ¾ÊÀ¸¸é attribute ¸¦ Ãß°¡ÇÑ´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Tag ï¿½ï¿½ attributeNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ attributeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ attributeValue ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ attribute ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param attributeName
 	 * @param attributeValue
 	 * @throws ConfigurationException
-	 *             attributeName ¿¡ illegal character°¡ Æ÷ÇÔµÇ¾îÀÖÀ»¶§
+	 *             attributeName ï¿½ï¿½ illegal characterï¿½ï¿½ ï¿½ï¿½ï¿½ÔµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 */
 	public void setAttribute(String attributeName, String attributeValue) throws ConfigurationException {
 		try {
@@ -141,7 +147,7 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	}
 
 	/**
-	 * ÇöÀç Configuration ÀÇ Element ¸¦ °¡Á®¿Â´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ Element ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @return Element
 	 */
@@ -150,7 +156,7 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	}
 
 	/**
-	 * ÇöÀç Configuration ÀÇ À§Ä¡¸¦ ³ªÅ¸³»´Â path ¹®ÀÚ¿­
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ path ï¿½ï¿½ï¿½Ú¿ï¿½
 	 * 
 	 * @return String
 	 */
@@ -159,7 +165,7 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	}
 
 	/**
-	 * ÇöÀç Configuration ÀÇ À§Ä¡¸¦ ³ªÅ¸³»´Â index ¹®ÀÚ¿­
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½Å¸ï¿½ï¿½ï¿½ï¿½ index ï¿½ï¿½ï¿½Ú¿ï¿½
 	 * 
 	 * @return String
 	 */
@@ -168,9 +174,9 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	}
 
 	/**
-	 * ÇöÀç Configuration À§Ä¡ÀÇ ±íÀÌ
+	 * ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * 
-	 * elementPathString ÀÌ aaaa.bbb ¶ó¸é elementDepth ´Â 2
+	 * elementPathString ï¿½ï¿½ aaaa.bbb ï¿½ï¿½ï¿½ elementDepth ï¿½ï¿½ 2
 	 * 
 	 * @return String
 	 */
@@ -178,4 +184,19 @@ public class DefaultConfiguration extends AbstractConfiguration {
 		return elementDepth;
 	}
 
+	public String getXML() throws ConfigurationException {
+		OutputFormat format = new OutputFormat();
+		format.setEncoding("UTF-8");
+		format.setLineWidth(2000);
+
+		Writer writer = new StringWriter();
+		XMLSerializer xs = new XMLSerializer(writer, format);
+		try {
+			xs.serialize(element);
+		} catch (IOException e) {
+			throw new ConfigurationException("element serialize error", e);
+		}
+		
+		return writer.toString();
+	}
 }
