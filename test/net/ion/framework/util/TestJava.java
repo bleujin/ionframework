@@ -2,6 +2,7 @@ package net.ion.framework.util;
 
 import java.io.File;
 import java.net.InetAddress;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
@@ -111,12 +112,8 @@ public class TestJava extends TestCase{
 		
 	}
 	
-	public void testUTF() throws Exception {
-		String s = "a한" ;
-		
-		assertEquals(4, s.getBytes("UTF-8").length) ;
-		
-		
+	public void testURL() throws Exception {
+		// Object content = new URL("http://localhost:9000/action?aradon.result.method=delete").getContent();
 	}
 	
 }
