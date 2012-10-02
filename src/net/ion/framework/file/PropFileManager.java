@@ -24,7 +24,7 @@ import net.ion.framework.util.StringUtil;
 
 public class PropFileManager {
 
-	private final static int PIECE_NUM = 3;
+	private final static int PIECE_LENGTH = 3;
 	private File baseDir;
 	static String UTF8 = "UTF-8";
 
@@ -41,7 +41,7 @@ public class PropFileManager {
 	}
 
 	public PropFile save(String uniquePath, JsonObject meta, InputStream input) throws IOException {
-		String[] pathHex = HexUtil.toHexSplit(uniquePath.getBytes(UTF8), PIECE_NUM);
+		String[] pathHex = toHexSplit(uniquePath.getBytes(UTF8), PIECE_LENGTH);
 
 		String metaString = (meta == null) ? "{}" : meta.toString();
 		byte[] metaBytes = metaString.getBytes(UTF8);
@@ -60,7 +60,7 @@ public class PropFileManager {
 	}
 
 	public PropFile read(String uniquePath) throws UnsupportedEncodingException {
-		String[] pathHex = HexUtil.toHexSplit(uniquePath.getBytes(UTF8), PIECE_NUM);
+		String[] pathHex = toHexSplit(uniquePath.getBytes(UTF8), PIECE_LENGTH);
 		File newFile = new File(baseDir, StringUtil.join(pathHex, "/"));
 
 		return PropFile.create(pathHex, newFile);
@@ -87,7 +87,7 @@ public class PropFileManager {
 		for (File findFile : findFiles) {
 			String relativePath = StringUtil.substringAfter(findFile.getCanonicalPath(), baseDir.getCanonicalPath() + SystemUtils.FILE_SEPARATOR);
 			String hexPathName = StringUtil.join(StringUtil.split(relativePath, SystemUtils.FILE_SEPARATOR));
-			String[] pathHex = HexUtil.toHexSplit(HexUtil.toByteArray(hexPathName), PIECE_NUM);
+			String[] pathHex = toHexSplit(HexUtil.toByteArray(hexPathName), PIECE_LENGTH);
 
 			result.add(PropFile.create(pathHex, findFile));
 		}
@@ -115,4 +115,26 @@ public class PropFileManager {
 		} 
 		return result.toArray(new File[0]);
 	}
+	
+	static String[] toHexSplit(byte[] b, int pieceLength ){
+		if (b == null &&  b.length <= pieceLength) return new String[]{HexUtil.toHex(b)} ;
+		
+		String hexString = HexUtil.toHex(b) ;
+		String[] result = new String[3] ;
+		for (int i = 0; i < result.length; i++) {
+			result[i] = StringUtil.substring(hexString, i*pieceLength, ((i == 2) ? hexString.length() : (i+1)*pieceLength)) ;
+		}
+		
+		return result ;
+//		String[] result = new String[pieceLength] ;
+//		int start = 0 ;
+//		for (int i = 0; i < pieceLength; i++) {
+//			int end = b.length * (i+1) / pieceLength;
+//			result[i] = HexUtil.toHex(b, start, end) ;
+//			start = end ;
+//		}
+//		
+//		return result ;
+	}
+	
 }

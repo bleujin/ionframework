@@ -79,6 +79,7 @@
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ISearcher/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../MongoSearch/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Aradon/aradon_lib/aradon/embed/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../AradonClient/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../AradonExtend/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../MongoNode/lib/" />
 	</target>	

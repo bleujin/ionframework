@@ -37,6 +37,13 @@ public class PropFile {
 	public String filePath() throws UnsupportedEncodingException {
 		return new String(HexUtil.toByteArray(StringUtil.join(pathHex)), PropFileManager.UTF8);
 	}
+	
+	public boolean removeFile(){
+		if (exist()){
+			return targetFile.delete() ;
+		}
+		return false ;
+	}
 
 	public synchronized InputStream inputStream() throws IOException {
 		DataInputStream dinput = new DataInputStream(new FileInputStream(targetFile));

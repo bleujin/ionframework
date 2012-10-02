@@ -7,13 +7,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.nio.charset.Charset;
 import java.util.List;
 
 import junit.framework.TestCase;
-import net.ion.framework.file.HexUtil;
-import net.ion.framework.file.PropFile;
-import net.ion.framework.file.PropFileManager;
 import net.ion.framework.parse.gson.JsonObject;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.IOUtil;
@@ -22,6 +18,8 @@ import net.ion.framework.util.StringUtil;
 
 import org.restlet.data.MediaType;
 import org.restlet.service.MetadataService;
+
+import com.qbox.summary.PropertyManager;
 
 public class TestPropFile extends TestCase {
 
@@ -60,10 +58,13 @@ public class TestPropFile extends TestCase {
 		String str = "resource/temp/한글파일.jpg";
 		byte[] bytes = str.getBytes("UTF-8");
 		String hexString = HexUtil.toHex(bytes);
+		
+		Debug.line(PropFileManager.toHexSplit(bytes, 3)) ;
+		
 		for (int i = 1; i < 10; i++) {
-			String splitHexString = StringUtil.join(HexUtil.toHexSplit(bytes, i)) ;
-			Debug.line(hexString, splitHexString, i, hexString.length()) ;
-			assertEquals(hexString, splitHexString) ; 
+			String[] splitHexString = PropFileManager.toHexSplit(bytes, i) ;
+			Debug.line(splitHexString, i, hexString.length()) ;
+			assertEquals(splitHexString[0].length(), i) ; 
 		}
 	}
 	
