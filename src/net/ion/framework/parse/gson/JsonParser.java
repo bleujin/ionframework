@@ -136,19 +136,34 @@ public final class JsonParser {
 		return new JsonParser().parse(json);
 	}
 
+	private static DefaultExclusionStrategy DStrategy = new DefaultExclusionStrategy() ;
 	public static JsonElement fromObject(Object src) {
+		return fromObject(DStrategy, src) ;
+	}
+
+	public static JsonElement fromObject(ExclusionStrategy strategy, Object src) {
 		if (src == null) return JsonNull.INSTANCE ;
 		if (src instanceof JsonElement) return (JsonElement) src ; 
 		if (src instanceof ChainMap) return fromMap(((ChainMap)src).toMap()) ;
 		if (src instanceof Map) return fromMap((Map<String, Object>)src) ;
 		if (src instanceof Collection) return fromList(new ArrayList((Collection)src)) ;
 		if (src instanceof JsonString) return fromString(((JsonString)src).toJsonString()) ;
-//		if (src instanceof String) {
+		//		if (src instanceof String) {
 //			if (StringUtil.isBlank((String)src)) return new JsonPrimitive("") ; 
 //			return new JsonPrimitive((String)src) ;
 //		}
-		return new Gson().toJsonTree(src) ;
+		return new GsonBuilder().addSerializationExclusionStrategy(strategy).create().toJsonTree(src) ;
 	}
-
 	
+	private static class DefaultExclusionStrategy implements ExclusionStrategy {
+
+		public boolean shouldSkipClass(Class<?> clazz) {
+			return false;
+		}
+
+		public boolean shouldSkipField(FieldAttributes f) {
+			return false;
+		}
+		
+	}
 }

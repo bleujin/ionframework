@@ -72,7 +72,7 @@
 	
 	<target name="copy" depends="publish">
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/IBR/ibr/WEB-INF/lib/" />
-		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ToonServer/lib_source/aradon/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ToonServer/alone/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/fluffy/trunk/fluffy/lib/common/" />
 
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../WebSocketPlug/libs/" />

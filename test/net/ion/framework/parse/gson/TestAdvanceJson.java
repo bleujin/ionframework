@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ecs.xml.XML;
 
 import junit.framework.TestCase;
+import net.ion.framework.parse.gson.annotations.Expose;
 import net.ion.framework.parse.gson.annotations.SerializedName;
 import net.ion.framework.parse.gson.annotations.Since;
 import net.ion.framework.util.Debug;
@@ -78,16 +79,25 @@ public class TestAdvanceJson extends TestCase {
 	}
 	
 	
+	public void testVolatile() throws Exception {
+		JsonObject json = JsonParser.fromObject(new People("bleujin", 20)).getAsJsonObject();
+		assertEquals(true, json.has("not")) ;
+		json = JsonParser.fromObject(new ExposeExclusionStrategy(), new People("bleujin", 20)).getAsJsonObject();
+		assertEquals(false, json.has("not")) ;
+	}
+	
 
 }
 
 class People {
 	@SerializedName("username") String name;
 	int age;
-
+	@Expose String not ;
+	
 	People(String name, int age) {
 		this.name = name;
 		this.age = age;
+		this.not = "dd" ;
 	}
 }
 
