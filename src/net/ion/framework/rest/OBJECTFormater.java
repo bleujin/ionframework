@@ -13,7 +13,9 @@ import org.restlet.representation.ObjectRepresentation;
 import org.restlet.representation.Representation;
 import org.restlet.resource.ResourceException;
 
-public class OBJECTFormater implements ResultSetHandler, IMapListRepresentationHandler, IRowsRepresentationHandler{
+public class OBJECTFormater implements ResultSetHandler<List<Map<String, ? extends Object>>>, IMapListRepresentationHandler, IRowsRepresentationHandler{
+
+	private static final long serialVersionUID = -2097100061558318458L;
 
 	public Representation toRepresentation(IRequest req, List<Map<String, ? extends Object>> datas, IResponse res) throws ResourceException  {
 		StdObject sto = StdObject.create(req, datas, res) ;
@@ -22,14 +24,14 @@ public class OBJECTFormater implements ResultSetHandler, IMapListRepresentationH
 
 	public Representation toRepresentation(IRequest req, ResultSet rows, IResponse res) throws ResourceException {
 		try {
-			List<Map<String, ?>> datas = (List<Map<String, ?>>) new MapListHandler().handle(rows) ;
+			List<Map<String, ? extends Object>> datas = new MapListHandler().handle(rows);
 			return toRepresentation(req, datas, res) ;
 		} catch (SQLException e) {
 			throw new ResourceException(e) ;
 		}
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public List<Map<String, ? extends Object>> handle(ResultSet rs) throws SQLException {
 		return new MapListHandler().handle(rs);
 	}
 

@@ -78,7 +78,7 @@ public interface Rows extends RowSet, RowSetInternal, Serializable, Cloneable {
 
 	public Collection toCollection() throws SQLException;
 
-	public Object toHandle(ResultSetHandler rsh) throws SQLException;
+	public <T> T toHandle(ResultSetHandler<T> rsh) throws SQLException;
 
 	public IQueryable getQueryable();
 
@@ -87,6 +87,8 @@ public interface Rows extends RowSet, RowSetInternal, Serializable, Cloneable {
 	public ScreenInfo getScreenInfo();
 	
 	public Rows toClone() throws IOException ;
+	
+	public void debugPrint() throws SQLException ;
 	
 }
 

@@ -1,5 +1,6 @@
 package net.ion.framework.db.bean.handlers;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.io.OutputStreamWriter;
 
 import org.apache.commons.lang.SystemUtils;
 
-public class CSVWriter {
+public class CSVWriter implements Closeable{
 
 	private char colDiv = ',';
 	private String lineSep = SystemUtils.LINE_SEPARATOR;

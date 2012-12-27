@@ -5,6 +5,7 @@ import net.ion.framework.db.DBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OraclePoolDBManager;
+import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.util.Debug;
 
@@ -33,7 +34,7 @@ public class TestBaseDB extends TestCase {
 	}
 
 	public void xtestExecQuery() throws Exception {
-		dc.addServant(new StdOutServant());
+		dc.addServant(new PrintOutServant());
 
 		// Rows rows = dc.getRows("SELECT CONCAT('notice',no) id, no, memo, name, reg_date, concat('http://im.i-on.net/zeroboard/view.php?id=notice&no=', no) url FROM zetyx_board_notice") ;
 		Rows rows = dc.getRows("SELECT 1 from dual");

@@ -71,4 +71,8 @@ public class FutureData implements Data {
 		notifyAll();
 	}
 
+	public Throwable getException() {
+		return null;
+	}
+
 }

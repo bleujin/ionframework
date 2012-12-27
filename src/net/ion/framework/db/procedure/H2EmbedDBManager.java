@@ -95,6 +95,10 @@ public class H2EmbedDBManager extends DBManager {
 		return bean.getUserId();
 	}
 
+	public HSQLBean hsqlBean(){
+		return bean ;
+	}
+	
 	protected void heartbeatQuery(IDBController dc) {
 		;
 	}

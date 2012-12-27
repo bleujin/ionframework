@@ -5,6 +5,7 @@ import net.ion.framework.db.DBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OracleDBManager;
+import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.util.Debug;
 
@@ -20,7 +21,7 @@ public class TestBaseSample extends TestCase {
 		// DBManager dbm = new JTDSDBManager("jdbc:jtds:sqlserver://localhost:1433/test;useLOBs=false", "bleu", "redf") ;
 		// DBManager dbm = new MSSQLPoolDBManager("net.sourceforge.jtds.jdbc.Driver", "jdbc:jtds:sqlserver://localhost:1433/test;useLOBs=false", "bleu", "redf") ;
 		// DBManager dbm = new OracleCacheDBManager("jdbc:oracle:thin:@novision:1521:bleujin", "setuptest", "setuptest") ;
-		DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@dev-oracle.i-on.net:1521:dev10g", "bleu", "redf");
+		DBManager dbm = OracleDBManager.test();
 		dc = new DBController(dbm);
 		dc.initSelf();
 	}
@@ -35,7 +36,7 @@ public class TestBaseSample extends TestCase {
 	}
 
 	public void xtestExecQuery() throws Exception {
-		dc.addServant(new StdOutServant());
+		dc.addServant(new PrintOutServant());
 
 		// Rows rows = dc.getRows("SELECT CONCAT('notice',no) id, no, memo, name, reg_date, concat('http://im.i-on.net/zeroboard/view.php?id=notice&no=', no) url FROM zetyx_board_notice") ;
 		Rows rows = dc.getRows("SELECT * FROM emp_sample");

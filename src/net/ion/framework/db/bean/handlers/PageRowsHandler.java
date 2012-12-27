@@ -4,14 +4,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import net.ion.framework.db.Page;
+import net.ion.framework.db.Rows;
 import net.ion.framework.db.RowsImpl;
 import net.ion.framework.db.RowsUtils;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.Queryable;
 
-public class PageRowsHandler implements ResultSetHandler {
+public class PageRowsHandler implements ResultSetHandler<Rows> {
 
+	private static final long serialVersionUID = -855386580833154013L;
 	private IQueryable query;
 	private Page page;
 
@@ -20,7 +22,7 @@ public class PageRowsHandler implements ResultSetHandler {
 		this.page = query.getPage();
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public Rows handle(ResultSet rs) throws SQLException {
 		RowsImpl result = RowsUtils.create((Queryable) query);
 		result.populate(rs, page.getStartLoc(), page.getListNum());
 

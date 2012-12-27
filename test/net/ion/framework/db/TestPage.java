@@ -13,7 +13,7 @@ public class TestPage extends TestCase {
 		Debug.line(page.getStartLoc(), page.getEndLoc()) ;
 		
 		
-		DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") ;
+		DBManager dbm = OracleDBManager.test();
         //DBManager dbm = new MSSQLDBManager("jdbc:microsoft:sqlserver://dev-sql.i-on.net:1435;DatabaseName=pubs", "bleu", "redf") ;
         DBController dc = new DBController("Default", dbm);
         dc.initSelf() ;

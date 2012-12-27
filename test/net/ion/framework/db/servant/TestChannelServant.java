@@ -11,7 +11,7 @@ public class TestChannelServant extends TestCase{
 	
 	public void testPutTask() throws Exception {
 		ChannelServant cs = new ChannelServant(new ExceptionServant(), 10) ;
-		DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@dev-oracle.i-on.net:1521:dev10g", "bleu", "redf");
+		DBManager dbm = OracleDBManager.test();
 		IDBController dc = new DBController("tst", dbm, cs);
 		dc.initSelf();
 

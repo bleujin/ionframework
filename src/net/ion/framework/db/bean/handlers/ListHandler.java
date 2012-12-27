@@ -5,7 +5,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListHandler extends ScalarHandler {
+import net.ion.framework.db.bean.ResultSetHandler;
+import net.ion.framework.util.ListUtil;
+
+public class ListHandler extends ColNameHelper implements ResultSetHandler<List<String>> {
+	
+	private static final long serialVersionUID = 9103095185581415511L;
+
 	public ListHandler() {
 	}
 
@@ -17,14 +23,13 @@ public class ListHandler extends ScalarHandler {
 		super(columnIndex);
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
-
-		List<String> store = new ArrayList<String>();
+	public List<String> handle(ResultSet rs) throws SQLException {
+		List<String> store = ListUtil.newList() ;
 		while (rs.next()) {
-			if (getColumnName() == null) {
-				store.add(rs.getString(getColumnIndex()));
+			if (columnName() == null) {
+				store.add(rs.getString(columnIndex()));
 			} else {
-				store.add(rs.getString(getColumnName()));
+				store.add(rs.getString(columnName()));
 			}
 		}
 		return store;

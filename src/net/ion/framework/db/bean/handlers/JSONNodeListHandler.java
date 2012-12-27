@@ -11,13 +11,13 @@ import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.parse.gson.JsonObject;
 import net.ion.framework.parse.gson.JsonParser;
 
-public class JSONNodeListHandler extends AbstractListHandler implements ResultSetHandler {
+public class JSONNodeListHandler extends AbstractListHandler implements ResultSetHandler<JsonObject> {
 
 	public JSONNodeListHandler(String[] attrNames, String[] attrColNames) {
 		super(attrNames, attrColNames);
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public JsonObject handle(ResultSet rs) throws SQLException {
 		ResultSetMetaData meta = rs.getMetaData();
 
 		List<String> types = new ArrayList<String>();
@@ -34,7 +34,7 @@ public class JSONNodeListHandler extends AbstractListHandler implements ResultSe
 			}
 		}
 
-		List<Map> list = (List<Map>) new MapListHandler().handleString(rs, getAttributeNames(), getColumnNames());
+		List<Map<String, Object>> list = new MapListHandler().handleString(rs, getAttributeNames(), getColumnNames());
 
 		JsonObject body = new JsonObject();
 

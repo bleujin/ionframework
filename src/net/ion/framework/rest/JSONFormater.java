@@ -21,7 +21,7 @@ import org.restlet.representation.Representation;
 import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ResourceException;
 
-public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandler, IMapListRepresentationHandler, MyConstant {
+public class JSONFormater implements ResultSetHandler<JsonObject>, IRowsRepresentationHandler, IMapListRepresentationHandler, MyConstant {
 
 	private static final long serialVersionUID = 6113762745155031544L;
 //	private static JsonConfig JCONFIG = new JsonConfig() ;
@@ -29,7 +29,7 @@ public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandle
 //		JCONFIG.setCycleDetectionStrategy(CycleDetectionStrategy.LENIENT) ;
 //	}
 	
-	public Object handle(ResultSet rs) throws SQLException {
+	public JsonObject handle(ResultSet rs) throws SQLException {
 		JsonObject result = new JsonObject();
 
 		return toJSON(rs, result);
@@ -93,7 +93,7 @@ public class JSONFormater implements ResultSetHandler, IRowsRepresentationHandle
 			cols.add(meta.getColumnName(column));
 		}
 
-		List<Map> list = (List<Map>) new MapListHandler().handle(rs);
+		List<Map<String, ? extends Object>> list = new MapListHandler().handle(rs);
 		
 		parent.add(TYPE, JsonParser.fromList(types));
 		parent.add("header", JsonParser.fromList(cols));

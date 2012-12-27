@@ -3,10 +3,8 @@ package net.ion.framework.db;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InvalidObjectException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.ObjectStreamException;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
@@ -14,22 +12,20 @@ import java.sql.Array;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Ref;
+import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.Map;
 
-import org.restlet.representation.InputRepresentation;
-
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.Queryable;
-import net.ion.framework.db.procedure.SerializedQuery;
 import net.ion.framework.db.rowset.WebRowSet;
 import net.ion.framework.db.rowset.XmlWriter;
-import net.ion.framework.util.Closure;
-import net.ion.framework.util.Debug;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.IOUtil;
+import net.ion.framework.util.MapUtil;
 import net.ion.framework.util.StringUtil;
 
 /**
@@ -295,11 +291,23 @@ public class RowsImpl extends WebRowSet implements Rows {
 		}
 	}
 
-	public void each(Closure<Rows> clos) throws SQLException {
-		
-		while(next()){
-			clos.execute(this) ;
-		}
+	public void debugPrint() throws SQLException{
+		DebugHandler.handle(this) ;
 	}
+	
+	public static ResultSetHandler<Void> DebugHandler = new ResultSetHandler<Void>(){
+		private static final long serialVersionUID = 9075443775350544529L;
 
+		public Void handle(ResultSet rs) throws SQLException {
+			ResultSetMetaData meta = rs.getMetaData();
+			while(rs.next()){
+				Map<String, Object> rowMap = MapUtil.newMap() ; 
+				for (int i = 1 ; i <= meta.getColumnCount() ; i++) {
+					rowMap.put(meta.getColumnLabel(i), rs.getObject(i)) ;
+				} 
+				System.out.println(JsonParser.fromMap(rowMap).toString()) ;
+			}
+			return null;
+		}		
+	} ;
 }

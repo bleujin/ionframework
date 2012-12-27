@@ -8,8 +8,9 @@ import net.ion.framework.db.bean.ResultSetHandler;
 
 import org.apache.ecs.xml.XML;
 
-public class XMLNodeHandler extends AbstractXMLHandler implements ResultSetHandler {
+public class XMLNodeHandler extends AbstractXMLHandler implements ResultSetHandler<XML> {
 
+	private static final long serialVersionUID = 9018503631840316691L;
 	private Rows props;
 	private String[] attrNames;
 	private String[] attrColNames;
@@ -26,7 +27,7 @@ public class XMLNodeHandler extends AbstractXMLHandler implements ResultSetHandl
 		this.valueColName = valueColName;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public XML handle(ResultSet rs) throws SQLException {
 		XML node = new XML("node");
 
 		while (rs.next()) {

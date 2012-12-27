@@ -127,7 +127,7 @@ public abstract class DBManager {
 	}
 
 	protected void heartbeatQuery(IDBController dc) throws SQLException {
-		getRepositoryService().createUserCommand(dc, "select 1").execQuery();
+		getRepositoryService().createUserCommand(dc, "select /* hearbeat query */ 1").execQuery();
 	}
 
 	public IDBController getOwner() {

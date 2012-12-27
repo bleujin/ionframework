@@ -40,4 +40,8 @@ public class RealData implements Data {
 		return query;
 	}
 
+	public Throwable getException() {
+		return null;
+	}
+
 }

@@ -22,7 +22,7 @@ public class TestQuerySerialize extends TestCase{
 	@Override
 	protected void setUp() throws Exception {
 		super.setUp();
-		DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") ;
+		DBManager dbm = OracleDBManager.test();
 		dc = new DBController(dbm) ;
 		dc.initSelf() ;
 	}

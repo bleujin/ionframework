@@ -11,8 +11,9 @@ import net.ion.framework.util.StringUtil;
 
 import org.apache.ecs.xml.XML;
 
-public class XMLDefaultNodeHandler extends AbstractXMLHandler implements ResultSetHandler {
+public class XMLDefaultNodeHandler extends AbstractXMLHandler implements ResultSetHandler<XML> {
 
+	private static final long serialVersionUID = 3371998338887469881L;
 	private Rows props;
 	private String rootName;
 	private CaseInsensitiveSet<String> dataSections;
@@ -25,7 +26,7 @@ public class XMLDefaultNodeHandler extends AbstractXMLHandler implements ResultS
 		this.attrDataSessions = new CaseInsensitiveSet<String>(attrDataSessions);
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public XML handle(ResultSet rs) throws SQLException {
 		XML node = new XML(rootName);
 
 		ResultSetMetaData meta = rs.getMetaData();

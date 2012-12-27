@@ -20,11 +20,13 @@ import net.ion.framework.db.Page;
 import net.ion.framework.db.RepositoryException;
 import net.ion.framework.db.Row;
 import net.ion.framework.db.Rows;
+import net.ion.framework.db.RowsImpl;
 import net.ion.framework.db.RowsUtils;
 import net.ion.framework.db.ScreenInfo;
 import net.ion.framework.db.Transformer;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.rowset.WebRowSet;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.StringUtil;
 
 public class H2Rows extends WebRowSet implements Rows {
@@ -283,5 +285,8 @@ public class H2Rows extends WebRowSet implements Rows {
 		throw new UnsupportedOperationException() ;
 	}
 
+	public void debugPrint() throws SQLException {
+		RowsImpl.DebugHandler.handle(this) ;
+	}
 
 }

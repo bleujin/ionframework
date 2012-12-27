@@ -13,8 +13,9 @@ import net.ion.framework.parse.gson.JsonParser;
 
 import org.apache.commons.lang.ArrayUtils;
 
-public class JSONNodeHandler implements ResultSetHandler {
+public class JSONNodeHandler implements ResultSetHandler<JsonObject> {
 
+	private static final long serialVersionUID = -8920343621672554849L;
 	private Rows props;
 	private String[] attrNames;
 	private String[] attrColNames;
@@ -29,7 +30,7 @@ public class JSONNodeHandler implements ResultSetHandler {
 		this.propColNames = propColNames;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public JsonObject handle(ResultSet rs) throws SQLException {
 		ResultSetMetaData meta = rs.getMetaData();
 
 		List<String> types = new ArrayList<String>();
@@ -46,7 +47,7 @@ public class JSONNodeHandler implements ResultSetHandler {
 			}
 		}
 
-		List<Object[]> list = (List<Object[]>) new ArrayListHandler().handleString(rs, attrColNames);
+		List<Object[]> list = new ArrayListHandler().handleString(rs, attrColNames);
 
 		JsonObject body = new JsonObject();
 

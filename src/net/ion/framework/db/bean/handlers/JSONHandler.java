@@ -13,9 +13,11 @@ import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.parse.gson.JsonObject;
 import net.ion.framework.parse.gson.JsonParser;
 
-public class JSONHandler implements ResultSetHandler {
+public class JSONHandler implements ResultSetHandler<JsonObject> {
 
-	public Object handle(ResultSet rs) throws SQLException {
+	private static final long serialVersionUID = -8575450828421814498L;
+
+	public JsonObject handle(ResultSet rs) throws SQLException {
 
 		ResultSetMetaData meta = rs.getMetaData();
 
@@ -26,7 +28,7 @@ public class JSONHandler implements ResultSetHandler {
 			cols.add(meta.getColumnName(i + 1));
 		}
 
-		List<Map> list = (List<Map>) new MapListHandler(new JSONRowProcessor()).handle(rs);
+		List<Map<String, ? extends Object>> list = new MapListHandler(new JSONRowProcessor()).handle(rs);
 		JsonObject body = new JsonObject();
 
 		body.add("TYPE", JsonParser.fromList(types));

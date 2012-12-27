@@ -71,11 +71,11 @@ public abstract class AbstractQueryable implements Queryable {
 
 	public abstract Rows myQuery(Connection conn) throws SQLException;
 
-	public abstract Object myHandlerQuery(Connection conn, ResultSetHandler handler) throws SQLException;
+	public abstract <T> T myHandlerQuery(Connection conn, ResultSetHandler<T> handler) throws SQLException;
 
 	public abstract int myUpdate(Connection conn) throws SQLException;
 
-	public Object execHandlerQuery(ResultSetHandler handler) throws SQLException {
+	public <T> T execHandlerQuery(ResultSetHandler<T> handler) throws SQLException {
 		Connection conn = null;
 		long start = 0, end = 0;
 		try {
@@ -83,7 +83,7 @@ public abstract class AbstractQueryable implements Queryable {
 			start = System.nanoTime();
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			// setPage(Page.create(1000000, 1)) ; -_-??
-			Object result = myHandlerQuery(conn, handler);
+			T result = myHandlerQuery(conn, handler);
 
 			return result;
 		} catch (UnsupportedOperationException ex) {
@@ -98,7 +98,7 @@ public abstract class AbstractQueryable implements Queryable {
 	}
 
 	public final Rows execPageQuery() throws SQLException {
-		return (Rows) execHandlerQuery(new PageRowsHandler(this));
+		return execHandlerQuery(new PageRowsHandler(this));
 	}
 
 	public final Rows execQuery() throws SQLException {

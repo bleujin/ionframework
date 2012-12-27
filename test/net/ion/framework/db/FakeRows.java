@@ -31,6 +31,7 @@ import javax.sql.RowSetMetaData;
 
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IQueryable;
+import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.CaseInsensitiveHashMap;
 import net.ion.framework.util.StringUtil;
 
@@ -992,6 +993,9 @@ public class FakeRows implements Rows {
 		throw new UnsupportedOperationException() ;
 	}
 
+	public void debugPrint() throws SQLException {
+		RowsImpl.DebugHandler.handle(this) ;
+	}
 }
 
 class VColumn implements Serializable{

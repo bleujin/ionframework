@@ -35,7 +35,7 @@ public class OracleTxTransaction extends TxTransaction {
 
 	// Only For Test
 	OracleTxTransaction() {
-		this(new OracleDBManager("jdbc:oracle:thin:@novision:1525:DB9I", "odin", "odin"), "test");
+		this(OracleDBManager.test(), "test");
 	};
 
 	public OracleTxTransaction(OracleDBManager dbm, String name) {

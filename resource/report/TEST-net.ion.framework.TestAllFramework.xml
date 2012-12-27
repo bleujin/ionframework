@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite errors="0" failures="0" hostname="bleujin-SV" name="net.ion.framework.TestAllFramework" tests="124" time="8.655" timestamp="2012-10-23T06:07:31">
+<testsuite errors="0" failures="0" hostname="bleujin-SV" name="net.ion.framework.TestAllFramework" tests="124" time="8.492" timestamp="2012-11-06T06:55:17">
   <properties>
     <property name="java.vendor" value="Sun Microsystems Inc." />
     <property name="sun.java.launcher" value="SUN_STANDARD" />
@@ -7,7 +7,7 @@
     <property name="sun.management.compiler" value="HotSpot Client Compiler" />
     <property name="os.name" value="Windows 7" />
     <property name="sun.boot.class.path" value="C:\java\jdk5_22\jre\lib\rt.jar;C:\java\jdk5_22\jre\lib\i18n.jar;C:\java\jdk5_22\jre\lib\sunrsasign.jar;C:\java\jdk5_22\jre\lib\jsse.jar;C:\java\jdk5_22\jre\lib\jce.jar;C:\java\jdk5_22\jre\lib\charsets.jar;C:\java\jdk5_22\jre\classes" />
-    <property name="TODAY" value="October 23 2012" />
+    <property name="TODAY" value="November 6 2012" />
     <property name="build.number" value="3" />
     <property name="sun.desktop" value="windows" />
     <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
@@ -21,7 +21,7 @@
     <property name="sun.boot.library.path" value="C:\java\jdk5_22\jre\bin" />
     <property name="manifest.main.class" value="" />
     <property name="ant.project.name" value="Jar Publish" />
-    <property name="DSTAMP" value="20121023" />
+    <property name="DSTAMP" value="20121106" />
     <property name="java.version" value="1.5.0_22" />
     <property name="user.timezone" value="" />
     <property name="sun.arch.data.model" value="32" />
@@ -56,7 +56,7 @@
     <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition" />
     <property name="java.class.path" value="D:\github\ionframework\bin;D:\github\ionframework\lib\common_apache_fat.jar;D:\github\ionframework\lib\convert_fat.jar;D:\github\ionframework\lib\jdbc_fat.jar;D:\github\ionframework\lib\jetty_fat_745.jar;D:\github\ionframework\lib\json_fat.jar;D:\github\ionframework\lib\jsp-api-2.1.jar;D:\github\ionframework\lib\junit.jar;D:\github\ionframework\lib\mail_fat.jar;D:\github\ionframework\lib\metadata-extractor-2.3.1.jar;D:\github\ionframework\lib\pdf_fat.jar;D:\github\ionframework\lib\rest_fat.jar;D:\github\ionframework\lib\search_fat.jar;D:\github\ionframework\lib\servlet-api-2.5-6.0.0.jar;D:\github\ionframework\lib\struts135_fat.jar;D:\github\ionframework\lib\util_fat.jar;D:\github\ionframework\lib\velocity_fat.jar;D:\github\ionframework\lib\webservice_fat.jar;D:\github\ionframework\lib\xml_fat.jar;D:\github\ionframework;C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip;D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-launcher.jar;D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar;D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-junit.jar" />
     <property name="ant.version" value="Apache Ant version 1.7.1 compiled on June 27 2008" />
-    <property name="TSTAMP" value="1507" />
+    <property name="TSTAMP" value="1555" />
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
     <property name="java.vm.specification.version" value="1.0" />
     <property name="sun.cpu.endian" value="little" />
@@ -75,212 +75,212 @@
     <property name="basedir" value="D:\github\ionframework" />
     <property name="baseDir" value="." />
     <property name="ant.java.version" value="1.5" />
-    <property name="TODAY_MY" value="10/23/2012 03:07" />
+    <property name="TODAY_MY" value="11/06/2012 03:55" />
     <property name="ant.core.lib" value="D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar" />
     <property name="file.encoding" value="MS949" />
     <property name="java.specification.version" value="1.5" />
   </properties>
-  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testObject" time="0.139" />
-  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testCompli" time="0.017" />
-  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testVersion" time="0.018" />
-  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testNullObject" time="0.0030" />
-  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testXMLToJson" time="0.138" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testObject" time="0.256" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testCompli" time="0.024" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testVersion" time="0.0090" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testNullObject" time="0.0020" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testXMLToJson" time="0.11" />
   <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testVolatile" time="0.0040" />
-  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testCase" time="0.0020" />
-  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testFromObject" time="0.0010" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testCase" time="0.0030" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testFromObject" time="0.0020" />
   <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testParseSimple" time="0.0" />
   <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testParseAsArray" time="0.0" />
   <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testToJson" time="0.0" />
   <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testWrite" time="0.0" />
-  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testToMap" time="0.0010" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testToMap" time="0.0020" />
   <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testArray" time="0.0" />
   <testcase classname="net.ion.framework.parse.gson.TestJsonUtil" name="testEncode" time="0.0" />
   <testcase classname="net.ion.framework.parse.gson.TestJsonUtil" name="testDecode" time="0.0" />
-  <testcase classname="net.ion.framework.parse.gson.TestJsonUtil" name="testFindElement" time="0.0030" />
+  <testcase classname="net.ion.framework.parse.gson.TestJsonUtil" name="testFindElement" time="0.0040" />
   <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testInsensitive" time="0.0020" />
   <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testEmpty" time="0.0" />
-  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testDocType" time="0.0040" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testDocType" time="0.0030" />
   <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testOnlyText" time="0.0010" />
   <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testPrefix" time="0.0" />
-  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testContent" time="0.0010" />
-  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testTagText" time="0.0020" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testContent" time="0.0" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testTagText" time="0.0010" />
   <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testDepth" time="0.0010" />
   <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testGetValue" time="0.0010" />
   <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testChild" time="0.0030" />
   <testcase classname="net.ion.framework.parse.html.TestParser" name="testElementValue" time="0.0010" />
-  <testcase classname="net.ion.framework.rope.RopeCharSequenceTest" name="testRead" time="0.2" />
+  <testcase classname="net.ion.framework.rope.RopeCharSequenceTest" name="testRead" time="0.189" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testEmpty" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testSubstringDeleteBug" time="0.0050" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testRopeWriteBug" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testTemp" time="0.0" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testLengthOverflow" time="0.0010" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testMatches" time="0.0050" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testLengthOverflow" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testMatches" time="0.0040" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testConcatenationFlatFlat" time="0.0" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testIterator" time="0.0040" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testReverse" time="0.012" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testIterator" time="0.0030" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testReverse" time="0.0020" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testTrim" time="0.0070" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testCreation" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testEquals" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testHashCode" time="0.0010" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testHashCode2" time="0.0" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testIndexOf" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testIndexOf" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testInsert" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testPrepend" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testCompareTo" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testToString" time="0.0" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testReverseIterator" time="0.0020" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testSerialize" time="0.021" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testReverseIterator" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testSerialize" time="0.0050" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testPadStart" time="0.0020" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testPadEnd" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testSubstringBounds" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testAppend" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testCharAt" time="0.0" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testRegexp" time="0.0" />
-  <testcase classname="net.ion.framework.rope.RopeTest" name="testStartsEndsWith" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testRegexp" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testStartsEndsWith" time="0.0" />
   <testcase classname="net.ion.framework.rope.RopeTest" name="testIndexOfBug" time="0.0" />
   <testcase classname="net.ion.framework.rope.TestRopeInputStream" name="testRead" time="0.0040" />
   <testcase classname="net.ion.framework.rope.TestRopeInputStream" name="testCharAt" time="0.0" />
-  <testcase classname="net.ion.framework.rope.TestRopeInputStream" name="testSpeed" time="0.403" />
-  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testSpeed" time="0.121" />
+  <testcase classname="net.ion.framework.rope.TestRopeInputStream" name="testSpeed" time="0.397" />
+  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testSpeed" time="0.118" />
   <testcase classname="net.ion.framework.rope.TestRopeReader" name="testReader" time="0.0" />
-  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testSpeedDiff" time="0.05" />
+  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testSpeedDiff" time="0.049" />
   <testcase classname="net.ion.framework.rope.TestRopeReader" name="testBuildReader" time="0.0" />
   <testcase classname="net.ion.framework.rope.TestRopeReader" name="testNull" time="0.0" />
-  <testcase classname="net.ion.framework.rope.TestRopeWriter" name="testWriterSpped" time="0.012" />
-  <testcase classname="net.ion.framework.rope.TestRopeWriter" name="testRopeWriterSpped" time="0.028" />
-  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testDCInit" time="0.452" />
-  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testServant" time="0.055" />
-  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testServantChain" time="0.058" />
-  <testcase classname="net.ion.framework.db.sample.dc.ConnectionLess" name="testThread" time="1.114" />
-  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testFirst" time="0.058" />
-  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testnCounter" time="0.069" />
+  <testcase classname="net.ion.framework.rope.TestRopeWriter" name="testWriterSpped" time="0.014" />
+  <testcase classname="net.ion.framework.rope.TestRopeWriter" name="testRopeWriterSpped" time="0.027" />
+  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testDCInit" time="0.443" />
+  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testServant" time="0.054" />
+  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testServantChain" time="0.053" />
+  <testcase classname="net.ion.framework.db.sample.dc.ConnectionLess" name="testThread" time="1.061" />
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testFirst" time="0.059" />
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testnCounter" time="0.065" />
   <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant" time="0.024" />
-  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant2" time="0.025" />
-  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant3" time="0.023" />
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant2" time="0.023" />
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant3" time="0.024" />
   <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testExceptionChannelServant" time="0.056" />
-  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelThread" time="0.302" />
-  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelThread2" time="0.023" />
-  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testEmptyChannel" time="0.022" />
-  <testcase classname="net.ion.framework.db.servant.TestChannelServant" name="testPutTask" time="0.429" />
-  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testDefault" time="0.04" />
-  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testGetRows" time="0.042" />
-  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testParameter" time="0.047" />
-  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testFirstRow" time="0.072" />
-  <testcase classname="net.ion.framework.db.sample.first.P2_UpdateQuery" name="testFirst" time="0.091" />
-  <testcase classname="net.ion.framework.db.sample.first.P2_UpdateQuery" name="testParameter" time="0.107" />
-  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testBatchDefault" time="0.082" />
-  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase1" time="0.076" />
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelThread" time="0.326" />
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelThread2" time="0.027" />
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testEmptyChannel" time="0.028" />
+  <testcase classname="net.ion.framework.db.servant.TestChannelServant" name="testPutTask" time="0.482" />
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testDefault" time="0.047" />
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testGetRows" time="0.051" />
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testParameter" time="0.051" />
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testFirstRow" time="0.071" />
+  <testcase classname="net.ion.framework.db.sample.first.P2_UpdateQuery" name="testFirst" time="0.093" />
+  <testcase classname="net.ion.framework.db.sample.first.P2_UpdateQuery" name="testParameter" time="0.118" />
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testBatchDefault" time="0.084" />
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase1" time="0.082" />
   <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase2" time="0.088" />
-  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase3" time="0.083" />
-  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testTransaction" time="0.128" />
-  <testcase classname="net.ion.framework.db.sample.first.P4_UserProcedure" name="testProcedureUpdate" time="0.159" />
-  <testcase classname="net.ion.framework.db.sample.first.P4_UserProcedure" name="testProcedureQuery" time="0.119" />
-  <testcase classname="net.ion.framework.db.sample.first.P5_UserProceduresQuery" name="testUpdate" time="0.094" />
-  <testcase classname="net.ion.framework.db.sample.first.P5_UserProceduresQuery" name="testMultiQuery" time="0.086" />
-  <testcase classname="net.ion.framework.db.sample.first.P6_UserProceduresUpdate" name="testUserProcedures" time="0.108" />
-  <testcase classname="net.ion.framework.db.sample.first.P6_UserProceduresUpdate" name="testSimpleTransaction" time="0.109" />
-  <testcase classname="net.ion.framework.db.sample.extend.CombinedQuery" name="testFirst" time="0.087" />
-  <testcase classname="net.ion.framework.db.sample.extend.CombinedQuery" name="testSecond" time="0.113" />
-  <testcase classname="net.ion.framework.db.sample.extend.LobHandle" name="testParam" time="0.287" />
-  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedParameter" time="0.269" />
-  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedParameterDupl" time="0.13" />
-  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedProcedure" time="0.139" />
-  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testBatch" time="0.125" />
-  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedBatch" time="0.196" />
-  <testcase classname="net.ion.framework.db.sample.extend.QueryPage" name="testRowsPage" time="0.051" />
-  <testcase classname="net.ion.framework.db.sample.extend.QueryPage" name="testRowsPageMethod2" time="0.044" />
-  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testMapHandler" time="0.06" />
-  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testMapList" time="0.049" />
-  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testBeanList" time="0.06" />
-  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testScalar" time="0.075" />
-  <testcase classname="net.ion.framework.db.sample.plan.ViewPlan" name="testViewPlan" time="0.11" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsFirstRow" name="testFirstRow" time="0.051" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testDate" time="0.066" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testSetClob" time="0.107" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testGetClob0" time="0.291" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testGetClob" time="0.167" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testDefaultLimit" time="0.049" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testNextPage" time="0.075" />
-  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testPrePage" time="0.068" />
-  <testcase classname="net.ion.framework.db.sample.dc.RowsToXML" name="testToXML" time="0.111" />
-  <testcase classname="net.ion.framework.db.sample.dc.RowsToXML" name="testDual" time="0.099" />
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase3" time="0.094" />
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testTransaction" time="0.106" />
+  <testcase classname="net.ion.framework.db.sample.first.P4_UserProcedure" name="testProcedureUpdate" time="0.102" />
+  <testcase classname="net.ion.framework.db.sample.first.P4_UserProcedure" name="testProcedureQuery" time="0.102" />
+  <testcase classname="net.ion.framework.db.sample.first.P5_UserProceduresQuery" name="testUpdate" time="0.088" />
+  <testcase classname="net.ion.framework.db.sample.first.P5_UserProceduresQuery" name="testMultiQuery" time="0.074" />
+  <testcase classname="net.ion.framework.db.sample.first.P6_UserProceduresUpdate" name="testUserProcedures" time="0.104" />
+  <testcase classname="net.ion.framework.db.sample.first.P6_UserProceduresUpdate" name="testSimpleTransaction" time="0.105" />
+  <testcase classname="net.ion.framework.db.sample.extend.CombinedQuery" name="testFirst" time="0.082" />
+  <testcase classname="net.ion.framework.db.sample.extend.CombinedQuery" name="testSecond" time="0.104" />
+  <testcase classname="net.ion.framework.db.sample.extend.LobHandle" name="testParam" time="0.318" />
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedParameter" time="0.197" />
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedParameterDupl" time="0.124" />
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedProcedure" time="0.148" />
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testBatch" time="0.123" />
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedBatch" time="0.177" />
+  <testcase classname="net.ion.framework.db.sample.extend.QueryPage" name="testRowsPage" time="0.049" />
+  <testcase classname="net.ion.framework.db.sample.extend.QueryPage" name="testRowsPageMethod2" time="0.045" />
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testMapHandler" time="0.061" />
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testMapList" time="0.048" />
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testBeanList" time="0.055" />
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testScalar" time="0.073" />
+  <testcase classname="net.ion.framework.db.sample.plan.ViewPlan" name="testViewPlan" time="0.079" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsFirstRow" name="testFirstRow" time="0.05" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testDate" time="0.073" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testSetClob" time="0.111" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testGetClob0" time="0.28" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testGetClob" time="0.142" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testDefaultLimit" time="0.045" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testNextPage" time="0.071" />
+  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testPrePage" time="0.069" />
+  <testcase classname="net.ion.framework.db.sample.dc.RowsToXML" name="testToXML" time="0.123" />
+  <testcase classname="net.ion.framework.db.sample.dc.RowsToXML" name="testDual" time="0.095" />
   <system-out><![CDATA[{"newField":"new","field":"old"}
 {"newerField":"newer","newField":"new","field":"old"}
 {"s":null,"i":5}
 null
-[Tue Oct 23 15:07:33 KST 2012]
+[Tue Nov 06 15:55:19 KST 2012]
 select 1 from copy_sample
 actual time(ms) : 5
 
-[Tue Oct 23 15:07:33 KST 2012]
+[Tue Nov 06 15:55:19 KST 2012]
 select 1 from copy_sample
-actual time(ms) : 5
+actual time(ms) : 6
 
-[Tue Oct 23 15:07:33 KST 2012]
+[Tue Nov 06 15:55:19 KST 2012]
 select 1 from copy_sample
-actual time(ms) : 5
+actual time(ms) : 6
 
-[Tue Oct 23 15:07:34 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select 1 from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:34 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select 1 from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
+select * from dual
+actual time(ms) : 10
+
+[Tue Nov 06 15:55:20 KST 2012]
+select * from dual
+actual time(ms) : 7
+
+[Tue Nov 06 15:55:20 KST 2012]
+select * from dual
+actual time(ms) : 1
+
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
-select * from dual
-actual time(ms) : 3
-
-[Tue Oct 23 15:07:35 KST 2012]
-select * from dual
-actual time(ms) : 3
-
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
+[Tue Nov 06 15:55:20 KST 2012]
 select * from dual
 actual time(ms) : 2
 
-[Tue Oct 23 15:07:35 KST 2012]
-select * from dual
-actual time(ms) : 2
-
-[Tue Oct 23 15:07:36 KST 2012]
+[Tue Nov 06 15:55:22 KST 2012]
 select 1 from dual
 actual time(ms) : 2
 
@@ -292,127 +292,127 @@ SELECT STATEMENT ()		null
    SORT (JOIN)		null
     TABLE ACCESS (FULL)		EMP_SAMPLE
 ]]></system-out>
-  <system-err><![CDATA[2012. 10. 23 오후 3:07:33 net.ion.framework.db.DBController destroySelf
+  <system-err><![CDATA[2012. 11. 6 오후 3:55:18 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:33 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:18 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:33 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:19 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:33 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:19 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:33 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:19 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:33 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:19 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:34 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:34 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:34 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:34 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:34 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:34 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:20 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:35 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:21 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:36 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:37 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:37 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:37 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:37 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:37 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:37 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:22 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:37 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:23 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:23 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:23 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:23 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:23 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:38 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:24 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:39 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:40 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:40 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:40 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:40 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
-2012. 10. 23 오후 3:07:40 net.ion.framework.db.DBController destroySelf
+2012. 11. 6 오후 3:55:25 net.ion.framework.db.DBController destroySelf
 정보: DBController : destroyed
 ]]></system-err>
 </testsuite>

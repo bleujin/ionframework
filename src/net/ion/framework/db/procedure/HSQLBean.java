@@ -51,7 +51,6 @@ public class HSQLBean {
 	}
 
 	public void addProcedure(ProcedureBean proc) {
-		if (proc.getId() == null) throw new IllegalArgumentException("hsql procedure id is not null");
 		procedures.put(proc.getId(), proc.getCmd());
 	}
 

@@ -16,23 +16,23 @@ public interface RowProcessor {
 	 * Create a JavaBean from the column values in one <code>ResultSet</code> row. The <code>ResultSet</code> should be positioned on a valid row before passing it to this method. Implementations of this method must not alter the row position of the
 	 * <code>ResultSet</code>.
 	 */
-	public Object toBean(ResultSet rs, Class<?> type) throws SQLException;
+	public <T> T toBean(ResultSet rs, Class<T> type) throws SQLException;
 
 	/**
 	 * Create a <code>List</code> of JavaBeans from the column values in all <code>ResultSet</code> rows. <code>ResultSet.next()</code> should <strong>not</strong> be called before passing it to this method.
 	 * 
 	 * @return A <code>List</code> of beans with the given type in the order they were returned by the <code>ResultSet</code>.
 	 */
-	public List<?> toBeanList(ResultSet rs, Class<?> type) throws SQLException;
+	public <T> List<T> toBeanList(ResultSet rs, Class<T> type) throws SQLException;
 
 	/**
 	 * Create a <code>Map</code> from the column values in one <code>ResultSet</code> row. The <code>ResultSet</code> should be positioned on a valid row before passing it to this method. Implementations of this method must not alter the row position
 	 * of the <code>ResultSet</code>.
 	 */
-	public Map<?, ?> toMap(ResultSet rs) throws SQLException;
+	public Map<String, Object> toMap(ResultSet rs) throws SQLException;
 
 	public Object[] toArray(ResultSet rs, String[] colNames) throws SQLException;
 
-	public Map<?, ?> toStringMap(ResultSet rs, String[] attributeNames, String[] columnNames) throws SQLException;
+	public Map<String, Object> toStringMap(ResultSet rs, String[] attributeNames, String[] columnNames) throws SQLException;
 
 }

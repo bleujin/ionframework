@@ -8,7 +8,7 @@ import net.ion.framework.db.procedure.RepositoryService;
 
 /**
  * <p>
- * Title: MSÀÇ MSSQL2000À» ´ë»óÀ¸·Î ÇÏ´Â ±âº» DBManager
+ * Title: MSï¿½ï¿½ MSSQL2000ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ ï¿½âº» DBManager
  * </p>
  * <p>
  * Description:
@@ -26,15 +26,13 @@ import net.ion.framework.db.procedure.RepositoryService;
 public class MSSQLDBManager extends DBManager {
 	final static String D_DRIVER_NAME = "com.microsoft.jdbc.sqlserver.SQLServerDriver";
 	private final static RepositoryService service = RepositoryService.MSSQL;
-	public final static MSSQLDBManager TEST_MANAGER = new MSSQLDBManager();
-
-	// Only For Test
-	protected MSSQLDBManager() {
-		this(D_DRIVER_NAME, "jdbc:microsoft:sqlserver://novision:1433;DatabaseName=test", "bleu", "redf");
-	}
 
 	public MSSQLDBManager(String jdbcURL, String user, String passwd) {
 		this(D_DRIVER_NAME, jdbcURL, user, passwd);
+	}
+	
+	public final static MSSQLDBManager test(){
+		return new MSSQLDBManager(D_DRIVER_NAME, "jdbc:microsoft:sqlserver://novision:1433;DatabaseName=test", "bleu", "redf");
 	}
 
 	public MSSQLDBManager(String driverName, String jdbcURL, String userId, String userPwd) {

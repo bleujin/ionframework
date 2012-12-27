@@ -1,5 +1,6 @@
 package net.ion.framework.db.procedure;
 
+import java.io.Closeable;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.ObjectOutputStream;
@@ -386,10 +387,8 @@ public abstract class ParameterQueryable extends AbstractQueryable implements IP
 			}
 		}
 
-		if (param instanceof Reader) {
-			IOUtils.closeQuietly((Reader) param);
-		} else if (param instanceof InputStream) {
-			IOUtils.closeQuietly((InputStream) param);
+		if (param instanceof Closeable) {
+			IOUtils.closeQuietly((Closeable) param);
 		}
 	}
 	

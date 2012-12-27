@@ -7,7 +7,11 @@ import java.io.InputStreamReader;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class CSVStoreHandler extends CustomResultSetHandler {
+import net.ion.framework.util.IOUtil;
+
+public class CSVStoreHandler extends CustomResultSetHandler<CSVReader> {
+
+	private static final long serialVersionUID = -2801772522463205365L;
 	protected File file;
 	protected String[] columns;
 	protected String encoding;
@@ -18,7 +22,7 @@ public class CSVStoreHandler extends CustomResultSetHandler {
 		this.encoding = encoding;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public CSVReader handle(ResultSet rs) throws SQLException {
 		CSVWriter writer = null;
 		try {
 			writer = getWriter(file, encoding);
@@ -38,12 +42,7 @@ public class CSVStoreHandler extends CustomResultSetHandler {
 		} catch (IOException ex) {
 			throw new SQLException(ex.getMessage());
 		} finally {
-			try {
-				if (writer != null) {
-					writer.close();
-				}
-			} catch (IOException ex1) {
-			}
+			IOUtil.closeQuietly(writer) ;
 		}
 	}
 

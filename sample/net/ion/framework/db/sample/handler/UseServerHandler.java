@@ -14,15 +14,17 @@ public class UseServerHandler extends TestBaseSample {
 
 	public void testUseFirst() throws Exception {
 		IUserCommand cmd = (IUserCommand) dc.createUserCommand(query);
-		Long time = (Long) cmd.execHandlerQuery(new OutHandler());
+		Long time = cmd.execHandlerQuery(new OutHandler());
 
 		Debug.debug(time);
 	}
 }
 
-class OutHandler implements ResultSetHandler {
+class OutHandler implements ResultSetHandler<Long> {
 
-	public Object handle(ResultSet rs) throws SQLException {
+	private static final long serialVersionUID = 1060278026736572863L;
+
+	public Long handle(ResultSet rs) throws SQLException {
 		long startTime = System.currentTimeMillis();
 		int rowcount = 0;
 		while (rs.next()) {

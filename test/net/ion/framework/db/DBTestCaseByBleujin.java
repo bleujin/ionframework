@@ -8,6 +8,7 @@ import net.ion.framework.db.cache.CacheConfigImpl;
 import net.ion.framework.db.manager.CacheDBManager;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OracleDBManager;
+import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.db.servant.StdOutServant;
 
 import org.apache.commons.io.IOUtils;
@@ -17,14 +18,14 @@ public class DBTestCaseByBleujin extends TestCase{
 	protected DBController dc ;
 	protected DBManager dbm ;
 	public void setUp() throws Exception {
-		this.dbm = new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") ;
+		this.dbm = OracleDBManager.test() ;
 		final File file = new File("./ics/WEB-INF/cache-config.js");
 		if (file.exists()){
 			String cacheConfigString = IOUtils.toString(new FileInputStream(file), "UTF-8");
 			CacheConfigImpl cacheConfig = new CacheConfigImpl(cacheConfigString);
 			this.dbm = new CacheDBManager(cacheConfig, this.dbm);
 		}
-		this.dc = new DBController("TestCase", dbm, new StdOutServant()) ;
+		this.dc = new DBController("TestCase", dbm, new PrintOutServant()) ;
 		dc.initSelf() ;
 	}
 	

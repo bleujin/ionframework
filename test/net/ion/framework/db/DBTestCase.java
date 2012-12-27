@@ -4,6 +4,7 @@ import junit.framework.TestCase;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.MSSQLDBManager;
 import net.ion.framework.db.manager.OracleDBManager;
+import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.db.servant.StdOutServant;
 
 public class DBTestCase extends TestCase {
@@ -19,10 +20,10 @@ public class DBTestCase extends TestCase {
 
     protected void setUp() throws java.lang.Exception {
         super.setUp();
-        DBManager dbm = new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") ;
-        //DBManager dbm = new MSSQLDBManager("jdbc:microsoft:sqlserver://dev-sql.i-on.net:1435;DatabaseName=pubs", "bleu", "redf") ;
+        DBManager dbm = OracleDBManager.test();
+        //DBManager dbm = MSSQLDBManager.test() ;
         dc = new DBController("Default", dbm) ;
-        dc.addServant(new StdOutServant()) ;
+        dc.addServant(new PrintOutServant()) ;
         dc.initSelf() ;
     }
 

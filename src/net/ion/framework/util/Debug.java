@@ -178,5 +178,11 @@ public class Debug extends OutputStream {
 	public static void trace(String message) {
 		debug(message) ;
 	}
+	
+	public static <T> void iterHandle(Iterable<T> iter, DebugHandler<T> handler){
+		for (T t : iter) {
+			handler.debug(t) ;
+		}
+	}
 
 }

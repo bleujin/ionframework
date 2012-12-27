@@ -33,15 +33,17 @@ import org.apache.commons.io.IOUtils;
  * @version 1.0
  */
 
-public class SimpleXMLStringBufferHandler implements ResultSetHandler {
-	StringBuffer sbuffer = new StringBuffer();
-	String rootElementName;
-	String rowElementName;
+public class SimpleXMLStringBufferHandler implements ResultSetHandler<StringBuffer> {
+	
+	private static final long serialVersionUID = 4686904411808232162L;
+	private StringBuffer sbuffer = new StringBuffer();
+	private String rootElementName;
+	private String rowElementName;
 
-	Stack<String> stack = new Stack<String>();
-	protected boolean replace = false; // only use CDATA Section
+	private Stack<String> stack = new Stack<String>();
+	private boolean replace = false; // only use CDATA Section
 
-	String[] columnLabel;
+	private String[] columnLabel;
 
 	public SimpleXMLStringBufferHandler() {
 		this(Rows.DEFAULT_ROOT_NAME, Rows.DEFAULT_ROW_NAME);
@@ -52,7 +54,7 @@ public class SimpleXMLStringBufferHandler implements ResultSetHandler {
 		this.rowElementName = rowElementName;
 	}
 
-	public Object handle(ResultSet resultSet) throws SQLException {
+	public StringBuffer handle(ResultSet resultSet) throws SQLException {
 		appendHeader();
 		beginSection(rootElementName);
 		initMeta(resultSet);
@@ -326,7 +328,7 @@ public class SimpleXMLStringBufferHandler implements ResultSetHandler {
 					appendLong(timestamp.getTime());
 				}
 			} catch (ClassCastException ex) {
-				// writeXml ¿¡ ÀÇÇØ ¸¸µé¾îÁø XML StringÀ¸·Î Rows ¸¦ ¸¸µçÈÄ writeXml() ÇÏ¸é ClassCastException ¹ß»ý ±×·¡¼­ -_- ÀÌ·¸°Ô Ã³¸®
+				// writeXml ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ XML Stringï¿½ï¿½ï¿½ï¿½ Rows ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ writeXml() ï¿½Ï¸ï¿½ ClassCastException ï¿½ß»ï¿½ ï¿½×·ï¿½ï¿½ï¿½ -_- ï¿½Ì·ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
 				if (resultSet.wasNull())
 					appendNull();
 				else

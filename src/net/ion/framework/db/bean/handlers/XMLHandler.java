@@ -7,8 +7,9 @@ import net.ion.framework.db.bean.ResultSetHandler;
 
 import org.apache.ecs.xml.XML;
 
-public class XMLHandler implements ResultSetHandler {
+public class XMLHandler implements ResultSetHandler<XML> {
 
+	private static final long serialVersionUID = 2188220058627112088L;
 	private String[] attributes;
 	private String[] datas;
 
@@ -17,7 +18,7 @@ public class XMLHandler implements ResultSetHandler {
 		this.datas = datas;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public XML handle(ResultSet rs) throws SQLException {
 		XML root = new XML("root");
 
 		while (rs.next()) {

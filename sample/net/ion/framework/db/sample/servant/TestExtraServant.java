@@ -12,6 +12,7 @@ import net.ion.framework.db.sample.TestBaseSample;
 import net.ion.framework.db.servant.AfterTask;
 import net.ion.framework.db.servant.ChannelServant;
 import net.ion.framework.db.servant.IExtraServant;
+import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.db.servant.ServantChain;
 import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.util.Debug;
@@ -22,8 +23,8 @@ public class TestExtraServant extends TestBaseSample{
 
 	public void testFirst() throws Exception {
 		
-		ServantChain schain = new ServantChain().addServant(new StdOutServant()).addServant(new StdOutServant()) ;
-		ChannelServant channel = new ChannelServant(new SlowServant(), new StdOutServant()) ;
+		ServantChain schain = new ServantChain().addServant(new PrintOutServant()).addServant(new PrintOutServant()) ;
+		ChannelServant channel = new ChannelServant(new SlowServant(), new PrintOutServant()) ;
 		schain.addServant(channel) ;
 		
 		IDBController newDc = new DBController("test", dc.getDBManager(), schain) ;
@@ -115,7 +116,7 @@ public class TestExtraServant extends TestBaseSample{
 	
 
 	public void testExceptionChannelServant() throws Exception {
-		ChannelServant cs = new ChannelServant(new StdOutServant(), new ExceptionServant()) ;
+		ChannelServant cs = new ChannelServant(new PrintOutServant(), new ExceptionServant()) ;
 		DBController newDc = new DBController("test", dc.getDBManager(), cs) ;
 		
 		Rows rows = newDc.getRows("select * from dual" ) ;
@@ -123,7 +124,7 @@ public class TestExtraServant extends TestBaseSample{
 	}
 	
 	public void testChannelThread() throws Exception {
-		ChannelServant cs = new ChannelServant(11, new StdOutServant()) ; // least 10
+		ChannelServant cs = new ChannelServant(11, new PrintOutServant()) ; // least 10
 		DBController newDc = new DBController("test", dc.getDBManager(), cs) ;
 
 		int count = 0 ;
@@ -136,7 +137,7 @@ public class TestExtraServant extends TestBaseSample{
 	}
 	
 	public void testChannelThread2() throws Exception {
-		StdOutServant std = new StdOutServant();
+		PrintOutServant std = new PrintOutServant();
 		ChannelServant cs = new ChannelServant(std) ;
 		DBController newDc = new DBController("test", dc.getDBManager(), cs) ;
 

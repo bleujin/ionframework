@@ -22,7 +22,7 @@ public interface IQueryable  extends Serializable{
 
 	public Rows execPageQuery() throws SQLException;
 
-	public Object execHandlerQuery(ResultSetHandler handler) throws SQLException;
+	public <T> T execHandlerQuery(ResultSetHandler<T> handler) throws SQLException;
 
 	public void cancel() throws SQLException, InterruptedException;
 

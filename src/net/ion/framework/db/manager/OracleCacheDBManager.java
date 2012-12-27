@@ -20,10 +20,6 @@ public class OracleCacheDBManager extends OracleDBManager {
 
 	// final private int MAX_TRY = 5;
 
-	protected OracleCacheDBManager() {
-		this("jdbc:oracle:thin:@221.148.247.24:1521:cassora", "odin", "odin", 20);
-	}
-
 	public OracleCacheDBManager(String jdbcURL, String user, String passwd) {
 		this(jdbcURL, user, passwd, 20);
 	}

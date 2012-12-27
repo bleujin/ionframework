@@ -28,11 +28,6 @@ public class OraclePoolDBManager extends OracleDBManager {
 	OracleConnectionPoolDataSource ocpds = null;
 	PooledConnection pc = null;
 
-	// Only For Test
-	protected OraclePoolDBManager() {
-		super();
-	}
-
 	public OraclePoolDBManager(String jdbcURL, String user, String passwd) {
 		super(jdbcURL, user, passwd);
 	}

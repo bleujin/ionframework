@@ -320,6 +320,11 @@ public class UserCommandBatch extends UserCommand implements IUserCommandBatch {
 		addBatchParameter(paramindex, val, Types.CLOB);
 	}
 
+	public void addBatchClob(int paramindex, Reader reader) {
+		addBatchParameter(paramindex, reader, Types.CLOB);
+	}
+
+	
 	public void addBatchBlob(int paramindex, InputStream val) {
 		addBatchParameter(paramindex, val, Types.BLOB);
 	}
@@ -346,6 +351,10 @@ public class UserCommandBatch extends UserCommand implements IUserCommandBatch {
 
 	public void addBatchClob(String name, CharSequence val) {
 		putNamedParam(name, new ParamValue(val, Types.CLOB));
+	}
+
+	public void addBatchClob(String name, Reader reader) {
+		putNamedParam(name, new ParamValue(reader, Types.CLOB)) ;
 	}
 
 	public void addBatchParameter(String name, Object val, int type) {
@@ -485,13 +494,4 @@ public class UserCommandBatch extends UserCommand implements IUserCommandBatch {
 		return readers;
 	}
 
-	public void addBatchClob(int paramindex, Reader reader) {
-		// TODO Auto-generated method stub
-
-	}
-
-	public void addBatchClob(String name, Reader reader) {
-		// TODO Auto-generated method stub
-
-	}
 }

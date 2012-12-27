@@ -33,7 +33,7 @@ public class UseHandler extends TestBaseSample {
 	public void testMapList() throws Exception {
 		Rows rows = dc.getRows(query, Page.TEN) ;
 		
-		List<Map> results = (List<Map>)rows.toHandle(new MapListHandler()) ;
+		List<Map<String, ? extends Object>> results = rows.toHandle(new MapListHandler());
 		
 		assertEquals(10, results.size()) ;
 		Map row = results.get(0);

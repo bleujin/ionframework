@@ -27,7 +27,7 @@ import org.restlet.representation.Representation;
 import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ResourceException;
 
-public class XMLFormater implements ResultSetHandler, XMLHandler, IRowsRepresentationHandler, IMapListRepresentationHandler {
+public class XMLFormater implements ResultSetHandler<XML>, XMLHandler, IRowsRepresentationHandler, IMapListRepresentationHandler {
 
 	private static final long serialVersionUID = -8164513968960809763L;
 	public final static String XML_HEADER = "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n\n";
@@ -93,7 +93,7 @@ public class XMLFormater implements ResultSetHandler, XMLHandler, IRowsRepresent
 		return new StringRepresentation(rw.getBuffer(), MediaType.APPLICATION_XML, Language.ALL, CharacterSet.UTF_8) ;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public XML handle(ResultSet rs) throws SQLException {
 		return toXML(rs);
 	}
 

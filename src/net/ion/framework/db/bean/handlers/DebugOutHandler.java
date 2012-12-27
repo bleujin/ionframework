@@ -9,7 +9,7 @@ import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 
-public class DebugOutHandler implements ResultSetHandler{
+public class DebugOutHandler implements ResultSetHandler<Void>{
 
 	private static final long serialVersionUID = -7848441924592515160L;
 	private final Page page ;
@@ -21,7 +21,7 @@ public class DebugOutHandler implements ResultSetHandler{
 		return new DebugOutHandler(page);
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public Void handle(ResultSet rs) throws SQLException {
 		
 		int i = 0 ;
 		int colCount = rs.getMetaData().getColumnCount() ;
@@ -34,7 +34,7 @@ public class DebugOutHandler implements ResultSetHandler{
 			}
 			Debug.debug(list.toString()) ;
 		}
-		return true;
+		return null;
 	}
 	
 	

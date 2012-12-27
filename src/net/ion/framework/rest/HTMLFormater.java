@@ -20,7 +20,7 @@ import org.restlet.representation.Representation;
 import org.restlet.representation.StringRepresentation;
 import org.restlet.resource.ResourceException;
 
-public class HTMLFormater implements ResultSetHandler, IRowsRepresentationHandler, IMapListRepresentationHandler {
+public class HTMLFormater implements ResultSetHandler<Representation>, IRowsRepresentationHandler, IMapListRepresentationHandler {
 
 	private static final long serialVersionUID = -7657937688679783171L;
 
@@ -68,7 +68,7 @@ public class HTMLFormater implements ResultSetHandler, IRowsRepresentationHandle
 	}
 
 	// @Override
-	public Object handle(ResultSet rs) throws SQLException {
+	public Representation handle(ResultSet rs) throws SQLException {
 		StringWriter rope = new StringWriter();
 		rope.append("<html><head><title>HTMLFormater</title></head><body>");
 		toHTML(rs, rope);

@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.Map;
 
+import net.ion.framework.parse.gson.JsonParser;
+
 public class Row implements Serializable {
 	final Map<String, ?> fields;
 	final String[] fieldNames;
@@ -72,4 +74,7 @@ public class Row implements Serializable {
 		return fields ;
 	}
 	
+	public String toString(){
+		return JsonParser.fromMap(toMap()).toString() ;
+	}
 }

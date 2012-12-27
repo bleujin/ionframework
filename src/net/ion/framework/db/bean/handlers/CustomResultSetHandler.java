@@ -27,7 +27,7 @@ import net.ion.framework.util.StringUtil;
  * @version 1.0
  */
 
-public abstract class CustomResultSetHandler implements ResultSetHandler {
+public abstract class CustomResultSetHandler<T> implements ResultSetHandler<T> {
 
 	protected String getDefaultString(ResultSet rs, String columnName, int type) throws SQLException {
 		return StringUtil.escapeControlChar(StringUtil.defaultString(getString(rs, columnName, type), ""));

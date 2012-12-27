@@ -3,38 +3,26 @@ package net.ion.framework.db.bean.handlers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import org.apache.batik.util.gui.xmleditor.XMLDocument;
+
 import net.ion.framework.db.Rows;
+import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.xml.XmlDocument;
 
-/**
- * <p>
- * Title:
- * </p>
- * <p>
- * Description:
- * </p>
- * <p>
- * Copyright: Copyright (c) 2004
- * </p>
- * <p>
- * Company: I-ON Communications
- * </p>
- * 
- * @author not attributable
- * @version 1.0
- */
-
-public class SimpleXMLDocumentHandler extends SimpleXMLStringBufferHandler {
+public class SimpleXMLDocumentHandler implements ResultSetHandler<XmlDocument> {
+	
+	private static final long serialVersionUID = -1549471698910095504L;
+	private SimpleXMLStringBufferHandler inner ;
 	public SimpleXMLDocumentHandler() {
-		super(Rows.DEFAULT_ROOT_NAME, Rows.DEFAULT_ROW_NAME);
+		this.inner = new SimpleXMLStringBufferHandler(Rows.DEFAULT_ROOT_NAME, Rows.DEFAULT_ROW_NAME);
 	}
 
 	public SimpleXMLDocumentHandler(String rootElementName, String rowElementName) {
-		super(rootElementName, rowElementName);
+		this.inner = new SimpleXMLStringBufferHandler(rootElementName, rowElementName);
 	}
 
-	public Object handle(ResultSet resultSet) throws SQLException {
-		StringBuffer buffer = (StringBuffer) super.handle(resultSet);
+	public XmlDocument handle(ResultSet resultSet) throws SQLException {
+		StringBuffer buffer = inner.handle(resultSet);
 		return new XmlDocument(buffer);
 	}
 }

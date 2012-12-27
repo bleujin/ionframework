@@ -5,21 +5,37 @@ import java.sql.SQLException;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SetHandler extends ScalarHandler {
+import net.ion.framework.db.bean.ResultSetHandler;
+import net.ion.framework.util.SetUtil;
+
+public class SetHandler implements ResultSetHandler<Set<String>> {
+
+	private static final long serialVersionUID = -8425306067396806533L;
+	private int columnIndex = 1;
+	private String columnName = null;
+
 	public SetHandler() {
 	}
 
 	public SetHandler(String columnName) {
-		super(columnName);
+		this.columnName = columnName;
 	}
 
 	public SetHandler(int columnIndex) {
-		super(columnIndex);
+		this.columnIndex = columnIndex;
+	}
+	
+	protected String getColumnName() {
+		return columnName;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	protected int getColumnIndex() {
+		return columnIndex;
+	}
 
-		Set<String> store = new HashSet<String>();
+	public Set<String> handle(ResultSet rs) throws SQLException {
+
+		Set<String> store = SetUtil.newSet() ;
 		while (rs.next()) {
 			if (getColumnName() == null) {
 				store.add(rs.getString(getColumnIndex()));

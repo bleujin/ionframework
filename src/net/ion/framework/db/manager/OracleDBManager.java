@@ -9,7 +9,7 @@ import net.ion.framework.db.procedure.RepositoryService;
 
 /**
  * <p>
- * Title: Oracle Connection À» »ç¿ëÇÏ´Â Oracle¿ë ±âº» DBManager
+ * Title: Oracle Connection ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Oracleï¿½ï¿½ ï¿½âº» DBManager
  * </p>
  * <p>
  * Description:
@@ -29,13 +29,13 @@ public class OracleDBManager extends DBManager {
 	private final static RepositoryService service = RepositoryService.ORACLE;
 	private static final String driverName = "oracle.jdbc.driver.OracleDriver";
 
-	// Only For Test
-	OracleDBManager() {
-		this("jdbc:oracle:thin:@gedwarp2003:1521:ics40s", "scott", "tiger");
-	};
-
 	public OracleDBManager(String jdbcURL, String userId, String userPwd) {
 		super(driverName, jdbcURL, userId, userPwd);
+	}
+	
+	public final static OracleDBManager test(){
+		// return new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") 
+		return new OracleDBManager("jdbc:oracle:thin:@61.250.201.76:1521:TOONTALK", "toontalk", "toon0711") ;
 	}
 
 	public OracleDBManager(String jdbcURL, String user, String passwd, int connectLimit) {
@@ -76,11 +76,11 @@ public class OracleDBManager extends DBManager {
 	}
 
 	protected void heartbeatQuery(IDBController dc) throws SQLException {
-		getRepositoryService().createUserCommandBatch(dc, "select 1 from dual").execQuery();
+		getRepositoryService().createUserCommand(dc, "select /* heartbeat query */ 1 from dual").execQuery();
 	}
 }
 
-// Lob Insert or UpdateÇÏ´Â Function ÀÛ¼º ¿¹Á¦
+// Lob Insert or Updateï¿½Ï´ï¿½ Function ï¿½Û¼ï¿½ ï¿½ï¿½ï¿½ï¿½
 // CREATE OR REPLACE FUNCTION SCOTT.Insert_Test_Clob5(
 // clob_Id in out Number,
 // clob_text1 in out CLOB,

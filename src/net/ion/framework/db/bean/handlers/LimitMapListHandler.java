@@ -9,9 +9,11 @@ import java.util.Map;
 import net.ion.framework.db.bean.BasicRowProcessor;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.bean.RowProcessor;
+import net.ion.framework.util.ListUtil;
 
-public class LimitMapListHandler implements ResultSetHandler {
+public class LimitMapListHandler implements ResultSetHandler<List<Map<String, Object>>> {
 
+	private static final long serialVersionUID = -2980302280744414373L;
 	final int skipRow;
 	final int limitRow;
 
@@ -27,9 +29,9 @@ public class LimitMapListHandler implements ResultSetHandler {
 		this.limitRow = limitRow;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public List<Map<String, Object>> handle(ResultSet rs) throws SQLException {
 
-		List<Map<?, ?>> results = new ArrayList<Map<?, ?>>();
+		List<Map<String, Object>> results = ListUtil.newList() ;
 
 		// skip
 		for (int i = 0; i < this.skipRow; i++) {

@@ -13,15 +13,16 @@ import net.ion.framework.parse.gson.JsonObject;
 import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.Debug;
 
-public class JSONDefaultNodeHandler extends AbstractXMLHandler implements ResultSetHandler {
+public class JSONDefaultNodeHandler extends AbstractXMLHandler implements ResultSetHandler<JsonObject> {
 
+	private static final long serialVersionUID = -7506448617188441896L;
 	private Rows props;
 
 	public JSONDefaultNodeHandler(Rows props) {
 		this.props = props;
 	}
 
-	public Object handle(ResultSet rs) throws SQLException {
+	public JsonObject handle(ResultSet rs) throws SQLException {
 		ResultSetMetaData meta = rs.getMetaData();
 
 		List<String> types = new ArrayList<String>();
@@ -35,7 +36,7 @@ public class JSONDefaultNodeHandler extends AbstractXMLHandler implements Result
 			cols.add(meta.getColumnName(column).toLowerCase());
 		}
 
-		List<Map> list = (List<Map>) new MapListHandler().handleString(rs, cols.toArray(new String[0]), cols.toArray(new String[0]));
+		List<Map<String, Object>> list = new MapListHandler().handleString(rs, cols.toArray(new String[0]), cols.toArray(new String[0]));
 
 		JsonObject body = new JsonObject();
 
