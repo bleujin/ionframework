@@ -34,8 +34,8 @@ public class OracleDBManager extends DBManager {
 	}
 	
 	public final static OracleDBManager test(){
-		// return new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") 
-		return new OracleDBManager("jdbc:oracle:thin:@61.250.201.76:1521:TOONTALK", "toontalk", "toon0711") ;
+		return new OracleDBManager("jdbc:oracle:thin:@dev-test.i-on.net:1521:devTest", "bleu", "redf") ;
+		// return new OracleDBManager("jdbc:oracle:thin:@61.250.201.76:1521:TOONTALK", "toontalk", "toon0711") ;
 	}
 
 	public OracleDBManager(String jdbcURL, String user, String passwd, int connectLimit) {
