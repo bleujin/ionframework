@@ -2,6 +2,7 @@ package net.ion.framework.db.bean.handlers;
 
 import java.util.List;
 
+import net.ion.framework.db.Rows;
 import net.ion.framework.db.async.H2TestCase;
 import net.ion.framework.util.Debug;
 import junit.framework.TestCase;
@@ -31,6 +32,7 @@ public class TestResultSetHandlerGeneric extends H2TestCase {
 		assertEquals("bleujin", emp.getEname()) ;
 		
 		
+		
 		List<Employee> list = dc.createUserProcedure("emp@select").execQuery().toHandle(new BeanListHandler<Employee>(Employee.class));
 		emp = list.get(0) ;
 		assertEquals(1, emp.getEmpno()) ;
@@ -43,7 +45,9 @@ public class TestResultSetHandlerGeneric extends H2TestCase {
 		dc.createUserProcedure("emp@insert(?,?)").addParam("empno", 1).addParam("ename", "bleujin").execUpdate() ;
 		dc.createUserProcedure("emp@insert(?,?)").addParam("empno", 2).addParam("ename", "hero").execUpdate() ;
 		
-		String[] datas = dc.createUserProcedure("emp@select").execQuery().toHandle(new StringArrayHandler());
+		final Rows rows = dc.createUserProcedure("emp@select").execQuery();
+		String[] datas = rows.toHandle(new StringArrayHandler());
+		Debug.line(datas);
 	}
 }
 
