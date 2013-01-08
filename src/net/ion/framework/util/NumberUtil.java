@@ -16,4 +16,7 @@ public class NumberUtil extends NumberUtils {
 		return toInt(str) ;
 	}
 
+	public final static boolean isModify(long l, int mod){
+		return l % mod == 0 ;
+	}
 }

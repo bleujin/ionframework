@@ -43,7 +43,7 @@ public class TestResultSetHandlerGeneric extends H2TestCase {
 		dc.createUserProcedure("emp@insert(?,?)").addParam("empno", 1).addParam("ename", "bleujin").execUpdate() ;
 		dc.createUserProcedure("emp@insert(?,?)").addParam("empno", 2).addParam("ename", "hero").execUpdate() ;
 		
-		Object datas = dc.createUserProcedure("emp@select").execQuery().toHandle(new StringArrayHandler());
+		String[] datas = dc.createUserProcedure("emp@select").execQuery().toHandle(new StringArrayHandler());
 	}
 }
 

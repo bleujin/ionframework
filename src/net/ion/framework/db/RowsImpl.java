@@ -206,7 +206,7 @@ public class RowsImpl extends WebRowSet implements Rows {
 
 	}
 
-	public Object toHandle(ResultSetHandler rsh) throws SQLException {
+	public <T> T toHandle(ResultSetHandler<T> rsh) throws SQLException {
 		return rsh.handle(this);
 	}
 
