@@ -2,7 +2,7 @@ package net.ion.framework.db.manager;
 
 /**
  * <p>
- * Title: »ç¿ëÇÏ´Â DBÀÇ Å¸ÀÔÀ» ¹Þ´Â Const Value
+ * Title: ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ DBï¿½ï¿½ Å¸ï¿½ï¿½ï¿½ï¿½ ï¿½Þ´ï¿½ Const Value
  * </p>
  * <p>
  * Description:
@@ -23,6 +23,7 @@ public interface DBType {
 	public final static String MSSQLDBName = "MSSQL";
 	public final static String HSQLDBName = "HSQL";
 	public final static String MySqlDBName = "MYSQL";
+	public final static String PostgreSqlDBName = "POSTGRESQL";
 	public final static String UnknownDBName = "Unknown";
 
 	final static int OracleDBManager = 1;
@@ -46,6 +47,8 @@ public interface DBType {
 
 	public final static int MySQLDBManager = 7;
 	public final static int MySQLPoolDBManager = 71;
+
+	public final static int PostgreSQLDBManager = 8;
 
 	public final static int UNKNOWN = 9;
 
