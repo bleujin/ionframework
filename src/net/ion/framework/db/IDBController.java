@@ -25,7 +25,7 @@ public interface IDBController extends IQueryFactory {
 
 	public Rows getRows(IQueryable queryable);
 
-	public Object execHandlerQuery(IQueryable query, ResultSetHandler handler);
+	public <T> T execHandlerQuery(IQueryable query, ResultSetHandler<T> handler);
 
 	public Rows getRows(String proc);
 

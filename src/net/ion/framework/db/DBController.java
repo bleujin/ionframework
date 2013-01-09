@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
 import javax.sql.RowSet;
@@ -14,6 +15,7 @@ import javax.sql.RowSet;
 import net.ion.framework.configuration.Configuration;
 import net.ion.framework.configuration.ConfigurationException;
 import net.ion.framework.configuration.NotFoundXmlTagException;
+import net.ion.framework.db.async.AsyncDBController;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.cache.CacheConfigImpl;
 import net.ion.framework.db.constant.RuntimeService;
@@ -407,7 +409,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 		}
 	}
 
-	public Object execHandlerQuery(IQueryable query, ResultSetHandler handler) {
+	public <T> T execHandlerQuery(IQueryable query, ResultSetHandler<T> handler) {
 		try {
 			if (query instanceof SerializedQuery){
 				return ((SerializedQuery)query).deserializable(this).execHandlerQuery(handler) ;
@@ -440,5 +442,13 @@ public class DBController implements IDBController, Closeable { // implements Co
 
 	public void close() throws IOException {
 		destroySelf() ;
+	}
+	
+	private AsyncDBController asyncDc = null ;
+	public synchronized AsyncDBController async(){
+		if (asyncDc == null){
+			this.asyncDc = new AsyncDBController(this, Executors.newCachedThreadPool()) ;
+		}
+		return asyncDc ;
 	}
 }

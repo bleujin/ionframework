@@ -29,6 +29,7 @@ public class TestAsyncDBController extends TestCase{
         adc.destroySelf() ;
     }
     
+    
     public void testDebugPrint() throws Exception {
     	final Future<Rows> future = adc.getRows("select * from dual union all select * from dual");
     	

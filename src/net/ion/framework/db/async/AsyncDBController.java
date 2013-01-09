@@ -70,6 +70,25 @@ public class AsyncDBController implements Closeable {
 		return future;
 	}
 
+	public Result<Integer> updateResult(final IQueryable query){
+		return ConcurrentFutureResult.create(query, execUpdate(query)) ;
+	}
+
+	public Result<Rows> queryResult(final IQueryable query){
+		return ConcurrentFutureResult.create(query, getRows(query)) ;
+	}
+
+	public Result<Integer> updateResult(final String query){
+		return ConcurrentFutureResult.create(dc.createUserCommand(query), execUpdate(query)) ;
+	}
+
+	public Result<Rows> queryResult(final String query){
+		return ConcurrentFutureResult.create(dc.createUserCommand(query), getRows(query)) ;
+	}
+
+	
+
+	
 	public Future<Integer> execUpdate(final String query) {
 		return execUpdate(dc.createUserCommand(query));
 	}

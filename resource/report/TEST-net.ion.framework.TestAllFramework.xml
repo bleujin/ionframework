@@ -1,0 +1,1412 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="56" failures="0" hostname="bleujin-SV" name="net.ion.framework.TestAllFramework" tests="124" time="1178.027" timestamp="2013-01-08T01:03:40">
+  <properties>
+    <property name="java.vendor" value="Sun Microsystems Inc." />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="eclipse.pdebuild.templates" value="/D:/eclipse/plugins/org.eclipse.pde.build_3.5.2.R35x_20100114/templates/" />
+    <property name="sun.management.compiler" value="HotSpot Client Compiler" />
+    <property name="os.name" value="Windows 7" />
+    <property name="sun.boot.class.path" value="C:\java\jdk5_22\jre\lib\rt.jar;C:\java\jdk5_22\jre\lib\i18n.jar;C:\java\jdk5_22\jre\lib\sunrsasign.jar;C:\java\jdk5_22\jre\lib\jsse.jar;C:\java\jdk5_22\jre\lib\jce.jar;C:\java\jdk5_22\jre\lib\charsets.jar;C:\java\jdk5_22\jre\classes" />
+    <property name="TODAY" value="January 8 2013" />
+    <property name="build.number" value="3" />
+    <property name="sun.desktop" value="windows" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145" />
+    <property name="java.runtime.version" value="1.5.0_22-b03" />
+    <property name="version.number" value="2" />
+    <property name="user.name" value="bleujin" />
+    <property name="ant.file.Jar Publish" value="D:\github\ionframework\build.xml" />
+    <property name="publishDir" value="./publish" />
+    <property name="user.language" value="ko" />
+    <property name="sun.boot.library.path" value="C:\java\jdk5_22\jre\bin" />
+    <property name="manifest.main.class" value="" />
+    <property name="ant.project.name" value="Jar Publish" />
+    <property name="DSTAMP" value="20130108" />
+    <property name="java.version" value="1.5.0_22" />
+    <property name="user.timezone" value="" />
+    <property name="sun.arch.data.model" value="32" />
+    <property name="java.endorsed.dirs" value="C:\java\jdk5_22\jre\lib\endorsed" />
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86" />
+    <property name="sun.jnu.encoding" value="MS949" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="file.separator" value="\" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="49.0" />
+    <property name="user.country" value="KR" />
+    <property name="java.home" value="C:\java\jdk5_22\jre" />
+    <property name="java.vm.info" value="mixed mode, sharing" />
+    <property name="ant.file" value="D:\github\ionframework\build.xml" />
+    <property name="os.version" value="6.1" />
+    <property name="test.reports" value="./resource/report" />
+    <property name="path.separator" value=";" />
+    <property name="java.vm.version" value="1.5.0_22-b03" />
+    <property name="user.variant" value="" />
+    <property name="ant.library.dir" value="D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib" />
+    <property name="manifest.classpath" value="./" />
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit" />
+    <property name="eclipse.pdebuild.scripts" value="/D:/eclipse/plugins/org.eclipse.pde.build_3.5.2.R35x_20100114/scripts/" />
+    <property name="user.home" value="C:\Users\bleujin" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="binDir" value="./bin" />
+    <property name="java.library.path" value="C:\java\jdk5_22\jre\bin;.;C:\Windows\system32;C:\Windows;C:/Program Files (x86)/Java/jre6/bin/client;C:/Program Files (x86)/Java/jre6/bin;C:\Program Files (x86)\Wizvera\Delfino;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Ruby\bin;C:\oracle\product\10.2.0\client_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\QuickTime\QTSystem\;C:\java\jdk5_22\bin;C:\Program Files (x86)\Wizvera\Delfino;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Program Files (x86)\Common Files\Microsoft Shared\Windows Live;C:\Ruby\bin;C:\oracle\product\10.2.0\client_1\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Common Files\Roxio Shared\DLLShared\;C:\Program Files (x86)\Common Files\Roxio Shared\10.0\DLLShared\;C:\Program Files\MySQL\MySQL Server 5.5\bin;C:\Program Files (x86)\Windows Live\Shared;C:\Program Files\TortoiseSVN\bin;C:\Program Files (x86)\Git\cmd;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Users\bleujin\ec2home\bin;C:\Program Files (x86)\Mozilla Firefox;D:\download\apache-maven-3.0.4-bin\bin" />
+    <property name="java.vendor.url" value="http://java.sun.com/" />
+    <property name="java.vm.vendor" value="Sun Microsystems Inc." />
+    <property name="java.runtime.name" value="Java(TM) 2 Runtime Environment, Standard Edition" />
+    <property name="java.class.path" value="D:\github\ionframework\bin;D:\github\ionframework\lib\common_apache_fat.jar;D:\github\ionframework\lib\convert_fat.jar;D:\github\ionframework\lib\jdbc_fat.jar;D:\github\ionframework\lib\jetty_fat_745.jar;D:\github\ionframework\lib\json_fat.jar;D:\github\ionframework\lib\jsp-api-2.1.jar;D:\github\ionframework\lib\junit.jar;D:\github\ionframework\lib\mail_fat.jar;D:\github\ionframework\lib\metadata-extractor-2.3.1.jar;D:\github\ionframework\lib\pdf_fat.jar;D:\github\ionframework\lib\rest_fat.jar;D:\github\ionframework\lib\search_fat.jar;D:\github\ionframework\lib\servlet-api-2.5-6.0.0.jar;D:\github\ionframework\lib\struts135_fat.jar;D:\github\ionframework\lib\util_fat.jar;D:\github\ionframework\lib\velocity_fat.jar;D:\github\ionframework\lib\webservice_fat.jar;D:\github\ionframework\lib\xml_fat.jar;D:\github\ionframework;C:\Program Files (x86)\Java\jre6\lib\ext\QTJava.zip;D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-launcher.jar;D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar;D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant-junit.jar" />
+    <property name="ant.version" value="Apache Ant version 1.7.1 compiled on June 27 2008" />
+    <property name="TSTAMP" value="1003" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="sun.os.patch.level" value="" />
+    <property name="eclipse.pdebuild.home" value="/D:/eclipse/plugins/org.eclipse.pde.build_3.5.2.R35x_20100114/./" />
+    <property name="java.io.tmpdir" value="C:\Users\bleujin\AppData\Local\Temp\" />
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi" />
+    <property name="workspaceDir" value="../../workspace/" />
+    <property name="os.arch" value="x86" />
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment" />
+    <property name="java.ext.dirs" value="C:\java\jdk5_22\jre\lib\ext" />
+    <property name="user.dir" value="D:\github\ionframework" />
+    <property name="line.separator" value="
+" />
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM" />
+    <property name="basedir" value="D:\github\ionframework" />
+    <property name="baseDir" value="." />
+    <property name="ant.java.version" value="1.5" />
+    <property name="TODAY_MY" value="01/08/2013 10:03" />
+    <property name="ant.core.lib" value="D:\eclipse\plugins\org.apache.ant_1.7.1.v20090120-1145\lib\ant.jar" />
+    <property name="file.encoding" value="MS949" />
+    <property name="java.specification.version" value="1.5" />
+  </properties>
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testObject" time="0.225" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testCompli" time="0.033" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testVersion" time="0.013" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testNullObject" time="0.0030" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testXMLToJson" time="0.147" />
+  <testcase classname="net.ion.framework.parse.gson.TestAdvanceJson" name="testVolatile" time="0.0050" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testCase" time="0.0030" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testFromObject" time="0.0020" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testParseSimple" time="0.0010" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testParseAsArray" time="0.0" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testToJson" time="0.0" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testWrite" time="0.0" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testToMap" time="0.0020" />
+  <testcase classname="net.ion.framework.parse.gson.TestSimpleJson" name="testArray" time="0.0" />
+  <testcase classname="net.ion.framework.parse.gson.TestJsonUtil" name="testEncode" time="0.0" />
+  <testcase classname="net.ion.framework.parse.gson.TestJsonUtil" name="testDecode" time="0.0" />
+  <testcase classname="net.ion.framework.parse.gson.TestJsonUtil" name="testFindElement" time="0.0040" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testInsensitive" time="0.0020" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testEmpty" time="0.0" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testDocType" time="0.0050" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testOnlyText" time="0.0010" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testPrefix" time="0.0010" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testContent" time="0.0" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testTagText" time="0.0010" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testDepth" time="0.0010" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testGetValue" time="0.0020" />
+  <testcase classname="net.ion.framework.parse.html.HTMLTest" name="testChild" time="0.0040" />
+  <testcase classname="net.ion.framework.parse.html.TestParser" name="testElementValue" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.RopeCharSequenceTest" name="testRead" time="0.213" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testEmpty" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testSubstringDeleteBug" time="0.0050" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testRopeWriteBug" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testTemp" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testLengthOverflow" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testMatches" time="0.014" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testConcatenationFlatFlat" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testIterator" time="0.0030" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testReverse" time="0.0020" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testTrim" time="0.0060" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testCreation" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testEquals" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testHashCode" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testHashCode2" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testIndexOf" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testInsert" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testPrepend" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testCompareTo" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testToString" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testReverseIterator" time="0.0020" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testSerialize" time="0.0080" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testPadStart" time="0.0020" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testPadEnd" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testSubstringBounds" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testAppend" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testCharAt" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testRegexp" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testStartsEndsWith" time="0.0" />
+  <testcase classname="net.ion.framework.rope.RopeTest" name="testIndexOfBug" time="0.0" />
+  <testcase classname="net.ion.framework.rope.TestRopeInputStream" name="testRead" time="0.0040" />
+  <testcase classname="net.ion.framework.rope.TestRopeInputStream" name="testCharAt" time="0.0" />
+  <testcase classname="net.ion.framework.rope.TestRopeInputStream" name="testSpeed" time="0.388" />
+  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testSpeed" time="0.123" />
+  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testReader" time="0.0010" />
+  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testSpeedDiff" time="0.052" />
+  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testBuildReader" time="0.0" />
+  <testcase classname="net.ion.framework.rope.TestRopeReader" name="testNull" time="0.0" />
+  <testcase classname="net.ion.framework.rope.TestRopeWriter" name="testWriterSpped" time="0.013" />
+  <testcase classname="net.ion.framework.rope.TestRopeWriter" name="testRopeWriterSpped" time="0.027" />
+  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testDCInit" time="21.172">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testServant" time="21.003">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.dc.DCInit" name="testServantChain" time="20.999">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.dc.ConnectionLess" name="testThread" time="21.004">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testFirst" time="21.003">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testnCounter" time="21.002">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant" time="21.006">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant2" time="21.005">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelServant3" time="21.005">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testExceptionChannelServant" time="21.003">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelThread" time="21.006">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testChannelThread2" time="21.007">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.servant.TestExtraServant" name="testEmptyChannel" time="21.008">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.servant.TestChannelServant" name="testPutTask" time="21.019">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.servant.TestChannelServant.testPutTask(TestChannelServant.java:16)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testDefault" time="21.012">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testGetRows" time="21.007">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testParameter" time="20.998">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P1_SelectQuery" name="testFirstRow" time="20.998">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P2_UpdateQuery" name="testFirst" time="21.006">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P2_UpdateQuery.setUp(P2_UpdateQuery.java:9)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P2_UpdateQuery" name="testParameter" time="21.007">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P2_UpdateQuery.setUp(P2_UpdateQuery.java:9)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testBatchDefault" time="21.003">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P3_BatchCommandQuery.setUp(P3_BatchCommandQuery.java:13)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase1" time="20.998">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P3_BatchCommandQuery.setUp(P3_BatchCommandQuery.java:13)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase2" time="20.998">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P3_BatchCommandQuery.setUp(P3_BatchCommandQuery.java:13)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testAddParamCase3" time="21.003">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P3_BatchCommandQuery.setUp(P3_BatchCommandQuery.java:13)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P3_BatchCommandQuery" name="testTransaction" time="21.008">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P3_BatchCommandQuery.setUp(P3_BatchCommandQuery.java:13)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P4_UserProcedure" name="testProcedureUpdate" time="21.001">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P4_UserProcedure.setUp(P4_UserProcedure.java:25)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P4_UserProcedure" name="testProcedureQuery" time="21.005">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P4_UserProcedure.setUp(P4_UserProcedure.java:25)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P5_UserProceduresQuery" name="testUpdate" time="21.009">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P5_UserProceduresQuery.setUp(P5_UserProceduresQuery.java:14)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P5_UserProceduresQuery" name="testMultiQuery" time="21.007">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P5_UserProceduresQuery.setUp(P5_UserProceduresQuery.java:14)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P6_UserProceduresUpdate" name="testUserProcedures" time="21.004">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P6_UserProceduresUpdate.setUp(P6_UserProceduresUpdate.java:14)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.first.P6_UserProceduresUpdate" name="testSimpleTransaction" time="20.999">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.first.P6_UserProceduresUpdate.setUp(P6_UserProceduresUpdate.java:14)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.CombinedQuery" name="testFirst" time="21.002">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.CombinedQuery.setUp(CombinedQuery.java:14)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.CombinedQuery" name="testSecond" time="21.006">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.CombinedQuery.setUp(CombinedQuery.java:14)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.LobHandle" name="testParam" time="20.992">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.LobHandle.setUp(LobHandle.java:23)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedParameter" time="21.011">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.TestNamedParameter.setUp(TestNamedParameter.java:17)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedParameterDupl" time="21.007">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.TestNamedParameter.setUp(TestNamedParameter.java:17)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedProcedure" time="21.006">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.TestNamedParameter.setUp(TestNamedParameter.java:17)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testBatch" time="21.0">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.TestNamedParameter.setUp(TestNamedParameter.java:17)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.TestNamedParameter" name="testNamedBatch" time="21.004">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.extend.TestNamedParameter.setUp(TestNamedParameter.java:17)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.QueryPage" name="testRowsPage" time="20.998">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.extend.QueryPage" name="testRowsPageMethod2" time="20.999">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testMapHandler" time="21.0">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testMapList" time="20.998">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testBeanList" time="20.997">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.handler.UseHandler" name="testScalar" time="21.003">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.plan.ViewPlan" name="testViewPlan" time="21.007">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsFirstRow" name="testFirstRow" time="21.007">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testDate" time="20.999">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testSetClob" time="21.004">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testGetClob0" time="21.004">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsGet" name="testGetClob" time="21.009">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testDefaultLimit" time="21.005">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testNextPage" time="20.998">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.rows.RowsPage" name="testPrePage" time="21.0">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.dc.RowsToXML" name="testToXML" time="20.996">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.dc.RowsToXML.setUp(RowsToXML.java:25)
+</error>
+  </testcase>
+  <testcase classname="net.ion.framework.db.sample.dc.RowsToXML" name="testDual" time="21.001">
+    <error message="IO 예외 상황: The Network Adapter could not establish the connection" type="java.sql.SQLException">java.sql.SQLException: IO 예외 상황: The Network Adapter could not establish the connection
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:112)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:146)
+	at oracle.jdbc.driver.DatabaseError.throwSqlException(DatabaseError.java:255)
+	at oracle.jdbc.driver.T4CConnection.logon(T4CConnection.java:387)
+	at oracle.jdbc.driver.PhysicalConnection.&lt;init&gt;(PhysicalConnection.java:439)
+	at oracle.jdbc.driver.T4CConnection.&lt;init&gt;(T4CConnection.java:165)
+	at oracle.jdbc.driver.T4CDriverExtension.getConnection(T4CDriverExtension.java:35)
+	at oracle.jdbc.driver.OracleDriver.connect(OracleDriver.java:801)
+	at java.sql.DriverManager.getConnection(DriverManager.java:525)
+	at java.sql.DriverManager.getConnection(DriverManager.java:171)
+	at net.ion.framework.db.manager.OracleDBManager.getConnection(OracleDBManager.java:46)
+	at net.ion.framework.db.procedure.AbstractQueryable.getConnection(AbstractQueryable.java:183)
+	at net.ion.framework.db.procedure.AbstractQueryable.execQuery(AbstractQueryable.java:109)
+	at net.ion.framework.db.manager.OracleDBManager.heartbeatQuery(OracleDBManager.java:79)
+	at net.ion.framework.db.manager.DBManager.initPool(DBManager.java:74)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:204)
+	at net.ion.framework.db.DBController.initSelf(DBController.java:197)
+	at net.ion.framework.db.sample.TestBaseSample.setUp(TestBaseSample.java:26)
+	at net.ion.framework.db.sample.dc.RowsToXML.setUp(RowsToXML.java:25)
+</error>
+  </testcase>
+  <system-out><![CDATA[{"newField":"new","field":"old"}
+{"newerField":"newer","newField":"new","field":"old"}
+{"s":null,"i":5}
+null
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

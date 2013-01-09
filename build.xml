@@ -50,7 +50,7 @@
 	</target>
 	
 	
-	<target name="publish">
+	<target name="publish" depends="test_framework">
 		<delete file="publish/iframework_${version.number}.${build.number}.jar"></delete>
 		<jar destfile="publish/iframework_${version.number}.${build.number}.jar">
 			<manifest>

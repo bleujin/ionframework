@@ -27,51 +27,39 @@ import net.ion.framework.db.procedure.IQueryable;
  * @version 1.0
  */
 
-public interface Result {
+public interface Result<T> {
 	public ExecMessage getResultMessage() throws InvocationTargetException;
 
 	public IQueryable getQuery();
 
-	public int getRowCount();
+	public T get();
 
 	public Date getStartDate();
 
 	public Date getEndDate();
-
-	public Throwable getException();
 }
 
 
-class ConcurrentFutureResult implements Result {
+class ConcurrentFutureResult<T> implements Result<T> {
 
 	private final IQueryable query;
 	private final Date startDate;
 	private final Date endDate;
-	private final Future<UnknownFutureData<Integer>> future;
+	private final Future<T> future;
 
-	private ConcurrentFutureResult(IQueryable query, Date startDate, Future<UnknownFutureData<Integer>> future) {
+	private ConcurrentFutureResult(IQueryable query, Date startDate, Future<T> future) {
 		this.query = query;
 		this.startDate = startDate;
 		this.endDate = new Date();
 		this.future = future;
 	}
 
-	public static ConcurrentFutureResult create(IQueryable query, Date startDate, Future<UnknownFutureData<Integer>> future){
-		return new ConcurrentFutureResult(query, startDate, future) ;
+	public static <T> Result<T> create(IQueryable query, Future<T> future){
+		return new ConcurrentFutureResult(query, new Date(), future) ;
 	}
 	
 	public Date getEndDate() {
 		return endDate;
-	}
-
-	public Throwable getException() {
-		try {
-			return future.get().ex() ;
-		} catch (InterruptedException e) {
-			return new RuntimeException(e) ;
-		} catch (ExecutionException e) {
-			return new RuntimeException(e) ;
-		}
 	}
 
 	public IQueryable getQuery() {
@@ -82,9 +70,9 @@ class ConcurrentFutureResult implements Result {
 		return ExecMessage.SUCCESS_MESSAGE;
 	}
 
-	public int getRowCount() {
+	public T get() {
 		try {
-			return future.get().obj();
+			return future.get();
 		} catch (InterruptedException e) {
 			throw new RuntimeException(e) ;
 		} catch (ExecutionException e) {
