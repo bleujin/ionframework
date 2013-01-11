@@ -16,18 +16,13 @@ import net.ion.framework.util.StringUtil;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
-import org.apache.commons.vfs2.FileSystemOptions;
-import org.apache.commons.vfs2.FileType;
-import org.apache.commons.vfs2.VFS;
 import org.apache.commons.vfs2.VfsLog;
 import org.apache.commons.vfs2.impl.DefaultFileReplicator;
 import org.apache.commons.vfs2.impl.DefaultFileSystemManager;
 import org.apache.commons.vfs2.impl.PrivilegedFileReplicator;
 import org.apache.commons.vfs2.operations.FileOperationProvider;
 import org.apache.commons.vfs2.provider.FileProvider;
-import org.apache.commons.vfs2.provider.UriParser;
 import org.apache.commons.vfs2.util.Messages;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

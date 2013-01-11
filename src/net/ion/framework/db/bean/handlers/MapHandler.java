@@ -4,7 +4,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Map;
 
-import net.ion.framework.db.bean.BasicRowProcessor;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.bean.RowProcessor;
 

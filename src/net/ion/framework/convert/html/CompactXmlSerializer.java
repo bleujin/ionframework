@@ -39,7 +39,8 @@ package net.ion.framework.convert.html;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.*;
+import java.util.List;
+import java.util.ListIterator;
 
 /**
  * <p>Compact XML serializer - creates resulting XML by stripping whitespaces.</p>

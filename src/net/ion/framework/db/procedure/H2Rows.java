@@ -12,7 +12,6 @@ import java.sql.Ref;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.util.Map;
 
 import net.ion.framework.db.DefaultXmlWriter;
 import net.ion.framework.db.IXmlWriter;
@@ -26,7 +25,6 @@ import net.ion.framework.db.ScreenInfo;
 import net.ion.framework.db.Transformer;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.rowset.WebRowSet;
-import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.StringUtil;
 
 public class H2Rows extends WebRowSet implements Rows {

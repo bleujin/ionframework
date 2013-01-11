@@ -12,7 +12,6 @@ import net.ion.framework.db.Page;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IParameterQueryable;
-import net.ion.framework.db.procedure.ParameterQueryable;
 
 public abstract class AsyncParameterQueryable implements IParameterQueryable {
 

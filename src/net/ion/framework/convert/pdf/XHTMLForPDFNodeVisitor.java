@@ -1,6 +1,28 @@
 package net.ion.framework.convert.pdf;
 
-import static net.htmlparser.jericho.HTMLElementName.*;
+import static net.htmlparser.jericho.HTMLElementName.A;
+import static net.htmlparser.jericho.HTMLElementName.B;
+import static net.htmlparser.jericho.HTMLElementName.BODY;
+import static net.htmlparser.jericho.HTMLElementName.BR;
+import static net.htmlparser.jericho.HTMLElementName.DD;
+import static net.htmlparser.jericho.HTMLElementName.DIV;
+import static net.htmlparser.jericho.HTMLElementName.DL;
+import static net.htmlparser.jericho.HTMLElementName.DT;
+import static net.htmlparser.jericho.HTMLElementName.EM;
+import static net.htmlparser.jericho.HTMLElementName.H1;
+import static net.htmlparser.jericho.HTMLElementName.H2;
+import static net.htmlparser.jericho.HTMLElementName.H3;
+import static net.htmlparser.jericho.HTMLElementName.H4;
+import static net.htmlparser.jericho.HTMLElementName.H5;
+import static net.htmlparser.jericho.HTMLElementName.H6;
+import static net.htmlparser.jericho.HTMLElementName.I;
+import static net.htmlparser.jericho.HTMLElementName.LEGEND;
+import static net.htmlparser.jericho.HTMLElementName.LI;
+import static net.htmlparser.jericho.HTMLElementName.P;
+import static net.htmlparser.jericho.HTMLElementName.SPAN;
+import static net.htmlparser.jericho.HTMLElementName.STRONG;
+import static net.htmlparser.jericho.HTMLElementName.TD;
+import static net.htmlparser.jericho.HTMLElementName.UL;
 
 import java.net.MalformedURLException;
 import java.net.URL;

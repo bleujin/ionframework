@@ -37,7 +37,8 @@
 
 package net.ion.framework.convert.html;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.HashMap;

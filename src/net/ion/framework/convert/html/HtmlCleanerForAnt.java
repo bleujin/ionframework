@@ -37,14 +37,16 @@
 
 package net.ion.framework.convert.html;
 
-import org.apache.tools.ant.BuildException;
-
-import java.net.URL;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.io.FileOutputStream;
-import java.util.*;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
+
+import org.apache.tools.ant.BuildException;
 
 /**
  * <p>Support for ANT.</p>

@@ -1,15 +1,10 @@
 package net.ion.framework.convert.image.generator;
 
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
-
-import net.ion.framework.convert.image.link.LinkHarvester;
-import net.ion.framework.convert.image.link.LinkInfo;
-import net.ion.framework.convert.image.util.FormatNameUtil;
-import net.ion.framework.convert.image.util.SynchronousHTMLEditorKit;
-
-import java.awt.*;
+import java.awt.ComponentOrientation;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -19,6 +14,14 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.Map;
+
+import javax.imageio.ImageIO;
+import javax.swing.JEditorPane;
+
+import net.ion.framework.convert.image.link.LinkHarvester;
+import net.ion.framework.convert.image.link.LinkInfo;
+import net.ion.framework.convert.image.util.FormatNameUtil;
+import net.ion.framework.convert.image.util.SynchronousHTMLEditorKit;
 
 /**
  * @author Yoav Aharoni

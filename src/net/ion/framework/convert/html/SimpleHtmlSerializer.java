@@ -37,7 +37,8 @@
 
 package net.ion.framework.convert.html;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Writer;
 
 /**
  * <p>Simple HTML serializer - creates resulting HTML without indenting and/or compacting.</p>

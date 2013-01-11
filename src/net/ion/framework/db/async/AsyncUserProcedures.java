@@ -11,8 +11,6 @@ import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.IUserProcedures;
 import net.ion.framework.db.procedure.Queryable;
-import net.ion.framework.db.procedure.UserProcedure;
-import net.ion.framework.db.procedure.UserProcedures;
 
 public class AsyncUserProcedures implements IUserProcedures {
 

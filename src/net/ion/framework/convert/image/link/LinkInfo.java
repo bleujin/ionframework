@@ -1,6 +1,6 @@
 package net.ion.framework.convert.image.link;
 
-import java.awt.*;
+import java.awt.Rectangle;
 import java.util.List;
 import java.util.Map;
 

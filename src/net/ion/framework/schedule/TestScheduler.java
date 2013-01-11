@@ -1,10 +1,10 @@
 package net.ion.framework.schedule;
 
-import sun.management.ManagementFactory;
+import junit.framework.TestCase;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.InfinityThread;
 import net.ion.framework.util.ListUtil;
-import junit.framework.TestCase;
+import sun.management.ManagementFactory;
 
 public class TestScheduler extends TestCase{
 

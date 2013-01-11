@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
-import javax.management.RuntimeErrorException;
-
 import net.ion.framework.db.procedure.IQueryable;
 
 /**

@@ -40,11 +40,6 @@ package net.ion.framework.convert.html;
 import java.io.IOException;
 import java.io.Writer;
 
-import net.ion.framework.util.StringUtil;
-
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.CharUtils;
-
 /**
  * <p>HTML text token.</p>
  */

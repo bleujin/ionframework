@@ -3,7 +3,6 @@ package net.ion.framework.db.procedure;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.PoolHelper;
 import net.ion.framework.parse.gson.JsonParser;
 

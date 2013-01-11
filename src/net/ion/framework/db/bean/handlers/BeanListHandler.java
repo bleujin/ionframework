@@ -14,7 +14,7 @@ public class BeanListHandler<T> implements ResultSetHandler<List<T>> {
 	private Class<T> type = null;
 	private RowProcessor convert = BasicRowProcessor.instance();
 	public BeanListHandler(Class<T> type) {
-		this.type = type;
+		this.type = type ;
 	}
 	public BeanListHandler(Class<T> type, RowProcessor convert) {
 		this.type = type;

@@ -37,7 +37,12 @@
 
 package net.ion.framework.convert.html;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.StringTokenizer;
 
 import net.ion.framework.util.ListUtil;
 

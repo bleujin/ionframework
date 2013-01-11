@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.ion.framework.db.IDBController;
-import net.ion.framework.util.ListUtil; 
+import net.ion.framework.util.ListUtil;
 import oracle.jdbc.OraclePreparedStatement;
 import oracle.sql.BLOB;
 import oracle.sql.CLOB;

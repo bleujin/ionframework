@@ -2,10 +2,8 @@ package net.ion.framework.convert;
 
 import java.io.IOException;
 import java.io.Writer;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 import java.util.StringTokenizer;
 
 import net.ion.framework.convert.html.CleanerProperties;
@@ -14,7 +12,6 @@ import net.ion.framework.convert.html.ContentNode;
 import net.ion.framework.convert.html.HtmlSerializer;
 import net.ion.framework.convert.html.TagNode;
 import net.ion.framework.convert.html.Utils;
-import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 
 

@@ -37,8 +37,13 @@
 
 package net.ion.framework.convert.html;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.Writer;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * <p>Abstract XML serializer - contains common logic for descendants.</p>

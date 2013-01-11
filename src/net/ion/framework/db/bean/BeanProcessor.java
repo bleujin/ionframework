@@ -11,11 +11,15 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import net.ion.framework.db.RowsUtils;
+import net.ion.framework.util.Debug;
 
 public class BeanProcessor {
 
@@ -78,7 +82,7 @@ public class BeanProcessor {
 			PropertyDescriptor prop = props[columnToProperty[i]];
 			Class<?> propType = prop.getPropertyType();
 
-			Object value = this.processColumn(rs, i, propType);
+			Object value = this.getValue(rs, i, propType);
 
 			if (propType != null && value == null && propType.isPrimitive()) {
 				value = primitiveDefaults.get(propType);
@@ -223,8 +227,22 @@ public class BeanProcessor {
 
 		return columnToProperty;
 	}
+	
+	protected Object getValue(ResultSet rs, int column, Class<?> propType) throws SQLException {
+		ResultSetMetaData meta = rs.getMetaData() ;
+		Object value;
 
-	protected Object processColumn(ResultSet rs, int index, Class<?> propType) throws SQLException {
+		if (meta.getColumnType(column) == Types.CLOB && rs.getClob(column) != null) {
+			value = RowsUtils.clobToString(rs.getClob(column));
+		} else if (meta.getColumnType(column) == Types.BLOB && rs.getBlob(column) != null) {
+			value = RowsUtils.blobToFileName(rs.getBlob(column));
+		} else {
+			value = processColumn(rs, column, propType);
+		}
+		return value;
+	}
+
+	private Object processColumn(ResultSet rs, int index, Class<?> propType) throws SQLException {
 
 		if (!propType.isPrimitive() && rs.getObject(index) == null) {
 			return null;
@@ -235,6 +253,7 @@ public class BeanProcessor {
 		}
 
 		if (propType.equals(String.class)) {
+			Debug.debug(rs.getClass(), rs.getMetaData().getColumnTypeName(index), rs.getString(index)) ;
 			return rs.getString(index);
 
 		} else if (propType.equals(Integer.TYPE) || propType.equals(Integer.class)) {

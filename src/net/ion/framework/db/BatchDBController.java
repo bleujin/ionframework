@@ -5,7 +5,6 @@ import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.IUserProcedures;
 import net.ion.framework.db.servant.AfterTask;
 import net.ion.framework.db.servant.IExtraServant;
-import net.ion.framework.db.servant.NoneServant;
 import net.ion.framework.db.servant.ServantChain;
 
 

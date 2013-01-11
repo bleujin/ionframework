@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-
 import net.ion.framework.util.ListUtil;
 
 public class ChannelServant implements IExtraServant {

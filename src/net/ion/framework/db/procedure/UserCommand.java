@@ -10,8 +10,6 @@ import java.sql.Statement;
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
-import net.ion.framework.db.fake.BlankConnection;
-import net.ion.framework.util.Debug;
 import net.ion.framework.util.StringUtil;
 
 /**

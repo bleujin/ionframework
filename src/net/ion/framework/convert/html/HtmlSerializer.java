@@ -37,8 +37,9 @@
 
 package net.ion.framework.convert.html;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.Map;
 
 /**
  * <p>Abstract HTML serializer - contains common logic for descendants.</p>

@@ -1,8 +1,5 @@
 package net.ion.framework.convert.image.util;
 
-import java.io.FileReader;
-import java.io.IOException;
-
 import javax.swing.text.Document;
 import javax.swing.text.Element;
 import javax.swing.text.View;
@@ -10,8 +7,6 @@ import javax.swing.text.ViewFactory;
 import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.ImageView;
-
-import org.apache.commons.io.IOUtils;
 
 /**
  * @author Yoav Aharoni

@@ -3,8 +3,6 @@ package net.ion.framework.db.bean.handlers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.batik.util.gui.xmleditor.XMLDocument;
-
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.xml.XmlDocument;

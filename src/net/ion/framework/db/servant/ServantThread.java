@@ -1,8 +1,6 @@
 package net.ion.framework.db.servant;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Vector;
 
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;

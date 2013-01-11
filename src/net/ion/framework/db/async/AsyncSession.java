@@ -16,7 +16,6 @@ import net.ion.framework.db.procedure.IUserCommandBatch;
 import net.ion.framework.db.procedure.IUserProcedure;
 import net.ion.framework.db.procedure.IUserProcedureBatch;
 import net.ion.framework.db.procedure.IUserProcedures;
-import net.ion.framework.db.procedure.Queryable;
 
 public class AsyncSession {
 

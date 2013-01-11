@@ -3,8 +3,6 @@ package net.ion.framework.db.bean.handlers;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.apache.ecs.xhtml.col;
-
 import net.ion.framework.db.bean.ResultSetHandler;
 
 public class ScalarHandler extends ColNameHelper implements ResultSetHandler<Object> {

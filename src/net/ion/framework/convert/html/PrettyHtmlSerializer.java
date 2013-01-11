@@ -37,8 +37,12 @@
 
 package net.ion.framework.convert.html;
 
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.StringTokenizer;
 
 /**
  * <p>Pretty HTML serializer - creates resulting HTML with indenting lines.</p>

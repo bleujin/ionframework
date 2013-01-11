@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import net.ion.framework.db.bean.BasicRowProcessor;
-import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.bean.RowProcessor;
 
 public class MapListHandler extends AbListHandler<Map<String, ? extends Object>>{

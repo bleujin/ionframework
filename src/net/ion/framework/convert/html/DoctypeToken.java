@@ -40,8 +40,6 @@ package net.ion.framework.convert.html;
 import java.io.IOException;
 import java.io.Writer;
 
-import net.ion.framework.convert.html.BaseToken;
-
 /**
  * <p>HTML doctype token.</p>
  */

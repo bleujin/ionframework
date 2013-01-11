@@ -1,11 +1,20 @@
 package net.ion.framework.convert.image.link;
 
-import javax.swing.*;
-import javax.swing.text.*;
-import javax.swing.text.html.HTML;
-import java.awt.*;
-import java.util.*;
+import java.awt.Rectangle;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.swing.JEditorPane;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Element;
+import javax.swing.text.JTextComponent;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.html.HTML;
 
 /**
  * @author Yoav Aharoni

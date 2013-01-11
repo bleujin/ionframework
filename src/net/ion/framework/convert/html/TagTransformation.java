@@ -37,8 +37,8 @@
 
 package net.ion.framework.convert.html;
 
-import java.util.Map;
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * Describes how specified tag is transformed to another one, or is ignored during parsing

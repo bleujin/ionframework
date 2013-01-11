@@ -1,10 +1,9 @@
 package net.ion.framework.template.ref;
 
 import java.util.HashMap;
-import java.util.Set;
 
 /**
- * ¹ü¿ë ÀÛ¾÷ °ø°£
+ * ï¿½ï¿½ï¿½ ï¿½Û¾ï¿½ ï¿½ï¿½
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0

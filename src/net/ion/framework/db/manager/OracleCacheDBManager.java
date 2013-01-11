@@ -6,8 +6,6 @@ import java.util.Calendar;
 import java.util.Properties;
 import java.util.Random;
 
-import net.ion.framework.util.Debug;
-
 import oracle.jdbc.pool.OracleConnectionCacheManager;
 import oracle.jdbc.pool.OracleDataSource;
 

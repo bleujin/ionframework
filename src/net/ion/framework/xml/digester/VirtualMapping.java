@@ -1,7 +1,7 @@
 package net.ion.framework.xml.digester;
 
 /**
- * virtualURI, realPath¸¦ ¸â¹ö·Î °¡Áö´Â Bean
+ * virtualURI, realPathï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Bean
  * 
  * @author bleujin
  * @version 1.0
@@ -27,4 +27,4 @@ public class VirtualMapping {
 	public void setRealPath(String realPath) {
 		this.realPath = realPath;
 	}
-}
+} 

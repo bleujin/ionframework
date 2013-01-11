@@ -19,7 +19,6 @@ import java.io.EOFException;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,7 +26,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import net.ion.framework.parse.gson.internal.Streams;
-import net.ion.framework.parse.gson.reflect.TypeToken;
 import net.ion.framework.parse.gson.stream.JsonReader;
 import net.ion.framework.parse.gson.stream.JsonToken;
 import net.ion.framework.parse.gson.stream.MalformedJsonException;

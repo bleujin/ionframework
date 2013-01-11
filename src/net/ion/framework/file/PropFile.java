@@ -3,14 +3,12 @@ package net.ion.framework.file;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FilterInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.UnsupportedCharsetException;
 
 import net.ion.framework.parse.gson.JsonObject;
-import net.ion.framework.parse.gson.JsonParser;
 import net.ion.framework.util.IOUtil;
 import net.ion.framework.util.StringUtil;
 

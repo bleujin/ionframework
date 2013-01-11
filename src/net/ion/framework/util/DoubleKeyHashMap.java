@@ -4,13 +4,13 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Set;
 import java.util.Map.Entry;
+import java.util.Set;
 
 /**
- * µÎ°³ÀÇ key¸¦ °¡Áö´Â map collection<br/>
+ * ï¿½Î°ï¿½ï¿½ï¿½ keyï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ map collection<br/>
  * <br/>
- * ÁÖÀÇ: mapping µ¥ÀÌÅÍ¸¦ Ãß°¡(put),»èÁ¦(remove)ÇÏ´Â °ÍÀº ¹Ýµå½Ã ÀÌ Å¬·¡½º¸¦ ÅëÇØ¾ß ÇÏ¸ç ÀÌ Å¬·¡½º·Î ºÎÅÍ ¾òÀº collection¿¡ Á÷Á¢ Ãß°¡, »èÁ¦ ÇÏ¸é ¾ÈµÈ´Ù.
+ * ï¿½ï¿½ï¿½ï¿½: mapping ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ß°ï¿½(put),ï¿½ï¿½ï¿½ï¿½(remove)ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ýµï¿½ï¿½ ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¾ï¿½ ï¿½Ï¸ï¿½ ï¿½ï¿½ Å¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ collectionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ï¿½, ï¿½ï¿½ï¿½ï¿½ ï¿½Ï¸ï¿½ ï¿½ÈµÈ´ï¿½.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -120,10 +120,10 @@ public class DoubleKeyHashMap<K1, K2, V> {
 	}
 
 	/**
-	 * key1À¸·Î ½ÃÀÛÇÏ´Â ¸ðµç entry¸¦ Áö¿î´Ù.
+	 * key1ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ entryï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.
 	 * 
 	 * @param key1
-	 * @return Áö¿öÁø innerHashMap
+	 * @return ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ innerHashMap
 	 */
 	public HashMap<K2, V> remove(K1 key1) {
 		return map.remove(key1);
@@ -144,7 +144,7 @@ public class DoubleKeyHashMap<K1, K2, V> {
 	}
 
 	/**
-	 * Ã¹¹øÂ° keyÁýÇÕÀ» ¸®ÅÏ
+	 * Ã¹ï¿½ï¿½Â° keyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return Set
 	 */
@@ -153,7 +153,7 @@ public class DoubleKeyHashMap<K1, K2, V> {
 	}
 
 	/**
-	 * Ã¹¹øÂ° Å°°¡ key1ÀÎ µÎ¹øÂ° keyÁýÇÕÀ» ¸®ÅÏ
+	 * Ã¹ï¿½ï¿½Â° Å°ï¿½ï¿½ key1ï¿½ï¿½ ï¿½Î¹ï¿½Â° keyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @param key1
 	 *            Object
@@ -169,7 +169,7 @@ public class DoubleKeyHashMap<K1, K2, V> {
 	}
 
 	/**
-	 * key1À» °¡Áö´Â value setÀ» ¸®ÅÏÇÑ´Ù.
+	 * key1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ value setï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param key1
 	 *            Object
@@ -185,7 +185,7 @@ public class DoubleKeyHashMap<K1, K2, V> {
 	}
 
 	/**
-	 * key1À» °¡Áö´Â entry setÀ» ¸®ÅÏÇÑ´Ù.
+	 * key1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ entry setï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param key1
 	 *            Object
@@ -229,9 +229,9 @@ public class DoubleKeyHashMap<K1, K2, V> {
 	}
 
 	/**
-	 * key1À» °¡Áö´Â mapÀ» ¸®ÅÏÇÑ´Ù.
+	 * key1ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ mapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
-	 * ÁÖÀÇ! : key1¿¡ ÇØ´çÇÏ´Â innerHashMapÀÌ ¾øÀ» °æ¿ì »õ·Î¿î HashMapÀ» »ý¼ºÇØ¼­ ¸®ÅÏÇÑ´Ù. ±×·¯¹Ç·Î ¾òÀº innerHashMap¿¡ Á÷Á¢ entry¸¦ Ãß°¡ÇÏ¸é ¾ÈµÈ´Ù!
+	 * ï¿½ï¿½ï¿½ï¿½! : key1ï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ innerHashMapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ HashMapï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½. ï¿½×·ï¿½ï¿½Ç·ï¿½ ï¿½ï¿½ï¿½ï¿½ innerHashMapï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ entryï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï¸ï¿½ ï¿½ÈµÈ´ï¿½!
 	 * 
 	 * @param key1
 	 * @return

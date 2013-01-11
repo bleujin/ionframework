@@ -2,7 +2,6 @@ package net.ion.framework.db.bean.handlers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.HashSet;
 import java.util.Set;
 
 import net.ion.framework.db.bean.ResultSetHandler;

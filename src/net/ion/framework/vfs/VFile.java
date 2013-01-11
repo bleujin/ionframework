@@ -18,7 +18,6 @@ import org.apache.commons.vfs2.FileSelector;
 import org.apache.commons.vfs2.FileSystemException;
 import org.apache.commons.vfs2.FileType;
 import org.apache.commons.vfs2.operations.FileOperations;
-import org.apache.tools.ant.taskdefs.Sleep;
 
 public class VFile implements Closeable {
 

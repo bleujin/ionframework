@@ -1,9 +1,7 @@
 package net.ion.framework.db.procedure;
 
 import java.io.Closeable;
-import java.io.IOException;
 import java.io.InputStream;
-import java.io.ObjectOutputStream;
 import java.io.ObjectStreamException;
 import java.io.Reader;
 import java.sql.ResultSet;
@@ -20,7 +18,6 @@ import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.RowsUtils;
 import net.ion.framework.util.CaseInsensitiveHashMap;
-import net.ion.framework.util.Debug;
 
 import org.apache.commons.io.IOUtils;
 

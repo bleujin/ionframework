@@ -13,7 +13,6 @@ import org.apache.commons.vfs2.FileSystemOptions;
 import org.apache.commons.vfs2.impl.DefaultFileSystemManager;
 import org.apache.commons.vfs2.operations.FileOperationProvider;
 import org.apache.commons.vfs2.provider.FileProvider;
-import org.apache.poi.hssf.record.formula.OperationPtg;
 
 public class FileSystemEntry {
 	

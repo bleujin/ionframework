@@ -11,13 +11,10 @@ import org.apache.commons.vfs2.FileSystem;
 import org.apache.commons.vfs2.FileSystemException;
 import org.apache.commons.vfs2.FileSystemOptions;
 import org.apache.commons.vfs2.FileType;
-import org.apache.commons.vfs2.provider.AbstractFileName;
 import org.apache.commons.vfs2.provider.AbstractOriginatingFileProvider;
-import org.apache.commons.vfs2.provider.local.GenericFileNameParser;
 import org.apache.commons.vfs2.provider.local.LocalFileName;
 import org.apache.commons.vfs2.provider.local.LocalFileNameParser;
 import org.apache.commons.vfs2.provider.local.LocalFileSystem;
-import org.apache.commons.vfs2.provider.local.WindowsFileNameParser;
 
 // Referenced classes of package org.apache.commons.vfs.provider.local:
 //            WindowsFileNameParser, GenericFileNameParser, LocalFileNameParser, LocalFileName, 

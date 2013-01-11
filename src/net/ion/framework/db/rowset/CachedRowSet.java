@@ -45,8 +45,6 @@ import javax.sql.RowSetMetaData;
 import javax.sql.RowSetReader;
 import javax.sql.RowSetWriter;
 
-import net.ion.framework.util.IOUtil;
-
 // Referenced classes of package sun.jdbc.rowset:
 //            BaseRowSet, BaseRow, InsertRow, Row, 
 //            RowSetMetaDataImpl, RowSetReaderImpl, RowSetWriterImpl, SQLInputImpl, 

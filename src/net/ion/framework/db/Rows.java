@@ -10,11 +10,8 @@ import java.util.Collection;
 import javax.sql.RowSet;
 import javax.sql.RowSetInternal;
 
-import com.qbox.util.PageBean;
-
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IQueryable;
-import net.ion.framework.util.Closure;
 
 /**
  * CLOB precessing and Adapter Pattern

@@ -4,7 +4,6 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 
 import net.ion.framework.db.procedure.IQueryable;
-import net.ion.framework.util.Debug;
 
 public class InvokeQueryHandler implements InvocationHandler {
 

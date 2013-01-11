@@ -37,8 +37,14 @@
 
 package net.ion.framework.convert.html;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedWriter;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.Map;
 
 /**
  * <p>Basic abstract serializer - contains common logic for descendants (methods <code>writeXXX()</code>.</p>

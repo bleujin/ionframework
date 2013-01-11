@@ -2,7 +2,6 @@ package net.ion.framework.db.async;
 
 import java.io.Closeable;
 import java.sql.SQLException;
-import java.util.Date;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

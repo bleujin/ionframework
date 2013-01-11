@@ -7,20 +7,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
 import java.util.List;
 
-import javax.swing.plaf.ListUI;
-
-import org.apache.commons.lang.SystemUtils;
-import org.apache.tools.ant.input.PropertyFileInputHandler;
-
 import net.ion.framework.parse.gson.JsonObject;
-import net.ion.framework.util.Debug;
-import net.ion.framework.util.FileUtil;
 import net.ion.framework.util.IOUtil;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.StringUtil;
+
+import org.apache.commons.lang.SystemUtils;
 
 public class PropFileManager {
 

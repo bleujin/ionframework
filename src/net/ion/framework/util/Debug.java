@@ -7,8 +7,6 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.htmlparser.jericho.Segment;
-
 public class Debug extends OutputStream {
 
 	public final static String PROPERTY_KEY = "framework.debug.out";
