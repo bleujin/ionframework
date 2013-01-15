@@ -19,7 +19,6 @@ import java.util.List;
 import java.util.Map;
 
 import net.ion.framework.db.RowsUtils;
-import net.ion.framework.util.Debug;
 
 public class BeanProcessor {
 
@@ -253,7 +252,7 @@ public class BeanProcessor {
 		}
 
 		if (propType.equals(String.class)) {
-			Debug.debug(rs.getClass(), rs.getMetaData().getColumnTypeName(index), rs.getString(index)) ;
+			//Debug.debug(rs.getClass(), rs.getMetaData().getColumnTypeName(index), rs.getString(index)) ;
 			return rs.getString(index);
 
 		} else if (propType.equals(Integer.TYPE) || propType.equals(Integer.class)) {
