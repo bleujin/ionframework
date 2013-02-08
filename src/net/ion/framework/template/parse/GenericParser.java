@@ -2,9 +2,9 @@ package net.ion.framework.template.parse;
 
 
 /**
- * ¹ü¿ë parser ±¸Çö<br/>
+ * ë²”ìš© parser êµ¬í˜„<br/>
  * <br/>
- * BEGIN ÀÌ [[ ÀÌ°í END °¡ ]] ÀÌ¸é ´ÙÀ½°ú °°ÀÌ parsing µÈ´Ù. (trimmingµÊ) abcdefg[[ hijklm ]]nopqrstuvwxyz -> hijklm
+ * BEGIN ì´ [[ ì´ê³  END ê°€ ]] ì´ë©´ ë‹¤ìŒê³¼ ê°™ì´ parsing ëœë‹¤. (trimmingë¨) abcdefg[[ hijklm ]]nopqrstuvwxyz -> hijklm
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -26,7 +26,7 @@ public class GenericParser extends Parser {
 	 * @param END
 	 *            String
 	 * @param overlap
-	 *            boolean trueÀÏ °æ¿ì END¸¦ ´ÙÀ½ parsing\uFFFD parsingÀÇ ½ÃÀÛÁöÁ¡¿¡ Æ÷ÇÔ½ÃÅ²´Ù.
+	 *            boolean trueì¼ ê²½ìš° ENDë¥¼ ë‹¤ìŒ parsing\uFFFD parsingì˜ ì‹œì‘ì§€ì ì— í¬í•¨ì‹œí‚¨ë‹¤.
 	 */
 	public GenericParser(String BEGIN, String END, boolean overlap, boolean showTag) {
 		this.BEGIN = BEGIN;

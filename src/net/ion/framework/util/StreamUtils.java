@@ -11,7 +11,7 @@ import java.io.OutputStream;
 import org.apache.commons.io.IOUtils;
 
 /**
- * stream ³¢¸® º¹»ç, byte ¹è¿­·Î ÃßÃâ, byte ¹è¿­À» streamÀ¸·Î º¯È¯ µîÀÇ ÀÛ¾÷À» ÇÑ´Ù.
+ * stream ë¼ë¦¬ ë³µì‚¬, byte ë°°ì—´ë¡œ ì¶”ì¶œ, byte ë°°ì—´ì„ streamìœ¼ë¡œ ë³€í™˜ ë“±ì˜ ì‘ì—…ì„ í•œë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -22,7 +22,7 @@ public class StreamUtils {
 	}
 
 	/**
-	 * º¹»ç ÇÏ°í ³ª¼­ streamÀ» ´İ´Â´Ù. (in/out ¸ğµÎ)
+	 * ë³µì‚¬ í•˜ê³  ë‚˜ì„œ streamì„ ë‹«ëŠ”ë‹¤. (in/out ëª¨ë‘)
 	 * 
 	 * @param is
 	 *            InputStream
@@ -36,14 +36,14 @@ public class StreamUtils {
 	}
 
 	/**
-	 * is,os·Î º¹»çÇÑ´Ù.
+	 * is,osë¡œ ë³µì‚¬í•œë‹¤.
 	 * 
 	 * @param is
 	 *            InputStream
 	 * @param os
 	 *            OutputStream
 	 * @param closeStreams
-	 *            boolean º¹»çÀÌÈÄ ½ºÆ®¸²À» ´İÀ»Áö °áÁ¤
+	 *            boolean ë³µì‚¬ì´í›„ ìŠ¤íŠ¸ë¦¼ì„ ë‹«ì„ì§€ ê²°ì •
 	 * @throws IOException
 	 */
 	public static void copy(InputStream is, OutputStream os, final boolean closeStreams) throws IOException {
@@ -113,7 +113,7 @@ public class StreamUtils {
 	}
 
 	/**
-	 * streamÀ» byte ¹è¿­·Î
+	 * streamì„ byte ë°°ì—´ë¡œ
 	 * 
 	 * @param is
 	 *            InputStream
@@ -127,7 +127,7 @@ public class StreamUtils {
 	}
 
 	/**
-	 * byte¹è¿­À» streamÀ¸·Î
+	 * byteë°°ì—´ì„ streamìœ¼ë¡œ
 	 * 
 	 * @param bytes
 	 *            byte[]

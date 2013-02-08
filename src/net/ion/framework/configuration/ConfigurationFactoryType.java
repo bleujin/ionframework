@@ -5,13 +5,13 @@ package net.ion.framework.configuration;
  * @version 1.0
  * 
  *          <pre>
- * ConfigurationFactory¿¡ ´ëÇÑ Type À» Á¤ÀÇ
+ * ConfigurationFactoryì— ëŒ€í•œ Type ì„ ì •ì˜
  * 
  * DEFAULT =  net.ion.framework.configuration.DefaultConfigurationFactory
  * 
- * ConfigurationFactory°¡ ½ÇÁ¦·Î implement µÈ Class¸¦ ³ªÅ¸³½´Ù.
- * ±âº»À¸·Î DEFAULT °ªÀ» »ç¿ëÇÏ¸ç net.ion.framework.configuration.DefaultConfigurationFactory Å¬·¡½º¸¦ Á¦°øÇÑ´Ù.
- * ÃßÈÄ¿¡ »õ·Î¿î ConfigurationFactory¸¦ Ãß°¡ÇÑ´Ù¸é static final º¯¼ö·Î »õ·Î Ãß°¡ÇÏ¸é µÈ´Ù.
+ * ConfigurationFactoryê°€ ì‹¤ì œë¡œ implement ëœ Classë¥¼ ë‚˜íƒ€ë‚¸ë‹¤.
+ * ê¸°ë³¸ìœ¼ë¡œ DEFAULT ê°’ì„ ì‚¬ìš©í•˜ë©° net.ion.framework.configuration.DefaultConfigurationFactory í´ë˜ìŠ¤ë¥¼ ì œê³µí•œë‹¤.
+ * ì¶”í›„ì— ìƒˆë¡œìš´ ConfigurationFactoryë¥¼ ì¶”ê°€í•œë‹¤ë©´ static final ë³€ìˆ˜ë¡œ ìƒˆë¡œ ì¶”ê°€í•˜ë©´ ëœë‹¤.
  * 
  * </pre>
  */
@@ -26,9 +26,9 @@ public class ConfigurationFactoryType {
 	}
 
 	/**
-	 * Å¸ÀÔ¸íÀ» °¡Á®¿Â´Ù.
+	 * íƒ€ì…ëª…ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
-	 * @return Å¸ÀÔ¸í
+	 * @return íƒ€ì…ëª…
 	 */
 	public String getClassName() {
 		return className;

@@ -3,7 +3,7 @@ package net.ion.framework.template.tagext;
 import net.ion.framework.template.ref.Context;
 
 /**
- * ÇÏ³ªÀÇ template À» Ã³¸®ÇÏ±â À§ÇÑ ÀÛ¾÷°ø°£
+ * í•˜ë‚˜ì˜ template ì„ ì²˜ë¦¬í•˜ê¸° ìœ„í•œ ì‘ì—…ê³µê°„
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0

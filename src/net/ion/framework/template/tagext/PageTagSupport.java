@@ -3,10 +3,10 @@ package net.ion.framework.template.tagext;
 import java.io.Serializable;
 
 /**
- * page¸¦ »ı¼ºÇÏ´Â tagÀÇ ±âº» ±¸Çö
+ * pageë¥¼ ìƒì„±í•˜ëŠ” tagì˜ ê¸°ë³¸ êµ¬í˜„
  * 
  * <pre>
- * È£Ãâ ¼ø¼­
+ * í˜¸ì¶œ ìˆœì„œ
  * 1. setParent
  * 2. setTemplateContext
  * 3. doStartTemplate -[EVAL_PAGE]->4 / -[SKIP_PAGE]->7
@@ -45,7 +45,7 @@ public abstract class PageTagSupport extends BaseTagSupport implements MultiPage
 	}
 
 	/**
-	 * doStartPage °¡ EVAL_PAGE¸¦ ¸®ÅÏÇßÀ» °æ¿ì PAGE¸¦ ½ÃÀÛÇÏ¸é¼­ ºÒ·¯Áø´Ù.
+	 * doStartPage ê°€ EVAL_PAGEë¥¼ ë¦¬í„´í–ˆì„ ê²½ìš° PAGEë¥¼ ì‹œì‘í•˜ë©´ì„œ ë¶ˆëŸ¬ì§„ë‹¤.
 	 * 
 	 * @throws TagException
 	 */
@@ -77,7 +77,7 @@ public abstract class PageTagSupport extends BaseTagSupport implements MultiPage
 	}
 
 	/**
-	 * Æ¯º°ÇÑ ÀÌÀ¯°¡ ¾ø´Ù¸é templateContext¸¦ ¹Ù·Î Á¢±ÙÇÏ±â ¹Ù¶÷
+	 * íŠ¹ë³„í•œ ì´ìœ ê°€ ì—†ë‹¤ë©´ templateContextë¥¼ ë°”ë¡œ ì ‘ê·¼í•˜ê¸° ë°”ëŒ
 	 * 
 	 * @return
 	 */

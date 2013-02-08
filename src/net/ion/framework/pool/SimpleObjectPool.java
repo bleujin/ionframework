@@ -1,7 +1,7 @@
 package net.ion.framework.pool;
 
 /**
- * °£´ÜÇÏ°Ô ±¸ÇöµÈ object pool
+ * ê°„ë‹¨í•˜ê²Œ êµ¬í˜„ëœ object pool
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0

@@ -1,10 +1,10 @@
 package net.ion.framework.template.parse;
 
 /**
- * parser¿¡ ÀÇÇØ ¾òÀº °á°ú
+ * parserì— ì˜í•´ ì–»ì€ ê²°ê³¼
  * 
  * <p>
- * abcdef ¿¡¼­ bcd ¸¦ ¾ò¾úÀ¸¸é beginIndex´Â 1, endIndex´Â 4ÀÌ¸ç parsedStringÀº bcdÀÌ´Ù.
+ * abcdef ì—ì„œ bcd ë¥¼ ì–»ì—ˆìœ¼ë©´ beginIndexëŠ” 1, endIndexëŠ” 4ì´ë©° parsedStringì€ bcdì´ë‹¤.
  * </p>
  * 
  * @author Kim Sanghoon wizest@i-on.net

@@ -2,18 +2,18 @@ package net.ion.framework.template.parse;
 
 
 /**
- * Tag¿¡¼­ Tag nameÀ» Ã£¾ÆÁØ´Ù.
+ * Tagì—ì„œ Tag nameì„ ì°¾ì•„ì¤€ë‹¤.
  * 
  * <pre>
  *  [[--abc--]] -> abc
- *  [[--   abc --]] -> abc : trimmingµÈ´Ù. ´Ü,startIndex,endIndex´Â trimÀÌ ¹İ¿µµÇÁö ¾Ê´Â´Ù. Áï,(4,10)ÀÌ´Ù.
+ *  [[--   abc --]] -> abc : trimmingëœë‹¤. ë‹¨,startIndex,endIndexëŠ” trimì´ ë°˜ì˜ë˜ì§€ ì•ŠëŠ”ë‹¤. ì¦‰,(4,10)ì´ë‹¤.
  *  [[--abc,dd,ee,ff--]] -> abc
  * 
- *  ÁÖÀÇ:
+ *  ì£¼ì˜:
  *      [[----]] -> null
- *      [[-- --]] -> ºó¹®ÀÚ¿­
+ *      [[-- --]] -> ë¹ˆë¬¸ìì—´
  *      [[--,something--]] -> null
- *      ·Î ÆÄ½ÌÇÑ´Ù.
+ *      ë¡œ íŒŒì‹±í•œë‹¤.
  * </pre>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -39,14 +39,14 @@ public class TagNameParser extends Parser {
 		int start, end;
 		Marker mark = null;
 
-		if (getParsingPoint() < TAG_OPEN.length()) // name Àº tag´ç ÇÏ³ª ¹Û¿¡ ¾øÀ¸´Ï±ñ ÇÑ¹ø¸¸ pasingÇÑ´Ù. ¤Ñ.¤Ñ;;
+		if (getParsingPoint() < TAG_OPEN.length()) // name ì€ tagë‹¹ í•˜ë‚˜ ë°–ì— ì—†ìœ¼ë‹ˆê¹ í•œë²ˆë§Œ pasingí•œë‹¤. ã…¡.ã…¡;;
 		{
 
 			start = TAG_OPEN.length();
 
-			// attribute°¡ ÀÖÀ» °æ¿ì
+			// attributeê°€ ìˆì„ ê²½ìš°
 			if (!((end = text.indexOf(NAME_SEPARATOR)) > 0)) {
-				// attribute°¡ ¾øÀ» °æ¿ì
+				// attributeê°€ ì—†ì„ ê²½ìš°
 				end = text.indexOf(TAG_CLOSE);
 			}
 
@@ -69,7 +69,7 @@ public class TagNameParser extends Parser {
 	}
 
 	/**
-	 * BodyTag´Â [[--TagNameStart--]],[[--TagNameEnd--]] ¿Í °°ÀÌ Å×±× ÀÌ¸§ ¿¡ Start,End°¡ ºÙ´Â´Ù. Start,End¸¦ Á¦¿ÜÇÑ TagÀÌ¸§¸¸ ÃßÃâÇÑ´Ù.
+	 * BodyTagëŠ” [[--TagNameStart--]],[[--TagNameEnd--]] ì™€ ê°™ì´ í…Œê·¸ ì´ë¦„ ì— Start,Endê°€ ë¶™ëŠ”ë‹¤. Start,Endë¥¼ ì œì™¸í•œ Tagì´ë¦„ë§Œ ì¶”ì¶œí•œë‹¤.
 	 * 
 	 * @param mark
 	 * @return
@@ -77,10 +77,10 @@ public class TagNameParser extends Parser {
 	public static String getRealTagName(Marker mark) {
 		if (isStartTag(mark)) {
 			String s = mark.getValue();
-			return s.substring(0, s.length() - START_TAG_POSTFIX_LENGTH); // Start ºÎºĞÀ» Á¦°Å
+			return s.substring(0, s.length() - START_TAG_POSTFIX_LENGTH); // Start ë¶€ë¶„ì„ ì œê±°
 		} else if (isEndTag(mark)) {
 			String s = mark.getValue();
-			return s.substring(0, s.length() - END_TAG_POSTFIX_LENGTH); // End ºÎºĞÀ» Á¦°Å
+			return s.substring(0, s.length() - END_TAG_POSTFIX_LENGTH); // End ë¶€ë¶„ì„ ì œê±°
 		} else {
 			return mark.getValue();
 		}

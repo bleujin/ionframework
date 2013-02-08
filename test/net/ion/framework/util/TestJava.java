@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.swing.filechooser.FileView;
 
@@ -122,7 +125,41 @@ public class TestJava extends TestCase{
 	
 	public void testURL() throws Exception {
 		// Object content = new URL("http://localhost:9000/action?aradon.result.method=delete").getContent();
+		
+		ExecutorService es = Executors.newFixedThreadPool(10) ;
+		List<Sleeping> sls = ListUtil.newList() ;
+		for (int i : ListUtil.rangeNum(1000)) {
+			final Sleeping sl = new Sleeping();
+			sls.add(sl);
+			es.submit(sl) ;
+		}
+		
+		Thread.sleep(1000 * 10) ;
+		for (Sleeping sl : sls) {
+			sl.await() ;
+		}
 	}
 	
 
+}
+
+
+class Sleeping implements Runnable {
+
+	private CountDownLatch latch = new CountDownLatch(1);
+
+	public void run() {
+		try {
+			Thread.sleep(1000) ;
+			Debug.line() ;
+			latch.countDown() ;
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void await() throws InterruptedException{
+		latch.await() ;
+	}
+	
 }

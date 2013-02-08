@@ -1,9 +1,9 @@
 package net.ion.framework.template.tagext;
 
 /**
- * ¿©·¯ÀåÀÇ page¸¦ »ı¼ºÇÏ´Â tag model (page driving)<br/>
+ * ì—¬ëŸ¬ì¥ì˜ pageë¥¼ ìƒì„±í•˜ëŠ” tag model (page driving)<br/>
  * <br/>
- * Template´ç ´Ü 1°³ÀÇ MultiPageTag°¡ Á¸ÀçÇØ¾ß ÇÑ´Ù.
+ * Templateë‹¹ ë‹¨ 1ê°œì˜ MultiPageTagê°€ ì¡´ì¬í•´ì•¼ í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -27,7 +27,7 @@ public interface MultiPageTag extends Tag {
 	public abstract void doInitPage() throws TagException;
 
 	/**
-	 * iterationÀÌ ½ÃÀÛµÇ±â Àü¿¡ ÀÚ½Ä UniPageTag¿¡¼­ »ç¿ëÇÏ´Â page contextÀÇ parameter·Î »ç¿ëµÉ PageInfo¸¦ »ı¼ºÇÑ´Ù.
+	 * iterationì´ ì‹œì‘ë˜ê¸° ì „ì— ìì‹ UniPageTagì—ì„œ ì‚¬ìš©í•˜ëŠ” page contextì˜ parameterë¡œ ì‚¬ìš©ë  PageInfoë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * @return
 	 * @throws TagException
@@ -40,7 +40,7 @@ public interface MultiPageTag extends Tag {
 	 */
 	public abstract int doAfterPage() throws TagException;
 
-	// iteration Á¾·á
+	// iteration ì¢…ë£Œ
 
 	public abstract void doEndTemplate() throws TagException;
 }

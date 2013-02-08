@@ -5,6 +5,7 @@ import net.ion.framework.db.DBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OracleDBManager;
+import net.ion.framework.db.procedure.H2EmbedPoolDBManager;
 import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.util.Debug;
@@ -21,7 +22,8 @@ public class TestBaseSample extends TestCase {
 		// DBManager dbm = new JTDSDBManager("jdbc:jtds:sqlserver://localhost:1433/test;useLOBs=false", "bleu", "redf") ;
 		// DBManager dbm = new MSSQLPoolDBManager("net.sourceforge.jtds.jdbc.Driver", "jdbc:jtds:sqlserver://localhost:1433/test;useLOBs=false", "bleu", "redf") ;
 		// DBManager dbm = new OracleCacheDBManager("jdbc:oracle:thin:@novision:1521:bleujin", "setuptest", "setuptest") ;
-		DBManager dbm = OracleDBManager.test();
+//		DBManager dbm = OracleDBManager.test();
+		DBManager dbm = H2EmbedPoolDBManager.test() ;
 		dc = new DBController(dbm);
 		dc.initSelf();
 	}

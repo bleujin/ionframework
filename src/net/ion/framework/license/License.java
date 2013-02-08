@@ -4,73 +4,73 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * ÀÌ ÀÎÅÍÆäÀÌ½º¸¦ ±¸ÇöÇÏ¿© ¶óÀÌ¼¾½º Å¬·¡½º¸¦ ¸¸µç´Ù.<br/>
- * License °´Ã¼´Â Á÷·ÄÈ­ µÇ¾î serial number, activation keyÀÇ ½ÖÀ¸·Î º¯È¯µÈ´Ù.
+ * ì´ ì¸í„°í˜ì´ìŠ¤ë¥¼ êµ¬í˜„í•˜ì—¬ ë¼ì´ì„¼ìŠ¤ í´ë˜ìŠ¤ë¥¼ ë§Œë“ ë‹¤.<br/>
+ * License ê°ì²´ëŠ” ì§ë ¬í™” ë˜ì–´ serial number, activation keyì˜ ìŒìœ¼ë¡œ ë³€í™˜ëœë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
  */
-public interface License extends Serializable // <-- ÀÌ°Å ¶óÀÌ¼¾½º Å¬·¡½º¿¡¼­ ±²ÀåÈ÷ Áß¿äÇÑ ¼Ó¼ºÀÌ´Ù!!! (Àç¹Ì·Î ºÙÀÎ ¼Ó¼ºÀÌ ¾Æ´Ï¶õ ¸»ÀÌ´Ù. ½Ã¸®¾ó¶óÀÌÀÌÁ¦ÀÌ¼Ç¿¡ °ü·ÃµÈ ¸Ş¼Òµå¸¦ È®½ÇÇÏ°Ô ±¸Çö½ÃÄÑÁà¾ßÇÑ´Ù!)
+public interface License extends Serializable // <-- ì´ê±° ë¼ì´ì„¼ìŠ¤ í´ë˜ìŠ¤ì—ì„œ êµ‰ì¥íˆ ì¤‘ìš”í•œ ì†ì„±ì´ë‹¤!!! (ì¬ë¯¸ë¡œ ë¶™ì¸ ì†ì„±ì´ ì•„ë‹ˆë€ ë§ì´ë‹¤. ì‹œë¦¬ì–¼ë¼ì´ì´ì œì´ì…˜ì— ê´€ë ¨ëœ ë©”ì†Œë“œë¥¼ í™•ì‹¤í•˜ê²Œ êµ¬í˜„ì‹œì¼œì¤˜ì•¼í•œë‹¤!)
 {
 	/**
-	 * ÇöÀç license°¡ À¯È¿ÇÑÁö Å×½ºÆ® ÇÑ´Ù. LicenseEncoder°¡ License¸¦ decodeÇÑ ÈÄ invokeµÈ´Ù.
+	 * í˜„ì¬ licenseê°€ ìœ íš¨í•œì§€ í…ŒìŠ¤íŠ¸ í•œë‹¤. LicenseEncoderê°€ Licenseë¥¼ decodeí•œ í›„ invokeëœë‹¤.
 	 * 
 	 * @throws LicenseException
-	 *             À¯È¿ÇÑ ¶óÀÌ¼¾½º°¡ ¾Æ´Ò °æ¿ì ¹ß»ı
+	 *             ìœ íš¨í•œ ë¼ì´ì„¼ìŠ¤ê°€ ì•„ë‹ ê²½ìš° ë°œìƒ
 	 */
 	void validate() throws LicenseException;
 
 	/**
-	 * Á¦Ç°¸í
+	 * ì œí’ˆëª…
 	 * 
 	 * @return String
 	 */
 	String getProduct();
 
 	/**
-	 * ¹öÀü
+	 * ë²„ì „
 	 * 
 	 * @return String
 	 */
 	String getVersion();
 
 	/**
-	 * ¹ß±Ş ±â°ü
+	 * ë°œê¸‰ ê¸°ê´€
 	 * 
 	 * @return String
 	 */
 	String getLicenseFrom();
 
 	/**
-	 * ¹ßÇà ±â°ü
+	 * ë°œí–‰ ê¸°ê´€
 	 * 
 	 * @return String
 	 */
 	String getLicenseTo();
 
 	/**
-	 * ¹ßÇàÀÏ
+	 * ë°œí–‰ì¼
 	 * 
 	 * @return Date
 	 */
 	Date getIssueDate();
 
 	/**
-	 * ¶óÀÌ¼¾½º¿¡ ´ëÇÑ ÀüÃ¼ÀûÀÎ ¼³¸íÀ» Àû´Â´Ù. display¿ë text·Î »ç¿ëÇÑ´Ù.
+	 * ë¼ì´ì„¼ìŠ¤ì— ëŒ€í•œ ì „ì²´ì ì¸ ì„¤ëª…ì„ ì ëŠ”ë‹¤. displayìš© textë¡œ ì‚¬ìš©í•œë‹¤.
 	 * 
 	 * @return String
 	 */
 	String getLicenseDescription();
 
 	/**
-	 * À¯È¿±â°£ - ½ÃÀÛÀÏ
+	 * ìœ íš¨ê¸°ê°„ - ì‹œì‘ì¼
 	 * 
 	 * @return Date
 	 */
 	Date getBeginDate();
 
 	/**
-	 * À¯È¿±â°£ - ¸¶°¨ÀÏ
+	 * ìœ íš¨ê¸°ê°„ - ë§ˆê°ì¼
 	 * 
 	 * @return Date
 	 */
@@ -79,16 +79,16 @@ public interface License extends Serializable // <-- ÀÌ°Å ¶óÀÌ¼¾½º Å¬·¡½º¿¡¼­ ±²
 	String[] getValueKeys();
 
 	/**
-	 * license¿¡ ÇØ´ç °ª Á¸Àç ¿©ºÎ
+	 * licenseì— í•´ë‹¹ ê°’ ì¡´ì¬ ì—¬ë¶€
 	 * 
 	 * @param key
-	 *            String valueÀÇ key
+	 *            String valueì˜ key
 	 * @return boolean
 	 */
 	boolean hasValue(String key);
 
 	/**
-	 * key¿¡ ÇØ´çÇÏ´Â value¸¦ ¾ò´Â´Ù.
+	 * keyì— í•´ë‹¹í•˜ëŠ” valueë¥¼ ì–»ëŠ”ë‹¤.
 	 * 
 	 * @param function
 	 *            String null if invalid or inaccessable key
@@ -97,7 +97,7 @@ public interface License extends Serializable // <-- ÀÌ°Å ¶óÀÌ¼¾½º Å¬·¡½º¿¡¼­ ±²
 	Object getValue(String key);
 
 	/**
-	 * getValue()ÀÇ ´Ù¸¥ ÇüÅÂ - String ÇüÀ¸·Î ¸®ÅÏ
+	 * getValue()ì˜ ë‹¤ë¥¸ í˜•íƒœ - String í˜•ìœ¼ë¡œ ë¦¬í„´
 	 * 
 	 * @param key
 	 *            String
@@ -106,7 +106,7 @@ public interface License extends Serializable // <-- ÀÌ°Å ¶óÀÌ¼¾½º Å¬·¡½º¿¡¼­ ±²
 	String getValueAsString(String key);
 
 	/**
-	 * getValue()ÀÇ ´Ù¸¥ ÇüÅÂ - int ÇüÀ¸·Î ¸®ÅÏ
+	 * getValue()ì˜ ë‹¤ë¥¸ í˜•íƒœ - int í˜•ìœ¼ë¡œ ë¦¬í„´
 	 * 
 	 * @param key
 	 *            String

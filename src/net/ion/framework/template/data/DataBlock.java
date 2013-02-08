@@ -1,7 +1,7 @@
 package net.ion.framework.template.data;
 
 /**
- * data ¹­À½
+ * data ë¬¶ìŒ
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -14,7 +14,7 @@ package net.ion.framework.template.data;
 
 public interface DataBlock {
 	/**
-	 * ºí·° ³»¿¡ key ÇØ´ç ÇÏ´Â °ªÀ» Ã£¾Æ¼­ ¸®ÅÏÇÑ´Ù. ÀÚÁÖ ¾²ÀÌ¹Ç·Î ÆÛÆ÷¸Õ½º¸¦ °í·ÁÇÏ¿© ÀÛ¼ºÇÑ´Ù.
+	 * ë¸”ëŸ­ ë‚´ì— key í•´ë‹¹ í•˜ëŠ” ê°’ì„ ì°¾ì•„ì„œ ë¦¬í„´í•œë‹¤. ìì£¼ ì“°ì´ë¯€ë¡œ í¼í¬ë¨¼ìŠ¤ë¥¼ ê³ ë ¤í•˜ì—¬ ì‘ì„±í•œë‹¤.
 	 * 
 	 * @param key
 	 * @return null if not found

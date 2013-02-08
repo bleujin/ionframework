@@ -4,11 +4,11 @@ import net.ion.framework.util.StringUtil;
 
 
 /**
- * ¹®ÀÚ¿­¿¡¼­ Action Tag¸¦ Ã£´Â´Ù.
+ * ë¬¸ìì—´ì—ì„œ Action Tagë¥¼ ì°¾ëŠ”ë‹¤.
  * 
  * <pre>
- * action tag´Â ´ÙÀ½À» ¸»ÇÑ´Ù.
- *  [[--Å×±×³×ÀÓ,Å×±×¼Ó¼º,...--]]
+ * action tagëŠ” ë‹¤ìŒì„ ë§í•œë‹¤.
+ *  [[--í…Œê·¸ë„¤ì„,í…Œê·¸ì†ì„±,...--]]
  * </pre>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -40,7 +40,7 @@ public class TagParser extends Parser {
 		while (true) {
 			start = text.indexOf(TAG_OPEN, parsingPoint);
 			if (start >= 0) {
-				// ÁÖ¼®ÀÏ °æ¿ì
+				// ì£¼ì„ì¼ ê²½ìš°
 				if (text.startsWith(COMMENT_OPEN, start)) {
 					end = text.indexOf(COMMENT_CLOSE, start + COMMENT_OPEN_LENGTH);
 					if (end >= 0) {
@@ -51,7 +51,7 @@ public class TagParser extends Parser {
 					}
 				}
 
-				// Å×±×ÀÏ °æ¿ì
+				// í…Œê·¸ì¼ ê²½ìš°
 				else {
 					end = text.indexOf(TAG_CLOSE, start + TAG_OPEN_LENGTH);
 					if (end >= 0) {
@@ -70,7 +70,7 @@ public class TagParser extends Parser {
 		return mark;
 	}
 
-	public static String filterComments(String s) // ÁÖ¼®¸¸ °É·¯³½´Ù
+	public static String filterComments(String s) // ì£¼ì„ë§Œ ê±¸ëŸ¬ë‚¸ë‹¤
 	{
 		StringBuffer buff = new StringBuffer();
 		int pivot = 0;
@@ -80,7 +80,7 @@ public class TagParser extends Parser {
 			if (start < 0) {
 				buff.append(s.substring(pivot));
 				break;
-			} else { // ÁÖ¼®À» Ã£¾ÒÀ»¶§
+			} else { // ì£¼ì„ì„ ì°¾ì•˜ì„ë•Œ
 				end = s.indexOf(COMMENT_CLOSE, start + COMMENT_OPEN_LENGTH);
 				if (end < 0) {
 					buff.append(s.substring(start));
@@ -95,24 +95,24 @@ public class TagParser extends Parser {
 	}
 
 	/**
-	 * ÇöÀç Tag(StartÅ×±×¿©¾ßÇÑ´Ù)¿¡ ÇØ´çÇÏ´Â EndTagÀÇ Marker¸¦ ¸®ÅÏÇÑ´Ù.
+	 * í˜„ì¬ Tag(Startí…Œê·¸ì—¬ì•¼í•œë‹¤)ì— í•´ë‹¹í•˜ëŠ” EndTagì˜ Markerë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param text
 	 *            String
 	 * @param startMark
 	 *            Marker
 	 * @throws ParserException
-	 *             °èÃş±¸Á¶°¡ ¿Ã¹Ù¸£Áö ¾Ê°Å³ª End Tag¸¦ Ã£À» ¼ö ¾ø´Â °æ¿ì(Start Tag´Â ÀÖ´Âµ¥..)
+	 *             ê³„ì¸µêµ¬ì¡°ê°€ ì˜¬ë°”ë¥´ì§€ ì•Šê±°ë‚˜ End Tagë¥¼ ì°¾ì„ ìˆ˜ ì—†ëŠ” ê²½ìš°(Start TagëŠ” ìˆëŠ”ë°..)
 	 * @return Marker
 	 */
 	public static Marker getEndTagMarkerOf(String text, Marker startMark) throws ParserException {
 		/**
-		 * ¿ø¸®) start tag°¡ ³ªÅ¸³ª¸é depth¸¦ 1¾¿ Áõ°¡ÇÏ°í end tag°¡ ³ªÅ¸³ª¸é depth¸¦ 1¾¿ °¨¼ÒÇÑ´Ù.
+		 * ì›ë¦¬) start tagê°€ ë‚˜íƒ€ë‚˜ë©´ depthë¥¼ 1ì”© ì¦ê°€í•˜ê³  end tagê°€ ë‚˜íƒ€ë‚˜ë©´ depthë¥¼ 1ì”© ê°ì†Œí•œë‹¤.
 		 * 
-		 * ¸¸ÀÏ °èÃş ±¸Á¶°¡ Á¦´ë·Î µÇ¾î ÀÖ´Ù¸é depth°¡ 0ÀÌ µÇ´Â ¼ø°£ tag°¡ ´İÈ÷´Â ¼ø°£ÀÌ´Ù.
+		 * ë§Œì¼ ê³„ì¸µ êµ¬ì¡°ê°€ ì œëŒ€ë¡œ ë˜ì–´ ìˆë‹¤ë©´ depthê°€ 0ì´ ë˜ëŠ” ìˆœê°„ tagê°€ ë‹«íˆëŠ” ìˆœê°„ì´ë‹¤.
 		 */
 
-		int depth = 1; // ÀÌ ¸Ş¼Òµå¸¦ ºÎ¸¥ »óÅÂ¿¡ ÀÌ¹Ì ¿­·ÁÁ® ÀÖ´Â »óÅÂ(start tag¸¦ Áö³ªÃÆÀ½) ÀÌ¹Ç·Î 1·Î ¼³Á¤
+		int depth = 1; // ì´ ë©”ì†Œë“œë¥¼ ë¶€ë¥¸ ìƒíƒœì— ì´ë¯¸ ì—´ë ¤ì ¸ ìˆëŠ” ìƒíƒœ(start tagë¥¼ ì§€ë‚˜ì³¤ìŒ) ì´ë¯€ë¡œ 1ë¡œ ì„¤ì •
 		Marker mark = null;
 
 		Parser tagParser = new TagParser();
@@ -123,7 +123,7 @@ public class TagParser extends Parser {
 		nameParser.initialize(startMark);
 		Marker nameStartMark = nameParser.parseNext();
 
-		// Start Tag°¡ ¾Æ´Ï¸é ÇÒ ÇÊ¿ä°¡ ¾ø´Ù.
+		// Start Tagê°€ ì•„ë‹ˆë©´ í•  í•„ìš”ê°€ ì—†ë‹¤.
 		if (!TagNameParser.isStartTag(nameStartMark))
 			return startMark;
 
@@ -148,7 +148,7 @@ public class TagParser extends Parser {
 					}
 			} while (depth > 0);
 
-			// // end tagÀÇ ½ÃÀÛ ºÎºĞÀ» ´ÙÀ½ parsing point·Î ¼³Á¤ÇÑ´Ù.
+			// // end tagì˜ ì‹œì‘ ë¶€ë¶„ì„ ë‹¤ìŒ parsing pointë¡œ ì„¤ì •í•œë‹¤.
 			// tagParser.setParsingPoint(mark.getBeginIndex());
 			return mark;
 		} finally {
@@ -160,7 +160,7 @@ public class TagParser extends Parser {
 	// public static void main( String[] args ) throws ParserException
 	// {
 	// String s =
-	// "°¡³ª´Ù¶ó[[--sfafsa--]]    [[---¿©±â´Â ÁÖ¼®ÀÔ´Ï´Ù.---]]gsdgsd[[--sddsgsdgsg--]]fdgsgs[[--1--]]--]][[--11144214-]--]][[--2--]]2[[--]]";
+	// "ê°€ë‚˜ë‹¤ë¼[[--sfafsa--]]    [[---ì—¬ê¸°ëŠ” ì£¼ì„ì…ë‹ˆë‹¤.---]]gsdgsd[[--sddsgsdgsg--]]fdgsgs[[--1--]]--]][[--11144214-]--]][[--2--]]2[[--]]";
 	//
 	// Parser p = new TagParser();
 	// p.initialize( s );
@@ -174,6 +174,6 @@ public class TagParser extends Parser {
 
 	// public static void main(String[] args) throws Exception
 	// {
-	// System.out.println(filterComments("°¡³ª´Ù[[---°¡³ª´Ù¶ó¸¶¹Ù»ç~~~¤¿¤Ã³î¤¤ÀÌ¤¿¸ğ¤Ã¤¤¤·¤¾¸ğ--]] ¶ó¸¶[[---[[--ÁÖ¼®2---]]¹Ù»ç¾ÆÀÚÂ÷Ä«"));
+	// System.out.println(filterComments("ê°€ë‚˜ë‹¤[[---ê°€ë‚˜ë‹¤ë¼ë§ˆë°”ì‚¬~~~ã…ã…“ë†€ã„´ì´ã…ëª¨ã…“ã„´ã…‡ã…ëª¨--]] ë¼ë§ˆ[[---[[--ì£¼ì„2---]]ë°”ì‚¬ì•„ìì°¨ì¹´"));
 	// }
 }

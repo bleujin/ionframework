@@ -1,7 +1,7 @@
 package net.ion.framework.template.data;
 
 /**
- * DataSpace ¿¡¼­ data¸¦ ÀĞ¾î¿À´Â °´Ã¼
+ * DataSpace ì—ì„œ dataë¥¼ ì½ì–´ì˜¤ëŠ” ê°ì²´
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -14,7 +14,7 @@ package net.ion.framework.template.data;
 
 public interface DataReader {
 	/**
-	 * data keys ÀÇ from¿¡¼­ to±îÁö ÀÎµ¦½º ¿¡ ÇØ´çÇÏ´Â data¸¦ dataBlock·Î ¸®ÅÏÇÑ´Ù.
+	 * data keys ì˜ fromì—ì„œ toê¹Œì§€ ì¸ë±ìŠ¤ ì— í•´ë‹¹í•˜ëŠ” dataë¥¼ dataBlockë¡œ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param keys
 	 * @param from

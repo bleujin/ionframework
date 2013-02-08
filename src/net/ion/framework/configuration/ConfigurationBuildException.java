@@ -1,7 +1,7 @@
 package net.ion.framework.configuration;
 
 /**
- * ConfigurationFactory ¿¡¼­ build ½Ã ¹ß»ıµÇ´Â ¿¡·¯
+ * ConfigurationFactory ì—ì„œ build ì‹œ ë°œìƒë˜ëŠ” ì—ëŸ¬
  * 
  * @author Choi sei hwan <a href="mailto:sehan@i-on.net">Choi sei hwan</a>
  * @version 1.0

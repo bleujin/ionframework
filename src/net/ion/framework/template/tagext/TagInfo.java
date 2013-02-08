@@ -6,7 +6,7 @@ import java.util.HashMap;
  * Tag information for a tag in a Tag Library;
  * 
  * <p>
- * tld ÆÄÀÏ¿¡¼­ ¾òÀ» ¼ö ÀÖ´Â tag ÇÑ°³ÀÇ Á¤º¸
+ * tld íŒŒì¼ì—ì„œ ì–»ì„ ìˆ˜ ìˆëŠ” tag í•œê°œì˜ ì •ë³´
  * </p>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -27,24 +27,24 @@ public class TagInfo {
 	private TagAttributeInfo[] attributeInfo = null;
 	private HashMap<String, TagAttributeInfo> attributeInfoMap = null;
 
-	// attributeÀÇ °ªÀ» tag handler¿¡ reflectionÀ¸·Î Áı¾î ³ÖÀ» ¶§ required ÇÑ attribute°¡ ¸ğµÎ µé¾î°¬´ÂÁö È®ÀÎÇÒ ¶§ »ç¿ëÇÑ´Ù.
+	// attributeì˜ ê°’ì„ tag handlerì— reflectionìœ¼ë¡œ ì§‘ì–´ ë„£ì„ ë•Œ required í•œ attributeê°€ ëª¨ë‘ ë“¤ì–´ê°”ëŠ”ì§€ í™•ì¸í•  ë•Œ ì‚¬ìš©í•œë‹¤.
 	private int numberOfRequiredAttributes;
 
 	/**
-	 * tagÀÇ Á¤º¸
+	 * tagì˜ ì •ë³´
 	 * 
 	 * @param tagName
-	 *            String tag handler ÀÌ¸§
+	 *            String tag handler ì´ë¦„
 	 * @param tagClassName
-	 *            String tag class ÀÌ¸§
+	 *            String tag class ì´ë¦„
 	 * @param bodycontent
-	 *            String body content Å¸ÀÔ { ACTIONTAG | TAGDEPENDENT | EMPTY | PAGE }
+	 *            String body content íƒ€ì… { ACTIONTAG | TAGDEPENDENT | EMPTY | PAGE }
 	 * @param defaultAttrName
-	 *            String ±âº» ¼Ó¼º ÀÌ¸§
+	 *            String ê¸°ë³¸ ì†ì„± ì´ë¦„
 	 * @param infoString
-	 *            String ¼³¸í ¹®ÀÚ¿­
+	 *            String ì„¤ëª… ë¬¸ìì—´
 	 * @param attributeInfo
-	 *            TagAttributeInfo[] ¼Ó¼ºÁ¤º¸
+	 *            TagAttributeInfo[] ì†ì„±ì •ë³´
 	 */
 	public TagInfo(String tagName, String tagClassName, String bodycontent, String defaultAttrName, String infoString, TagAttributeInfo[] attributeInfo)
 

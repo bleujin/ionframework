@@ -6,7 +6,7 @@ package net.ion.framework.util;
 public class Base64 {
 
 	/**
-	 * 80±ÛÀÚ ´ÜÀ§·Î ¹®ÀÚ¿­À» ºĞ¸®(warp=true) ¶Ç´Â °áÇÕ(warp=false) ½ÃÅ²´Ù.
+	 * 80ê¸€ì ë‹¨ìœ„ë¡œ ë¬¸ìì—´ì„ ë¶„ë¦¬(warp=true) ë˜ëŠ” ê²°í•©(warp=false) ì‹œí‚¨ë‹¤.
 	 * 
 	 * @param s
 	 *            String
@@ -28,7 +28,7 @@ public class Base64 {
 			}
 			return buf.toString();
 		} else {
-			// ' ' '\n' À» ´Ù ¾ø¾Ö ¹ö¸°´Ù.
+			// ' ' '\n' ì„ ë‹¤ ì—†ì•  ë²„ë¦°ë‹¤.
 			StringBuffer buf = new StringBuffer();
 			for (int i = 0, length = s.length(); i < length; ++i) {
 				char c = s.charAt(i);

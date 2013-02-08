@@ -3,7 +3,7 @@ package net.ion.framework.template;
 import net.ion.framework.template.tagext.PageInfo;
 
 /**
- * template rendererÀÇ °á°ú
+ * template rendererì˜ ê²°ê³¼
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -15,7 +15,7 @@ public class Page {
 
 	/**
 	 * @param pageInfo
-	 *            PageInfo renderingµÈ page¿¡ ´ëÇÑ Á¤º¸
+	 *            PageInfo renderingëœ pageì— ëŒ€í•œ ì •ë³´
 	 * @param pageText
 	 *            String page text
 	 */
@@ -30,14 +30,14 @@ public class Page {
 	}
 
 	/**
-	 * @return PageInfo page rendering Á¤º¸
+	 * @return PageInfo page rendering ì •ë³´
 	 */
 	public PageInfo getPageInfo() {
 		return this.pageInfo;
 	}
 
 	/**
-	 * @return String rendering µÈ page °á°ú
+	 * @return String rendering ëœ page ê²°ê³¼
 	 */
 	public String getPageText() {
 		return this.pageText;

@@ -3,9 +3,9 @@ package net.ion.framework.session;
 import java.io.Serializable;
 
 /**
- * Session Interface´Â sessionÀ» ¾²±â À§ÇÑ °Í¸¸ ³ëÃâ µÇ¾î ÀÖ´Âµ¥ ±×°ÍÀ» È®ÀåÇÏ¿© sessionÀ» setting ÇÏ´Â °ÍÀ» Ãß°¡
+ * Session InterfaceëŠ” sessionì„ ì“°ê¸° ìœ„í•œ ê²ƒë§Œ ë…¸ì¶œ ë˜ì–´ ìˆëŠ”ë° ê·¸ê²ƒì„ í™•ì¥í•˜ì—¬ sessionì„ setting í•˜ëŠ” ê²ƒì„ ì¶”ê°€
  * 
- * SessionManager,SessionContext¿¡¼­´Â AbstractSessionÀ» ÀÌ¿ëÇÑ´Ù.
+ * SessionManager,SessionContextì—ì„œëŠ” AbstractSessionì„ ì´ìš©í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -13,18 +13,18 @@ import java.io.Serializable;
 public abstract class AbstractSession implements Session, Serializable {
 	/**
 	 * @param time
-	 *            sessionÀÌ »ı¼ºµÈ ½Ã°¢
+	 *            sessionì´ ìƒì„±ëœ ì‹œê°
 	 */
 	public abstract void setCreationTime(long time);
 
 	/**
 	 * @param id
-	 *            sessionÀÇ id
+	 *            sessionì˜ id
 	 */
 	public abstract void setId(String id);
 
 	/**
-	 * ¸¶Áö¸·À¸·Î Á¢±ÙÇÑ ½Ã°¢. 'Á¢±Ù' attribute¿¡ ´ëÇÑ ¸ğµç get,set...À» ÀÇ¹ÌÇÑ´Ù.
+	 * ë§ˆì§€ë§‰ìœ¼ë¡œ ì ‘ê·¼í•œ ì‹œê°. 'ì ‘ê·¼' attributeì— ëŒ€í•œ ëª¨ë“  get,set...ì„ ì˜ë¯¸í•œë‹¤.
 	 * 
 	 * @param time
 	 */
@@ -32,18 +32,18 @@ public abstract class AbstractSession implements Session, Serializable {
 
 	/**
 	 * @param context
-	 *            sessionÀÌ »ç¿ëÇÏ´Â context
+	 *            sessionì´ ì‚¬ìš©í•˜ëŠ” context
 	 */
 	public abstract void setSessionContext(SessionContext context);
 
 	/**
 	 * @param interval
-	 *            sessionÀÌ inactive »óÅÂ·Î validÇÑ ½Ã°£(ÃÊ)
+	 *            sessionì´ inactive ìƒíƒœë¡œ validí•œ ì‹œê°„(ì´ˆ)
 	 */
 	public abstract void setMaxInactiveInterval(int interval);
 
 	/**
-	 * »õ·Î »ı¼ºµÈ sessionÀÎÁö ¿©ºÎ
+	 * ìƒˆë¡œ ìƒì„±ëœ sessionì¸ì§€ ì—¬ë¶€
 	 * 
 	 * @param isNew
 	 */

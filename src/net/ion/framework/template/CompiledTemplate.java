@@ -1,7 +1,7 @@
 package net.ion.framework.template;
 
 /**
- * ÅØ½ºÆ® ÅÛÇÃ¸´À» ÄÚµå¿Í µ¥ÀÌÅÍ·Î ºĞ¸®ÇÏ¿© Àç±¸¼ºÇÑ´Ù.
+ * í…ìŠ¤íŠ¸ í…œí”Œë¦¿ì„ ì½”ë“œì™€ ë°ì´í„°ë¡œ ë¶„ë¦¬í•˜ì—¬ ì¬êµ¬ì„±í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -13,9 +13,9 @@ public class CompiledTemplate {
 
 	/**
 	 * @param code
-	 *            OperationCode ÅÛÇÃ¸´ÀÇ ÄÚµå¿µ¿ª
+	 *            OperationCode í…œí”Œë¦¿ì˜ ì½”ë“œì˜ì—­
 	 * @param data
-	 *            OperationData ÅÛÇÃ¸´ÀÇ µ¥ÀÌÅÍ¿µ¿ª
+	 *            OperationData í…œí”Œë¦¿ì˜ ë°ì´í„°ì˜ì—­
 	 */
 	public CompiledTemplate(OperationCode code, OperationData data) {
 		this.code = code;
@@ -35,14 +35,14 @@ public class CompiledTemplate {
 	}
 
 	/**
-	 * @return OperationCode ÅÛÇÃ¸´ runtime code ºÎºĞ
+	 * @return OperationCode í…œí”Œë¦¿ runtime code ë¶€ë¶„
 	 */
 	public OperationCode getOperationCode() {
 		return this.code;
 	}
 
 	/**
-	 * @return OperationData ÅÛÇÃ¸´ runtime data ºÎºĞ
+	 * @return OperationData í…œí”Œë¦¿ runtime data ë¶€ë¶„
 	 */
 	public OperationData getOperationData() {
 		return this.data;

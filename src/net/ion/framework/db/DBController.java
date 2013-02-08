@@ -7,6 +7,7 @@ import java.sql.Connection;
 import java.sql.DatabaseMetaData;
 import java.sql.SQLException;
 import java.util.HashMap;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.logging.Logger;
 
@@ -35,6 +36,7 @@ import net.ion.framework.db.procedure.Queryable;
 import net.ion.framework.db.procedure.RepositoryService;
 import net.ion.framework.db.procedure.SerializedQuery;
 import net.ion.framework.db.servant.AfterTask;
+import net.ion.framework.db.servant.AsyncServant;
 import net.ion.framework.db.servant.ChannelServant;
 import net.ion.framework.db.servant.IExtraServant;
 import net.ion.framework.db.servant.PrimaryServant;
@@ -75,7 +77,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	protected DBManager dbm = null;
 	protected int limitRows = Page.ALL.getListNum();
 	protected String name = null;
-	private final ServantChain schain ;
+	private final ServantChain schain = new ServantChain() ;
 
 	private HashMap<String, String> midgard = new CaseInsensitiveHashMap<String>(); // etc property...
 	private PrimaryServant pservant = null;
@@ -83,6 +85,8 @@ public class DBController implements IDBController, Closeable { // implements Co
 	private static Logger log = LogBroker.getLogger(DBController.class);
 	private long modify_count = 0;
 
+	private ExecutorService threadPool = Executors.newCachedThreadPool() ;
+	
 	public DBController(Configuration dbconfig) throws DBControllerInstantiationException {
 
 		if (!dbconfig.getTagName().equals("database-controller"))
@@ -95,13 +99,13 @@ public class DBController implements IDBController, Closeable { // implements Co
 
 			Configuration[] configOfServant = dbconfig.getChildren("extra-servant.configured-object");
 
-			this.schain = new ServantChain() ;
-			ChannelServant echannel = new ChannelServant();
+			AsyncServant as = new AsyncServant(threadPool) ;
+			//ChannelServant echannel = new ChannelServant();
 			for (int i = 0; i < configOfServant.length; i++) {
 				IExtraServant eservant = (IExtraServant) InstanceCreator.createConfiguredInstance(configOfServant[i]);
-				echannel.add(eservant) ;
+				as.add(eservant) ;
 			}
-			schain.addServant(echannel) ;
+			schain.addServant(as) ;
 			
 			log.info(this.name + " [---DBController Start---] ..............");
 
@@ -168,7 +172,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	public DBController(String name, DBManager dataBaseManager, IExtraServant servant) {
 		this.name = name;
 		this.dbm = dataBaseManager;
-		this.schain =  (servant instanceof ServantChain) ? ((ServantChain)servant) : new ServantChain().addServant(servant);
+		this.schain.addServant((servant instanceof AsyncServant) ? ((AsyncServant)servant) : new AsyncServant(this.threadPool).add(servant));
 	}
 
 	public void setDBManager(DBManager dbm) {
@@ -246,6 +250,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 		} catch (SQLException ignore) {
 			log.warning("Destroy of DBController Failed : " + ignore.getMessage());
 		}
+		threadPool.shutdown() ;
 		log.info("DBController : destroyed");
 		initialized = false;
 	}
@@ -325,6 +330,8 @@ public class DBController implements IDBController, Closeable { // implements Co
 				handleServant(start, end, uprocs.getQuery(i), execType);
 			}
 		} else {
+			
+			
 			schain.support(new AfterTask(start, end, this.dbm, query, execType));
 		}
 	}
@@ -447,7 +454,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	private AsyncDBController asyncDc = null ;
 	public synchronized AsyncDBController async(){
 		if (asyncDc == null){
-			this.asyncDc = new AsyncDBController(this, Executors.newCachedThreadPool()) ;
+			this.asyncDc = new AsyncDBController(this, this.threadPool) ;
 		}
 		return asyncDc ;
 	}

@@ -3,10 +3,10 @@ package net.ion.framework.template.data;
 import java.util.Arrays;
 
 /**
- * ´ë¿ë·® µ¥ÀÌÅÍ¸¦ ºĞÇÒÇÏ¿© °ü¸®ÇÑ´Ù. <br/>
- * DataSpace ¿ÜºÎ¿¡¼­ º¸´Â ÀÔÀå¿¡¼­ dataÀÇ ½Ç ÀúÀåÀ§Ä¡³ª Á¢±Ù ¹æ¹ı¿¡ °ü°è¾øÀÌ °£´ÜÇÏ°í ½¬¿î ¹æ¹ıÀ¸·Î Á¢±ÙÇÏ°Ô ÇÑ´Ù.<br/>
+ * ëŒ€ìš©ëŸ‰ ë°ì´í„°ë¥¼ ë¶„í• í•˜ì—¬ ê´€ë¦¬í•œë‹¤. <br/>
+ * DataSpace ì™¸ë¶€ì—ì„œ ë³´ëŠ” ì…ì¥ì—ì„œ dataì˜ ì‹¤ ì €ì¥ìœ„ì¹˜ë‚˜ ì ‘ê·¼ ë°©ë²•ì— ê´€ê³„ì—†ì´ ê°„ë‹¨í•˜ê³  ì‰¬ìš´ ë°©ë²•ìœ¼ë¡œ ì ‘ê·¼í•˜ê²Œ í•œë‹¤.<br/>
  * <br/>
- * dataSpace´Â data¸¦ blockÀÌ¶ó ÇÏ´Â ´ÜÀ§ ¹­À½À¸·Î °ü¸®ÇÏ¸ç °¢ blockÀº ÀÌ°ÍÀ» ¿©·¯°³ÀÇ slotÀÌ¶ó´Â °ø°£ cacheµÇ¾î ¹èÄ¡ÇÑ´Ù.
+ * dataSpaceëŠ” dataë¥¼ blockì´ë¼ í•˜ëŠ” ë‹¨ìœ„ ë¬¶ìŒìœ¼ë¡œ ê´€ë¦¬í•˜ë©° ê° blockì€ ì´ê²ƒì„ ì—¬ëŸ¬ê°œì˜ slotì´ë¼ëŠ” ê³µê°„ cacheë˜ì–´ ë°°ì¹˜í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -39,7 +39,7 @@ public class DataSpace {
 	}
 
 	/**
-	 * °¢ slot¿¡ ÀúÀåµÇ¾î ÀÖ´Â blockµéÀ» °Ë»öÇÏ¿© key¿¡ ÇØ´çÇÏ´Â °ªÀ» °¡Á®¿Â´Ù.
+	 * ê° slotì— ì €ì¥ë˜ì–´ ìˆëŠ” blockë“¤ì„ ê²€ìƒ‰í•˜ì—¬ keyì— í•´ë‹¹í•˜ëŠ” ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param key
 	 * @return null if not found
@@ -52,17 +52,17 @@ public class DataSpace {
 		int blkIndex = keyIndex / blockSize;
 		DataBlock blk = slots.getSlot(blkIndex);
 
-		// load data block into data space ; ÇØ´ç ºí·°ÀÌ ¾øÀ¸¸é DB¿¡¼­ ·ÎµåÇÑ´Ù.
+		// load data block into data space ; í•´ë‹¹ ë¸”ëŸ­ì´ ì—†ìœ¼ë©´ DBì—ì„œ ë¡œë“œí•œë‹¤.
 		if (blk == null) {
 			if (keyIndex < 0) {
 				return null;
 			}
 
-			// ¹üÀ§ÁöÁ¤
+			// ë²”ìœ„ì§€ì •
 			int from = keyIndex - (keyIndex % blockSize);
 			int to = from + blockSize - 1;
 			if (to >= keys.size()) {
-				to = keys.size() - 1; // ÃÖ´ë ¹üÀ§¸¦ ³Ñ¾î°¡´Â °ÍÀ» Á¦ÇÑ
+				to = keys.size() - 1; // ìµœëŒ€ ë²”ìœ„ë¥¼ ë„˜ì–´ê°€ëŠ” ê²ƒì„ ì œí•œ
 
 			}
 			blk = reader.read(keys, from, to);
@@ -106,7 +106,7 @@ class Slots {
 		if (cachePtr == blkIndex) {
 			return cacheSlot;
 		} else {
-			// ÇØ´ç slotÀ» Ã£´Â´Ù.
+			// í•´ë‹¹ slotì„ ì°¾ëŠ”ë‹¤.
 			for (int i = 0; i < this.size; ++i) {
 				if (blkIdxSlots[i] == blkIndex) {
 					cachePtr = blkIndex;

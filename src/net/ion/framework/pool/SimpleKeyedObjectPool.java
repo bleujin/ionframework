@@ -4,7 +4,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
- * °£´ÜÇÏ°Ô ±¸ÇöµÈ KeyedObjectPool
+ * ê°„ë‹¨í•˜ê²Œ êµ¬í˜„ëœ KeyedObjectPool
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -16,7 +16,7 @@ public final class SimpleKeyedObjectPool implements KeyedObjectPool {
 
 	/**
 	 * @param maxObject
-	 *            °¢ key¸¶´Ù ÃÖ´ë object Å©±â
+	 *            ê° keyë§ˆë‹¤ ìµœëŒ€ object í¬ê¸°
 	 */
 	public SimpleKeyedObjectPool(int maxObject) {
 		this.poolMap = new Hashtable<Object, ObjectPool>();

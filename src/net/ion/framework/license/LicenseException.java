@@ -1,7 +1,7 @@
 package net.ion.framework.license;
 
 /**
- * license serialization / deserialization / validation µî¿¡ ¹ß»ıÇÑ´Ù.
+ * license serialization / deserialization / validation ë“±ì— ë°œìƒí•œë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0

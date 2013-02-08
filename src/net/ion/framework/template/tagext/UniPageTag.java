@@ -1,7 +1,7 @@
 package net.ion.framework.template.tagext;
 
 /**
- * page¸¦ driving ÇÏ´Â tag(multi tag)°¡ ¾Æ´Ñ tagÀÇ model
+ * pageë¥¼ driving í•˜ëŠ” tag(multi tag)ê°€ ì•„ë‹Œ tagì˜ model
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -13,7 +13,7 @@ public interface UniPageTag extends Tag {
 	public static final int EVAL_BODY_INCLUDE = 1;
 
 	/**
-	 * template runtimeÀÌ tag »ç¿ëÇÏ±â Àü¿¡ pageContext¸¦ ÃÊ±âÈ­ ÇÏ¿© ¿©±â·Î ´øÁø´Ù.
+	 * template runtimeì´ tag ì‚¬ìš©í•˜ê¸° ì „ì— pageContextë¥¼ ì´ˆê¸°í™” í•˜ì—¬ ì—¬ê¸°ë¡œ ë˜ì§„ë‹¤.
 	 * 
 	 * @param pagecontext
 	 *            PageContext
@@ -21,7 +21,7 @@ public interface UniPageTag extends Tag {
 	public abstract void setPageContext(PageContext pagecontext);
 
 	/**
-	 * Tag.EVAL_BODY_INCLUDE (BodyTag.EVAL_BODY_BUFFERED) ¶Ç´Â Tag.SKIP_BODY ¸¦ ¸®ÅÏÇÑ´Ù.
+	 * Tag.EVAL_BODY_INCLUDE (BodyTag.EVAL_BODY_BUFFERED) ë˜ëŠ” Tag.SKIP_BODY ë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @return
 	 * @throws TagException
@@ -29,7 +29,7 @@ public interface UniPageTag extends Tag {
 	public abstract int doStartTag() throws TagException;
 
 	/**
-	 * Tag.EVAL_PAGE ¶Ç´Â Tag.SKIP_PAGE ¸¦ ¸®ÅÏÇÑ´Ù.
+	 * Tag.EVAL_PAGE ë˜ëŠ” Tag.SKIP_PAGE ë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @return
 	 * @throws TagException

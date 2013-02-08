@@ -5,7 +5,7 @@ package net.ion.framework.configuration;
  * @version 1.0
  * 
  *          <pre>
- * Configuration¿¡ ´ëÇÑ Type À» Á¤ÀÇ
+ * Configurationì— ëŒ€í•œ Type ì„ ì •ì˜
  * 
  * DEFAULT = net.ion.framework.configuration.DefaultConfiguration
  * 
@@ -23,9 +23,9 @@ public class ConfigurationType {
 	}
 
 	/**
-	 * Å¸ÀÔ¸íÀ» °¡Á®¿Â´Ù.
+	 * íƒ€ì…ëª…ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
-	 * @return Å¸ÀÔ¸í
+	 * @return íƒ€ì…ëª…
 	 */
 	public String getClassName() {
 		return className;

@@ -17,44 +17,44 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * timeoutµÈ sessionµéÀ» Á¤¸®ÇÏ´Â thread
+	 * timeoutëœ sessionë“¤ì„ ì •ë¦¬í•˜ëŠ” thread
 	 */
 	private Thread managerThread;
 
 	/**
-	 * timeoutµÈ session µéÀ» Á¤¸® ÇÏ´Â ÁÖ±â (ÃÊ)
+	 * timeoutëœ session ë“¤ì„ ì •ë¦¬ í•˜ëŠ” ì£¼ê¸° (ì´ˆ)
 	 */
 	private int checkInterval = 60; // default 1 min
 
 	/**
-	 * sessionÀÇ default timeout(ÃÊ)
+	 * sessionì˜ default timeout(ì´ˆ)
 	 */
 	private int defaultMaxInactiveInterval = 60 * 30; // default 30 min
 
 	/**
-	 * sessionÀÌ ÀúÀåµÉ context
+	 * sessionì´ ì €ì¥ë  context
 	 */
 	private SessionContext context;
 
 	/**
-	 * session manager Á¤º¸ (managerÀÛ¼º½Ã¿¡ °áÁ¤)
+	 * session manager ì •ë³´ (managerì‘ì„±ì‹œì— ê²°ì •)
 	 * 
 	 * @return
 	 */
 	public abstract String getInfo();
 
 	/**
-	 * session manager ÀÌ¸§ (»ı¼º½Ã¿¡ °áÁ¤)
+	 * session manager ì´ë¦„ (ìƒì„±ì‹œì— ê²°ì •)
 	 * 
 	 * @return
 	 */
 	public abstract String getName();
 
 	/**
-	 * sessionÀ» »ı¼ºÇÏ¿© ¸®ÅÏÇÑ´Ù.
+	 * sessionì„ ìƒì„±í•˜ì—¬ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param sessionId
-	 *            »ı¼ºÇÒ sessionÀÇ id
+	 *            ìƒì„±í•  sessionì˜ id
 	 * @return
 	 */
 	protected abstract AbstractSession createSession(String sessionId);
@@ -69,25 +69,25 @@ public abstract class SessionManager {
 	}
 
 	protected void removeAfterJob(String id) {
-		// ¼¼¼ÇÀÌ Á¦°ÅµÇ±â ÀÌÀü¿¡ ÇØ¾ßÇÒ ÀÏÀÌ ÀÖÀ¸¸é.. »ó¼Ó¹Ş¾Æ¼­ ¾Ë¾Æ¼­ ±¸Çö
+		// ì„¸ì…˜ì´ ì œê±°ë˜ê¸° ì´ì „ì— í•´ì•¼í•  ì¼ì´ ìˆìœ¼ë©´.. ìƒì†ë°›ì•„ì„œ ì•Œì•„ì„œ êµ¬í˜„
 	}
 
 	protected void removeBeforeJob(String id) {
-		// ¼¼¼ÇÀÌ Á¦°ÅµÇ°í ³­ ÈÄ¿¡ ÇØ¾ßÇÒ ÀÏÀÌ ÀÖÀ¸¸é.. »ó¼Ó¹Ş¾Æ¼­ ¾Ë¾Æ¼­ ±¸Çö
+		// ì„¸ì…˜ì´ ì œê±°ë˜ê³  ë‚œ í›„ì— í•´ì•¼í•  ì¼ì´ ìˆìœ¼ë©´.. ìƒì†ë°›ì•„ì„œ ì•Œì•„ì„œ êµ¬í˜„
 	}
 
 	/**
-	 * session manager°¡ ÃÊ±âÈ­ µÈ ÀÌÈÄ manager thread °¡ startµÇ±â Àü ºÒ·¯Áø´Ù.
+	 * session managerê°€ ì´ˆê¸°í™” ëœ ì´í›„ manager thread ê°€ startë˜ê¸° ì „ ë¶ˆëŸ¬ì§„ë‹¤.
 	 */
 	protected abstract void load();
 
 	/**
-	 * session manager°¡ ÃÊ±âÈ­ µÈ ÀÌÈÄ manager thread °¡ stopµÇ±â Àü ºÒ·¯Áø´Ù.
+	 * session managerê°€ ì´ˆê¸°í™” ëœ ì´í›„ manager thread ê°€ stopë˜ê¸° ì „ ë¶ˆëŸ¬ì§„ë‹¤.
 	 */
 	protected abstract void unload();
 
 	/**
-	 * @return session managerÀÇ context
+	 * @return session managerì˜ context
 	 */
 	final public SessionContext getSessionContext() {
 		return this.context;
@@ -95,14 +95,14 @@ public abstract class SessionManager {
 
 	/**
 	 * @param context
-	 *            session managerÀÇ context·Î ÁöÁ¤ÇÒ °Í
+	 *            session managerì˜ contextë¡œ ì§€ì •í•  ê²ƒ
 	 */
 	final protected void setSessionContext(SessionContext context) {
 		this.context = context;
 	}
 
 	/**
-	 * @return sessionÀÇ default timeout (ÃÊ)
+	 * @return sessionì˜ default timeout (ì´ˆ)
 	 */
 	final public int getMaxInactiveInterval() {
 		return this.defaultMaxInactiveInterval;
@@ -110,7 +110,7 @@ public abstract class SessionManager {
 
 	/**
 	 * @param interval
-	 *            sessionÀÇ default timeout (ÃÊ)
+	 *            sessionì˜ default timeout (ì´ˆ)
 	 */
 	final public void setMaxInactiveInterval(int intervalSec) {
 		this.defaultMaxInactiveInterval = intervalSec;
@@ -118,24 +118,24 @@ public abstract class SessionManager {
 
 	/**
 	 * @param checkInterval
-	 *            timeoutµÈ sessionµéÀ» Á¤¸®ÇÏ´Â threadÀÇ check ÁÖ±â (ÃÊ)
+	 *            timeoutëœ sessionë“¤ì„ ì •ë¦¬í•˜ëŠ” threadì˜ check ì£¼ê¸° (ì´ˆ)
 	 */
 	final public void setCheckInterval(int checkIntervalSec) {
 		this.checkInterval = checkIntervalSec;
 	}
 
 	/**
-	 * @return timeoutµÈ sessionµéÀ» Á¤¸®ÇÏ´Â threadÀÇ check ÁÖ±â (ÃÊ)
+	 * @return timeoutëœ sessionë“¤ì„ ì •ë¦¬í•˜ëŠ” threadì˜ check ì£¼ê¸° (ì´ˆ)
 	 */
 	final public int getCheckInterval() {
 		return this.checkInterval;
 	}
 
 	/**
-	 * sessionId¿¡ ÇØ´çÇÏ´Â sessionÀ» °¡Á®¿Â´Ù. ¾øÀ» °æ¿ì »ı¼ºÇÑ´Ù.
+	 * sessionIdì— í•´ë‹¹í•˜ëŠ” sessionì„ ê°€ì ¸ì˜¨ë‹¤. ì—†ì„ ê²½ìš° ìƒì„±í•œë‹¤.
 	 * 
 	 * @param sessionId
-	 *            °¡Á®¿À°íÀÚ ÇÏ´Â sessionId
+	 *            ê°€ì ¸ì˜¤ê³ ì í•˜ëŠ” sessionId
 	 * @return
 	 */
 	final public Session getSession(String sessionId) {
@@ -149,12 +149,12 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * sessionId¿¡ ÇØ´çÇÏ´Â sessionÀ» °¡Á®¿Â´Ù.
+	 * sessionIdì— í•´ë‹¹í•˜ëŠ” sessionì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param sessionId
-	 *            °¡Á®¿À°íÀÚ ÇÏ´Â sessionId
+	 *            ê°€ì ¸ì˜¤ê³ ì í•˜ëŠ” sessionId
 	 * @param create
-	 *            sessionId¿¡ ÇØ´çÇÏ´Â sessionÀÌ ¾øÀ» °æ¿ì »ı¼º ¿©ºÎ
+	 *            sessionIdì— í•´ë‹¹í•˜ëŠ” sessionì´ ì—†ì„ ê²½ìš° ìƒì„± ì—¬ë¶€
 	 * @return
 	 */
 	final public Session getSession(String sessionId, boolean create) {
@@ -166,20 +166,20 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * context¿¡ ÇØ´ç sessionÀ» Ãß°¡ÇÑ´Ù.
+	 * contextì— í•´ë‹¹ sessionì„ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * @param session
-	 *            Ãß°¡ÇÏ°íÀÚ ÇÏ´Â session
+	 *            ì¶”ê°€í•˜ê³ ì í•˜ëŠ” session
 	 */
 	final protected void add(AbstractSession session) {
 		this.context.add(session);
 	}
 
 	/**
-	 * context¿¡¼­ ÇØ´ç sessionÀ» Á¦°ÅÇÑ´Ù.
+	 * contextì—ì„œ í•´ë‹¹ sessionì„ ì œê±°í•œë‹¤.
 	 * 
 	 * @param session
-	 *            Á¦°Å ÇÏ°íÀÚ ÇÏ´Â session
+	 *            ì œê±° í•˜ê³ ì í•˜ëŠ” session
 	 */
 	final protected void remove(AbstractSession session) {
 		session.removeAttributeAll();
@@ -187,10 +187,10 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * context¿¡¼­ sessionId¿¡ ÇØ´çÇÏ´Â sessionÀ» Ã£´Â´Ù. ¾øÀ¸¸é nullÀÌ´Ù.
+	 * contextì—ì„œ sessionIdì— í•´ë‹¹í•˜ëŠ” sessionì„ ì°¾ëŠ”ë‹¤. ì—†ìœ¼ë©´ nullì´ë‹¤.
 	 * 
 	 * @param id
-	 *            Ã£À» sessionId
+	 *            ì°¾ì„ sessionId
 	 * @return
 	 */
 	final public Session findSession(String id) {
@@ -198,7 +198,7 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * contextÀÇ ¸ğµç sessionÀ» °¡Á®¿Â´Ù.
+	 * contextì˜ ëª¨ë“  sessionì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return
 	 */
@@ -207,7 +207,7 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * Session Manager¸¦ »ı¼ºÇÑ ÈÄ ¹İµå½Ã ÀÌ ¸Ş¼Òµå¸¦ ºÒ·¯Áà¾ß session timeoutÀÌ µ¿ÀÛÇÑ´Ù.!!
+	 * Session Managerë¥¼ ìƒì„±í•œ í›„ ë°˜ë“œì‹œ ì´ ë©”ì†Œë“œë¥¼ ë¶ˆëŸ¬ì¤˜ì•¼ session timeoutì´ ë™ì‘í•œë‹¤.!!
 	 */
 	final public void begin() {
 		this.load();
@@ -219,9 +219,9 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * Session ManagerÀÇ »ç¿ëÀ» ³¡³¾ ¶§ È£Ãâ. session timeout thread ¸¦ Á¾·áÇÑ´Ù.!!
+	 * Session Managerì˜ ì‚¬ìš©ì„ ëë‚¼ ë•Œ í˜¸ì¶œ. session timeout thread ë¥¼ ì¢…ë£Œí•œë‹¤.!!
 	 * 
-	 * ÇÑ¹ø end()ÇÑ ÀÌÈÄ ´Ù½Ã begin()ÇÏ¸é ¾ÈµÈ´Ù.
+	 * í•œë²ˆ end()í•œ ì´í›„ ë‹¤ì‹œ begin()í•˜ë©´ ì•ˆëœë‹¤.
 	 */
 	final public void end() {
 		this.unload();
@@ -234,7 +234,7 @@ public abstract class SessionManager {
 	}
 
 	/**
-	 * ÀÓÀÇÀÇ session id¸¦ »ı¼ºÇØÁØ´Ù.
+	 * ì„ì˜ì˜ session idë¥¼ ìƒì„±í•´ì¤€ë‹¤.
 	 * 
 	 * @return
 	 */

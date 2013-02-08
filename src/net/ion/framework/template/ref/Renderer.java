@@ -18,7 +18,7 @@ import net.ion.framework.template.TemplateRuntimeException;
 import net.ion.framework.template.tagext.TemplateContext;
 
 /**
- * template framework¸¦ »ç¿ëÇÏ´Â ÂüÁ¶ ±¸Çö
+ * template frameworkë¥¼ ì‚¬ìš©í•˜ëŠ” ì°¸ì¡° êµ¬í˜„
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0

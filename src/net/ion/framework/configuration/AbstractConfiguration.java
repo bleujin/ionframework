@@ -1,10 +1,10 @@
 package net.ion.framework.configuration;
 
 /**
- * Configuration ÀÇ Ãß»ó Å¬·¡½º
+ * Configuration ì˜ ì¶”ìƒ í´ë˜ìŠ¤
  * 
  * <pre>
- * getAttribute( ), getValue( ), getChild( ), getChildren( ) ¸Å¼Òµå¸¦ Á¦¿ÜÇÑ ³ª¸ÓÁö ¸Ş¼ÒµåµéÀ» ±¸ÇöÇÏ°í ÀÖ´Ù.
+ * getAttribute( ), getValue( ), getChild( ), getChildren( ) ë§¤ì†Œë“œë¥¼ ì œì™¸í•œ ë‚˜ë¨¸ì§€ ë©”ì†Œë“œë“¤ì„ êµ¬í˜„í•˜ê³  ìˆë‹¤.
  * 
  * </pre>
  * 
@@ -16,22 +16,22 @@ public abstract class AbstractConfiguration implements Configuration {
 	protected String tagName = null;
 
 	/**
-	 * ÅÂ±×ÀÌ¸§À» °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì´ë¦„ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
-	 * @return String ÅÂ±×ÀÌ¸§
+	 * @return String íƒœê·¸ì´ë¦„
 	 */
 	public String getTagName() {
 		return tagName;
 	}
 
 	/**
-	 * Attribute °ªÀ» °¡Á®¿Â´Ù.
+	 * Attribute ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ì´ë¦„
 	 * @param defaultValue
-	 *            String Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return String Attribute °ª
+	 *            String Attribute ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return String Attribute ê°’
 	 */
 	final public String getAttribute(String attributeName, String defaultValue) {
 		if (getAttribute(attributeName) == "")
@@ -41,13 +41,13 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * Attribute °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ê°’ì„ intí˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ì´ë¦„
 	 * @throws ConfigurationException
-	 *             Attribute °ªÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò°Å³ª, Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì, ¶Ç´Â °ªÀÌ int ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ı
-	 * @return int Attribute °ª
+	 *             Attribute ê°’ì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ê±°ë‚˜, ì¡´ì¬í•˜ì§€ ì•Šì„ê²½ìš°, ë˜ëŠ” ê°’ì´ int í˜•ìœ¼ë¡œ castingì´ ë¶ˆê°€í•  ê²½ìš° ë°œìƒ
+	 * @return int Attribute ê°’
 	 */
 	final public int getAttributeAsInt(String attributeName) throws ConfigurationException {
 		try {
@@ -58,13 +58,13 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * Attribute °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ê°’ì„ intí˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ì´ë¦„
 	 * @param defaultValue
-	 *            int Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return int Attribute °ª
+	 *            int Attribute ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return int Attribute ê°’
 	 */
 	final public int getAttributeAsInt(String attributeName, int defaultValue) {
 		try {
@@ -75,13 +75,13 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * Attribute °ªÀ» floatÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ê°’ì„ floatí˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ì´ë¦„
 	 * @throws ConfigurationException
-	 *             Attribute °ªÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò°Å³ª, Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì, ¶Ç´Â °ªÀÌ float ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ı
-	 * @return float Attribute °ª
+	 *             Attribute ê°’ì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ê±°ë‚˜, ì¡´ì¬í•˜ì§€ ì•Šì„ê²½ìš°, ë˜ëŠ” ê°’ì´ float í˜•ìœ¼ë¡œ castingì´ ë¶ˆê°€í•  ê²½ìš° ë°œìƒ
+	 * @return float Attribute ê°’
 	 */
 	final public float getAttributeAsFloat(String attributeName) throws ConfigurationException {
 		try {
@@ -92,13 +92,13 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * Attribute °ªÀ» float ÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ê°’ì„ float í˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ì´ë¦„
 	 * @param defaultValue
-	 *            float Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return float Attribute °ª
+	 *            float Attribute ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return float Attribute ê°’
 	 */
 	final public float getAttributeAsFloat(String attributeName, float defaultValue) {
 		try {
@@ -109,13 +109,13 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * Attribute °ªÀ» Boolean ÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ê°’ì„ Boolean í˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ì´ë¦„
 	 * @throws ConfigurationException
-	 *             Attribute °ªÀÌ ¼³Á¤µÇÁö ¾Ê¾Ò°Å³ª, Á¸ÀçÇÏÁö ¾ÊÀ»°æ¿ì ¹ß»ı
-	 * @return boolean Attribute °ª
+	 *             Attribute ê°’ì´ ì„¤ì •ë˜ì§€ ì•Šì•˜ê±°ë‚˜, ì¡´ì¬í•˜ì§€ ì•Šì„ê²½ìš° ë°œìƒ
+	 * @return boolean Attribute ê°’
 	 */
 	final public boolean getAttributeAsBoolean(String attributeName) throws ConfigurationException {
 		if (getAttribute(attributeName) == "")
@@ -125,13 +125,13 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * Attribute °ªÀ» Boolean ÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * Attribute ê°’ì„ Boolean í˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param attributeName
-	 *            String Attribute ÀÌ¸§
+	 *            String Attribute ì´ë¦„
 	 * @param defaultValue
-	 *            boolean Attribute °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return boolean Attribute °ª
+	 *            boolean Attribute ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return boolean Attribute ê°’
 	 */
 	final public boolean getAttributeAsBoolean(String attributeName, boolean defaultValue) {
 		try {
@@ -142,11 +142,11 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì˜ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param defaultValue
-	 *            String °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return String ÅÂ±× °ª
+	 *            String ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return String íƒœê·¸ ê°’
 	 */
 	final public String getValue(String defaultValue) {
 		if (getValue().length() == 0) {
@@ -161,11 +161,11 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì˜ ê°’ì„ intí˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @throws ConfigurationException
-	 *             °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì, ¶Ç´Â °ªÀÌ int ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ı
-	 * @return int ÅÂ±× °ª
+	 *             ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš°, ë˜ëŠ” ê°’ì´ int í˜•ìœ¼ë¡œ castingì´ ë¶ˆê°€í•  ê²½ìš° ë°œìƒ
+	 * @return int íƒœê·¸ ê°’
 	 */
 	final public int getValueAsInt() throws ConfigurationException {
 		try {
@@ -176,11 +176,11 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» intÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì˜ ê°’ì„ intí˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param defaultValue
-	 *            int °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return int ÅÂ±× °ª
+	 *            int ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return int íƒœê·¸ ê°’
 	 */
 	final public int getValueAsInt(int defaultValue) {
 		try {
@@ -191,11 +191,11 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» floatÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì˜ ê°’ì„ floatí˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @throws ConfigurationException
-	 *             °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì, ¶Ç´Â °ªÀÌ float ÇüÀ¸·Î castingÀÌ ºÒ°¡ÇÒ °æ¿ì ¹ß»ı
-	 * @return float ÅÂ±× °ª
+	 *             ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš°, ë˜ëŠ” ê°’ì´ float í˜•ìœ¼ë¡œ castingì´ ë¶ˆê°€í•  ê²½ìš° ë°œìƒ
+	 * @return float íƒœê·¸ ê°’
 	 */
 	final public float getValueAsFloat() throws ConfigurationException {
 		try {
@@ -206,11 +206,11 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» floatÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì˜ ê°’ì„ floatí˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param defaultValue
-	 *            float °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return float ÅÂ±× °ª
+	 *            float ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return float íƒœê·¸ ê°’
 	 */
 	final public float getValueAsFloat(float defaultValue) {
 		try {
@@ -222,11 +222,11 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» booleanÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì˜ ê°’ì„ booleaní˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @throws ConfigurationException
-	 *             °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ¹ß»ı
-	 * @return boolean ÅÂ±× °ª
+	 *             ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ë°œìƒ
+	 * @return boolean íƒœê·¸ ê°’
 	 */
 	final public boolean getValueAsBoolean() throws ConfigurationException {
 		if (getValue().length() == 0) {
@@ -236,11 +236,11 @@ public abstract class AbstractConfiguration implements Configuration {
 	}
 
 	/**
-	 * ÅÂ±×ÀÇ °ªÀ» booleanÇüÀ¸·Î casting ÇÏ¿© °¡Á®¿Â´Ù.
+	 * íƒœê·¸ì˜ ê°’ì„ booleaní˜•ìœ¼ë¡œ casting í•˜ì—¬ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param defaultValue
-	 *            boolean °ªÀÌ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀº °æ¿ì ÁöÁ¤µÇ´Â ±âº»°ª
-	 * @return boolean ÅÂ±× °ª
+	 *            boolean ê°’ì´ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šì€ ê²½ìš° ì§€ì •ë˜ëŠ” ê¸°ë³¸ê°’
+	 * @return boolean íƒœê·¸ ê°’
 	 */
 	final public boolean getValueAsBoolean(boolean defaultValue) {
 		try {

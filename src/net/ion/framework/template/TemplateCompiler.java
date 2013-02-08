@@ -18,7 +18,7 @@ import net.ion.framework.util.InstanceCreationException;
 import net.ion.framework.util.InstanceCreator;
 
 /**
- * text templateÀ» code¿Í data·Î ºĞ¸®ÇÏ¿© °¢°¢ operationCode, operationData¸¦ ¸¸µé¾î compiledTemplateÀ» »ı¼ºÇÑ´Ù. ÄÄÆÄÀÏµÈ ÅÛÇÃ¸´Àº templateRuntimeÀ¸·Î ½ÇÇà½ÃÅ³ ¼ö ÀÖ´Ù.
+ * text templateì„ codeì™€ dataë¡œ ë¶„ë¦¬í•˜ì—¬ ê°ê° operationCode, operationDataë¥¼ ë§Œë“¤ì–´ compiledTemplateì„ ìƒì„±í•œë‹¤. ì»´íŒŒì¼ëœ í…œí”Œë¦¿ì€ templateRuntimeìœ¼ë¡œ ì‹¤í–‰ì‹œí‚¬ ìˆ˜ ìˆë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -27,9 +27,9 @@ import net.ion.framework.util.InstanceCreator;
 public class TemplateCompiler {
 	/**
 	 * COMPILE_MODE<br/>
-	 * OUTER_TEMPLATE : ¸ğµç tag¸¦ ´Ù »ç¿ëÇÒ ¼ö ÀÖ´Ù. INNER_TEMPLATE : page tag¸¦ Á¦¿ÜÇÑ ¸ğµç tag¸¦ »ç¿ëÇÒ ¼ö ÀÖ´Ù.
+	 * OUTER_TEMPLATE : ëª¨ë“  tagë¥¼ ë‹¤ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤. INNER_TEMPLATE : page tagë¥¼ ì œì™¸í•œ ëª¨ë“  tagë¥¼ ì‚¬ìš©í•  ìˆ˜ ìˆë‹¤.
 	 * 
-	 * ÁÖ) TemplateÀº ´Ü 1°³ÀÇ page tag¸¦ °¡Áú ¼ö ÀÖ´Âµ¥ templateÀÌ Å¸ templateÀ» Æ÷ÇÔÇÒ °æ¿ì Å¸ ÅÛÇÃ¸´ÀÌ ÀÌ¹Ì page tag¸¦ °¡Áú °æ¿ì ÇöÀç ÅÛÇÃ¸´¿¡µµ page tag°¡ ÀÖÀ¸¹Ç·Î ¹®Á¦°¡ µÈ´Ù. ¶§¹®¿¡ Æ÷ÇÔÇÒ ¼ö ÀÖ´Â templateÀº inner template ¹Û¿¡ ¾ø´Ù.
+	 * ì£¼) Templateì€ ë‹¨ 1ê°œì˜ page tagë¥¼ ê°€ì§ˆ ìˆ˜ ìˆëŠ”ë° templateì´ íƒ€ templateì„ í¬í•¨í•  ê²½ìš° íƒ€ í…œí”Œë¦¿ì´ ì´ë¯¸ page tagë¥¼ ê°€ì§ˆ ê²½ìš° í˜„ì¬ í…œí”Œë¦¿ì—ë„ page tagê°€ ìˆìœ¼ë¯€ë¡œ ë¬¸ì œê°€ ëœë‹¤. ë•Œë¬¸ì— í¬í•¨í•  ìˆ˜ ìˆëŠ” templateì€ inner template ë°–ì— ì—†ë‹¤.
 	 */
 	public static final int COMPILE_MODE_OUTER_TEMPLATE = Template.TYPE_OUTER_TEMPLATE;
 	public static final int COMPILE_MODE_INNER_TEMPLATE = Template.TYPE_INNER_TEMPLATE;
@@ -53,10 +53,10 @@ public class TemplateCompiler {
 	}
 
 	/**
-	 * handler¿¡ reflectionÀ¸·Î °ªÀ» Áı¾î ³ÖÀ» ¶§ »ç¿ëÇÒ parameterµéÀ» ÃßÃâÇÑ´Ù.
+	 * handlerì— reflectionìœ¼ë¡œ ê°’ì„ ì§‘ì–´ ë„£ì„ ë•Œ ì‚¬ìš©í•  parameterë“¤ì„ ì¶”ì¶œí•œë‹¤.
 	 * 
 	 * @param tagName
-	 *            TagSupport ÀÇ id ÇÊµå¿¡ ÀúÀåÇÒ °ª (template¿¡¼­ »ç¿ëÇÑ tagÀÌ¸§), ÁÖÀÇ: tag handler ÀÌ¸§ÀÌ ¾Æ´Ï´Ù.
+	 *            TagSupport ì˜ id í•„ë“œì— ì €ì¥í•  ê°’ (templateì—ì„œ ì‚¬ìš©í•œ tagì´ë¦„), ì£¼ì˜: tag handler ì´ë¦„ì´ ì•„ë‹ˆë‹¤.
 	 * @param tagInfo
 	 * @param tagMark
 	 * @return
@@ -83,13 +83,13 @@ public class TemplateCompiler {
 			ap.initialize(tagMark);
 
 			try {
-				// tagMark¸¦ ÀúÀåÇÑ´Ù.
+				// tagMarkë¥¼ ì €ì¥í•œë‹¤.
 				names.add("tagMarker");
 				values.add(tagMark);
 
-				// tag nameÀ» TagSupport.id ÇÊµå¿¡ ÀúÀåÇÑ´Ù.
-				// Tag handler¿¡¼­ template¿¡¼­ ¾î¶² ÀÌ¸§À¸·Î handler¸¦ invokeÇß´ÂÁö ¾Ë±â À§ÇØ
-				// (default tag °°Àº °æ¿ì µ¿ÀÏÇÑ handler¸¦ ´Ù¾çÇÑ ÀÌ¸§À¸·Î ºÎ¸¥´Ù.)
+				// tag nameì„ TagSupport.id í•„ë“œì— ì €ì¥í•œë‹¤.
+				// Tag handlerì—ì„œ templateì—ì„œ ì–´ë–¤ ì´ë¦„ìœ¼ë¡œ handlerë¥¼ invokeí–ˆëŠ”ì§€ ì•Œê¸° ìœ„í•´
+				// (default tag ê°™ì€ ê²½ìš° ë™ì¼í•œ handlerë¥¼ ë‹¤ì–‘í•œ ì´ë¦„ìœ¼ë¡œ ë¶€ë¥¸ë‹¤.)
 				names.add("id");
 				values.add(tagName);
 
@@ -113,7 +113,7 @@ public class TemplateCompiler {
 						nameMark = np.parseNext();
 						name = nameMark.getValue();
 					} catch (NullPointerException ex) {
-						// default attribute Ã³¸®
+						// default attribute ì²˜ë¦¬
 						if (name == null) {
 							if (existsDefaultAttribute) {
 								throw new CompilerException(tagMark, "duplicated default attribute at '" + attrMark.getValue() + "'");
@@ -121,7 +121,7 @@ public class TemplateCompiler {
 								existsDefaultAttribute = true;
 								name = tagInfo.getDefaultAttributeName(); // default attribute
 
-								// default attribute°¡ ÁöÁ¤µÇ¾î ÀÖÁö ¾ÊÀ» °æ¿ì
+								// default attributeê°€ ì§€ì •ë˜ì–´ ìˆì§€ ì•Šì„ ê²½ìš°
 								if (name == null) {
 									throw new CompilerException(tagMark, "does not allow the default attribute at '" + attrMark.getValue() + "'");
 								}
@@ -150,7 +150,7 @@ public class TemplateCompiler {
 
 					// if run-time value
 					if (attrInfo.isRtexprvalue()) {
-						value = valueStr; // template run-time environment¿¡¼­ ÀÌ °ªÀ» ÀçÃ³¸®ÇØÁà¾ßÇÑ´Ù!!!
+						value = valueStr; // template run-time environmentì—ì„œ ì´ ê°’ì„ ì¬ì²˜ë¦¬í•´ì¤˜ì•¼í•œë‹¤!!!
 					}
 					// if compile-time value
 					else {
@@ -185,19 +185,19 @@ public class TemplateCompiler {
 	}
 
 	/**
-	 * ÇöÀç tag parser°¡ ¼ÓÇØ ÀÖ´Â bodyÀÇ end tag ¹Ù·Î ¾ÕÀ¸·Î °Ç³Ê¶Ú´Ù. (´Ü tagÀÇ body content°¡ tag dependent¶ó°í °¡Á¤ÇÑ´Ù)
+	 * í˜„ì¬ tag parserê°€ ì†í•´ ìˆëŠ” bodyì˜ end tag ë°”ë¡œ ì•ìœ¼ë¡œ ê±´ë„ˆë›´ë‹¤. (ë‹¨ tagì˜ body contentê°€ tag dependentë¼ê³  ê°€ì •í•œë‹¤)
 	 * 
 	 * @param tagParser
 	 * @throws ParserException
 	 */
 	private void parseToEndTagOfCurrentTagDependentBody(Marker nameStartMark, Parser tagParser) throws ParserException {
 		/**
-		 * ¿ø¸®) start tag°¡ ³ªÅ¸³ª¸é depth¸¦ 1¾¿ Áõ°¡ÇÏ°í end tag°¡ ³ªÅ¸³ª¸é depth¸¦ 1¾¿ °¨¼ÒÇÑ´Ù.
+		 * ì›ë¦¬) start tagê°€ ë‚˜íƒ€ë‚˜ë©´ depthë¥¼ 1ì”© ì¦ê°€í•˜ê³  end tagê°€ ë‚˜íƒ€ë‚˜ë©´ depthë¥¼ 1ì”© ê°ì†Œí•œë‹¤.
 		 * 
-		 * ¸¸ÀÏ °èÃş ±¸Á¶°¡ Á¦´ë·Î µÇ¾î ÀÖ´Ù¸é depth°¡ 0ÀÌ µÇ´Â ¼ø°£ tag°¡ ´İÈ÷´Â ¼ø°£ÀÌ´Ù.
+		 * ë§Œì¼ ê³„ì¸µ êµ¬ì¡°ê°€ ì œëŒ€ë¡œ ë˜ì–´ ìˆë‹¤ë©´ depthê°€ 0ì´ ë˜ëŠ” ìˆœê°„ tagê°€ ë‹«íˆëŠ” ìˆœê°„ì´ë‹¤.
 		 */
 
-		int depth = 1; // ÀÌ ¸Ş¼Òµå¸¦ ºÎ¸¥ »óÅÂ¿¡ ÀÌ¹Ì ¿­·ÁÁ® ÀÖ´Â »óÅÂ(start tag¸¦ Áö³ªÃÆÀ½) ÀÌ¹Ç·Î 1·Î ¼³Á¤
+		int depth = 1; // ì´ ë©”ì†Œë“œë¥¼ ë¶€ë¥¸ ìƒíƒœì— ì´ë¯¸ ì—´ë ¤ì ¸ ìˆëŠ” ìƒíƒœ(start tagë¥¼ ì§€ë‚˜ì³¤ìŒ) ì´ë¯€ë¡œ 1ë¡œ ì„¤ì •
 		Marker mark = null;
 
 		String tagName = TagNameParser.getRealTagName(nameStartMark);
@@ -222,7 +222,7 @@ public class TemplateCompiler {
 					}
 			} while (depth > 0);
 
-			// end tagÀÇ ½ÃÀÛ ºÎºĞÀ» ´ÙÀ½ parsing point·Î ¼³Á¤ÇÑ´Ù.
+			// end tagì˜ ì‹œì‘ ë¶€ë¶„ì„ ë‹¤ìŒ parsing pointë¡œ ì„¤ì •í•œë‹¤.
 			tagParser.setParsingPoint(mark.getBeginIndex());
 		} finally {
 			this.tagNameParserHost.releaseParser(nameParser);
@@ -230,38 +230,38 @@ public class TemplateCompiler {
 	}
 
 	/**
-	 * ÅÛÇÃ¸´À» ÄÄÆÄÀÏ ÇÑ´Ù.
+	 * í…œí”Œë¦¿ì„ ì»´íŒŒì¼ í•œë‹¤.
 	 * 
 	 * @param template
-	 *            Template ÄÄÆÄÀÏÇÒ ÅÛÇÃ¸´
+	 *            Template ì»´íŒŒì¼í•  í…œí”Œë¦¿
 	 * @throws CompilerException
-	 * @return CompiledTemplate ÄÄÆÄÀÏµÈ ÅÛÇÃ¸´
+	 * @return CompiledTemplate ì»´íŒŒì¼ëœ í…œí”Œë¦¿
 	 */
 	public CompiledTemplate compile(Template template) throws CompilerException {
-		// °¡Á¤!!!
-		// templateÀÇ template type¶û compile mode °¡ µ¿ÀÏÇÑ °ªÀ» °¡Áø´Ù°í °¡Á¤
+		// ê°€ì •!!!
+		// templateì˜ template typeë‘ compile mode ê°€ ë™ì¼í•œ ê°’ì„ ê°€ì§„ë‹¤ê³  ê°€ì •
 		return compile(template.getTemplateText(), template.getTemplateType());
 	}
 
 	/**
-	 * ÅÛÇÃ¸´À» ÄÄÆÄÀÏ ÇÑ´Ù.
+	 * í…œí”Œë¦¿ì„ ì»´íŒŒì¼ í•œë‹¤.
 	 * 
 	 * @param templateText
-	 *            String Outer TemplateÀÌ¶ó°í °¡Á¤ÇÑ template text
+	 *            String Outer Templateì´ë¼ê³  ê°€ì •í•œ template text
 	 * @throws CompilerException
-	 * @return CompiledTemplate ÄÄÆÄÀÏµÈ ÅÛÇÃ¸´
+	 * @return CompiledTemplate ì»´íŒŒì¼ëœ í…œí”Œë¦¿
 	 */
 	public CompiledTemplate compile(String templateText) throws CompilerException {
 		return compile(templateText, COMPILE_MODE_OUTER_TEMPLATE);
 	}
 
 	/**
-	 * ÅÛÇÃ¸´À» ÄÄÆÄÀÏ ÇÑ´Ù.
+	 * í…œí”Œë¦¿ì„ ì»´íŒŒì¼ í•œë‹¤.
 	 * 
 	 * @param templateText
-	 *            String ÅÛÇÃ¸´ ÅØ½ºÆ®
+	 *            String í…œí”Œë¦¿ í…ìŠ¤íŠ¸
 	 * @param COMPILE_MODE
-	 *            int ÄÄÆÄÀÏ ¸ğµå
+	 *            int ì»´íŒŒì¼ ëª¨ë“œ
 	 * @throws CompilerException
 	 * @return CompiledTemplate
 	 */
@@ -285,7 +285,7 @@ public class TemplateCompiler {
 			String tagName = null;
 			String tagHandlerName = null;
 
-			// Page Tag Ã³¸®
+			// Page Tag ì²˜ë¦¬
 			boolean existsCustomPageTagHandler = false;
 			int addrPageTagHandlerName = 0; // data addr
 			int addrPageTagHandlerReflectionMap = 0; // data addr
@@ -294,15 +294,15 @@ public class TemplateCompiler {
 			int addrResetVector = code.add(OperationCode.OPCODE_TERMINATE);
 
 			// address
-			int addrTagHandlerName; // tag handler nameÀÌ ÀúÀåµÇ¾î ÀÖ´Â ÁÖ¼Ò - data addr
-			// special address table (¾Æ·¡´Â ¼ø¼­°¡ ¸Å¿ì Áß¿äÇÔ!!!!!!!!!! - ½ÅÁßÇÏ°Ô º¯µ¿ÇÏ±æ ¹Ù¶÷ (code¿¡ ³Ö´Â ¼ø¼­)
+			int addrTagHandlerName; // tag handler nameì´ ì €ì¥ë˜ì–´ ìˆëŠ” ì£¼ì†Œ - data addr
+			// special address table (ì•„ë˜ëŠ” ìˆœì„œê°€ ë§¤ìš° ì¤‘ìš”í•¨!!!!!!!!!! - ì‹ ì¤‘í•˜ê²Œ ë³€ë™í•˜ê¸¸ ë°”ëŒ (codeì— ë„£ëŠ” ìˆœì„œ)
 			int addrGenericException = code.add(OperationCode.OPCODE_EXCEPTION, data.add("incompleted compiled template.")); // code addr
-			int addrEnd = code.add(OperationCode.OPCODE_NO_OPERATION); // page°¡ ³¡³ª´Â ÁöÁ¡ - code addr
-			int addrTermination = code.add(OperationCode.OPCODE_TERMINATE); // translationÀÌ Á¾·áµÇ´Â ÁöÁ¡ - code addr
-			int addrStart = code.add(OperationCode.OPCODE_NO_OPERATION); // page°¡ ½ÃÀÛ µÇ´Â ÁöÁ¡ - code addr
+			int addrEnd = code.add(OperationCode.OPCODE_NO_OPERATION); // pageê°€ ëë‚˜ëŠ” ì§€ì  - code addr
+			int addrTermination = code.add(OperationCode.OPCODE_TERMINATE); // translationì´ ì¢…ë£Œë˜ëŠ” ì§€ì  - code addr
+			int addrStart = code.add(OperationCode.OPCODE_NO_OPERATION); // pageê°€ ì‹œì‘ ë˜ëŠ” ì§€ì  - code addr
 			// end of address
 
-			// body Ã³¸®¸¦ À§ÇÑ stack
+			// body ì²˜ë¦¬ë¥¼ ìœ„í•œ stack
 			Stack<String> tagNameStack = new Stack<String>();
 			IntStack addrAfterBodyStack = new IntStack();
 			IntStack addrDoEndTagStack = new IntStack();
@@ -311,15 +311,15 @@ public class TemplateCompiler {
 			while (true) {
 				tagMark = tagP.parseNext();
 
-				// print <- ending condition Æ÷ÇÔ
-				if (tagMark == null) { // ´õ ÀÌ»ó tag°¡ ¾øÀ» ¶§ textÀÇ ³¡±îÁö
+				// print <- ending condition í¬í•¨
+				if (tagMark == null) { // ë” ì´ìƒ tagê°€ ì—†ì„ ë•Œ textì˜ ëê¹Œì§€
 					code.add(OperationCode.OPCODE_PRINT,
 					// data.add(TagParser.filterComments(templateText.substring(prevParsedPoint))));
 							data.add(templateText.substring(prevParsedPoint)));
 
 					code.add(OperationCode.OPCODE_GOTO, addrEnd); // goto end point
-					break; // loop¸¦ Á¾·á
-				} else { // ´ÙÀ½ tag¸¦ Ã£¾ÒÀ» ¶§ parsing µÈ °÷ ±îÁö
+					break; // loopë¥¼ ì¢…ë£Œ
+				} else { // ë‹¤ìŒ tagë¥¼ ì°¾ì•˜ì„ ë•Œ parsing ëœ ê³³ ê¹Œì§€
 					code.add(OperationCode.OPCODE_PRINT,
 					// data.add(TagParser.filterComments(templateText.substring(prevParsedPoint,tagMark.getBeginIndex()))));
 							data.add(templateText.substring(prevParsedPoint, tagMark.getBeginIndex())));
@@ -346,21 +346,21 @@ public class TemplateCompiler {
 						code.add(OperationCode.OPCODE_LOAD_HANDLER, addrTagHandlerName, data.add(retrieveParametersToReflectAttributes(tagName, tagInfo,
 								tagMark)));
 
-						// SKIP_BODY¸¦ ¸®ÅÏ ¹Ş¾ÒÀ» ¶§ ¾ÆÁ÷ end tag¸¦ parsingÇÏÁö ¾Ê¾ÒÀ¸¹Ç·Î ¾îµğ·Î jumpÇÒÁö ¸ğ¸¥´Ù. ±×·¡¼­ gerneric exceptionÀ» ³»µµ·Ï ÀÓ½Ã·Î µÎ°í ³ªÁß¿¡ ÁÖ¼Ò¸¦ update ½ÃÅ²´Ù.
-						// EVAL_BODY_INCLUDE¸¦ ¸®ÅÏ ¹Ş¾ÒÀ» ¶§ body content¸¦ Àç¼³Á¤ÇÏÁö ¾ÊÀ¸¹Ç·Î body content¸¦ push ÇÏÁö ¾Ê±â À§ÇØ +1·Î skipÇÑ´Ù
-						int addrDoStartTag = code.add(OperationCode.OPCODE_DO_START_TAG, addrGenericException, // SKIP_BODY ÀÏ ¶§
-								addrGenericException, // EVAL_BODY_INCLUDE ÀÏ ¶§
-								addrGenericException); // EVAL_BODY_BUFFERED ÀÏ ¶§
+						// SKIP_BODYë¥¼ ë¦¬í„´ ë°›ì•˜ì„ ë•Œ ì•„ì§ end tagë¥¼ parsingí•˜ì§€ ì•Šì•˜ìœ¼ë¯€ë¡œ ì–´ë””ë¡œ jumpí• ì§€ ëª¨ë¥¸ë‹¤. ê·¸ë˜ì„œ gerneric exceptionì„ ë‚´ë„ë¡ ì„ì‹œë¡œ ë‘ê³  ë‚˜ì¤‘ì— ì£¼ì†Œë¥¼ update ì‹œí‚¨ë‹¤.
+						// EVAL_BODY_INCLUDEë¥¼ ë¦¬í„´ ë°›ì•˜ì„ ë•Œ body contentë¥¼ ì¬ì„¤ì •í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ body contentë¥¼ push í•˜ì§€ ì•Šê¸° ìœ„í•´ +1ë¡œ skipí•œë‹¤
+						int addrDoStartTag = code.add(OperationCode.OPCODE_DO_START_TAG, addrGenericException, // SKIP_BODY ì¼ ë•Œ
+								addrGenericException, // EVAL_BODY_INCLUDE ì¼ ë•Œ
+								addrGenericException); // EVAL_BODY_BUFFERED ì¼ ë•Œ
 
-						int addrDoAfterBody = code.add(OperationCode.OPCODE_DO_AFTER_BODY, addrGenericException, // SKIP_BODY ÀÏ ¶§
-								addrGenericException); // EVAL_BODY_AGAIN ÀÏ ¶§
+						int addrDoAfterBody = code.add(OperationCode.OPCODE_DO_AFTER_BODY, addrGenericException, // SKIP_BODY ì¼ ë•Œ
+								addrGenericException); // EVAL_BODY_AGAIN ì¼ ë•Œ
 
-						int addrDoEndTag = code.add(OperationCode.OPCODE_DO_END_TAG, addrEnd, // SKIP_PAGE ÀÏ ¶§
-								addrGenericException); // EVAL_PAGE ÀÏ ¶§
+						int addrDoEndTag = code.add(OperationCode.OPCODE_DO_END_TAG, addrEnd, // SKIP_PAGE ì¼ ë•Œ
+								addrGenericException); // EVAL_PAGE ì¼ ë•Œ
 
-						int addrBody = code.add(OperationCode.OPCODE_NO_OPERATION); // (bodyÀÇ ½ÃÀÛ ÁöÁ¡À» Ç¥½ÃÇÒ ¼ö ÀÖÀ¸´Ï) compilingÀ» ½±°Ô ÇÏ·Á°í
+						int addrBody = code.add(OperationCode.OPCODE_NO_OPERATION); // (bodyì˜ ì‹œì‘ ì§€ì ì„ í‘œì‹œí•  ìˆ˜ ìˆìœ¼ë‹ˆ) compilingì„ ì‰½ê²Œ í•˜ë ¤ê³ 
 
-						// À§ ¿¡¼­ generic exception·Î Ã³¸® Çß´ø ºÎºĞÀ» ½ÇÁ¦ ÁÖ¼Ò·Î update½ÃÅ²´Ù.
+						// ìœ„ ì—ì„œ generic exceptionë¡œ ì²˜ë¦¬ í–ˆë˜ ë¶€ë¶„ì„ ì‹¤ì œ ì£¼ì†Œë¡œ updateì‹œí‚¨ë‹¤.
 						// doStartTag
 						code.updateCodeAt(addrDoStartTag, 1, addrDoEndTag);
 						code.updateCodeAt(addrDoStartTag, 2, addrBody);
@@ -369,14 +369,14 @@ public class TemplateCompiler {
 						code.updateCodeAt(addrDoAfterBody, 1, addrDoEndTag);
 						code.updateCodeAt(addrDoAfterBody, 2, addrBody);
 						// doEndTag
-						// doEndTagÀÇ generic exception Àº ³ªÁß¿¡ end tag¸¦ parsingÇÏ¿© updateÇÑ´Ù.
+						// doEndTagì˜ generic exception ì€ ë‚˜ì¤‘ì— end tagë¥¼ parsingí•˜ì—¬ updateí•œë‹¤.
 
-						// endTag ¿¡¼­ ³ª¸ÓÁö ºÎºĞÀ» Ã³¸®ÇÏ±â À§ÇØ stack¿¡ Áı¿¡ ³Ö´Â´Ù
+						// endTag ì—ì„œ ë‚˜ë¨¸ì§€ ë¶€ë¶„ì„ ì²˜ë¦¬í•˜ê¸° ìœ„í•´ stackì— ì§‘ì— ë„£ëŠ”ë‹¤
 						tagNameStack.push(tagName);
 						addrAfterBodyStack.pushInt(addrDoAfterBody);
 						addrDoEndTagStack.pushInt(addrDoEndTag);
 
-						// BODY CONTENT °¡ TAGDEPENDERNTÀÏ °æ¿ì body³»ÀÇ action tag´Â ¹ø¿ªÇÏÁö ¾Ê°í skip ÇØ¹ö¸°´Ù.
+						// BODY CONTENT ê°€ TAGDEPENDERNTì¼ ê²½ìš° bodyë‚´ì˜ action tagëŠ” ë²ˆì—­í•˜ì§€ ì•Šê³  skip í•´ë²„ë¦°ë‹¤.
 						if (tagInfo.getBodyContent().equals(TagInfo.BODY_CONTENT_TAG_DEPENDENT)) {
 							parseToEndTagOfCurrentTagDependentBody(nameMark, tagP);
 						}
@@ -397,34 +397,34 @@ public class TemplateCompiler {
 						int addrReleaseHandler = code.add(OperationCode.OPCODE_RELEASE_HANDLER);
 
 						code.updateCodeAt(addrDoEndTag, 2, addrReleaseHandler);
-					} else { // if ( !TagNameParser.isBodyTag( nameMark ) ) // body tagÀÎµ¥ body°¡ ¾øÀÌ »ç¿ëÇÑ °æ¿ì
+					} else { // if ( !TagNameParser.isBodyTag( nameMark ) ) // body tagì¸ë° bodyê°€ ì—†ì´ ì‚¬ìš©í•œ ê²½ìš°
 					// throw new CompilerException( tagMark, "not found the body of '" + nameMark.getValue() + "'" ); //tagInfo.getTagName()
 
 						code.add(OperationCode.OPCODE_LOAD_HANDLER, addrTagHandlerName, data.add(retrieveParametersToReflectAttributes(tagName, tagInfo,
 								tagMark)));
 
 						// do start & end
-						int addrGotoDoStart = code.add(OperationCode.OPCODE_GOTO, addrGenericException); // -(1) : ¾îµğ·Î jumpÇÒÁö ¹ÌÁöÁ¤»óÅÂ·Î µĞ´Ù(generic exception)
+						int addrGotoDoStart = code.add(OperationCode.OPCODE_GOTO, addrGenericException); // -(1) : ì–´ë””ë¡œ jumpí• ì§€ ë¯¸ì§€ì •ìƒíƒœë¡œ ë‘”ë‹¤(generic exception)
 
 						// int addrEx1 = code.add( OperationCode.OPCODE_EXCEPTION, data.add( "a handler returned EVAL_BODY_INCLUDE, but not allowed at '" + tagMark.getValue()+"'" ) );
 						// int addrEx2 = code.add( OperationCode.OPCODE_EXCEPTION, data.add( "a handler returned EVAL_BODY_BUFFERED, but not allowed at '" + tagMark.getValue()+"'" ) );
 
-						int addrDoStart = code.add(OperationCode.OPCODE_DO_START_TAG, addrGenericException, // SKIP_BODY ÀÏ ¶§
-								addrGenericException, // EVAL_BODY_INCLUDE ÀÏ ¶§
-								addrGenericException); // EVAL_BODY_BUFFERED ÀÏ ¶§
+						int addrDoStart = code.add(OperationCode.OPCODE_DO_START_TAG, addrGenericException, // SKIP_BODY ì¼ ë•Œ
+								addrGenericException, // EVAL_BODY_INCLUDE ì¼ ë•Œ
+								addrGenericException); // EVAL_BODY_BUFFERED ì¼ ë•Œ
 
-						int addrDoAfterBody = code.add(OperationCode.OPCODE_DO_AFTER_BODY, addrGenericException, // SKIP_BODY ÀÏ ¶§
-								addrGenericException); // EVAL_BODY_AGAIN ÀÏ ¶§
+						int addrDoAfterBody = code.add(OperationCode.OPCODE_DO_AFTER_BODY, addrGenericException, // SKIP_BODY ì¼ ë•Œ
+								addrGenericException); // EVAL_BODY_AGAIN ì¼ ë•Œ
 
-						int addrDoEnd = code.add(OperationCode.OPCODE_DO_END_TAG, addrEnd, // SKIP_PAGE ÀÏ ¶§
-								code.getAfterAddressToAdd()); // EVAL_PAGE ÀÏ ¶§
+						int addrDoEnd = code.add(OperationCode.OPCODE_DO_END_TAG, addrEnd, // SKIP_PAGE ì¼ ë•Œ
+								code.getAfterAddressToAdd()); // EVAL_PAGE ì¼ ë•Œ
 
 						code.add(OperationCode.OPCODE_RELEASE_HANDLER);
 
-						code.updateCodeAt(addrGotoDoStart, 1, addrDoStart); // (1)ÀÇ ¹ÌÁöÁ¤µÈ goto targetÀ» exception ºÎºĞÀ» °Ç³Ê¶Ù°í do start·Î ÁöÁ¤ÇÑ´Ù.
+						code.updateCodeAt(addrGotoDoStart, 1, addrDoStart); // (1)ì˜ ë¯¸ì§€ì •ëœ goto targetì„ exception ë¶€ë¶„ì„ ê±´ë„ˆë›°ê³  do startë¡œ ì§€ì •í•œë‹¤.
 
 						// doStartTag
-						code.updateCodeAt(addrDoStart, 1, addrDoEnd); // addrDoStartÀÇ ¹ÌÁöÁ¤µÈ ÁÖ¼Ò °áÁ¤
+						code.updateCodeAt(addrDoStart, 1, addrDoEnd); // addrDoStartì˜ ë¯¸ì§€ì •ëœ ì£¼ì†Œ ê²°ì •
 						code.updateCodeAt(addrDoStart, 2, addrDoAfterBody);
 						code.updateCodeAt(addrDoStart, 3, addrDoAfterBody);
 
@@ -436,25 +436,25 @@ public class TemplateCompiler {
 					code.add(OperationCode.OPCODE_LOAD_HANDLER, addrTagHandlerName, data.add(retrieveParametersToReflectAttributes(tagName, tagInfo, tagMark)));
 
 					// do start & end
-					int addrGotoDoStart = code.add(OperationCode.OPCODE_GOTO, addrGenericException); // -(1) : ¾îµğ·Î jumpÇÒÁö ¹ÌÁöÁ¤»óÅÂ·Î µĞ´Ù(generic exception)
+					int addrGotoDoStart = code.add(OperationCode.OPCODE_GOTO, addrGenericException); // -(1) : ì–´ë””ë¡œ jumpí• ì§€ ë¯¸ì§€ì •ìƒíƒœë¡œ ë‘”ë‹¤(generic exception)
 
 					int addrEx1 = code.add(OperationCode.OPCODE_EXCEPTION, data.add("a handler returned EVAL_BODY_INCLUDE, but not allowed at '"
 							+ tagMark.getValue() + "'"));
 					int addrEx2 = code.add(OperationCode.OPCODE_EXCEPTION, data.add("a handler returned EVAL_BODY_BUFFERED, but not allowed at '"
 							+ tagMark.getValue() + "'"));
 
-					int addrDoStart = code.add(OperationCode.OPCODE_DO_START_TAG, code.getAfterAddressToAdd(), // SKIP_BODY ÀÏ ¶§
-							addrEx1, // EVAL_BODY_INCLUDE ÀÏ ¶§
-							addrEx2); // EVAL_BODY_BUFFERED ÀÏ ¶§
+					int addrDoStart = code.add(OperationCode.OPCODE_DO_START_TAG, code.getAfterAddressToAdd(), // SKIP_BODY ì¼ ë•Œ
+							addrEx1, // EVAL_BODY_INCLUDE ì¼ ë•Œ
+							addrEx2); // EVAL_BODY_BUFFERED ì¼ ë•Œ
 
-					code.add(OperationCode.OPCODE_DO_END_TAG, addrEnd, // SKIP_PAGE ÀÏ ¶§
-							code.getAfterAddressToAdd()); // EVAL_PAGE ÀÏ ¶§
+					code.add(OperationCode.OPCODE_DO_END_TAG, addrEnd, // SKIP_PAGE ì¼ ë•Œ
+							code.getAfterAddressToAdd()); // EVAL_PAGE ì¼ ë•Œ
 
 					code.add(OperationCode.OPCODE_RELEASE_HANDLER);
 
-					code.updateCodeAt(addrGotoDoStart, 1, addrDoStart); // (1)ÀÇ ¹ÌÁöÁ¤µÈ goto targetÀ» exception ºÎºĞÀ» °Ç³Ê¶Ù°í do start·Î ÁöÁ¤ÇÑ´Ù.
+					code.updateCodeAt(addrGotoDoStart, 1, addrDoStart); // (1)ì˜ ë¯¸ì§€ì •ëœ goto targetì„ exception ë¶€ë¶„ì„ ê±´ë„ˆë›°ê³  do startë¡œ ì§€ì •í•œë‹¤.
 				} else if (PageTagSupport.class.isAssignableFrom(handlerCls)) { // page tag
-					// PageTag´Â Body ¸ğ¾çÀÌ°Ç ¾Æ´Ï°Ç »ó°üÇÏÁö ¾Ê´Â´Ù.
+					// PageTagëŠ” Body ëª¨ì–‘ì´ê±´ ì•„ë‹ˆê±´ ìƒê´€í•˜ì§€ ì•ŠëŠ”ë‹¤.
 					if (TagNameParser.isBodyTag(nameMark)) {
 						if (TagNameParser.isStartTag(nameMark)) { // start form
 							if (existsCustomPageTagHandler)
@@ -484,12 +484,12 @@ public class TemplateCompiler {
 			}
 			// end of core
 
-			// ½ºÅÃÀÌ ³²À¸¸é ´İÁö ¾ÊÀº Å×±×°¡ ÀÖ´Â °ÍÀÌ´Ù.
+			// ìŠ¤íƒì´ ë‚¨ìœ¼ë©´ ë‹«ì§€ ì•Šì€ í…Œê·¸ê°€ ìˆëŠ” ê²ƒì´ë‹¤.
 			if (!tagNameStack.isEmpty()) {
 				throw new CompilerException(null, "incorrect tag hierarchy, too few end tag.");
 			}
 
-			// custom page tag handler°¡ ¼³Á¤µÇ¾î ÀÖÁö ¾ÊÀ¸¸é default page tag handler·Î ¼³Á¤ÇÑ´Ù.
+			// custom page tag handlerê°€ ì„¤ì •ë˜ì–´ ìˆì§€ ì•Šìœ¼ë©´ default page tag handlerë¡œ ì„¤ì •í•œë‹¤.
 			if (!existsCustomPageTagHandler) {
 				try {
 					String pageTagName = null;
@@ -520,11 +520,11 @@ public class TemplateCompiler {
 			{
 				int addrLoadPageTagHandler = code.add(OperationCode.OPCODE_LOAD_PAGE_HANDLER, addrPageTagHandlerName, addrPageTagHandlerReflectionMap);
 
-				int addrStartTemplate = code.add(OperationCode.OPCODE_DO_START_TEMPLATE, addrGenericException, // SKIP_PAGE ÀÏ °æ¿ì
-						addrStart); // EVAL_PAGE ÀÏ °æ¿ì
+				int addrStartTemplate = code.add(OperationCode.OPCODE_DO_START_TEMPLATE, addrGenericException, // SKIP_PAGE ì¼ ê²½ìš°
+						addrStart); // EVAL_PAGE ì¼ ê²½ìš°
 
-				int addrAfterTemplate = code.add(OperationCode.OPCODE_DO_AFTER_PAGE, addrGenericException, // SKIP_PAGE ÀÏ °æ¿ì
-						addrStart); // EVAL_PAGE_AGAIN ÀÏ °æ¿ì
+				int addrAfterTemplate = code.add(OperationCode.OPCODE_DO_AFTER_PAGE, addrGenericException, // SKIP_PAGE ì¼ ê²½ìš°
+						addrStart); // EVAL_PAGE_AGAIN ì¼ ê²½ìš°
 
 				int addrEndPage = code.add(OperationCode.OPCODE_DO_END_TEMPLATE);
 
@@ -532,18 +532,18 @@ public class TemplateCompiler {
 
 				code.add(OperationCode.OPCODE_GOTO, addrTermination); // jump to terminate.
 
-				// addrGenericExceptionÀ¸·Î binding ½ÃÄÑ µĞ °ÍÀ» È®Á¤ Áş´Â´Ù.
-				code.updateCodeAt(addrStartTemplate, 1, addrEndPage); // doStartTemplate()°¡ skip_pageÀÏ °æ¿ì jump ÇÒ °÷ ÁöÁ¤
-				code.updateCodeAt(addrAfterTemplate, 1, addrEndPage); // doAfterTemplate()°¡ skip_pageÀÏ °æ¿ì jump ÇÒ °÷ ÁöÁ¤
+				// addrGenericExceptionìœ¼ë¡œ binding ì‹œì¼œ ë‘” ê²ƒì„ í™•ì • ì§“ëŠ”ë‹¤.
+				code.updateCodeAt(addrStartTemplate, 1, addrEndPage); // doStartTemplate()ê°€ skip_pageì¼ ê²½ìš° jump í•  ê³³ ì§€ì •
+				code.updateCodeAt(addrAfterTemplate, 1, addrEndPage); // doAfterTemplate()ê°€ skip_pageì¼ ê²½ìš° jump í•  ê³³ ì§€ì •
 
 				// bind reset vector
-				code.updateCodeAt(addrResetVector, new int[] { OperationCode.OPCODE_GOTO, addrLoadPageTagHandler }); // doStartTemplate()·Î ¿¬°á
+				code.updateCodeAt(addrResetVector, new int[] { OperationCode.OPCODE_GOTO, addrLoadPageTagHandler }); // doStartTemplate()ë¡œ ì—°ê²°
 
 				// bind start point
-				code.updateCodeAt(addrStart, new int[] { OperationCode.OPCODE_DO_CREATE_PAGEINFO }); // updatePageInfo()¸¦ invokeÇÑ´Ù.
+				code.updateCodeAt(addrStart, new int[] { OperationCode.OPCODE_DO_CREATE_PAGEINFO }); // updatePageInfo()ë¥¼ invokeí•œë‹¤.
 
 				// bind end point
-				code.updateCodeAt(addrEnd, new int[] { OperationCode.OPCODE_GOTO, addrAfterTemplate }); // doAfterTemplate()·Î ¿¬°á
+				code.updateCodeAt(addrEnd, new int[] { OperationCode.OPCODE_GOTO, addrAfterTemplate }); // doAfterTemplate()ë¡œ ì—°ê²°
 			}
 
 		} catch (CompilerException ce) {

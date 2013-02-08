@@ -6,7 +6,7 @@ import java.util.Stack;
 import net.ion.framework.template.ref.Context;
 
 /**
- * page ÇÑ ÀåÀ» »ı¼ºÇÏ´Â µ¿¾È »ç¿ëµÇ´Â ÀÛ¾÷°ø°£
+ * page í•œ ì¥ì„ ìƒì„±í•˜ëŠ” ë™ì•ˆ ì‚¬ìš©ë˜ëŠ” ì‘ì—…ê³µê°„
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -28,7 +28,7 @@ public class PageContext implements Context {
 	}
 
 	/**
-	 * template runtime¿¡ ÀÇÇØ ÃÊ±âÈ­ µÈ´Ù.
+	 * template runtimeì— ì˜í•´ ì´ˆê¸°í™” ëœë‹¤.
 	 * 
 	 * @param templateContext
 	 *            TemplateContext
@@ -42,7 +42,7 @@ public class PageContext implements Context {
 		this.out = out;
 		this.pageInfo = pageInfo;
 
-		// È¤½Ã³ª release() ÇÏÁö ¾Ê°í initialize()¸¦ ÇÏ´Â °æ¿ì¶óµµ Á¤»ó ÀÛµ¿ÇÏ°Ô ÇÑ¹ø ´õ ½èÀ½ ¤Ñ.¤Ñ..
+		// í˜¹ì‹œë‚˜ release() í•˜ì§€ ì•Šê³  initialize()ë¥¼ í•˜ëŠ” ê²½ìš°ë¼ë„ ì •ìƒ ì‘ë™í•˜ê²Œ í•œë²ˆ ë” ì¼ìŒ ã…¡.ã…¡..
 		this.attribute.clear();
 		this.bodyStack.clear();
 
@@ -50,7 +50,7 @@ public class PageContext implements Context {
 	}
 
 	/**
-	 * »ç¿ëÀÌ ³¡³­ pageContext¸¦ Á¤¸®ÇÑ´Ù.
+	 * ì‚¬ìš©ì´ ëë‚œ pageContextë¥¼ ì •ë¦¬í•œë‹¤.
 	 */
 	public synchronized void release() {
 		this.templateContext = null;

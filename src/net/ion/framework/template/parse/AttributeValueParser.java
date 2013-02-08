@@ -2,16 +2,16 @@ package net.ion.framework.template.parse;
 
 
 /**
- * ¼Ó¼º °ªÀ» °¡Á®¿Â´Ù.
+ * ì†ì„± ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
  * 
  * <pre>
- *  ¿¹Á¦:
+ *  ì˜ˆì œ:
  *  [[--tagname,,Attrname:Value,:Value,:--]]
  * 
- *                        -> null : ÀÌ·± °æ¿ì ÁÖÀÇÇÑ´Ù. ¼Ó¼ºÀÌ ÀüºÎ ÆÄ½ÌÀÌ µÇ±â Àü¿¡ nullÀÌ »ı±â¹Ç·Î ÆÄ½ÌÀ» Áß´ÜÇÏ°Ô µÉ ¼ö ÀÖ´Ù.
+ *                        -> null : ì´ëŸ° ê²½ìš° ì£¼ì˜í•œë‹¤. ì†ì„±ì´ ì „ë¶€ íŒŒì‹±ì´ ë˜ê¸° ì „ì— nullì´ ìƒê¸°ë¯€ë¡œ íŒŒì‹±ì„ ì¤‘ë‹¨í•˜ê²Œ ë  ìˆ˜ ìˆë‹¤.
  *      Attrname:Value    -> Value
  *      :Value            -> Value
- *      :                 -> ºó¹®ÀÚ¿­
+ *      :                 -> ë¹ˆë¬¸ìì—´
  * </pre>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -31,14 +31,14 @@ public class AttributeValueParser extends Parser {
 			start = text.indexOf(ATTR_SEPARATOR);
 			end = text.length();
 
-			// ¼Ó¼º °ªÀÌ ¾øÀ» ¶§
+			// ì†ì„± ê°’ì´ ì—†ì„ ë•Œ
 			if (start < 0) {
 				if (end > 0) {
 					mark = new Marker(0, end, text.trim());
 				}
 			}
 
-			// ¼Ó¼º °ªÀÌ ÀÖÀ» ¶§
+			// ì†ì„± ê°’ì´ ìˆì„ ë•Œ
 			else {
 				mark = new Marker(start + 1, end, text.substring(start + 1).trim());
 			}

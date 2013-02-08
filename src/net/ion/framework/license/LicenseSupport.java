@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * ¹Ì¸® ¸¶·ÃµÈ ¸Ş¼Òµå¸¦ »ç¿ëÇÏ¿© License interfaceÀÇ ±¸ÇöÀ» ½±°ÔÇÑ´Ù.
+ * ë¯¸ë¦¬ ë§ˆë ¨ëœ ë©”ì†Œë“œë¥¼ ì‚¬ìš©í•˜ì—¬ License interfaceì˜ êµ¬í˜„ì„ ì‰½ê²Œí•œë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0

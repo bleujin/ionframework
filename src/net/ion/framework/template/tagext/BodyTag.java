@@ -1,7 +1,7 @@
 package net.ion.framework.template.tagext;
 
 /**
- * Body ¸¦ °¡Áö´Â tag model
+ * Body ë¥¼ ê°€ì§€ëŠ” tag model
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -13,7 +13,7 @@ public interface BodyTag extends IterationTag {
 	public static final int EVAL_BODY_BUFFERED = 2;
 
 	/**
-	 * doStartTag°¡ BodyTag.EVAL_BODY_BUFFERED ¸¦ ¸®ÅÏÇÒ °æ¿ì template runtimeÀÌ bodycontent ¸¦ ÃÊ±âÈ­ ½ÃÄÑ ¿©±â·Î ³Ñ±ä´Ù.
+	 * doStartTagê°€ BodyTag.EVAL_BODY_BUFFERED ë¥¼ ë¦¬í„´í•  ê²½ìš° template runtimeì´ bodycontent ë¥¼ ì´ˆê¸°í™” ì‹œì¼œ ì—¬ê¸°ë¡œ ë„˜ê¸´ë‹¤.
 	 * 
 	 * @param bodycontent
 	 *            BodyContent
@@ -21,7 +21,7 @@ public interface BodyTag extends IterationTag {
 	public abstract void setBodyContent(BodyContent bodycontent);
 
 	/**
-	 * setBodyContent ¸¦ ºÎ¸¥ Á÷ÈÄ ºÒ·¯Áø´Ù.
+	 * setBodyContent ë¥¼ ë¶€ë¥¸ ì§í›„ ë¶ˆëŸ¬ì§„ë‹¤.
 	 * 
 	 * @throws TagException
 	 */

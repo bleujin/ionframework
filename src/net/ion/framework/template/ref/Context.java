@@ -1,7 +1,7 @@
 package net.ion.framework.template.ref;
 
 /**
- * ÀÛ¾÷ °ø°£
+ * ì‘ì—… ê³µê°„
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -10,7 +10,7 @@ package net.ion.framework.template.ref;
 public interface Context {
 	/**
 	 * <pre>
-	 * context °èÃş ±¸Á¶ ¼ø¼­·Î attribute¸¦ ¹ß°ßÇÒ ¶§±îÁö Ã£´Â´Ù.
+	 * context ê³„ì¸µ êµ¬ì¡° ìˆœì„œë¡œ attributeë¥¼ ë°œê²¬í•  ë•Œê¹Œì§€ ì°¾ëŠ”ë‹¤.
 	 * pageContext &gt; templateContext &gt; publishingContext
 	 * </pre>
 	 * 
@@ -20,34 +20,34 @@ public interface Context {
 	Object findAttribute(String name);
 
 	/**
-	 * ¼Ó¼ºÀ» ÀúÀåÇÑ´Ù.
+	 * ì†ì„±ì„ ì €ì¥í•œë‹¤.
 	 * 
 	 * @param name
-	 *            String ÀúÀåÇÒ ¼Ó¼º ÀÌ¸§
+	 *            String ì €ì¥í•  ì†ì„± ì´ë¦„
 	 * @param obj
-	 *            Object ¼Ó¼º°ª
+	 *            Object ì†ì„±ê°’
 	 */
 	void setAttribute(String name, Object obj);
 
 	/**
-	 * ¼Ó¼ºÀ» °¡Á®¿Â´Ù.
+	 * ì†ì„±ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param name
-	 *            String ¼Ó¼º ÀÌ¸§
-	 * @return Object ¼Ó¼º°ª
+	 *            String ì†ì„± ì´ë¦„
+	 * @return Object ì†ì„±ê°’
 	 */
 	Object getAttribute(String name);
 
 	/**
-	 * ¼Ó¼ºÀ» Áö¿î´Ù.
+	 * ì†ì„±ì„ ì§€ìš´ë‹¤.
 	 * 
 	 * @param name
-	 *            String ¼Ó¼º ÀÌ¸§
+	 *            String ì†ì„± ì´ë¦„
 	 */
 	void removeAttribute(String name);
 
 	/**
-	 * ºÎ¸ğ°¡ ¾øÀ¸¸é null
+	 * ë¶€ëª¨ê°€ ì—†ìœ¼ë©´ null
 	 * 
 	 * @return
 	 */

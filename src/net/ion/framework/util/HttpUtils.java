@@ -15,7 +15,7 @@ import net.htmlparser.jericho.Segment;
 import net.htmlparser.jericho.Source;
 
 /**
- * HttpServlet¿¡¼­ À¯¿ëÇÏ°Ô »ç¿ëÇÒ ¼ö ÀÖ´Â ±â´É Á¦°ø
+ * HttpServletì—ì„œ ìœ ìš©í•˜ê²Œ ì‚¬ìš©í•  ìˆ˜ ìˆëŠ” ê¸°ëŠ¥ ì œê³µ
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -28,12 +28,12 @@ public class HttpUtils {
 	}
 
 	/**
-	 * JSP ¿¡¼­ ´Ù±¹¾î Áö¿øÀ» À§ÇØ »ó´Ü¿¡ ÀÔ·ÂÇÏ´Â ´ÙÀ½ÀÇ ÄÚµå¸¦ capsulationÇÔ
+	 * JSP ì—ì„œ ë‹¤êµ­ì–´ ì§€ì›ì„ ìœ„í•´ ìƒë‹¨ì— ì…ë ¥í•˜ëŠ” ë‹¤ìŒì˜ ì½”ë“œë¥¼ capsulationí•¨
 	 * 
 	 * <%response.setContentType("text/html");%> <%response.setLocale(java.util.Locale.KOREA);%> <%session.setAttribute(org.apache.struts.Globals.LOCALE_KEY,java.util.Locale.KOREA);%>
 	 * 
 	 * @param locale
-	 *            HTTP response ¿¡ ÁöÁ¤ÇÒ locale, ÀÌ°Í¿¡ µû¶ó À¥ºê¶ó¿ìÀúÀÇ character setÀÌ °áÁ¤µÈ´Ù.
+	 *            HTTP response ì— ì§€ì •í•  locale, ì´ê²ƒì— ë”°ë¼ ì›¹ë¸Œë¼ìš°ì €ì˜ character setì´ ê²°ì •ëœë‹¤.
 	 * @param pageContext
 	 */
 	public static void setHttpResponseLocale(Locale locale, PageContext pageContext) {
@@ -41,14 +41,14 @@ public class HttpUtils {
 	}
 
 	/**
-	 * http reponseÀÇ localeÀ» °áÁ¤ÇÑ´Ù.
+	 * http reponseì˜ localeì„ ê²°ì •í•œë‹¤.
 	 * 
 	 * @param locale
-	 *            Locale ÁöÁ¤ÇÒ locale
+	 *            Locale ì§€ì •í•  locale
 	 * @param session
-	 *            HttpSession ÀÛ¾÷ http session
+	 *            HttpSession ì‘ì—… http session
 	 * @param response
-	 *            ServletResponse ¼³Á¤ÇÒ reponse
+	 *            ServletResponse ì„¤ì •í•  reponse
 	 */
 	public static void setHttpResponseLocale(Locale locale, HttpSession session, ServletResponse response) {
 		response.setLocale(locale);
@@ -59,7 +59,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * http responseÀÇ charsetÀ» ¼³Á¤ÇÑ´Ù.
+	 * http responseì˜ charsetì„ ì„¤ì •í•œë‹¤.
 	 * 
 	 * @param response
 	 *            ServletResponse
@@ -74,7 +74,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * html tag¸¦ Á¦°ÅÇÑ´Ù.
+	 * html tagë¥¼ ì œê±°í•œë‹¤.
 	 * 
 	 * @param value
 	 *            String
@@ -117,7 +117,7 @@ public class HttpUtils {
 		value = StringUtil.replace(value, "&nbsp;", " ");
 		value = value.replaceAll("<!--.*?-->", "");
 		value = replaceBlockAll("<", ">", value, " ");
-		value = value.replaceAll("\\s+", " "); // ¿¬¼ÓµÈ ½ºÆäÀÌ½º Á¦°Å
+		value = value.replaceAll("\\s+", " "); // ì—°ì†ëœ ìŠ¤í˜ì´ìŠ¤ ì œê±°
 
 		return value.trim();
 	}
@@ -226,7 +226,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * '\n' À» html BR tag·Î Ä¡È¯
+	 * '\n' ì„ html BR tagë¡œ ì¹˜í™˜
 	 * 
 	 * @param value
 	 *            String
@@ -261,7 +261,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * ¹®ÀÚ¿­À» length ¸¸Å­ ±æÀÌ·Î ÀÚ¸£°í ...À» ºÙÀÎ´Ù.
+	 * ë¬¸ìì—´ì„ length ë§Œí¼ ê¸¸ì´ë¡œ ìë¥´ê³  ...ì„ ë¶™ì¸ë‹¤.
 	 * 
 	 * @param value
 	 *            String
@@ -281,7 +281,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * html Á¦ÇÑ ¹®ÀÚ¸¦ &amp ·Î ½ÃÀÛÇÏ´Â ±âÈ£·Î Ä¡È¯ÇÑ´Ù.
+	 * html ì œí•œ ë¬¸ìë¥¼ &amp ë¡œ ì‹œì‘í•˜ëŠ” ê¸°í˜¸ë¡œ ì¹˜í™˜í•œë‹¤.
 	 * 
 	 * @param value
 	 *            String
@@ -323,7 +323,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * space ¹®ÀÚ Ã³¸®¸¦ Á¦¿ÜÇÏ°í filterHTML() °ú µ¿ÀÏ
+	 * space ë¬¸ì ì²˜ë¦¬ë¥¼ ì œì™¸í•˜ê³  filterHTML() ê³¼ ë™ì¼
 	 * 
 	 * @param value
 	 *            String
@@ -362,7 +362,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * value¿¡¼­ startBlock¿Í endBlock ¹®ÀÚ¿­¿¡ ÇØ´çµÇ´Â »çÀÌ ºÎºĞÀ» Á¦¿ÜÇÑ ¹®ÀÚ¿­À» ¸®ÅÏÇÑ´Ù.
+	 * valueì—ì„œ startBlockì™€ endBlock ë¬¸ìì—´ì— í•´ë‹¹ë˜ëŠ” ì‚¬ì´ ë¶€ë¶„ì„ ì œì™¸í•œ ë¬¸ìì—´ì„ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param value
 	 *            String
@@ -389,7 +389,7 @@ public class HttpUtils {
 	}
 
 	/**
-	 * &amp ·Î ½ÃÀÛÇÏ´Â ±âÈ£¸¦ ¿ø·¡ ¹®ÀÚ·Î µÇµ¹¸°´Ù.
+	 * &amp ë¡œ ì‹œì‘í•˜ëŠ” ê¸°í˜¸ë¥¼ ì›ë˜ ë¬¸ìë¡œ ë˜ëŒë¦°ë‹¤.
 	 * 
 	 * @param value
 	 *            String

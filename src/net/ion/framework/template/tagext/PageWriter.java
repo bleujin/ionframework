@@ -5,7 +5,7 @@ import java.io.StringWriter;
 import net.ion.framework.util.ConcurrentVector;
 
 /**
- * ActionTag¸¦ »ç¿ëÇÑ pageÀÇ ¸ğµç action°ú data´Â PageWriter·Î ¾²¿©Áø´Ù. PageWriterÀÇ instance´Â °¢ page¸¦ »ı¼ºÇÒ ¶§ »ç¿ëµÇ´Â pageContext¿¡ ÀÇÇØ outÀÌ¶ó´Â ÀÌ¸§À¸·Î °ü¸®µÈ´Ù.
+ * ActionTagë¥¼ ì‚¬ìš©í•œ pageì˜ ëª¨ë“  actionê³¼ dataëŠ” PageWriterë¡œ ì“°ì—¬ì§„ë‹¤. PageWriterì˜ instanceëŠ” ê° pageë¥¼ ìƒì„±í•  ë•Œ ì‚¬ìš©ë˜ëŠ” pageContextì— ì˜í•´ outì´ë¼ëŠ” ì´ë¦„ìœ¼ë¡œ ê´€ë¦¬ëœë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0

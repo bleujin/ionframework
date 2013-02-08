@@ -1,7 +1,7 @@
 package net.ion.framework.configuration;
 
 /**
- * Configuration À» ¾ò¾î¿Ã¶§ ÇØ´ç xml tag °¡ Á¸Àç ÇÏÁö ¾ÊÀ»¶§ ¹ß»ıµÇ´Â ¿¡·¯
+ * Configuration ì„ ì–»ì–´ì˜¬ë•Œ í•´ë‹¹ xml tag ê°€ ì¡´ì¬ í•˜ì§€ ì•Šì„ë•Œ ë°œìƒë˜ëŠ” ì—ëŸ¬
  * 
  * @author Choi sei hwan <a href="mailto:sehan@i-on.net">Choi sei hwan</a>
  * @version 1.0

@@ -5,7 +5,7 @@ package net.ion.framework.template.tagext;
  * validation belongs elsewhere.
  * 
  * <p>
- * Tag¿¡ ´ëÇÑ attribute ÇÑ °³ÀÇ Á¤º¸
+ * Tagì— ëŒ€í•œ attribute í•œ ê°œì˜ ì •ë³´
  * </p>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -22,13 +22,13 @@ public class TagAttributeInfo {
 
 	/**
 	 * @param name
-	 *            String ¼Ó¼º ÀÌ¸§
+	 *            String ì†ì„± ì´ë¦„
 	 * @param required
-	 *            boolean ÇÊ¼ö ¼Ó¼º ¿©ºÎ
+	 *            boolean í•„ìˆ˜ ì†ì„± ì—¬ë¶€
 	 * @param type
-	 *            String ¼Ó¼º °ª type
+	 *            String ì†ì„± ê°’ type
 	 * @param rtexprvalue
-	 *            boolean ½Ç½Ã°£ °ª Æò°¡ ¿©ºÎ ([% %] À¸·Î ¹­ÀÎ ºÎºĞÀ» ÇØ¼®ÇÒ °ÍÀÎ°¡ ¿©ºÎ)
+	 *            boolean ì‹¤ì‹œê°„ ê°’ í‰ê°€ ì—¬ë¶€ ([% %] ìœ¼ë¡œ ë¬¶ì¸ ë¶€ë¶„ì„ í•´ì„í•  ê²ƒì¸ê°€ ì—¬ë¶€)
 	 */
 	public TagAttributeInfo(String name, boolean required, String type, boolean rtexprvalue) {
 		this.name = name;

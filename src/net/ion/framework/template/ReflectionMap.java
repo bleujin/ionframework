@@ -1,7 +1,7 @@
 package net.ion.framework.template;
 
 /**
- * tag attributeÀÇ value¸¦ handler¿¡ reflectÇÒ ¶§ »ç¿ëµÈ´Ù.
+ * tag attributeì˜ valueë¥¼ handlerì— reflectí•  ë•Œ ì‚¬ìš©ëœë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -54,7 +54,7 @@ public class ReflectionMap implements Cloneable {
 	}
 
 	/**
-	 * »õ·Î¿î attribute¸¦ Ãß°¡ÇÑ´Ù.
+	 * ìƒˆë¡œìš´ attributeë¥¼ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * @param name
 	 *            String attribute name

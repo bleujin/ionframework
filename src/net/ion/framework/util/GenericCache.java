@@ -3,13 +3,13 @@ package net.ion.framework.util;
 import org.apache.commons.collections.map.LRUMap;
 
 /**
- * ¹ü¿ë cache ±¸Çö - Á¦ÇÑ Å©±â¸¦ ÃÊ°úÇÒ °æ¿ì LRU ¹æ¹ı¿¡ ÀÇÇØ °ú°ÅÀÇ °ªÀÌ Á¦°ÅµÈ´Ù. »ç¿ë ¹æ¹ıÀº java.util.Map°ú À¯»ç
- * 
+ * ë²”ìš© cache êµ¬í˜„ - ì œí•œ í¬ê¸°ë¥¼ ì´ˆê³¼í•  ê²½ìš° LRU ë°©ë²•ì— ì˜í•´ ê³¼ê±°ì˜ ê°’ì´ ì œê±°ëœë‹¤.
+ * ì‚¬ìš© ë°©ë²•ì€ java.util.Mapê³¼ ìœ ì‚¬
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
- * 
+ *
  * @see java.util.Map
- * @see org.apache.commons.collections.map.LRUMap;
+ * @see org.apache.commons.collections.LRUMAP
  */
 public class GenericCache {
 	private ICache cache;

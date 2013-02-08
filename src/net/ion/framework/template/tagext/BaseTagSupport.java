@@ -6,7 +6,7 @@ import java.util.Hashtable;
 import net.ion.framework.template.parse.Marker;
 
 /**
- * Tag ±âº» ±¸Çö Å¬·¡½º, ÀÌ Å¬·¡½º¸¦ »ó¼ÓÇÏ¿© Å×±×¸¦ ÀÛ¼ºÇÑ´Ù. TagSupport,PageTagSupportÀÇ »À´ë°¡ µÈ´Ù.
+ * Tag ê¸°ë³¸ êµ¬í˜„ í´ë˜ìŠ¤, ì´ í´ë˜ìŠ¤ë¥¼ ìƒì†í•˜ì—¬ í…Œê·¸ë¥¼ ì‘ì„±í•œë‹¤. TagSupport,PageTagSupportì˜ ë¼ˆëŒ€ê°€ ëœë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -20,7 +20,7 @@ public class BaseTagSupport implements Tag {
 	protected Marker tagMark = null;
 
 	/**
-	 * tag°¡ releaseµÉ ¶§ ºÒ·¯Áø´Ù.
+	 * tagê°€ releaseë  ë•Œ ë¶ˆëŸ¬ì§„ë‹¤.
 	 */
 	public void release() {
 		values = null;
@@ -30,7 +30,7 @@ public class BaseTagSupport implements Tag {
 	}
 
 	/**
-	 * ºÎ¸ğ tag¸¦ ÁöÁ¤ÇÑ´Ù.
+	 * ë¶€ëª¨ tagë¥¼ ì§€ì •í•œë‹¤.
 	 * 
 	 * @param t
 	 *            Tag
@@ -46,7 +46,7 @@ public class BaseTagSupport implements Tag {
 	private Tag parentRuntimeTag = null;
 
 	/**
-	 * TemplateRuntime¿¡ ÀÇÇØ ºÒ·¯Áø´Ù.
+	 * TemplateRuntimeì— ì˜í•´ ë¶ˆëŸ¬ì§„ë‹¤.
 	 * 
 	 * @param t
 	 */
@@ -55,7 +55,7 @@ public class BaseTagSupport implements Tag {
 	}
 
 	/**
-	 * Template RuntimeÀÌ °èÃşÀûÀ¸·Î ¿î¿µµÉ¶§ ÇÏÀ§ RuntimeÀ» Ç°°í ÀÖ´Â ºÎ¸ğ tag¸¦ ¾Ë°íÀÚ ÇÒ ¶§ ºÎ¸¥´Ù.
+	 * Template Runtimeì´ ê³„ì¸µì ìœ¼ë¡œ ìš´ì˜ë ë•Œ í•˜ìœ„ Runtimeì„ í’ˆê³  ìˆëŠ” ë¶€ëª¨ tagë¥¼ ì•Œê³ ì í•  ë•Œ ë¶€ë¥¸ë‹¤.
 	 * 
 	 * @return
 	 */
@@ -64,7 +64,7 @@ public class BaseTagSupport implements Tag {
 	}
 
 	/**
-	 * Å×±× ÀÌ¸§À» ÁöÁ¤ÇÑ´Ù. [[--AAAStart,attr1:value1--]]...body...[[--AAAEnd--]] ÀÏ °æ¿ì AAA¸¦ ¸®ÅÏÇÑ´Ù.
+	 * í…Œê·¸ ì´ë¦„ì„ ì§€ì •í•œë‹¤. [[--AAAStart,attr1:value1--]]...body...[[--AAAEnd--]] ì¼ ê²½ìš° AAAë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param id
 	 *            String
@@ -78,7 +78,7 @@ public class BaseTagSupport implements Tag {
 	}
 
 	/**
-	 * templateº»¹®¿¡¼­ ÇöÀç Å×±×ÀÇ À§Ä¡¸¦ ÁöÁ¤ÇÑ´Ù.
+	 * templateë³¸ë¬¸ì—ì„œ í˜„ì¬ í…Œê·¸ì˜ ìœ„ì¹˜ë¥¼ ì§€ì •í•œë‹¤.
 	 * 
 	 * @param mark
 	 *            Marker
@@ -92,7 +92,7 @@ public class BaseTagSupport implements Tag {
 	}
 
 	/**
-	 * Å×±×º° ¼Ó¼º °ªÀ» ÁöÁ¤ÇÑ´Ù.
+	 * í…Œê·¸ë³„ ì†ì„± ê°’ì„ ì§€ì •í•œë‹¤.
 	 * 
 	 * @param k
 	 *            String
@@ -129,13 +129,13 @@ public class BaseTagSupport implements Tag {
 	}
 
 	/**
-	 * klass Å¸ÀÔÀÇ ºÎ¸ğ tag¸¦ from ºÎÅÍ Ã£´Â´Ù.
+	 * klass íƒ€ì…ì˜ ë¶€ëª¨ tagë¥¼ from ë¶€í„° ì°¾ëŠ”ë‹¤.
 	 * 
 	 * @param from
-	 *            Tag Ã£±â ½ÃÀÛÇÒ tag
+	 *            Tag ì°¾ê¸° ì‹œì‘í•  tag
 	 * @param klass
-	 *            Class Ã£´Â class type
-	 * @return Tag Ã£Áö ¸øÇÏ¸é null
+	 *            Class ì°¾ëŠ” class type
+	 * @return Tag ì°¾ì§€ ëª»í•˜ë©´ null
 	 */
 	public static final Tag findAncestorWithClass(Tag from, Class<?> klass) {
 		boolean isInterface = false;

@@ -23,7 +23,7 @@ import net.ion.framework.util.InstanceCreationException;
 import net.ion.framework.util.InstanceCreator;
 
 /**
- * CompiledTemplateÀ» ½ÇÇàÇÑ´Ù.
+ * CompiledTemplateì„ ì‹¤í–‰í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -41,11 +41,11 @@ public class TemplateRuntime {
 
 	/**
 	 * @param rs
-	 *            RenderingSupport tag handler, parser Á¤º¸
+	 *            RenderingSupport tag handler, parser ì •ë³´
 	 * @param pageReceiver
-	 *            PageReceiver »ı¼ºµÈ page¸¦ º¸³»ÁÙ °÷
+	 *            PageReceiver ìƒì„±ëœ pageë¥¼ ë³´ë‚´ì¤„ ê³³
 	 * @param pageTimeoutMsec
-	 *            long ÇÑ ÆäÀÌÁö´ç Á¦ÇÑ½Ã°£
+	 *            long í•œ í˜ì´ì§€ë‹¹ ì œí•œì‹œê°„
 	 */
 	public TemplateRuntime(RenderingSupport rs, PageReceiver pageReceiver, long pageTimeoutMsec) {
 		this.pageReceiver = pageReceiver;
@@ -67,16 +67,16 @@ public class TemplateRuntime {
 	}
 
 	/**
-	 * attribute value¿¡ »ç¿ëÇÑ run-time º¯¼ö¸¦ °áÁ¤ÇÑ´Ù.
+	 * attribute valueì— ì‚¬ìš©í•œ run-time ë³€ìˆ˜ë¥¼ ê²°ì •í•œë‹¤.
 	 * 
 	 * @param tagInfo
 	 * @param context
-	 *            nullÀÏ °æ¿ì context·Î ºÎÅÍ °ªÀ» Ã£Áö ¾Ê´Â´Ù. ±×·¯¹Ç·Î [%º¯¼ö%] -> null·Î Ä¡È¯ÇÑ´Ù.
+	 *            nullì¼ ê²½ìš° contextë¡œ ë¶€í„° ê°’ì„ ì°¾ì§€ ì•ŠëŠ”ë‹¤. ê·¸ëŸ¬ë¯€ë¡œ [%ë³€ìˆ˜%] -> nullë¡œ ì¹˜í™˜í•œë‹¤.
 	 * @param evalValueParser
 	 * @param map
-	 *            TemplateCompiler °¡ Ã³¸®ÇÑ reflectionMap
+	 *            TemplateCompiler ê°€ ì²˜ë¦¬í•œ reflectionMap
 	 * @param parentRuntimeTag
-	 *            ÇöÀç template runtime À» ½ÇÇà½ÃÅ°°í ÀÖ´Â tag (baseTagSupportÀÇ getParentRuntimeTag()¿¡ ÀÇÇØ Á¢±ÙÇÒ tag¸¦ ÁöÁ¤), º°µµ ÁöÁ¤»çÇ×ÀÌ ¾øÀ» °æ¿ì null
+	 *            í˜„ì¬ template runtime ì„ ì‹¤í–‰ì‹œí‚¤ê³  ìˆëŠ” tag (baseTagSupportì˜ getParentRuntimeTag()ì— ì˜í•´ ì ‘ê·¼í•  tagë¥¼ ì§€ì •), ë³„ë„ ì§€ì •ì‚¬í•­ì´ ì—†ì„ ê²½ìš° null
 	 * @return
 	 * @throws RuntimeException
 	 */
@@ -88,7 +88,7 @@ public class TemplateRuntime {
 		String[] names = map.getNames();
 		int length = names.length;
 		if (length == 3)
-			return map; // ÇöÀç reflectionMap¿¡ ±âº»ÀûÀ¸·Î 3°³ÀÇ Á¤º¸¸¦ °¡Áö°í ÀÖ´Ù(id,tagMarker,parentRuntimeTag) 3°³ÀÏ °æ¿ì run-time Ã³¸®°¡ ÇÊ¿ä¾ø´Ù.
+			return map; // í˜„ì¬ reflectionMapì— ê¸°ë³¸ì ìœ¼ë¡œ 3ê°œì˜ ì •ë³´ë¥¼ ê°€ì§€ê³  ìˆë‹¤(id,tagMarker,parentRuntimeTag) 3ê°œì¼ ê²½ìš° run-time ì²˜ë¦¬ê°€ í•„ìš”ì—†ë‹¤.
 
 		int i = 0;
 
@@ -102,7 +102,7 @@ public class TemplateRuntime {
 				if (attrInfo != null && attrInfo.isRtexprvalue()) {
 					StringBuffer evalString = new StringBuffer();
 
-					// evaluate - context·Î ºÎÅÍ nameÀ» Ã£¾Æ¼­ Ä¡È¯ÇÑ´Ù.
+					// evaluate - contextë¡œ ë¶€í„° nameì„ ì°¾ì•„ì„œ ì¹˜í™˜í•œë‹¤.
 					{
 						String src = values[i].toString();
 						evalValueParser.initialize(src);
@@ -152,21 +152,21 @@ public class TemplateRuntime {
 	}
 
 	/**
-	 * ÅÛÇÃ¸´À» ½ÇÇàÇÑ´Ù.
+	 * í…œí”Œë¦¿ì„ ì‹¤í–‰í•œë‹¤.
 	 * 
 	 * @param templateContext
-	 *            TemplateContext ÇÑ°³ÀÇ ÅÛÇÃ¸´ ÀÛ¾÷ °ø°£
+	 *            TemplateContext í•œê°œì˜ í…œí”Œë¦¿ ì‘ì—… ê³µê°„
 	 * @param compiledTemplate
-	 *            CompiledTemplate Ã³¸®ÇÒ ÅÛÇÃ¸´
+	 *            CompiledTemplate ì²˜ë¦¬í•  í…œí”Œë¦¿
 	 * @param templateText
-	 *            String ÅÛÇÃ¸´ ³»¿ë (¿¡·¯°¡ ³µÀ» °æ¿ì ¶óÀÎ¹øÈ£¸¦ Ç¥½ÃÇÏ±â À§ÇØ ÇÊ¿ä)
+	 *            String í…œí”Œë¦¿ ë‚´ìš© (ì—ëŸ¬ê°€ ë‚¬ì„ ê²½ìš° ë¼ì¸ë²ˆí˜¸ë¥¼ í‘œì‹œí•˜ê¸° ìœ„í•´ í•„ìš”)
 	 * @param parentRuntimeTag
-	 *            Tag ºÎ¸ğÅ×±× (º°µµ ÁöÁ¤ÇÒ °ÍÀÌ ¾øÀ» °æ¿ì null ÀÔ·Â)
+	 *            Tag ë¶€ëª¨í…Œê·¸ (ë³„ë„ ì§€ì •í•  ê²ƒì´ ì—†ì„ ê²½ìš° null ì…ë ¥)
 	 * @throws TemplateRuntimeException
 	 */
 	public void exec(TemplateContext templateContext, CompiledTemplate compiledTemplate, String templateText, Tag parentRuntimeTag)
 			throws TemplateRuntimeException {
-		// ÆÄ¶ó¹ÌÅÍ·Î templateText¸¦ ¹Ş´Â ÀÌÀ¯´Â Error°¡ ¹ß»ıÇßÀ» ¶§ compiledTemplate¿¡ µé¾îÀÖ´Â eval mark¸¦ Âü°íÇÏ¿© line¹øÈ£¸¦ Ã£±â À§ÇØ¼­´Ù. -> ´ÜÁö ÀÌ ÇÏ³ªÀÇ ÀÌÀ¯¸¸À¸·Î.. ¾ï¿ïÇÏ´Ù. -_-"
+		// íŒŒë¼ë¯¸í„°ë¡œ templateTextë¥¼ ë°›ëŠ” ì´ìœ ëŠ” Errorê°€ ë°œìƒí–ˆì„ ë•Œ compiledTemplateì— ë“¤ì–´ìˆëŠ” eval markë¥¼ ì°¸ê³ í•˜ì—¬ lineë²ˆí˜¸ë¥¼ ì°¾ê¸° ìœ„í•´ì„œë‹¤. -> ë‹¨ì§€ ì´ í•˜ë‚˜ì˜ ì´ìœ ë§Œìœ¼ë¡œ.. ì–µìš¸í•˜ë‹¤. -_-"
 
 		resetBreakRequest();
 
@@ -227,8 +227,8 @@ public class TemplateRuntime {
 						cp++;
 
 						{
-							// runtimeÀÚ½ÅÀ» º¸È£ÇÏ±â À§ÇØ page ÇÑÀåÀ» ¾ò´Âµ¥ ½Ã°£ÀÌ ³Ê¹« ¿À·¡ °É¸®¸é exception ³»¹ö¸®°í Á¾·áÇÑ´Ù.
-							// ¿ø·¡ loopÀÇ ÃÖ»ó´Ü¿¡ ÀÖ¾úÁö¸¸ ºñ±³¸¦ ³Ê¹« ÇÏ¸é ÁÁÀ»²² ¾øÀ¸´Ï Àû´çÈ÷ °É¸®´Â ºÎºĞÀ¸·Î ¿Å±è
+							// runtimeìì‹ ì„ ë³´í˜¸í•˜ê¸° ìœ„í•´ page í•œì¥ì„ ì–»ëŠ”ë° ì‹œê°„ì´ ë„ˆë¬´ ì˜¤ë˜ ê±¸ë¦¬ë©´ exception ë‚´ë²„ë¦¬ê³  ì¢…ë£Œí•œë‹¤.
+							// ì›ë˜ loopì˜ ìµœìƒë‹¨ì— ìˆì—ˆì§€ë§Œ ë¹„êµë¥¼ ë„ˆë¬´ í•˜ë©´ ì¢‹ì„ê»˜ ì—†ìœ¼ë‹ˆ ì ë‹¹íˆ ê±¸ë¦¬ëŠ” ë¶€ë¶„ìœ¼ë¡œ ì˜®ê¹€
 							if ((System.currentTimeMillis() - watchDogCounter) > WATCHDOG_THRESHOLD)
 								throw new TemplateRuntimeException("time-out to generate a page, threshold:" + WATCHDOG_THRESHOLD + "ms per page");
 						}
@@ -380,7 +380,7 @@ public class TemplateRuntime {
 						if (doGenerate) {
 							String generatedPage = writer.toString();
 							Page page = new Page(pageInfo, generatedPage);
-							this.pageReceiver.receivePage(page); // page°¡ »ı¼ºµÇ´Â ½Å¼ºÇÑ °÷!!
+							this.pageReceiver.receivePage(page); // pageê°€ ìƒì„±ë˜ëŠ” ì‹ ì„±í•œ ê³³!!
 						}
 						writer.clear();
 						watchDogCounter = System.currentTimeMillis(); // reset a watchDogCounter
@@ -412,7 +412,7 @@ public class TemplateRuntime {
 				throw re;
 			String line = " in Line " + getLineNumber(templateText, tagMark.getBeginIndex());
 			throw new TemplateRuntimeException(tagMark, re.getMessage() + line, re);
-		} catch (RuntimeException ex) { // ÀÌ ¿¡·¯´Â ¹İµå½Ã ³ª¸é ¾ÈµÈ´Ù!! ¸±¸®Áî Àü¿¡ ´Ù Àâ¾Æ¾ß ÇÑ´Ù. -> report¿¡ unexpected exceptionÀ¸·Î ±â·ÏµÈ´Ù.
+		} catch (RuntimeException ex) { // ì´ ì—ëŸ¬ëŠ” ë°˜ë“œì‹œ ë‚˜ë©´ ì•ˆëœë‹¤!! ë¦´ë¦¬ì¦ˆ ì „ì— ë‹¤ ì¡ì•„ì•¼ í•œë‹¤. -> reportì— unexpected exceptionìœ¼ë¡œ ê¸°ë¡ëœë‹¤.
 			if (tagMark == null || templateText == null)
 				throw ex;
 			String line = " in Line " + getLineNumber(templateText, tagMark.getBeginIndex());
@@ -430,7 +430,7 @@ public class TemplateRuntime {
 	}
 
 	/**
-	 * ÇöÀç exec ÀÛ¾÷À» Á¾·áÇÑ´Ù.
+	 * í˜„ì¬ exec ì‘ì—…ì„ ì¢…ë£Œí•œë‹¤.
 	 */
 	public void breakExec() {
 		breakRequest = true;

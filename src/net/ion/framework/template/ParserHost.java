@@ -14,16 +14,16 @@ import net.ion.framework.template.parse.Parser;
 public class ParserHost extends ObjectHost {
 	/**
 	 * @param parserClass
-	 *            Class ÆÄ¼­ Å¬·¡½º
+	 *            Class íŒŒì„œ í´ë˜ìŠ¤
 	 * @param maxParser
-	 *            int ÃÊ±â »ı¼º °³¼ö
+	 *            int ì´ˆê¸° ìƒì„± ê°œìˆ˜
 	 */
 	public ParserHost(Class<?> parserClass, int maxParser) {
 		super(new SimpleObjectPool(maxParser), parserClass);
 	}
 
 	/**
-	 * ÆÄ¼­¸¦ Ç®¿¡¼­ ²¨³» ÁØ´Ù. ¿©À¯ºĞÀÌ ¾øÀ» °æ¿ì »ı¼ºÇÏ¿© ÁØ´Ù.
+	 * íŒŒì„œë¥¼ í’€ì—ì„œ êº¼ë‚´ ì¤€ë‹¤. ì—¬ìœ ë¶„ì´ ì—†ì„ ê²½ìš° ìƒì„±í•˜ì—¬ ì¤€ë‹¤.
 	 * 
 	 * @return Parser
 	 */
@@ -32,7 +32,7 @@ public class ParserHost extends ObjectHost {
 	}
 
 	/**
-	 * »ç¿ëÇÑ ÆÄ¼­¸¦ ¹İ³³ÇÑ´Ù.
+	 * ì‚¬ìš©í•œ íŒŒì„œë¥¼ ë°˜ë‚©í•œë‹¤.
 	 * 
 	 * @param parser
 	 *            Parser

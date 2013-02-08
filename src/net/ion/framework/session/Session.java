@@ -10,83 +10,83 @@ import java.util.Enumeration;
  */
 public interface Session {
 	/**
-	 * @return sessionÀÌ »ı¼ºµÈ ½Ã°¢
+	 * @return sessionì´ ìƒì„±ëœ ì‹œê°
 	 */
 	public long getCreationTime();
 
 	/**
-	 * @return sessionÀÇ id
+	 * @return sessionì˜ id
 	 */
 	public String getId();
 
 	/**
-	 * @return ÃÖ±Ù session attribute¿¡ ´ëÇÑ Á¢±Ù ½Ã°¢
+	 * @return ìµœê·¼ session attributeì— ëŒ€í•œ ì ‘ê·¼ ì‹œê°
 	 */
 	public long getLastAccessedTime();
 
 	/**
-	 * @return sessionÀÌ »ç¿ëÇÏ´Â context
+	 * @return sessionì´ ì‚¬ìš©í•˜ëŠ” context
 	 */
 	public SessionContext getSessionContext();
 
 	/**
-	 * @return sessionÀÌ inactive »óÅÂ·Î validÇÑ ½Ã°£(ÃÊ)
+	 * @return sessionì´ inactive ìƒíƒœë¡œ validí•œ ì‹œê°„(ì´ˆ)
 	 */
 	public int getMaxInactiveInterval();
 
 	/**
-	 * session¿¡¼­ attribute¸¦ °¡Á®¿Â´Ù. ¾øÀ» °æ¿ì nullÀÌ´Ù.
+	 * sessionì—ì„œ attributeë¥¼ ê°€ì ¸ì˜¨ë‹¤. ì—†ì„ ê²½ìš° nullì´ë‹¤.
 	 * 
 	 * @param name
-	 *            °¡Á®¿Ã attributeÀÇ key
+	 *            ê°€ì ¸ì˜¬ attributeì˜ key
 	 * @return
 	 */
 	public Object getAttribute(String name);
 
 	/**
-	 * session¿¡ attribute¸¦ ÀúÀåÇÑ´Ù.
+	 * sessionì— attributeë¥¼ ì €ì¥í•œë‹¤.
 	 * 
 	 * @param name
-	 *            ÀúÀåÇÒ attributeÀÇ key
+	 *            ì €ì¥í•  attributeì˜ key
 	 * @param value
-	 *            ÀúÀåÇÒ attribute
+	 *            ì €ì¥í•  attribute
 	 */
 	public void setAttribute(String name, Object value);
 
 	/**
-	 * session¿¡¼­ attribute¸¦ Áö¿î´Ù.
+	 * sessionì—ì„œ attributeë¥¼ ì§€ìš´ë‹¤.
 	 * 
 	 * @param name
-	 *            Áö¿ì°íÀÚ ÇÏ´Â attributeÀÇ key
+	 *            ì§€ìš°ê³ ì í•˜ëŠ” attributeì˜ key
 	 */
 	public void removeAttribute(String name);
 
 	/**
-	 * session¿¡¼­ ¸ğµç attribute¸¦ Áö¿î´Ù.
+	 * sessionì—ì„œ ëª¨ë“  attributeë¥¼ ì§€ìš´ë‹¤.
 	 */
 	public void removeAttributeAll();
 
 	/**
-	 * sessionÀÇ ¸ğµç attribute¸¦ °¡Á®¿Â´Ù.
+	 * sessionì˜ ëª¨ë“  attributeë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return
 	 */
 	public Enumeration<?> getAttributeNames();
 
 	/**
-	 * sessionÀÇ attribute °ªÀ» ¸ğµÎ invalidateÇÑ´Ù.(Áö¿î´Ù.)
+	 * sessionì˜ attribute ê°’ì„ ëª¨ë‘ invalidateí•œë‹¤.(ì§€ìš´ë‹¤.)
 	 */
 	public void invalidate();
 
 	/**
-	 * »õ·Î »ı¼ºµÈ sessionÀÎÁö ¿©ºÎ (set,getÀÌ ÇÑ¹øµµ ÀÏ¾î ³ªÁö ¾ÊÀ¸¸é true)
+	 * ìƒˆë¡œ ìƒì„±ëœ sessionì¸ì§€ ì—¬ë¶€ (set,getì´ í•œë²ˆë„ ì¼ì–´ ë‚˜ì§€ ì•Šìœ¼ë©´ true)
 	 * 
 	 * @return
 	 */
 	public boolean isNew();
 
 	/**
-	 * session Á¤º¸
+	 * session ì •ë³´
 	 * 
 	 * @return
 	 */

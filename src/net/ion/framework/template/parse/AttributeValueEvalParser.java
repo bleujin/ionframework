@@ -2,7 +2,7 @@ package net.ion.framework.template.parse;
 
 
 /**
- * attribute value¿¡¼­ [% %] ºÎºĞÀ» ÃßÃâÇÑ´Ù.
+ * attribute valueì—ì„œ [% %] ë¶€ë¶„ì„ ì¶”ì¶œí•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0

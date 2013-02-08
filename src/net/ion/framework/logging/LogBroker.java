@@ -13,7 +13,7 @@ import net.ion.framework.configuration.NotFoundXmlTagException;
 import net.ion.framework.util.InstanceCreator;
 
 /**
- * configuration¿¡ µû¶ó logger¸¦ »ı¼ºÇÏ°í pattern¿¡ mappingµÇ¾î ÀÖ´Â logger¸¦ ¹İÈ¯ÇÑ´Ù.
+ * configurationì— ë”°ë¼ loggerë¥¼ ìƒì„±í•˜ê³  patternì— mappingë˜ì–´ ìˆëŠ” loggerë¥¼ ë°˜í™˜í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -24,11 +24,11 @@ public class LogBroker {
 
 	// pattern to logger mapping
 
-	// pattern°ú logger name mapping
-	// ÀûÀıÇÑ pattern matchingÀ» À§ÇØ Á¤·ÄÀÌ ÇÊ¿äÇÏ´Ù.(¼ø¼­´ë·Î ºñ±³) Á¤·Ä ¹æ¹ıÀº PatternComparator À» µû¸¥´Ù.
+	// patternê³¼ logger name mapping
+	// ì ì ˆí•œ pattern matchingì„ ìœ„í•´ ì •ë ¬ì´ í•„ìš”í•˜ë‹¤.(ìˆœì„œëŒ€ë¡œ ë¹„êµ) ì •ë ¬ ë°©ë²•ì€ PatternComparator ì„ ë”°ë¥¸ë‹¤.
 	private TreeMap<String, String> patternMapping = null;
 
-	// name°ú logger name mapping
+	// nameê³¼ logger name mapping
 	private HashMap<String, String> nameMapping = null;
 
 	// log handler
@@ -53,7 +53,7 @@ public class LogBroker {
 		this.nameMapping = new HashMap<String, String>();
 		this.handlers = new HashMap<String, Handler>();
 
-		// handler¸¦ »ı¼ºÇÏ°í logger¿¡ ¿¬°áÇÏ°í mapping tableÀ» ³Ö´Â´Ù.
+		// handlerë¥¼ ìƒì„±í•˜ê³  loggerì— ì—°ê²°í•˜ê³  mapping tableì„ ë„£ëŠ”ë‹¤.
 
 		initLoggers(config);
 
@@ -105,7 +105,7 @@ public class LogBroker {
 						out.println("handler:" + handlerName + ":skipped setting encoding charset.");
 					}
 
-					// Å×ÀÌºí¿¡ µî·Ï ½ÃÄÑµĞ´Ù.
+					// í…Œì´ë¸”ì— ë“±ë¡ ì‹œì¼œë‘”ë‹¤.
 					handlers.put(handlerName, handler);
 				}
 			} catch (NotFoundXmlTagException noTag) {
@@ -160,24 +160,24 @@ public class LogBroker {
 	}
 
 	/**
-	 * name¿¡ mappingµÇ´Â loggerNameÀ» °¡Á®¿Â´Ù.
+	 * nameì— mappingë˜ëŠ” loggerNameì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param name
 	 * @return
 	 */
 	private String resolve(String name) {
-		// cachedMapping¿¡¼­ ¸ÕÀú ÀĞ¾î º»´Ù.
+		// cachedMappingì—ì„œ ë¨¼ì € ì½ì–´ ë³¸ë‹¤.
 		String loggerName = (String) nameMapping.get(name);
 
-		// mapping¿¡¼­ name¿¡ ´ëÇÑ patternÀ» resolve ÇÑ´Ù.
+		// mappingì—ì„œ nameì— ëŒ€í•œ patternì„ resolve í•œë‹¤.
 		if (loggerName == null) {
-			// pattern¿¡¼­ nameÀ» Ã£´Â´Ù.
+			// patternì—ì„œ nameì„ ì°¾ëŠ”ë‹¤.
 			String[] patterns = patternMapping.keySet().toArray(new String[0]);
 			for (int i = 0; i < patterns.length; ++i) {
 				if (isCorrespondingClass(patterns[i], name)) {
 					loggerName = patternMapping.get(patterns[i]);
 
-					// ´ÙÀ½ »ç¿ëÀ» À§ÇØ loggerNameÀ» cachedMapping¿¡ ³Ö¾î µĞ´Ù.
+					// ë‹¤ìŒ ì‚¬ìš©ì„ ìœ„í•´ loggerNameì„ cachedMappingì— ë„£ì–´ ë‘”ë‹¤.
 					nameMapping.put(name, loggerName);
 
 					break;
@@ -188,7 +188,7 @@ public class LogBroker {
 		// System.out.println(patternMapping);
 		// System.out.println(nameMapping);
 
-		// mapping Á¤º¸°¡ ¾øÀ¸¸é name ±×´ë·Î return
+		// mapping ì •ë³´ê°€ ì—†ìœ¼ë©´ name ê·¸ëŒ€ë¡œ return
 		if (loggerName != null)
 			return loggerName;
 		else
@@ -196,22 +196,22 @@ public class LogBroker {
 	}
 
 	/**
-	 * class°¡ package¿¡ ¼ÓÇÏ´ÂÁö Å×½ºÆ®
+	 * classê°€ packageì— ì†í•˜ëŠ”ì§€ í…ŒìŠ¤íŠ¸
 	 * 
 	 * @param packageName
 	 * @param className
 	 * @return
 	 */
 	private boolean isCorrespondingClass(String packageName, String className) {
-		// packageNameÀÇ ¸¶Áö¸· *À» ¾ø¾Ø´Ù.
+		// packageNameì˜ ë§ˆì§€ë§‰ *ì„ ì—†ì•¤ë‹¤.
 		packageName = packageName.substring(0, packageName.length() - 1);
 
-		// packageName ÀÌ¸§ÀÌ classNameº¸´Ù Å©¸é ¹İµå½Ã ¾Æ´ÏÁö..
+		// packageName ì´ë¦„ì´ classNameë³´ë‹¤ í¬ë©´ ë°˜ë“œì‹œ ì•„ë‹ˆì§€..
 		if (packageName.length() > className.length())
 			return false;
 		className = className.substring(0, packageName.length());
 
-		// packageName ¸¸Å­ classNameÀÌ °°À¸¸é OK
+		// packageName ë§Œí¼ classNameì´ ê°™ìœ¼ë©´ OK
 		if (className.endsWith(packageName))
 			return true;
 		else
@@ -219,14 +219,14 @@ public class LogBroker {
 	}
 
 	/**
-	 * »õ·Î¿î mappingÀ» Ãß°¡ÇÑ´Ù.
+	 * ìƒˆë¡œìš´ mappingì„ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * keyName loggerName a.b.c.* -> logger1 a.b.c.A -> logger2 a.b.c.d.* -> logger3
 	 * 
 	 * @param keyName
-	 *            pattern ¶Ç´Â name key
+	 *            pattern ë˜ëŠ” name key
 	 * @param loggerName
-	 *            pattern°ú mappingÇÒ loggerName
+	 *            patternê³¼ mappingí•  loggerName
 	 */
 	private void addMapping(String keyName, String loggerName) {
 		if (keyName.equals("*") || keyName.endsWith(".*"))
@@ -236,12 +236,12 @@ public class LogBroker {
 	}
 
 	/**
-	 * configuration °ªÀ¸·Î log handler,logger,mappingÀ» ÃÊ±âÈ­ ÇÑ´Ù.
+	 * configuration ê°’ìœ¼ë¡œ log handler,logger,mappingì„ ì´ˆê¸°í™” í•œë‹¤.
 	 * 
-	 * »õ·Î¿î mappingÀ¸·Î ¿ÏÀü ´ëÃ¼ µÈ´Ù. (±âÁ¸¿¡ mapping °ªÀº À¯ÁöµÇÁö ¾ÊÀ½)
+	 * ìƒˆë¡œìš´ mappingìœ¼ë¡œ ì™„ì „ ëŒ€ì²´ ëœë‹¤. (ê¸°ì¡´ì— mapping ê°’ì€ ìœ ì§€ë˜ì§€ ì•ŠìŒ)
 	 * 
 	 *<pre>
-	 * * ¼³Á¤ ¿¹Á¦ :
+	 * * ì„¤ì • ì˜ˆì œ :
 	 * 
 	 *    &lt;logs&gt;
 	 *        &lt;handler&gt;
@@ -310,7 +310,7 @@ public class LogBroker {
 	 *    &lt;/logs&gt;
 	 * </pre>
 	 * 
-	 * &lt;configured-object/&gt; ºÎºĞÀº net.ion.framework.util.InstanceCreatorÀ» µû¸¥´Ù.
+	 * &lt;configured-object/&gt; ë¶€ë¶„ì€ net.ion.framework.util.InstanceCreatorì„ ë”°ë¥¸ë‹¤.
 	 * 
 	 * @param config
 	 * @throws InitializingException
@@ -322,19 +322,19 @@ public class LogBroker {
 	}
 
 	/**
-	 * mapping table¿¡¼­ name¿¡ ÇØ´çµÇ´Â logger¸¦ °¡Á®¿Â´Ù.
+	 * mapping tableì—ì„œ nameì— í•´ë‹¹ë˜ëŠ” loggerë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param name
-	 *            °¡Á®¿Ã logger
+	 *            ê°€ì ¸ì˜¬ logger
 	 * @return
 	 */
 	public static Logger getLogger(String name) {
-		// name¿¡ mappingµÇ´Â logger°¡ ¾øÀ¸¸é
-		// ³í¸®ÀûÀ¸·Î Exception À» ³»´Â °ÍÀÌ Àû´çÇÏÁö¸¸
-		// Àû´çÇÑ logger¸¦ ¹Ù·Î ¼±ÅÃÇØ¼­ ¸®ÅÏÇÑ´Ù.
+		// nameì— mappingë˜ëŠ” loggerê°€ ì—†ìœ¼ë©´
+		// ë…¼ë¦¬ì ìœ¼ë¡œ Exception ì„ ë‚´ëŠ” ê²ƒì´ ì ë‹¹í•˜ì§€ë§Œ
+		// ì ë‹¹í•œ loggerë¥¼ ë°”ë¡œ ì„ íƒí•´ì„œ ë¦¬í„´í•œë‹¤.
 
-		// jdk Logger Å¬·¡½ºÀÇ getLogger(..)´Â exceptionÀ» ³»Áö ¾ÊÀ¸¹Ç·Î ÀÏ°ü¼º¿¡ µû¶ó
-		// ±× ¸Ş¼Òµå ¿ªÇÒÀ» ÇÏ´Â ÀÌ ¸Ş¼Òµå´Â exceptionÀ» ³»Áö ¾Êµµ·Ï ÇÑ´Ù.
+		// jdk Logger í´ë˜ìŠ¤ì˜ getLogger(..)ëŠ” exceptionì„ ë‚´ì§€ ì•Šìœ¼ë¯€ë¡œ ì¼ê´€ì„±ì— ë”°ë¼
+		// ê·¸ ë©”ì†Œë“œ ì—­í• ì„ í•˜ëŠ” ì´ ë©”ì†Œë“œëŠ” exceptionì„ ë‚´ì§€ ì•Šë„ë¡ í•œë‹¤.
 
 		if (instance != null)
 			return Logger.getLogger(instance.resolve(name));
@@ -343,7 +343,7 @@ public class LogBroker {
 	}
 
 	/**
-	 * class ÀÌ¸§À» nameÀ¸·Î ÇÏ´Â logger¸¦ °¡Á®¿Â´Ù. (getLogger(String)ÀÇ wrapper)
+	 * class ì´ë¦„ì„ nameìœ¼ë¡œ í•˜ëŠ” loggerë¥¼ ê°€ì ¸ì˜¨ë‹¤. (getLogger(String)ì˜ wrapper)
 	 * 
 	 * @param cls
 	 * @return
@@ -353,7 +353,7 @@ public class LogBroker {
 	}
 
 	/**
-	 * objectÀÇ class name ¸íÀ» nameÀ¸·Î ÇÏ´Â logger¸¦ °¡Á®¿Â´Ù. (getLogger(String)ÀÇ wrapper)
+	 * objectì˜ class name ëª…ì„ nameìœ¼ë¡œ í•˜ëŠ” loggerë¥¼ ê°€ì ¸ì˜¨ë‹¤. (getLogger(String)ì˜ wrapper)
 	 * 
 	 * @param obj
 	 * @return

@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-import net.ion.framework.util.ListUtil;
-
 public class ChannelServant implements IExtraServant {
 
 	private final int capacity ;
@@ -39,18 +37,7 @@ public class ChannelServant implements IExtraServant {
 	}
 
 	public List<IExtraServant> getServantList() {
-		List<IExtraServant> result = ListUtil.newList() ;
-		for (IExtraServant servant : sthread.getServantList()) {
-			if (servant instanceof ChannelServant) {
-				result.addAll(((ChannelServant)servant).getServantList()) ;
-			} else if (servant instanceof ServantChain) {
-				result.addAll(((ServantChain)servant).getServants()) ;
-			} else {
-				result.add(servant) ;
-			}
-		}
-		
-		return Collections.unmodifiableList(result) ;
+		return Collections.unmodifiableList(sthread.getServantList()) ;
 	}
 
 	

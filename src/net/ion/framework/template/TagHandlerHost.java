@@ -8,7 +8,7 @@ import net.ion.framework.template.tagext.TagInfo;
 import net.ion.framework.template.tagext.TagLibraryInfo;
 
 /**
- * tagName¿¡ ÇØ´çÇÏ´Â tag handling object ¸¦ ¸®ÅÏÇÑ´Ù.
+ * tagNameì— í•´ë‹¹í•˜ëŠ” tag handling object ë¥¼ ë¦¬í„´í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -22,7 +22,7 @@ public class TagHandlerHost {
 	/**
 	 * @param tagLibraryInfo
 	 * @param maxHandler
-	 *            °¢ handler ¸¶´Ù ÃÖ´ë Å©±â
+	 *            ê° handler ë§ˆë‹¤ ìµœëŒ€ í¬ê¸°
 	 */
 	public TagHandlerHost(TagLibraryInfo tagLibraryInfo, int maxHandler) {
 		this.tagLibraryInfo = tagLibraryInfo;
@@ -42,7 +42,7 @@ public class TagHandlerHost {
 	}
 
 	/**
-	 * handler name¿¡ ÇØ´çÇÏ´Â Tag handler¸¦ ¸®ÅÏÇÑ´Ù. handlerName¿¡ ÇØ´çÇÏ´Â handler¸¦ Ã£Áö ¸øÇÒ °æ¿ì libraryÀÇ default tag handler¸¦ ¸®ÅÏÇÑ´Ù.
+	 * handler nameì— í•´ë‹¹í•˜ëŠ” Tag handlerë¥¼ ë¦¬í„´í•œë‹¤. handlerNameì— í•´ë‹¹í•˜ëŠ” handlerë¥¼ ì°¾ì§€ ëª»í•  ê²½ìš° libraryì˜ default tag handlerë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param handlerName
 	 * @return null if the tag handler according to tag name does not exist.
@@ -50,7 +50,7 @@ public class TagHandlerHost {
 	public Tag getTagHandler(String handlerName) {
 		Tag handler = null;
 
-		// ±×³É »ı¼ºÇÏ´Â°Ô ´õ ºü¸£³× ¤Ñ.¤Ñ
+		// ê·¸ëƒ¥ ìƒì„±í•˜ëŠ”ê²Œ ë” ë¹ ë¥´ë„¤ ã…¡.ã…¡
 		try {
 			Class<?> clazz = (Class<?>) this.handlerClassCache.get(handlerName);
 
@@ -58,8 +58,8 @@ public class TagHandlerHost {
 				TagInfo tagInfo = this.tagLibraryInfo.getTag(handlerName);
 
 				if (tagInfo == null) {
-					// Å×±× ÀÌ¸§¿¡ ¸Â´Â ÇÚµé·¯¸¦ Ã£Áö ¸øÇÏ¿´À» °æ¿ì
-					// libraryÀÇ default tag handler¸¦ »ç¿ëÇÑ´Ù -> ÀÏ¹İÀûÀ¸·Î custom tag ¸¦ Ã³¸®ÇÏ°Ô µÈ´Ù.
+					// í…Œê·¸ ì´ë¦„ì— ë§ëŠ” í•¸ë“¤ëŸ¬ë¥¼ ì°¾ì§€ ëª»í•˜ì˜€ì„ ê²½ìš°
+					// libraryì˜ default tag handlerë¥¼ ì‚¬ìš©í•œë‹¤ -> ì¼ë°˜ì ìœ¼ë¡œ custom tag ë¥¼ ì²˜ë¦¬í•˜ê²Œ ëœë‹¤.
 
 					tagInfo = this.tagLibraryInfo.getTag(this.tagLibraryInfo.getDefaultTagName());
 				}
@@ -76,7 +76,7 @@ public class TagHandlerHost {
 	}
 
 	/**
-	 * host¿¡¼­ °¡Á®°£ tag handler¸¦ ¹İÈ¯ÇÑ´Ù.
+	 * hostì—ì„œ ê°€ì ¸ê°„ tag handlerë¥¼ ë°˜í™˜í•œë‹¤.
 	 * 
 	 * @param handlerName
 	 * @param handler

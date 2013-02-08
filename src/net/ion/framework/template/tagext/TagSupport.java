@@ -3,10 +3,10 @@ package net.ion.framework.template.tagext;
 import java.io.Serializable;
 
 /**
- * body¸¦ °¡ÁöÁö ¾Ê´Â tagÀÇ ±âº» ±¸Çö
+ * bodyë¥¼ ê°€ì§€ì§€ ì•ŠëŠ” tagì˜ ê¸°ë³¸ êµ¬í˜„
  * 
  * <pre>
- * È£Ãâ ¼ø¼­
+ * í˜¸ì¶œ ìˆœì„œ
  * 1. setParent
  * 2. setPageContext
  * 3. doStartTag
@@ -56,7 +56,7 @@ public abstract class TagSupport extends BaseTagSupport implements IterationTag,
 	}
 
 	/**
-	 * Æ¯º°ÇÑ ÀÌÀ¯°¡ ¾ø´Ù¸é pageContext¸¦ ¹Ù·Î Á¢±ÙÇÏ±â ¹Ù¶÷
+	 * íŠ¹ë³„í•œ ì´ìœ ê°€ ì—†ë‹¤ë©´ pageContextë¥¼ ë°”ë¡œ ì ‘ê·¼í•˜ê¸° ë°”ëŒ
 	 * 
 	 * @return
 	 */

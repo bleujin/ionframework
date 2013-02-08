@@ -11,7 +11,7 @@ public class ExceptionManager {
 	private Stack<Object> exceptionChain = new Stack<Object>();
 
 	/**
-	 * ExceptionManager ¸¦ »ı¼ºÇÑ´Ù. Manager ÀÌ¸§À» parameter ·Î ¹Ş´Â´Ù. Manager ´Â ExceptionManagerFactory¿¡¼­ getExceptionManager() ¸Ş¼Òµå·Î »ı¼ºÇÑ´Ù.
+	 * ExceptionManager ë¥¼ ìƒì„±í•œë‹¤. Manager ì´ë¦„ì„ parameter ë¡œ ë°›ëŠ”ë‹¤. Manager ëŠ” ExceptionManagerFactoryì—ì„œ getExceptionManager() ë©”ì†Œë“œë¡œ ìƒì„±í•œë‹¤.
 	 * 
 	 * @param managerName
 	 *            String
@@ -21,10 +21,10 @@ public class ExceptionManager {
 	}
 
 	/**
-	 * ExceptionManager ¸¦ °¡Á®¿Â´Ù.
+	 * ExceptionManager ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param managerName
-	 *            String °¡Á®¿Ã ExceptionManager ÀÇ ÀÌ¸§
+	 *            String ê°€ì ¸ì˜¬ ExceptionManager ì˜ ì´ë¦„
 	 * @return ExceptionManager
 	 */
 	public static ExceptionManager getExceptionManager(String managerName) {
@@ -39,7 +39,7 @@ public class ExceptionManager {
 	}
 
 	/**
-	 * ExceptionHandler ¸¦ µî·ÏÇÑ´Ù. µî·ÏµÈ ¼ø¼­´ë·Î exceptionChain ÀÌ ±¸¼ºµÈ´Ù.
+	 * ExceptionHandler ë¥¼ ë“±ë¡í•œë‹¤. ë“±ë¡ëœ ìˆœì„œëŒ€ë¡œ exceptionChain ì´ êµ¬ì„±ëœë‹¤.
 	 * 
 	 * @param handler
 	 *            ExceptionHandler
@@ -57,7 +57,7 @@ public class ExceptionManager {
 	}
 
 	/**
-	 * exceptionÀ» Ã³¸®ÇÑ´Ù.
+	 * exceptionì„ ì²˜ë¦¬í•œë‹¤.
 	 * 
 	 * @param exInfo
 	 *            ExceptionInfo
@@ -67,7 +67,7 @@ public class ExceptionManager {
 	}
 
 	/**
-	 * ExceptionManagerÀÇ ÀÌ¸§À» °¡Á®¿Â´Ù.
+	 * ExceptionManagerì˜ ì´ë¦„ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return String
 	 */
@@ -76,7 +76,7 @@ public class ExceptionManager {
 	}
 
 	/**
-	 * µî·ÏµÇ¾îÀÖ´Â ExceptionHandlerÀÇ °¹¼ö¸¦ °¡Á®¿Â´Ù.
+	 * ë“±ë¡ë˜ì–´ìˆëŠ” ExceptionHandlerì˜ ê°¯ìˆ˜ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return int
 	 */
@@ -85,7 +85,7 @@ public class ExceptionManager {
 	}
 
 	/**
-	 * µî·ÏµÇ¾îÀÖ´Â ExceptionHandler¸¦ ¸ğµÎ»èÁ¦ÇÑ´Ù.
+	 * ë“±ë¡ë˜ì–´ìˆëŠ” ExceptionHandlerë¥¼ ëª¨ë‘ì‚­ì œí•œë‹¤.
 	 * 
 	 */
 	public void clearHandler() {

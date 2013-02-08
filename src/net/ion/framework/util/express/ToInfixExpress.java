@@ -7,11 +7,11 @@ import net.ion.framework.util.GenericCache;
 
 /**
  * <pre>
- * "¿ì¼±¼øÀ§¸¦ °í·ÁÇÏÁö ¾ÊÀº" infix expressionÀ¸·Î º¯°æ
+ * "ìš°ì„ ìˆœìœ„ë¥¼ ê³ ë ¤í•˜ì§€ ì•Šì€" infix expressionìœ¼ë¡œ ë³€ê²½
  * 
- * '\' ´Â ¿¬»êÀÚ¸¦ ÀÏ¹Ý ¹®ÀÚ·Î ¹Ù²Ù¾î ÁÖ´Â ±â´ÉÀ» ÇÑ´Ù.
- *  ¿¹¸¦µé¾î '+' ÀÌ ¿¬»êÀÚ¶ó°í Á¤ÀÇµÉ¶§ \+ Àº ÀÏ¹Ý ¹®ÀÚ¿­ '+'À¸·Î °£ÁÖÇÑ´Ù.
- * infixExpress ÀÇ express µµ '\' À» °í·ÁÇÏ¿© ÃÖÁ¾ °á°ú°¡ µé¾î°£´Ù.
+ * '\' ëŠ” ì—°ì‚°ìžë¥¼ ì¼ë°˜ ë¬¸ìžë¡œ ë°”ê¾¸ì–´ ì£¼ëŠ” ê¸°ëŠ¥ì„ í•œë‹¤.
+ *  ì˜ˆë¥¼ë“¤ì–´ '+' ì´ ì—°ì‚°ìžë¼ê³  ì •ì˜ë ë•Œ \+ ì€ ì¼ë°˜ ë¬¸ìžì—´ '+'ìœ¼ë¡œ ê°„ì£¼í•œë‹¤.
+ * infixExpress ì˜ express ë„ '\' ì„ ê³ ë ¤í•˜ì—¬ ìµœì¢… ê²°ê³¼ê°€ ë“¤ì–´ê°„ë‹¤.
  * </pre>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -29,13 +29,13 @@ public class ToInfixExpress {
 	}
 
 /**
-     * *. ¿¬»êÀÚ ¸®½ºÆ® ¿¹Á¦
+     * *. ì—°ì‚°ìž ë¦¬ìŠ¤íŠ¸ ì˜ˆì œ
      *
      *   private static String[][] searchOps= { {"(",")"}
      *                                        , {"<>","==",">=","<=","=",">","<"}
      *                                        , {"&&","||"}};
      *
-     * @param orderedOperators - ³»ºÎÀûÀ¸·Î´Â ¿ì¼±¼øÀ§¸¦ °í·ÁÇÏÁö ¾ÊÀ¸¹Ç·Î ÁÖÀÇ!
+     * @param orderedOperators - ë‚´ë¶€ì ìœ¼ë¡œëŠ” ìš°ì„ ìˆœìœ„ë¥¼ ê³ ë ¤í•˜ì§€ ì•Šìœ¼ë¯€ë¡œ ì£¼ì˜!
      */
 	public ToInfixExpress(String[][] orderedOperators) {
 		ArrayList<String> al = new ArrayList<String>();
@@ -87,10 +87,10 @@ public class ToInfixExpress {
 		String value;
 
 		while (true) {
-			// parseIdxÀÌÈÄ ¿¬»êÀÚ¸¦ Ã£´Â´Ù.
+			// parseIdxì´í›„ ì—°ì‚°ìžë¥¼ ì°¾ëŠ”ë‹¤.
 			mark = indexOf(parseIdx, evalString); // ,plainOps);
 
-			// ¿¬»êÀÚ¸¦ Ã£Áö ¸øÇÒ °æ¿ì
+			// ì—°ì‚°ìžë¥¼ ì°¾ì§€ ëª»í•  ê²½ìš°
 			if (mark == null) {
 				op = null;
 				value = evalString.substring(parseIdx).trim();
@@ -100,7 +100,7 @@ public class ToInfixExpress {
 				}
 				break;
 			}
-			// ¿¬»êÀÚ¸¦ Ã£¾ÒÀ» °æ¿ì
+			// ì—°ì‚°ìžë¥¼ ì°¾ì•˜ì„ ê²½ìš°
 			else {
 				op = mark.getValue();
 				value = evalString.substring(parseIdx, mark.getBeginIndex()).trim();
@@ -130,7 +130,7 @@ public class ToInfixExpress {
 	/**
 	 * @param fromIndex
 	 * @param text
-	 * @return fromIndex·Î ºÎÅÍ ´ÙÀ½ operator¸¦ Ã£´Â´Ù.
+	 * @return fromIndexë¡œ ë¶€í„° ë‹¤ìŒ operatorë¥¼ ì°¾ëŠ”ë‹¤.
 	 */
 	private Marker indexOf(int fromIndex, String text) {
 		Marker m = null;
@@ -143,7 +143,7 @@ public class ToInfixExpress {
 				if (USE_SLASH_MARK && pivot - 1 >= 0) {
 
 					// backward slash count
-					// slash°¡ È¦¼ö°³ÀÌ¸é
+					// slashê°€ í™€ìˆ˜ê°œì´ë©´
 					int slashCnt = 0;
 					for (int j = pivot - 1; j > 0 && text.charAt(j) == SLASH_MARK; --j) {
 						++slashCnt;
@@ -180,7 +180,7 @@ public class ToInfixExpress {
 				else
 					slashCnt = 0;
 
-				// ½½·¹½Ã ¼ö°¡ È¦¼öÀÌ¸é ¾Ã´Â´Ù.
+				// ìŠ¬ë ˆì‹œ ìˆ˜ê°€ í™€ìˆ˜ì´ë©´ ì”¹ëŠ”ë‹¤.
 				if ((slashCnt % 2) > 0)
 					;
 				else

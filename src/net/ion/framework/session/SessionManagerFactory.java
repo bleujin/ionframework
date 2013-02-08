@@ -3,7 +3,7 @@ package net.ion.framework.session;
 import net.ion.framework.configuration.Configuration;
 
 /**
- * SessionManager¸¦ »ı¼ºÇÑ´Ù.
+ * SessionManagerë¥¼ ìƒì„±í•œë‹¤.
  * 
  * <pre>
  * SessionManagerFactory factory = SessionManagerFactory.createFactory();
@@ -18,7 +18,7 @@ public abstract class SessionManagerFactory {
 	private static SessionManagerFactoryType type = SessionManagerFactoryType.SIMPLE_SESSION_MANAGER_FACTORY;
 
 	/**
-	 * SessionManager¸¦ »ı¼ºÇÏ´Âµ¥ »ç¿ëÇÒ Factory TypeÀ» ¼³Á¤ÇÑ´Ù.
+	 * SessionManagerë¥¼ ìƒì„±í•˜ëŠ”ë° ì‚¬ìš©í•  Factory Typeì„ ì„¤ì •í•œë‹¤.
 	 * 
 	 * @param type
 	 *            SessionManagerFactoryType factory type
@@ -28,7 +28,7 @@ public abstract class SessionManagerFactory {
 	}
 
 	/**
-	 * ÇöÀç ¼³Á¤µÈ factory type
+	 * í˜„ì¬ ì„¤ì •ëœ factory type
 	 * 
 	 * @return SessionManagerFactoryType
 	 */
@@ -37,7 +37,7 @@ public abstract class SessionManagerFactory {
 	}
 
 	/**
-	 * session manager factory ¸¦ »ı¼ºÇÑ´Ù.
+	 * session manager factory ë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * @return SessionManagerFactory
 	 */
@@ -53,7 +53,7 @@ public abstract class SessionManagerFactory {
 	}
 
 	/**
-	 * session manager¸¦ »ı¼ºÇÑ´Ù.
+	 * session managerë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * @param config
 	 *            Configuration
@@ -62,7 +62,7 @@ public abstract class SessionManagerFactory {
 	public abstract SessionManager createManager(Configuration config);
 
 	/**
-	 * session manager¸¦ »ı¼ºÇÑ´Ù.
+	 * session managerë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * @param name
 	 *            String

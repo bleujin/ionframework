@@ -10,9 +10,9 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
 /**
- * http request¸¦ ÀûÀıÇÑ ¹®ÀÚ¼ÂÀ¸·Î ÀÎÄÚµùÇÏ´Â servlet filter<br/>
+ * http requestë¥¼ ì ì ˆí•œ ë¬¸ìì…‹ìœ¼ë¡œ ì¸ì½”ë”©í•˜ëŠ” servlet filter<br/>
  * <br/>
- * º°µµÀÇ ¼³Á¤ÀÌ ¾øÀ» °æ¿ì servlet requestÀÇ character setÀÌ nullÀÏ °æ¿ì ISO-8859-1·Î default encoding µÈ´Ù. ÀÌ Å¬·¡½º´Â requestÀÇ character setÀÌ nullÀÏ °æ¿ì requestÀÇ localeÀ» º¸°í ÇØ´ç localeÀÇ default charsetÀ¸·Î ±âº» ÀÎÄÚµùÀÌ µÇµµ·Ï ÇÑ´Ù.
+ * ë³„ë„ì˜ ì„¤ì •ì´ ì—†ì„ ê²½ìš° servlet requestì˜ character setì´ nullì¼ ê²½ìš° ISO-8859-1ë¡œ default encoding ëœë‹¤. ì´ í´ë˜ìŠ¤ëŠ” requestì˜ character setì´ nullì¼ ê²½ìš° requestì˜ localeì„ ë³´ê³  í•´ë‹¹ localeì˜ default charsetìœ¼ë¡œ ê¸°ë³¸ ì¸ì½”ë”©ì´ ë˜ë„ë¡ í•œë‹¤.
  * 
  * <pre>
  *  ko -> EUC-KR

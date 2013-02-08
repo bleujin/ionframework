@@ -108,7 +108,7 @@ public class JavaScriptEscape {
 	// private static boolean isCharset(String str, int langth, String charset) {
 	// try {
 	// if (str.indexOf("%&") > -1) return true;
-	// // utf-8Àº 3°³°¡ 1±ÛÀÚ..
+	// // utf-8ì€ 3ê°œê°€ 1ê¸€ì..
 	// if (str.length() >= langth) {
 	// int one;
 	// try {
@@ -141,7 +141,7 @@ public class JavaScriptEscape {
 	// else if (s.indexOf("%") == -1) return s.trim();
 	// else if (s.indexOf("%u") > -1) return unescape(s.trim());
 	// else {
-	// // ´Ù¸¥¹®ÀÚ(ÇÑ±ÛÀÌ³ª ±âÅ¸¹®ÀÚ) Æ÷ÇÔ µÉ °æ¿ì Decode ¾ÈÇÔ.
+	// // ë‹¤ë¥¸ë¬¸ì(í•œê¸€ì´ë‚˜ ê¸°íƒ€ë¬¸ì) í¬í•¨ ë  ê²½ìš° Decode ì•ˆí•¨.
 	// if (!Pattern.matches("[0-9a-zA-Z&:/?#%+=._-]+", s)) return s.trim();
 	// try {
 	// s = s.replaceAll("%*&", "&");

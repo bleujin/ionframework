@@ -19,7 +19,28 @@ public class IOUtil extends IOUtils {
 			closeQuietly(cl);
 		}
 	}
+	
+	public static String toStringWithClose(InputStream input) throws IOException{
+		return toStringWithClose(input, "UTF-8") ;
+	}
 
+	public static String toStringWithClose(Reader reader) throws IOException{
+		try {
+			return toString(reader) ;
+		} finally {
+			closeQuietly(reader) ;
+		}
+	}
+
+	public static String toStringWithClose(InputStream input, String encoding) throws IOException{
+		try {
+			return toString(input, encoding) ;
+		} finally {
+			closeQuietly(input) ;
+		}
+	}
+
+	
 	public static void closeQuietly(Closeable cl) {
 		try {
 			if (cl != null) cl.close();

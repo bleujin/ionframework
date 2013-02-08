@@ -7,15 +7,15 @@ public class JISConverter {
 	private static HashMap<String, String> charMap = new HashMap<String, String>();
 
 	private static void makeMap() {
-		// charMap.put("\u2014", String.valueOf((char)0x2014)); // °™ 0x2014
-		charMap.put("\u2015", String.valueOf((char) 0x2014)); // °™ 0x2014
-		charMap.put("\u2225", String.valueOf((char) 0x2016)); // °´ 0x2016
-		charMap.put("\u22EF", String.valueOf((char) 0x2026)); // °¶ 0x2026
-		charMap.put("\uFF0D", String.valueOf((char) 0x2212)); // £≠ 0x2212
-		charMap.put("\uFF5E", String.valueOf((char) 0x301C)); // ¢¶ 0x301C
-		charMap.put("\uFFE0", String.valueOf((char) 0x00A2)); // °À 0x00A2
-		charMap.put("\uFFE1", String.valueOf((char) 0x00A3)); // °Ã 0x00A3
-		charMap.put("\uFFE2", String.valueOf((char) 0x00AC)); // °˛ 0x00AC
+		// charMap.put("\u2014", String.valueOf((char)0x2014)); // ‚Äï 0x2014
+		charMap.put("\u2015", String.valueOf((char) 0x2014)); // ‚Äï 0x2014
+		charMap.put("\u2225", String.valueOf((char) 0x2016)); // ‚à• 0x2016
+		charMap.put("\u22EF", String.valueOf((char) 0x2026)); // ‚Ä¶ 0x2026
+		charMap.put("\uFF0D", String.valueOf((char) 0x2212)); // Ôºç 0x2212
+		charMap.put("\uFF5E", String.valueOf((char) 0x301C)); // ÔΩû 0x301C
+		charMap.put("\uFFE0", String.valueOf((char) 0x00A2)); // Ôø† 0x00A2
+		charMap.put("\uFFE1", String.valueOf((char) 0x00A3)); // Ôø° 0x00A3
+		charMap.put("\uFFE2", String.valueOf((char) 0x00AC)); // Ôø¢ 0x00AC
 
 		// / http://www.ingrid.org/java/i18n/encoding/ja-conv.html
 		// / http://www.haible.de/bruno/charsets/conversion-tables/

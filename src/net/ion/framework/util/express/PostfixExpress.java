@@ -2,7 +2,7 @@ package net.ion.framework.util.express;
 
 
 /**
- * ÈÄÀ§ Ç¥±â¹ı
+ * í›„ìœ„ í‘œê¸°ë²•
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -17,14 +17,14 @@ public class PostfixExpress {
 	private int[] needOperandNumber;
 
 	/**
-	 * ÈÄÀ§ Ç¥±â¹ı
+	 * í›„ìœ„ í‘œê¸°ë²•
 	 * 
 	 * @param origin
-	 *            String ¿ø¹®ÀÚ¿­
+	 *            String ì›ë¬¸ìì—´
 	 * @param express
-	 *            String[] ÈÄÀ§ Ç¥±â¹ıÀ¸·Î Ç¥ÇöÇÑ °³º° ¹®ÀÚ ¹è¿­
+	 *            String[] í›„ìœ„ í‘œê¸°ë²•ìœ¼ë¡œ í‘œí˜„í•œ ê°œë³„ ë¬¸ì ë°°ì—´
 	 * @param needOperand
-	 *            int[] express ¹è¿­ÀÇ °¢ ÀÎµ¦½º°¡ ÇÊ¿ä·ÎÇÏ´Â operand ¼ö (0ÀÏ °æ¿ì ÇÇ¿¬»êÀÚ)
+	 *            int[] express ë°°ì—´ì˜ ê° ì¸ë±ìŠ¤ê°€ í•„ìš”ë¡œí•˜ëŠ” operand ìˆ˜ (0ì¼ ê²½ìš° í”¼ì—°ì‚°ì)
 	 */
 	public PostfixExpress(String origin, String[] express, int[] needOperand) {
 		this.origin = origin;

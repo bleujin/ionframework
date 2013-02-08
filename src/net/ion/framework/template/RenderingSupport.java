@@ -21,7 +21,7 @@ import net.ion.framework.template.tagext.TagLibraryInfo;
 import net.ion.framework.template.tagext.TagSupport;
 
 /**
- * rendering Áö¿ø Å¬·¡½º parser host, handler host, tag registry
+ * rendering ì§€ì› í´ë˜ìŠ¤ parser host, handler host, tag registry
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -40,76 +40,76 @@ public class RenderingSupport {
 	private Logger log = null;
 
 	/**
-	 * -. Configuration ±¸¼º
+	 * -. Configuration êµ¬ì„±
 	 * 
 	 * <pre>
-	 * +: ¹İµå½Ã ÇÊ¿ä
-	 *  -: ¾ø¾îµµ »ó°ü¾øÀ½
+	 * +: ë°˜ë“œì‹œ í•„ìš”
+	 *  -: ì—†ì–´ë„ ìƒê´€ì—†ìŒ
 	 *      [+actiontag]
 	 *          +[+short-name]
-	 *          +[+default-tag-name]                            : default·Î »ç¿ëÇÒ tag handler ÀÌ¸§
-	 *          +[+default-page-tag-name]                       : default·Î »ç¿ëÇÒ page tag ÀÌ¸§ (page tag°¡ ¾ø´Â template¿¡ ´ëÇÑ ±âº» Ã³¸® ÇÚµé·¯ ÁöÁ¤)
+	 *          +[+default-tag-name]                            : defaultë¡œ ì‚¬ìš©í•  tag handler ì´ë¦„
+	 *          +[+default-page-tag-name]                       : defaultë¡œ ì‚¬ìš©í•  page tag ì´ë¦„ (page tagê°€ ì—†ëŠ” templateì— ëŒ€í•œ ê¸°ë³¸ ì²˜ë¦¬ í•¸ë“¤ëŸ¬ ì§€ì •)
 	 *          +[-decription]
-	 *          +[-tag]                                         : Tag Á¤ÀÇ (¿©·¯°³ Á¸Àç °¡´É)
-	 *             +[+name]                        : Tag ÀÌ¸§
-	 *             +[-alias]                       : Tag º°¸í (ÀÌ¸§°ú °°Àº È¿°ú) ',' ·Î ±¸ºĞÇÏ¿© ¿©·¯°³ ÁöÁ¤°¡´É
+	 *          +[-tag]                                         : Tag ì •ì˜ (ì—¬ëŸ¬ê°œ ì¡´ì¬ ê°€ëŠ¥)
+	 *             +[+name]                        : Tag ì´ë¦„
+	 *             +[-alias]                       : Tag ë³„ëª… (ì´ë¦„ê³¼ ê°™ì€ íš¨ê³¼) ',' ë¡œ êµ¬ë¶„í•˜ì—¬ ì—¬ëŸ¬ê°œ ì§€ì •ê°€ëŠ¥
 	 *             +[+tag-class]                   : Tag handler (the fully qualified name)
-	 *             +[+body-content]                : Tag ·Î µÑ·¯½ÎÀÎ ºÎºĞÀÇ ¿ªÇÒ -> [ ACTIONTAG | TAGDEPENDENT | EMPTY ] -> ACTIONTAG: body¾È¿¡ ¶Ç ActionTag°¡ ÀÖ´Ù, TAGDEPENDENT:TAG handler°¡ Ã¥ÀÓ Áö°í Ã³¸®ÇÒ °ÍÀÌ¹Ç·Î Action Tag ¹ø¿ªÀ» ÇÏÁö ¸» °Í, EMPTY:body°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì
-	 *             +[-default-attribute-name]      : attribute ÀÌ¸§ÀÌ ¾øÀÌ °ª¸¸ ÀÖ´Â attribute´Â ¾îµğ¿¡ ÀúÀåÇÒ °ÍÀÎÁö ÁöÁ¤ (ÁöÁ¤ÇÏÁö ¾ÊÀ» °æ¿ì default attribute¸¦ »ç¿ëÇÒ ¼ö ¾ø´Ù.)
+	 *             +[+body-content]                : Tag ë¡œ ë‘˜ëŸ¬ì‹¸ì¸ ë¶€ë¶„ì˜ ì—­í•  -> [ ACTIONTAG | TAGDEPENDENT | EMPTY ] -> ACTIONTAG: bodyì•ˆì— ë˜ ActionTagê°€ ìˆë‹¤, TAGDEPENDENT:TAG handlerê°€ ì±…ì„ ì§€ê³  ì²˜ë¦¬í•  ê²ƒì´ë¯€ë¡œ Action Tag ë²ˆì—­ì„ í•˜ì§€ ë§ ê²ƒ, EMPTY:bodyê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš°
+	 *             +[-default-attribute-name]      : attribute ì´ë¦„ì´ ì—†ì´ ê°’ë§Œ ìˆëŠ” attributeëŠ” ì–´ë””ì— ì €ì¥í•  ê²ƒì¸ì§€ ì§€ì • (ì§€ì •í•˜ì§€ ì•Šì„ ê²½ìš° default attributeë¥¼ ì‚¬ìš©í•  ìˆ˜ ì—†ë‹¤.)
 	 *             +[-description]
-	 *             +[-attribute]                   : Tag ÀÇ attribute Á¤ÀÇ (¿©·¯°³ Á¸Àç °¡´É)
+	 *             +[-attribute]                   : Tag ì˜ attribute ì •ì˜ (ì—¬ëŸ¬ê°œ ì¡´ì¬ ê°€ëŠ¥)
 	 *                 +[+name]
-	 *                 +[-required]    : attributeÀÇ ÇÊ¿ä¿©ºÎ (true/false)
-	 *                 +[-type]        : attributeÀÇ Å¸ÀÔ (the fully qualified class name, type name) ex) java.lang.String, int
+	 *                 +[-required]    : attributeì˜ í•„ìš”ì—¬ë¶€ (true/false)
+	 *                 +[-type]        : attributeì˜ íƒ€ì… (the fully qualified class name, type name) ex) java.lang.String, int
 	 *                 +[-description]
 	 * </pre>
 	 * 
-	 * -. Configuration ÀÛ¼º ¿¹Á¦
+	 * -. Configuration ì‘ì„± ì˜ˆì œ
 	 * 
 	 * <pre>
 	 * <taglib>
 	 *          <short-name>action tag library</short-name>
-	 *          <default-tag-name>tag library ¼³¸íÀÚ¿¡ ¾ø´Â tag°¡ ¹ß°ßµÇ¾úÀ» °æ¿ì ±âº» Ã³¸®ÇÒ tag name</default-tag-name>
-	 *          <default-page-tag-name>template³»¿¡ page tag°¡ Á¸ÀçÇÏÁö ¾ÊÀ» °æ¿ì ±âº» Ã³¸®ÇÒ page tag name</default-page-tag-name>
+	 *          <default-tag-name>tag library ì„¤ëª…ìì— ì—†ëŠ” tagê°€ ë°œê²¬ë˜ì—ˆì„ ê²½ìš° ê¸°ë³¸ ì²˜ë¦¬í•  tag name</default-tag-name>
+	 *          <default-page-tag-name>templateë‚´ì— page tagê°€ ì¡´ì¬í•˜ì§€ ì•Šì„ ê²½ìš° ê¸°ë³¸ ì²˜ë¦¬í•  page tag name</default-page-tag-name>
 	 *          <inner-page-tag-name>_InnerPage</inner-page-tag-name>
-	 *          <description>tag library¿¡ ´ëÇÑ ¼³¸í</description>
+	 *          <description>tag libraryì— ëŒ€í•œ ì„¤ëª…</description>
 	 *          <tag>
-	 *              <name>Action Tag·Î »ç¿ëÇÒ ÀÌ¸§</name>
-	 *              <alias>º°¸í1,º°¸í2,...</alias>
-	 *              <tag-class>tag handlerÀÇ fully qualified class name (ex) net.cms.ion.publish.actiontag.ActionTag</tag-class>
+	 *              <name>Action Tagë¡œ ì‚¬ìš©í•  ì´ë¦„</name>
+	 *              <alias>ë³„ëª…1,ë³„ëª…2,...</alias>
+	 *              <tag-class>tag handlerì˜ fully qualified class name (ex) net.cms.ion.publish.actiontag.ActionTag</tag-class>
 	 *              <body-content>
-	 *                  EMPTY :body°¡ Á¸ÀçÇÏÁö ¾ÊÀ½,
-	 *                  TAGDEPENDENT :body°¡ Á¸ÀçÇÏÁö¸¸ body ³»ºÎÀÇ actiontag¸¦ ¹ø¿ªÇÏÁö ¾ÊÀ½,
-	 *                  ACTIONTAG :body°¡ Á¸ÀçÇÏ°í body ³»ºÎÀÇ actiontag¸¦ ¹ø¿ªÇÔ,
-	 *                  PAGE :bodyÀÇ ³»¿ëÀÌ page¸¦ »ı¼º½ÃÅ³ ¶§
-	 *                  °¡ ¿Ã ¼ö ÀÖ´Ù.
+	 *                  EMPTY :bodyê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŒ,
+	 *                  TAGDEPENDENT :bodyê°€ ì¡´ì¬í•˜ì§€ë§Œ body ë‚´ë¶€ì˜ actiontagë¥¼ ë²ˆì—­í•˜ì§€ ì•ŠìŒ,
+	 *                  ACTIONTAG :bodyê°€ ì¡´ì¬í•˜ê³  body ë‚´ë¶€ì˜ actiontagë¥¼ ë²ˆì—­í•¨,
+	 *                  PAGE :bodyì˜ ë‚´ìš©ì´ pageë¥¼ ìƒì„±ì‹œí‚¬ ë•Œ
+	 *                  ê°€ ì˜¬ ìˆ˜ ìˆë‹¤.
 	 *              </body-content>
-	 *              <description>tag¿¡ ´ëÇÑ ±¸Ã¼ÀûÀÎ ¼³¸í</description>
-	 *              <default-attribute-name>attributeÀÇ ÀÌ¸§ÀÌ ¾øÀ» °æ¿ì °£ÁÖÇÒ name</default-attribute-name>
+	 *              <description>tagì— ëŒ€í•œ êµ¬ì²´ì ì¸ ì„¤ëª…</description>
+	 *              <default-attribute-name>attributeì˜ ì´ë¦„ì´ ì—†ì„ ê²½ìš° ê°„ì£¼í•  name</default-attribute-name>
 	 *              <attribute>
 	 *                  <name>attribute name</name>
-	 *                  <required>true/false :¹İµå½Ã ÇÊ¿äÇÑ attribute ÀÎ°¡? </required>
+	 *                  <required>true/false :ë°˜ë“œì‹œ í•„ìš”í•œ attribute ì¸ê°€? </required>
 	 *                  <type>
-	 *                      attributeÀÇ java type : primitive,objectÇü¿¡ °ü°è¾øÀÌ ÀÚÀ¯·Ó°Ô ¾µ ¼ö ÀÖ´Ù.
+	 *                      attributeì˜ java type : primitive,objectí˜•ì— ê´€ê³„ì—†ì´ ììœ ë¡­ê²Œ ì“¸ ìˆ˜ ìˆë‹¤.
 	 *                      (ex)int,boolean,java.lang.String,long,java.util.Date,...
 	 *                  </type>
-	 *                  <rtexprvalue>true/false :ÆÄ¶ó¹ÌÅÍ °ªÀ» ´ÙÀÌ³ª¹ÍÇÏ°Ô ÀÔ·Â¹ŞÀ» °ÍÀÎ°¡ °áÁ¤</rtexprvalue>
-	 *                  <description>attribute¿¡ ´ëÇÑ ¼³¸í</description>
+	 *                  <rtexprvalue>true/false :íŒŒë¼ë¯¸í„° ê°’ì„ ë‹¤ì´ë‚˜ë¯¹í•˜ê²Œ ì…ë ¥ë°›ì„ ê²ƒì¸ê°€ ê²°ì •</rtexprvalue>
+	 *                  <description>attributeì— ëŒ€í•œ ì„¤ëª…</description>
 	 *              </attribute>
-	 *              ... Ãß°¡·Î <attribute/> ¼³Á¤
+	 *              ... ì¶”ê°€ë¡œ <attribute/> ì„¤ì •
 	 *          </tag>
-	 *          ... Ãß°¡·Î <tag/> ¼³Á¤
+	 *          ... ì¶”ê°€ë¡œ <tag/> ì„¤ì •
 	 *      </taglib>
 	 * </pre>
 	 * 
 	 * @param taglib
 	 *            Configuration tag library configuration
 	 * @param handlerHostSize
-	 *            int °¢ handlerÀÇ pool size
+	 *            int ê° handlerì˜ pool size
 	 * @param parserHostSize
 	 *            int parser pool size
 	 * @throws InvalidSetupException
-	 *             configurationÀÌ ¿Ã¹Ù¸£Áö ¾ÊÀ» °æ¿ì
+	 *             configurationì´ ì˜¬ë°”ë¥´ì§€ ì•Šì„ ê²½ìš°
 	 */
 	public RenderingSupport(Configuration taglib, int handlerHostSize, int parserHostSize) throws InvalidSetupException {
 		this.log = LogBroker.getLogger(this);
@@ -204,7 +204,7 @@ public class RenderingSupport {
 
 					tagInfoList.add(new TagInfo(tagName, tagClass, bodyContent, defaultAttrName, infoString, tagAttributeInfo));
 
-					// alias ÁöÁ¤
+					// alias ì§€ì •
 					try {
 						String alias = tag.getChild("alias").getValue().toUpperCase();
 						StringTokenizer tokener = new StringTokenizer(alias, ",");
@@ -256,7 +256,7 @@ public class RenderingSupport {
 	}
 
 	/**
-	 * rendering support¸¦ Á¾·áÇÑ´Ù.
+	 * rendering supportë¥¼ ì¢…ë£Œí•œë‹¤.
 	 */
 	public void destroy() {
 		this.handlerHost.destroy();

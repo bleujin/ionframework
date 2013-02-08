@@ -1,7 +1,7 @@
 package net.ion.framework.template;
 
 /**
- * Inner template, Outer templateÀ¸·Î ±¸¼ºµÇ¸ç inner templateÀº page tag¸¦ °¡Áú ¼ö ¾ø´Ù.
+ * Inner template, Outer templateìœ¼ë¡œ êµ¬ì„±ë˜ë©° inner templateì€ page tagë¥¼ ê°€ì§ˆ ìˆ˜ ì—†ë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0

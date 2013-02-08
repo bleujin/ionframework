@@ -1,7 +1,7 @@
 package net.ion.framework.template.tagext;
 
 /**
- * tagÀÇ ±âº» ¸ğµ¨
+ * tagì˜ ê¸°ë³¸ ëª¨ë¸
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -12,7 +12,7 @@ public interface Tag {
 	public static final int EVAL_PAGE = 6;
 
 	/**
-	 * template ³» tag »çÀÌ °èÃş °ü°è¸¦ ±¸¼ºÇÑ´Ù.
+	 * template ë‚´ tag ì‚¬ì´ ê³„ì¸µ ê´€ê³„ë¥¼ êµ¬ì„±í•œë‹¤.
 	 * 
 	 * @param tag
 	 *            Tag
@@ -22,7 +22,7 @@ public interface Tag {
 	public abstract Tag getParent();
 
 	/**
-	 * »ç¿ëÇÑ tag¸¦ Á¤¸®ÇÒ ¶§ ºÒ·¯Áø´Ù.
+	 * ì‚¬ìš©í•œ tagë¥¼ ì •ë¦¬í•  ë•Œ ë¶ˆëŸ¬ì§„ë‹¤.
 	 */
 	public abstract void release();
 }

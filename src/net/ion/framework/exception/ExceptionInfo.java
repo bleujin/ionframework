@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 import net.ion.framework.util.StackTrace;
 
 /**
- * Exception¿¡ ´ëÇØ ÇÊ¿äÇÑ Á¤º¸¸¦ °¡°øÇÏ¿© »ç¿ëÀ» ½±°Ô ÇØÁØ´Ù. ±âº»ÀûÀ¸·Î Exception ÀÎ½ºÅÏ½º, logger ÀÎ½ºÅÏ½º, exception ¸Ş¼¼Áö°¡ ÇÊ¿äÇÏ´Ù.
+ * Exceptionì— ëŒ€í•´ í•„ìš”í•œ ì •ë³´ë¥¼ ê°€ê³µí•˜ì—¬ ì‚¬ìš©ì„ ì‰½ê²Œ í•´ì¤€ë‹¤. ê¸°ë³¸ì ìœ¼ë¡œ Exception ì¸ìŠ¤í„´ìŠ¤, logger ì¸ìŠ¤í„´ìŠ¤, exception ë©”ì„¸ì§€ê°€ í•„ìš”í•˜ë‹¤.
  * 
  * @author Choi sei hwan <a href="mailto:sehan@i-on.net">Choi sei hwan</a>
  * @version 1.0
@@ -53,7 +53,7 @@ public class ExceptionInfo {
 	}
 
 	/**
-	 * Exception ¿¡ ´ëÇÑ Trace¸¦ ±â·ÏÇÑ´Ù. ±âº» stdout
+	 * Exception ì— ëŒ€í•œ Traceë¥¼ ê¸°ë¡í•œë‹¤. ê¸°ë³¸ stdout
 	 */
 	public void recordException() {
 		exception.printStackTrace();
@@ -64,7 +64,7 @@ public class ExceptionInfo {
 	}
 
 	/**
-	 * ExceptionÀÇ trace¸¦ °¡Á®¿Â´Ù.
+	 * Exceptionì˜ traceë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return String
 	 */

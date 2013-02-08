@@ -6,7 +6,7 @@ import java.util.HashMap;
  * Translation-time information associated with a taglib directive, and its underlying TLD file. Most of the information is directly from the TLD, except for the prefix and the uri values used in the taglib directive
  * 
  * <p>
- * Å×±× ¹­À½¿¡ °üÇÑ Á¤º¸ -> tld ÆÄÀÏ ÇÑ°³ÀÇ Á¤º¸
+ * í…Œê·¸ ë¬¶ìŒì— ê´€í•œ ì •ë³´ -> tld íŒŒì¼ í•œê°œì˜ ì •ë³´
  * </p>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -24,18 +24,18 @@ public class TagLibraryInfo {
 	private HashMap<String, TagInfo> tagInfoMapByCalssName;
 
 	/**
-	 * tag library Á¤º¸
+	 * tag library ì •ë³´
 	 * 
 	 * @param libName
-	 *            String labrary ÀÌ¸§
+	 *            String labrary ì´ë¦„
 	 * @param defaultPageTagName
-	 *            String ±âº» page tag handler ÀÌ¸§
+	 *            String ê¸°ë³¸ page tag handler ì´ë¦„
 	 * @param defaultTagName
-	 *            String ±âº» tag handler ÀÌ¸§
+	 *            String ê¸°ë³¸ tag handler ì´ë¦„
 	 * @param innerPageTagName
-	 *            String ±âº» inner page tag ÀÌ¸§
+	 *            String ê¸°ë³¸ inner page tag ì´ë¦„
 	 * @param tags
-	 *            TagInfo[] tag Á¤º¸
+	 *            TagInfo[] tag ì •ë³´
 	 */
 	public TagLibraryInfo(String libName, String defaultPageTagName, String defaultTagName, String innerPageTagName, TagInfo[] tags) {
 		this.name = libName;

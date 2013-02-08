@@ -1,7 +1,7 @@
 package net.ion.framework.template.data;
 
 /**
- * data key ¹­À½
+ * data key ë¬¶ìŒ
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -14,15 +14,15 @@ package net.ion.framework.template.data;
 
 public interface DataKeys {
 	/**
-	 * ÀüÃ¼ key Å©±â
+	 * ì „ì²´ key í¬ê¸°
 	 * 
 	 * @return int
 	 */
 	int size();
 
 	/**
-	 * ÀüÃ¼ key ¹­À½¿¡¼­ ÇØ´ç key°¡ ¸î ¹øÂ° indexÀÎÁö ¾Ë¾Æ³½´Ù.<br/>
-	 * ÀÚÁÖ ¾ï¼¼½º µÇ¹Ç·Î ¼º´ÉÀ» °í·ÁÇÏ¿© Àß ¸¸µé¾î¾ß ÇÑ´Ù.
+	 * ì „ì²´ key ë¬¶ìŒì—ì„œ í•´ë‹¹ keyê°€ ëª‡ ë²ˆì§¸ indexì¸ì§€ ì•Œì•„ë‚¸ë‹¤.<br/>
+	 * ìì£¼ ì–µì„¸ìŠ¤ ë˜ë¯€ë¡œ ì„±ëŠ¥ì„ ê³ ë ¤í•˜ì—¬ ì˜ ë§Œë“¤ì–´ì•¼ í•œë‹¤.
 	 * 
 	 * @param key
 	 * @return -1 if not found
@@ -30,8 +30,8 @@ public interface DataKeys {
 	int indexOf(Object key);
 
 	/**
-	 * ÀüÃ¼ key¿¡¼­ from¿¡¼­ to±îÁö key¸¦ ¹è¿­·Î ¸®ÅÏ<br/>
-	 * ¸®ÅÏ½Ã ¹İµå½Ã key¿¡ ÇØ´çÇÏ´Â classÀÇ array ÇüÅÂ·Î ¸®ÅÏÇØ¾ßÇÑ´Ù!
+	 * ì „ì²´ keyì—ì„œ fromì—ì„œ toê¹Œì§€ keyë¥¼ ë°°ì—´ë¡œ ë¦¬í„´<br/>
+	 * ë¦¬í„´ì‹œ ë°˜ë“œì‹œ keyì— í•´ë‹¹í•˜ëŠ” classì˜ array í˜•íƒœë¡œ ë¦¬í„´í•´ì•¼í•œë‹¤!
 	 * 
 	 * @param from
 	 * @param to

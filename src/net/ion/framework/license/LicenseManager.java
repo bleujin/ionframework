@@ -3,7 +3,7 @@ package net.ion.framework.license;
 import net.ion.framework.util.StackTrace;
 
 /**
- * license¸¦ ÀĞ¾î ¿Â´Ù.
+ * licenseë¥¼ ì½ì–´ ì˜¨ë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -18,7 +18,7 @@ public abstract class LicenseManager {
 	protected abstract String[] getLicenseActivationKeys();
 
 	/**
-	 * activation key Áß¿¡¼­ serial number¿¡ ÇØ´çÇÏ´Â Ã¹¹øÂ° °ÍÀ» °¡Á®¿Â´Ù.
+	 * activation key ì¤‘ì—ì„œ serial numberì— í•´ë‹¹í•˜ëŠ” ì²«ë²ˆì§¸ ê²ƒì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param serialNumber
 	 *            String
@@ -37,7 +37,7 @@ public abstract class LicenseManager {
 				break;
 			} catch (LicenseException ex) {
 				buf.append(ex.getMessage() + " ");
-				// ¿¡·¯°¡ ³ª¸é ´ÙÀ½ iteration ¿¡¼­ ´Ù½Ã ½Ãµµ.
+				// ì—ëŸ¬ê°€ ë‚˜ë©´ ë‹¤ìŒ iteration ì—ì„œ ë‹¤ì‹œ ì‹œë„.
 				// ex.printStackTrace();
 			}
 		}
@@ -51,7 +51,7 @@ public abstract class LicenseManager {
 	}
 
 	/**
-	 * serialNumber - activationKey°¡ À¯È¿ÇÑÁö Å×½ºÆ®ÇÑ´Ù.
+	 * serialNumber - activationKeyê°€ ìœ íš¨í•œì§€ í…ŒìŠ¤íŠ¸í•œë‹¤.
 	 * 
 	 * @param serialNumber
 	 *            String

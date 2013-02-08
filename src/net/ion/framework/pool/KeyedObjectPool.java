@@ -1,7 +1,7 @@
 package net.ion.framework.pool;
 
 /**
- * object¸¦ ÀÓÀÇÀÇ key·Î ºĞ·ùÇÏ¿© poolingÇÑ´Ù.
+ * objectë¥¼ ì„ì˜ì˜ keyë¡œ ë¶„ë¥˜í•˜ì—¬ poolingí•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -9,33 +9,33 @@ package net.ion.framework.pool;
 
 public interface KeyedObjectPool {
 	/**
-	 * pool¿¡ object¸¦ ³Ö´Â´Ù.
+	 * poolì— objectë¥¼ ë„£ëŠ”ë‹¤.
 	 * 
 	 * @param o
 	 */
 	public void addObject(Object key, Object o);
 
 	/**
-	 * pool¿¡¼­ object¸¦ °¡Á®¿Â´Ù.
+	 * poolì—ì„œ objectë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return null if not exists
 	 */
 	public Object getObject(Object key);
 
 	/**
-	 * »ç¿ëÇÑ object¸¦ ¹İ³³ÇÑ´Ù.
+	 * ì‚¬ìš©í•œ objectë¥¼ ë°˜ë‚©í•œë‹¤.
 	 * 
 	 * @param o
 	 */
 	public void releaseObject(Object key, Object o);
 
 	/**
-	 * poolÀÇ ¸ğµç object¸¦ Á¤¸®ÇÑ´Ù.
+	 * poolì˜ ëª¨ë“  objectë¥¼ ì •ë¦¬í•œë‹¤.
 	 */
 	public void clear();
 
 	/**
-	 * poolÀ» ¼Ò¸ê½ÃÅ²´Ù.
+	 * poolì„ ì†Œë©¸ì‹œí‚¨ë‹¤.
 	 */
 	public void destroy();
 

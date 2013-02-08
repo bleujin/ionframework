@@ -11,16 +11,16 @@ import org.xml.sax.InputSource;
 
 /**
  * <pre>
- * Configuration À» »ı¼ºÇÑ´Ù.
+ * Configuration ì„ ìƒì„±í•œë‹¤.
  * 
- * ConfigurationFactory ´Â Configuration ÀÎ½ºÅÏ½º¸¦ »ı¼ºÇÑ´Ù.
- * ConfiguartionFactory ´Â newInstance( String instanceKeyName )¿¡ ÀÇÇØ »ı¼ºµÇ¸ç KeyName À» °¡Áö°í ÀÖ°í »ı¼ºµÈ factory ´Â
- * ³»ºÎÀûÀ¸·Î ÀúÀåµÈ´Ù. ÇÑ¹ø»ı¼ºµÈ factory ´Â ´Ù½Ã »ı¼ºµÇÁö ¾Ê°í ÀÌ¹Ì»ı¼ºµÇ¾îÀÖ´ø ÀÎ½ºÅÏ½º¸¦ µ¹·ÁÁØ´Ù.
+ * ConfigurationFactory ëŠ” Configuration ì¸ìŠ¤í„´ìŠ¤ë¥¼ ìƒì„±í•œë‹¤.
+ * ConfiguartionFactory ëŠ” newInstance( String instanceKeyName )ì— ì˜í•´ ìƒì„±ë˜ë©° KeyName ì„ ê°€ì§€ê³  ìˆê³  ìƒì„±ëœ factory ëŠ”
+ * ë‚´ë¶€ì ìœ¼ë¡œ ì €ì¥ëœë‹¤. í•œë²ˆìƒì„±ëœ factory ëŠ” ë‹¤ì‹œ ìƒì„±ë˜ì§€ ì•Šê³  ì´ë¯¸ìƒì„±ë˜ì–´ìˆë˜ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ëŒë ¤ì¤€ë‹¤.
  * 
- * ConfigurationFactory »ı¼ºÇÏ±â
+ * ConfigurationFactory ìƒì„±í•˜ê¸°
  * 
  *      ConfigurationFactory factory = ConfigurationFactory.newInstance( keyname );
- *      factory.build( configurationFileName );  // xml ÆÄÀÏ ÀĞ¾îµéÀÌ±â
+ *      factory.build( configurationFileName );  // xml íŒŒì¼ ì½ì–´ë“¤ì´ê¸°
  * 
  * 
  * 
@@ -31,31 +31,31 @@ import org.xml.sax.InputSource;
  */
 
 public abstract class ConfigurationFactory {
-	// »ı¼ºµÈ ConfigurationFactory ÀÎ½ºÅÏ½º¸¦ ÀúÀåÇÏ´Â hashtable
+	// ìƒì„±ëœ ConfigurationFactory ì¸ìŠ¤í„´ìŠ¤ë¥¼ ì €ì¥í•˜ëŠ” hashtable
 	private static Hashtable<String, ConfigurationFactory> configurationFactoryCache = new Hashtable<String, ConfigurationFactory>();
 
-	// factoryÀÇ °íÀ¯ÀÌ¸§
+	// factoryì˜ ê³ ìœ ì´ë¦„
 	protected String instanceKeyName = null;
 
 	// protected ConfigurationType configurationType = null;
 
-	// ÇöÀç »ç¿ëµÇ°í ÀÖ´Â concrete ConfigurationFactory Å¬·¡½º ÇÃ ÆĞÅ°Áö¸í
+	// í˜„ì¬ ì‚¬ìš©ë˜ê³  ìˆëŠ” concrete ConfigurationFactory í´ë˜ìŠ¤ í”Œ íŒ¨í‚¤ì§€ëª…
 	private static ConfigurationFactoryType configurationFactoryType = ConfigurationFactoryType.DEFAULT;
 
 	/**
-	 * ConfigurationFactory ÀÎ½ºÅÏ½º¸¦ °¡Á®¿Â´Ù. Singleton ¹æ½ÄÀ¸·Î ÀÎ½ºÅÏ½º¸¦ °¡Á®¿Â´Ù.
+	 * ConfigurationFactory ì¸ìŠ¤í„´ìŠ¤ë¥¼ ê°€ì ¸ì˜¨ë‹¤. Singleton ë°©ì‹ìœ¼ë¡œ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param instanceKeyName
-	 *            String »ı¼ºÇÒ ÀÎ½ºÅÏ½º ÀÌ¸§
+	 *            String ìƒì„±í•  ì¸ìŠ¤í„´ìŠ¤ ì´ë¦„
 	 * @throws ConfigurationException
 	 * @return ConfigurationFactory
 	 */
 	public static ConfigurationFactory getInstance(String instanceKeyName) throws ConfigurationException {
-		// ÀÌ¹Ì »ı¼ºµÇ¾îÀÖ´Â ÀÎ½ºÅÏ½º°¡ ÀÖ´ÂÁö Ã£¾Æº»´Ù.
+		// ì´ë¯¸ ìƒì„±ë˜ì–´ìˆëŠ” ì¸ìŠ¤í„´ìŠ¤ê°€ ìˆëŠ”ì§€ ì°¾ì•„ë³¸ë‹¤.
 		ConfigurationFactory instance = (ConfigurationFactory) configurationFactoryCache.get(instanceKeyName);
 
 		if (instance == null) {
-			// Ã£Áö ¸øÇÏ¿´À¸¸é »õ·Î »ı¼ºÇÑ´Ù.
+			// ì°¾ì§€ ëª»í•˜ì˜€ìœ¼ë©´ ìƒˆë¡œ ìƒì„±í•œë‹¤.
 			try {
 				Constructor<?> constructor = Class.forName(configurationFactoryType.getClassName()).getConstructor(new Class[] { String.class });
 				instance = (ConfigurationFactory) (constructor.newInstance(new Object[] { instanceKeyName }));
@@ -63,7 +63,7 @@ public abstract class ConfigurationFactory {
 				throw new ConfigurationException("ConfigurationFactory instance not Create : " + ex.getLocalizedMessage(), ex);
 			}
 
-			// »õ·Î »ı¼ºÇÑ ÀÎ½ºÅÏ½º¸¦ º¸°üÇÑ´Ù.
+			// ìƒˆë¡œ ìƒì„±í•œ ì¸ìŠ¤í„´ìŠ¤ë¥¼ ë³´ê´€í•œë‹¤.
 			configurationFactoryCache.put(instanceKeyName, instance);
 		}
 
@@ -71,10 +71,10 @@ public abstract class ConfigurationFactory {
 	}
 
 	/**
-	 * filename ¿¡ ÇØ´çÇÏ´Â xml config Á¤º¸¸¦ ÀĞ¾îµéÀÎ´Ù.
+	 * filename ì— í•´ë‹¹í•˜ëŠ” xml config ì •ë³´ë¥¼ ì½ì–´ë“¤ì¸ë‹¤.
 	 * 
 	 * @param filename
-	 *            String È¯°æ¼³Á¤¿¡ »ç¿ëµÉ XML ÆÄÀÏ°æ·Î
+	 *            String í™˜ê²½ì„¤ì •ì— ì‚¬ìš©ë  XML íŒŒì¼ê²½ë¡œ
 	 * @throws ConfigurationBuildException
 	 */
 	public void build(String filename) throws ConfigurationBuildException {
@@ -82,10 +82,10 @@ public abstract class ConfigurationFactory {
 	}
 
 	/**
-	 * File Class À» ÅëÇØ¼­ xml config Á¤º¸¸¦ ÀĞ¾îµéÀÎ´Ù.
+	 * File Class ì„ í†µí•´ì„œ xml config ì •ë³´ë¥¼ ì½ì–´ë“¤ì¸ë‹¤.
 	 * 
 	 * @param configFile
-	 *            File È¯°æ¼³Á¤¿¡ »ç¿ëµÉ FILE Class
+	 *            File í™˜ê²½ì„¤ì •ì— ì‚¬ìš©ë  FILE Class
 	 * @throws ConfigurationBuildException
 	 */
 	public void build(File configFile) throws ConfigurationBuildException {
@@ -100,10 +100,10 @@ public abstract class ConfigurationFactory {
 	}
 
 	/**
-	 * InputStream À» ÅëÇØ¼­ xml config Á¤º¸¸¦ ÀĞµéÀÎ´Ù.
+	 * InputStream ì„ í†µí•´ì„œ xml config ì •ë³´ë¥¼ ì½ë“¤ì¸ë‹¤.
 	 * 
 	 * @param inputstream
-	 *            InputStream È¯°æ¼³Á¤¿¡ »ç¿ëµÉ InputStream Class
+	 *            InputStream í™˜ê²½ì„¤ì •ì— ì‚¬ìš©ë  InputStream Class
 	 * @throws ConfigurationBuildException
 	 */
 	public void build(InputStream inputstream) throws ConfigurationBuildException {
@@ -111,19 +111,19 @@ public abstract class ConfigurationFactory {
 	}
 
 	/**
-	 * inputsource ¸¦ ÅëÇØ¼­ xml config Á¤º¸¸¦ ÀĞ¾îµéÀÎ´Ù.
+	 * inputsource ë¥¼ í†µí•´ì„œ xml config ì •ë³´ë¥¼ ì½ì–´ë“¤ì¸ë‹¤.
 	 * 
 	 * @param inputsource
-	 *            InputSource È¯°æ¼³Á¤¿¡ »ç¿ëµÉ InputSource Class
+	 *            InputSource í™˜ê²½ì„¤ì •ì— ì‚¬ìš©ë  InputSource Class
 	 * @throws ConfigurationBuildException
 	 */
 	public abstract void build(InputSource inputsource) throws ConfigurationBuildException;
 
 	/**
-	 * elementPathString¿¡ ÇØ´çÇÏ´Â Configuration ÀÎ½ºÅÏ½º¸¦ °¡Á®¿Â´Ù.
+	 * elementPathStringì— í•´ë‹¹í•˜ëŠ” Configuration ì¸ìŠ¤í„´ìŠ¤ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param elementPathString
-	 *            String °¡Á®¿Ã Configuration ÀÎ½ºÅÏ½ºÀÇ path ¹®ÀÚ¿­
+	 *            String ê°€ì ¸ì˜¬ Configuration ì¸ìŠ¤í„´ìŠ¤ì˜ path ë¬¸ìì—´
 	 * @throws NotFoundXmlTagException
 	 * @throws NotBuildException
 	 * @throws ConfigurationException
@@ -132,10 +132,10 @@ public abstract class ConfigurationFactory {
 	public abstract Configuration getConfiguration(String elementPathString) throws NotFoundXmlTagException, NotBuildException, ConfigurationException;
 
 	/**
-	 * elementPathString¿¡ ÇØ´çÇÏ´Â Configuration ÀÎ½ºÅÏ½ºµéÀ» °¡Á®¿Â´Ù.
+	 * elementPathStringì— í•´ë‹¹í•˜ëŠ” Configuration ì¸ìŠ¤í„´ìŠ¤ë“¤ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param elementPathString
-	 *            String °¡Á®¿Ã Configuration ÀÎ½ºÅÏ½ºÀÇ path ¹®ÀÚ¿­
+	 *            String ê°€ì ¸ì˜¬ Configuration ì¸ìŠ¤í„´ìŠ¤ì˜ path ë¬¸ìì—´
 	 * @throws NotFoundXmlTagException
 	 * @throws NotBuildException
 	 * @throws ConfigurationException
@@ -144,9 +144,9 @@ public abstract class ConfigurationFactory {
 	public abstract Configuration[] getConfigurations(String elementPathString) throws NotFoundXmlTagException, NotBuildException, ConfigurationException;
 
 	// /**
-	// * ÇöÀç Factory ÀÇ Å¬·¡½ºÀÌ¸§ ¼³Á¤ÇÏ±â
+	// * í˜„ì¬ Factory ì˜ í´ë˜ìŠ¤ì´ë¦„ ì„¤ì •í•˜ê¸°
 	// *
-	// * @param className - Factory Å¬·¡½º ¸í
+	// * @param className - Factory í´ë˜ìŠ¤ ëª…
 	// */
 	// public static void setClassName( String className )
 	// {
@@ -154,9 +154,9 @@ public abstract class ConfigurationFactory {
 	// }
 	//
 	// /**
-	// * ÇöÀç Factory ÀÇ Å¬·¡½ºÀÌ¸§ °¡Á®¿À±â
+	// * í˜„ì¬ Factory ì˜ í´ë˜ìŠ¤ì´ë¦„ ê°€ì ¸ì˜¤ê¸°
 	// *
-	// * @return ÇöÀç Factory ÀÇ Å¬·¡½ºÀÌ¸§
+	// * @return í˜„ì¬ Factory ì˜ í´ë˜ìŠ¤ì´ë¦„
 	// */
 	// public static String getClassName()
 	// {
@@ -164,7 +164,7 @@ public abstract class ConfigurationFactory {
 	// }
 
 	/**
-	 * ÇöÀç Factory¿¡¼­ »ı¼ºÇÏ´Â Configuration ÀÇ Type ¼³Á¤ÇÏ±â
+	 * í˜„ì¬ Factoryì—ì„œ ìƒì„±í•˜ëŠ” Configuration ì˜ Type ì„¤ì •í•˜ê¸°
 	 * 
 	 * @param configType
 	 */
@@ -174,9 +174,9 @@ public abstract class ConfigurationFactory {
 	// }
 
 	/**
-	 * ÇöÀç Factory¿¡¼­ »ı¼ºÇÏ´Â Configuration ÀÇ Type °¡Á®¿À±â
+	 * í˜„ì¬ Factoryì—ì„œ ìƒì„±í•˜ëŠ” Configuration ì˜ Type ê°€ì ¸ì˜¤ê¸°
 	 * 
-	 * @return ConfiguraitonType. ±âº»°ªÀº Configuration.DEFAULT
+	 * @return ConfiguraitonType. ê¸°ë³¸ê°’ì€ Configuration.DEFAULT
 	 */
 	// public ConfigurationType getConfigurationType()
 	// {
@@ -184,7 +184,7 @@ public abstract class ConfigurationFactory {
 	// }
 
 	/**
-	 * ConfigurationFactory ÀÇ InstanceKey ÀÌ¸§À» °¡Á®¿Â´Ù.
+	 * ConfigurationFactory ì˜ InstanceKey ì´ë¦„ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return String
 	 */

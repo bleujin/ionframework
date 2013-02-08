@@ -14,7 +14,7 @@ import net.ion.framework.util.DoubleKeyHashMap;
 import net.ion.framework.util.HttpUtils;
 
 /**
- * ÅÛÇÃ¸´¿¡¼­ ¿¹¿Ü ¹ß»ı½Ã ¿¹¿Ü ¿øÀÎ°ú ¿¹¿Ü ÁöÁ¡À» html·Î º¸°íÇÑ´Ù.
+ * í…œí”Œë¦¿ì—ì„œ ì˜ˆì™¸ ë°œìƒì‹œ ì˜ˆì™¸ ì›ì¸ê³¼ ì˜ˆì™¸ ì§€ì ì„ htmlë¡œ ë³´ê³ í•œë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -35,22 +35,22 @@ public class ExceptionTracer {
 	}
 
 	/**
-	 * ¿¹¿Ü º¸°í¼­¸¦ ÀÛ¼ºÇÑ´Ù. (¼Ò½º ÇÏÀÌ¶óÀÌÆ®)
+	 * ì˜ˆì™¸ ë³´ê³ ì„œë¥¼ ì‘ì„±í•œë‹¤. (ì†ŒìŠ¤ í•˜ì´ë¼ì´íŠ¸)
 	 * 
 	 * @param c
-	 *            ExceptionCause ¿¹¿Ü ¿øÀÎ
-	 * @return String HTML Çü½ÄÀÇ º¸°í¼­
+	 *            ExceptionCause ì˜ˆì™¸ ì›ì¸
+	 * @return String HTML í˜•ì‹ì˜ ë³´ê³ ì„œ
 	 */
 	public static String traceTemplate(ExceptionCause c) {
 		return traceTemplate(new ExceptionCause[] { c });
 	}
 
 	/**
-	 * ¿¹¿Ü º¸°í¼­¸¦ ÀÛ¼ºÇÑ´Ù. (¼Ò½º ÇÏÀÌ¶óÀÌÆ®)
+	 * ì˜ˆì™¸ ë³´ê³ ì„œë¥¼ ì‘ì„±í•œë‹¤. (ì†ŒìŠ¤ í•˜ì´ë¼ì´íŠ¸)
 	 * 
 	 * @param cs
-	 *            ExceptionCause[] ¿¹¿Ü ¿øÀÎ
-	 * @return String HTML Çü½ÄÀÇ º¸°í¼­
+	 *            ExceptionCause[] ì˜ˆì™¸ ì›ì¸
+	 * @return String HTML í˜•ì‹ì˜ ë³´ê³ ì„œ
 	 */
 	@SuppressWarnings("unchecked")
 	public static String traceTemplate(ExceptionCause[] cs) {
@@ -59,7 +59,7 @@ public class ExceptionTracer {
 		HashSet<String> tplTextSet = new LinkedHashSet<String>();
 		DoubleKeyHashMap tplMarkMap = new DoubleKeyHashMap();
 
-		// template text,mark ¾ò±â
+		// template text,mark ì–»ê¸°
 		for (int i = 0, length = cs.length; i < length; ++i) {
 			String text = cs[i].getTemplate().getTemplateText();
 			Marker mark = cs[i].getMark();
@@ -69,7 +69,7 @@ public class ExceptionTracer {
 				tplMarkMap.put(text, mark, new Integer(i));
 		}
 
-		// highlight ¿Í ÇÔ²² html·Î ¹Ù²Ù±â
+		// highlight ì™€ í•¨ê»˜ htmlë¡œ ë°”ê¾¸ê¸°
 		Iterator<String> it = tplTextSet.iterator();
 		while (it.hasNext()) {
 			String tplText = (String) it.next();
@@ -111,7 +111,7 @@ public class ExceptionTracer {
 
 			// layout
 			{
-				// ÁÙ´ÜÀ§·Î ºĞ¸®
+				// ì¤„ë‹¨ìœ„ë¡œ ë¶„ë¦¬
 				tplText = newText.toString();
 				ArrayList<String> lineTextList = new ArrayList<String>();
 				int length = tplText.length();
@@ -138,7 +138,7 @@ public class ExceptionTracer {
 					unitTpl.append(i + 1); // line number
 					unitTpl.append("</font>&nbsp</td>");
 
-					// line highlight °áÁ¤
+					// line highlight ê²°ì •
 					if (lineNumber.contains(new Integer(i + 1))) {
 						unitTpl.append("<td style='background-color:" + COLOR_LINE_BG + "'><span style='color:" + COLOR_LINE_FG + "'>&nbsp;");
 					} else {
@@ -150,7 +150,7 @@ public class ExceptionTracer {
 				}
 				unitTpl.append("</table></td></tr></table>");
 
-				// traced µÈ template ÇÑ °³
+				// traced ëœ template í•œ ê°œ
 				buff.append(unitTpl.toString());
 			}
 			buff.append("<br/>");
@@ -160,22 +160,22 @@ public class ExceptionTracer {
 	}
 
 	/**
-	 * ¿¹¿Ü º¸°í¼­¸¦ ÀÛ¼ºÇÑ´Ù. (¿¹¿Ü¸Ş¼¼Áö,¶óÀÎ¹øÈ£)
+	 * ì˜ˆì™¸ ë³´ê³ ì„œë¥¼ ì‘ì„±í•œë‹¤. (ì˜ˆì™¸ë©”ì„¸ì§€,ë¼ì¸ë²ˆí˜¸)
 	 * 
 	 * @param c
-	 *            ExceptionCause ¿¹¿Ü ¿øÀÎ
-	 * @return String HTML Çü½Ä º¸°í¼­
+	 *            ExceptionCause ì˜ˆì™¸ ì›ì¸
+	 * @return String HTML í˜•ì‹ ë³´ê³ ì„œ
 	 */
 	public static String traceCause(ExceptionCause c) {
 		return traceCause(new ExceptionCause[] { c });
 	}
 
 	/**
-	 * ¿¹¿Ü º¸°í¼­¸¦ ÀÛ¼ºÇÑ´Ù. (¿¹¿Ü¸Ş¼¼Áö,¶óÀÎ¹øÈ£)
+	 * ì˜ˆì™¸ ë³´ê³ ì„œë¥¼ ì‘ì„±í•œë‹¤. (ì˜ˆì™¸ë©”ì„¸ì§€,ë¼ì¸ë²ˆí˜¸)
 	 * 
 	 * @param cs
-	 *            ExceptionCause[] ¿¹¿Ü ¿øÀÎ
-	 * @return String HTML Çü½Ä º¸°í¼­
+	 *            ExceptionCause[] ì˜ˆì™¸ ì›ì¸
+	 * @return String HTML í˜•ì‹ ë³´ê³ ì„œ
 	 */
 	public static String traceCause(ExceptionCause[] cs) {
 		StringBuffer buf = new StringBuffer();

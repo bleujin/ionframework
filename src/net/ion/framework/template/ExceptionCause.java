@@ -3,7 +3,7 @@ package net.ion.framework.template;
 import net.ion.framework.template.parse.Marker;
 
 /**
- * ¿¹¿Ü°¡ ¹ß»ıµÇ¾úÀ» ¶§ º¸°í¼­¸¦ ¸¸µé±â À§ÇÑ Á¤º¸ Å¬·¡½º
+ * ì˜ˆì™¸ê°€ ë°œìƒë˜ì—ˆì„ ë•Œ ë³´ê³ ì„œë¥¼ ë§Œë“¤ê¸° ìœ„í•œ ì •ë³´ í´ë˜ìŠ¤
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -15,9 +15,9 @@ class ExceptionCause {
 
 	/**
 	 * @param template
-	 *            Template ¿¹¿Ü°¡ ¹ß»ıÇÑ ÅÛÇÃ¸´
+	 *            Template ì˜ˆì™¸ê°€ ë°œìƒí•œ í…œí”Œë¦¿
 	 * @param cause
-	 *            Throwable ¿¹¿Ü ¿øÀÎ
+	 *            Throwable ì˜ˆì™¸ ì›ì¸
 	 */
 	public ExceptionCause(Template template, Throwable cause) {
 		this.template = template;
@@ -30,21 +30,21 @@ class ExceptionCause {
 	}
 
 	/**
-	 * @return Template ¿¹¿Ü°¡ ¹ß»ıÇÑ ÅÛÇÃ¸´
+	 * @return Template ì˜ˆì™¸ê°€ ë°œìƒí•œ í…œí”Œë¦¿
 	 */
 	public Template getTemplate() {
 		return template;
 	}
 
 	/**
-	 * @return Marker ¿¹¿Ü ÁöÁ¡
+	 * @return Marker ì˜ˆì™¸ ì§€ì 
 	 */
 	public Marker getMark() {
 		return mark;
 	}
 
 	/**
-	 * @return Throwable ¿¹¿Ü ¿øÀÎ
+	 * @return Throwable ì˜ˆì™¸ ì›ì¸
 	 */
 	public Throwable getCause() {
 		return cause;

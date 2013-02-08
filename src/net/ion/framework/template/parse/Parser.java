@@ -2,8 +2,8 @@ package net.ion.framework.template.parse;
 
 
 /**
- * parser Ãß»ó ±¸Çö <br/>
- * parser¸¦ ¸¸µé ¶§ »ó¼ÓÇÏ¿© ±¸ÇöÇÑ´Ù.
+ * parser ì¶”ìƒ êµ¬í˜„ <br/>
+ * parserë¥¼ ë§Œë“¤ ë•Œ ìƒì†í•˜ì—¬ êµ¬í˜„í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -13,13 +13,13 @@ public abstract class Parser {
 	private int parsingPoint = 0;
 
 	/**
-	 * ÁÖÀÇ:»ı¼ºÇÑµÚ initialize()¸¦ invokeÇÑ µÚ »ç¿ëÇÑ´Ù.
+	 * ì£¼ì˜:ìƒì„±í•œë’¤ initialize()ë¥¼ invokeí•œ ë’¤ ì‚¬ìš©í•œë‹¤.
 	 */
 	public Parser() {
 	}
 
 	/**
-	 * parsingÇÏ°íÀÚ ÇÏ´Â stringÀ» ¼³Á¤ÇÑ´Ù. parsingPoint´Â resetµÈ´Ù.
+	 * parsingí•˜ê³ ì í•˜ëŠ” stringì„ ì„¤ì •í•œë‹¤. parsingPointëŠ” resetëœë‹¤.
 	 * 
 	 * @param text
 	 */
@@ -29,7 +29,7 @@ public abstract class Parser {
 	}
 
 	/**
-	 * Àç »ç¿ëÀ» À§ÇØ releaseÇÑ´Ù.
+	 * ì¬ ì‚¬ìš©ì„ ìœ„í•´ releaseí•œë‹¤.
 	 */
 	public void release() {
 		this.text = null;
@@ -38,17 +38,17 @@ public abstract class Parser {
 	}
 
 	/**
-	 * parsingÇÏ°íÀÚ ÇÏ´Â stringÀ» ¼³Á¤ÇÑ´Ù. parsingPoint´Â resetµÈ´Ù.
+	 * parsingí•˜ê³ ì í•˜ëŠ” stringì„ ì„¤ì •í•œë‹¤. parsingPointëŠ” resetëœë‹¤.
 	 * 
 	 * @param mark
-	 *            mark.getParsedString()ÀÌ parsing ÇÏ·Á´Â stringÀ¸·Î ¼³Á¤µÈ´Ù.
+	 *            mark.getParsedString()ì´ parsing í•˜ë ¤ëŠ” stringìœ¼ë¡œ ì„¤ì •ëœë‹¤.
 	 */
 	public void initialize(Marker mark) {
 		initialize(mark.getValue());
 	}
 
 	/**
-	 * parsing ´ë»ó ¹®ÀÚ¿­(text) ¸¦ °¡Á®¿Â´Ù.
+	 * parsing ëŒ€ìƒ ë¬¸ìì—´(text) ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return
 	 */
@@ -57,10 +57,10 @@ public abstract class Parser {
 	}
 
 	/**
-	 * parsingÀ» ½ÃÀÛÇÒ À§Ä¡¸¦ ÁöÁ¤ÇÑ´Ù. mark°¡ nullÀÏ °æ¿ì textÀÇ ¸¶Áö¸· À§Ä¡+1À» °¡¸£Å²´Ù.
+	 * parsingì„ ì‹œì‘í•  ìœ„ì¹˜ë¥¼ ì§€ì •í•œë‹¤. markê°€ nullì¼ ê²½ìš° textì˜ ë§ˆì§€ë§‰ ìœ„ì¹˜+1ì„ ê°€ë¥´í‚¨ë‹¤.
 	 * 
 	 * @param mark
-	 *            markÀÇ endIndex+1 ¸¦ ´ÙÀ½ parsingÀÇ ½ÃÀÛ À§Ä¡·Î ÇÑ´Ù.
+	 *            markì˜ endIndex+1 ë¥¼ ë‹¤ìŒ parsingì˜ ì‹œì‘ ìœ„ì¹˜ë¡œ í•œë‹¤.
 	 */
 	public void setParsingPoint(Marker mark) {
 		if (mark == null) {
@@ -71,17 +71,17 @@ public abstract class Parser {
 	}
 
 	/**
-	 * parsingÀ» ½ÃÀÛÇÒ À§Ä¡¸¦ ÁöÁ¤ÇÑ´Ù.
+	 * parsingì„ ì‹œì‘í•  ìœ„ì¹˜ë¥¼ ì§€ì •í•œë‹¤.
 	 * 
 	 * @param index
-	 *            ½ÃÀÛ À§Ä¡
+	 *            ì‹œì‘ ìœ„ì¹˜
 	 */
 	public void setParsingPoint(int index) {
 		this.parsingPoint = index;
 	}
 
 	/**
-	 * parsingÀ» ½ÃÀÛÇÒ À§Ä¡¸¦ ¸®ÅÏÇÑ´Ù.
+	 * parsingì„ ì‹œì‘í•  ìœ„ì¹˜ë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @return
 	 */
@@ -90,7 +90,7 @@ public abstract class Parser {
 	}
 
 	/**
-	 * ÇöÀç À§Ä¡¿¡¼­ parsingÀ» ½ÃÀÛÇÏ¿© Ã£Àº Á¤º¸¸¦ ¸®ÅÏÇÑ´Ù. (ÇöÀç À§Ä¡´Â Ã£Àº À§Ä¡·Î ¾÷µ¥ÀÌÆ®µÈ´Ù.)
+	 * í˜„ì¬ ìœ„ì¹˜ì—ì„œ parsingì„ ì‹œì‘í•˜ì—¬ ì°¾ì€ ì •ë³´ë¥¼ ë¦¬í„´í•œë‹¤. (í˜„ì¬ ìœ„ì¹˜ëŠ” ì°¾ì€ ìœ„ì¹˜ë¡œ ì—…ë°ì´íŠ¸ëœë‹¤.)
 	 * 
 	 * @return null if no more parsing data
 	 * @throws ParserException

@@ -7,9 +7,9 @@ import net.ion.framework.util.SerializedString;
 import net.ion.framework.util.SerializedStringException;
 
 /**
- * ÀÓÀÇÀÇ license °´Ã¼¸¦ serialization ÇÑÈÄ ´Ù½Ã deserialization ÇÏ±â À§ÇØ¼± °´Ã¼¸¦ ±¸¼ºÇÑ license class¸¦ ÇÊ¿ä·Î ÇÑ´Ù. Å¬¶óÀÌ¾ğÆ®°¡ ÇöÀç ¾î¶°ÇÑ license class¸¦ °¡Áö°í ÀÖ´ÂÁö °ü°è¾øÀÌ ÀÚÀ¯·Ó°Ô license class¸¦ ±¸ÇöÇÏ·Á¸é license class ÀÚÃ¼¸¦ serialization ÇÏ¿© º°µµ·Î Á¦°øÇØÁà¾ßÇÏ´Âµ¥ PortableLicense°¡ ÀÌ·¯ÇÑ ¿ªÇÒÀ» ÇÑ´Ù.
+ * ì„ì˜ì˜ license ê°ì²´ë¥¼ serialization í•œí›„ ë‹¤ì‹œ deserialization í•˜ê¸° ìœ„í•´ì„  ê°ì²´ë¥¼ êµ¬ì„±í•œ license classë¥¼ í•„ìš”ë¡œ í•œë‹¤. í´ë¼ì´ì–¸íŠ¸ê°€ í˜„ì¬ ì–´ë– í•œ license classë¥¼ ê°€ì§€ê³  ìˆëŠ”ì§€ ê´€ê³„ì—†ì´ ììœ ë¡­ê²Œ license classë¥¼ êµ¬í˜„í•˜ë ¤ë©´ license class ìì²´ë¥¼ serialization í•˜ì—¬ ë³„ë„ë¡œ ì œê³µí•´ì¤˜ì•¼í•˜ëŠ”ë° PortableLicenseê°€ ì´ëŸ¬í•œ ì—­í• ì„ í•œë‹¤.
  * 
- * Target License¸¦ ÀÌ Å¬·¡½º·Î Æ÷ÀåÇÏ°í serialization ÇØ¹ö¸®¸é º°µµÀÇ Target License class ÀÇ class loading Ã³¸®¸¦ ÇÏÁö ¾Ê°í(ÀÌ Å¬·¡½º ÀÚÃ¼°¡ Ã³¸®ÇØÁÜ) License¸¦ ¹ŞÀº ÄÄÇ»ÅÍ¿¡¼­ deserializingÇÒ ¼ö ÀÖ´Ù.
+ * Target Licenseë¥¼ ì´ í´ë˜ìŠ¤ë¡œ í¬ì¥í•˜ê³  serialization í•´ë²„ë¦¬ë©´ ë³„ë„ì˜ Target License class ì˜ class loading ì²˜ë¦¬ë¥¼ í•˜ì§€ ì•Šê³ (ì´ í´ë˜ìŠ¤ ìì²´ê°€ ì²˜ë¦¬í•´ì¤Œ) Licenseë¥¼ ë°›ì€ ì»´í“¨í„°ì—ì„œ deserializingí•  ìˆ˜ ìˆë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -23,7 +23,7 @@ public final class PortableLicense implements License {
 
 	/**
 	 * @param targetLicense
-	 *            License warppingÇÒ license °´Ã¼
+	 *            License warppingí•  license ê°ì²´
 	 * @throws LicenseException
 	 */
 	public PortableLicense(License targetLicense) throws LicenseException {

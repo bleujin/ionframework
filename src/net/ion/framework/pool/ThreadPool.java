@@ -7,7 +7,7 @@ import net.ion.framework.logging.LogBroker;
 import net.ion.framework.util.StackTrace;
 
 /**
- * thread¸¦ ºó¹øÇÏ°Ô »ı¼º½ÃÅ°´Â ÀÛ¾÷Àº ½Ã½ºÅÛ¿¡ ºÎ´ãÀ» ¸¹ÀÌÁÖ¹Ç·Î poolingÇÒ °æ¿ì È¿°úÀûÀ¸·Î ¼º´ÉÀ» Çâ»ó½ÃÅ³ ¼ö ÀÖ´Ù. ¹Ì¸® Á¤ÇÑ ¼ö ¸¸Å­ thread¸¦ »ı¼ºÇÏ¿© ÁØºñ »óÅÂ·Î ÀÖ´Ù°¡ threadÀÇ ¿ä±¸¿¡ µû¶ó ÁØºñµÈ thread¸¦ ¸®ÅÏÇÏ¿© »õ·Î¿î threadÀÇ »ı¼ºÀ» ¸·°í »ç¿ëÀÌ ³¡³ª¸é pool¿¡ ¹İÈ¯ÇÏ¿© ´ÙÀ½¿¡ °è¼Ó»ç¿ëÇÑ´Ù.
+ * threadë¥¼ ë¹ˆë²ˆí•˜ê²Œ ìƒì„±ì‹œí‚¤ëŠ” ì‘ì—…ì€ ì‹œìŠ¤í…œì— ë¶€ë‹´ì„ ë§ì´ì£¼ë¯€ë¡œ poolingí•  ê²½ìš° íš¨ê³¼ì ìœ¼ë¡œ ì„±ëŠ¥ì„ í–¥ìƒì‹œí‚¬ ìˆ˜ ìˆë‹¤. ë¯¸ë¦¬ ì •í•œ ìˆ˜ ë§Œí¼ threadë¥¼ ìƒì„±í•˜ì—¬ ì¤€ë¹„ ìƒíƒœë¡œ ìˆë‹¤ê°€ threadì˜ ìš”êµ¬ì— ë”°ë¼ ì¤€ë¹„ëœ threadë¥¼ ë¦¬í„´í•˜ì—¬ ìƒˆë¡œìš´ threadì˜ ìƒì„±ì„ ë§‰ê³  ì‚¬ìš©ì´ ëë‚˜ë©´ poolì— ë°˜í™˜í•˜ì—¬ ë‹¤ìŒì— ê³„ì†ì‚¬ìš©í•œë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -26,13 +26,13 @@ public class ThreadPool {
 
 	/**
 	 * @param poolName
-	 *            String pool ÀÌ¸§
+	 *            String pool ì´ë¦„
 	 * @param numberOfThreads
-	 *            int ÃÊ±â »ı¼ºÇÒ thread ¼ö
+	 *            int ì´ˆê¸° ìƒì„±í•  thread ìˆ˜
 	 * @param threadPriority
-	 *            int thread ¿ì¼± ¼øÀ§ (1~10, Å¬¼ö·Ï ³ô´Ù)
+	 *            int thread ìš°ì„  ìˆœìœ„ (1~10, í´ìˆ˜ë¡ ë†’ë‹¤)
 	 * @param daemonThread
-	 *            boolean daemonThread ¿©ºÎ (true if ÇÁ·Î±×·¥ÀÌ Á¾·áµÉ °æ¿ì ÇöÀç threadÀÇ µ¿ÀÛ ¿©ºÎ¿¡ »ó°ü¾øÀÌ Á¤ÁöÇÔ,false if Çö thread°¡ ¿ÏÀüÈ÷ Á¾·áµÉ ¶§ ±îÁö main thread°¡ blockingµÈ´Ù.)
+	 *            boolean daemonThread ì—¬ë¶€ (true if í”„ë¡œê·¸ë¨ì´ ì¢…ë£Œë  ê²½ìš° í˜„ì¬ threadì˜ ë™ì‘ ì—¬ë¶€ì— ìƒê´€ì—†ì´ ì •ì§€í•¨,false if í˜„ threadê°€ ì™„ì „íˆ ì¢…ë£Œë  ë•Œ ê¹Œì§€ main threadê°€ blockingëœë‹¤.)
 	 */
 	public ThreadPool(String poolName, int numberOfThreads, int threadPriority, boolean daemonThread) {
 		this.poolName = poolName;
@@ -51,7 +51,7 @@ public class ThreadPool {
 	}
 
 	/**
-	 * poolÀ» Á¾·áÇÑ´Ù.
+	 * poolì„ ì¢…ë£Œí•œë‹¤.
 	 */
 	public synchronized void destroy() {
 		for (int i = 0; i < suites.length; ++i) {
@@ -66,8 +66,8 @@ public class ThreadPool {
 	}
 
 	/**
-	 * targer runnableÀ» ½ÇÇàÇÑ´Ù.<br/>
-	 * (ÁÖÀÇ: Áï½Ã ½ÇÇàÇÏÁö ¾Ê°í ´ë±âÅ¥¿¡ ³Ö¾î Ã³¸®µÈ´Ù.)
+	 * targer runnableì„ ì‹¤í–‰í•œë‹¤.<br/>
+	 * (ì£¼ì˜: ì¦‰ì‹œ ì‹¤í–‰í•˜ì§€ ì•Šê³  ëŒ€ê¸°íì— ë„£ì–´ ì²˜ë¦¬ëœë‹¤.)
 	 * 
 	 * @param target
 	 *            Runnable
@@ -80,7 +80,7 @@ public class ThreadPool {
 	}
 
 	/**
-	 * pool ÀÌ¸§
+	 * pool ì´ë¦„
 	 * 
 	 * @return String
 	 */
@@ -89,7 +89,7 @@ public class ThreadPool {
 	}
 
 	/**
-	 * ´ë±â runnable ¼ö
+	 * ëŒ€ê¸° runnable ìˆ˜
 	 * 
 	 * @return int
 	 */
@@ -100,7 +100,7 @@ public class ThreadPool {
 	}
 
 	/**
-	 * @return thread pool ¿¡¼­ ½ÇÇà ÁßÀÎ runnable °´Ã¼¸¦ ¸®ÅÏÇÑ´Ù. (nullÀÌ Æ÷ÇÔµÉ ¼ö ÀÖ´Ù.)
+	 * @return thread pool ì—ì„œ ì‹¤í–‰ ì¤‘ì¸ runnable ê°ì²´ë¥¼ ë¦¬í„´í•œë‹¤. (nullì´ í¬í•¨ë  ìˆ˜ ìˆë‹¤.)
 	 */
 	public Runnable[] _getCurrentTargets() {
 		Runnable[] rs = new Runnable[suites.length];
@@ -149,7 +149,7 @@ public class ThreadPool {
 						target = null;
 					} catch (Exception ne) {
 						synchronized (waitingLine) {
-							waitingLine.wait(1000 * 60); // 1ºĞ¿¡ ÇÑ¹ø¾¿ ±ú¾î³­´Ù. È¤½Ã³ª dead lock °É¸±±î ÇÏ´Â ¿°·Á ¤Ñ.¤Ñ"
+							waitingLine.wait(1000 * 60); // 1ë¶„ì— í•œë²ˆì”© ê¹¨ì–´ë‚œë‹¤. í˜¹ì‹œë‚˜ dead lock ê±¸ë¦´ê¹Œ í•˜ëŠ” ì—¼ë ¤ ã…¡.ã…¡"
 						}
 					}
 				}

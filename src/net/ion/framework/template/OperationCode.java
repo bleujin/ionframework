@@ -3,35 +3,35 @@ package net.ion.framework.template;
 import java.util.ArrayList;
 
 /**
- * ÅØ½ºÆ® ÅÛÇÃ¸´¿¡¼­ ÄÚµåºÎºĞ¸¸ ºĞ¸® Ç¥ÇöÇÑ Å¬·¡½º
+ * í…ìŠ¤íŠ¸ í…œí”Œë¦¿ì—ì„œ ì½”ë“œë¶€ë¶„ë§Œ ë¶„ë¦¬ í‘œí˜„í•œ í´ë˜ìŠ¤
  * 
  * <pre>
  * // operation code -----------------------------------------------------------------------------
- * operator                        operand (ÇÇ¿¬»êÀÚ ¼ö,ÀÇ¹Ì(Å¸ÀÔ))
+ * operator                        operand (í”¼ì—°ì‚°ì ìˆ˜,ì˜ë¯¸(íƒ€ì…))
  * --------------------------------------------------------------------------------------------
- * OPCODE_TERMINATE = 0           0 X Á¤»ó Á¾·á
- * OPCODE_EXCEPTION = 1           1 ¿¡·¯¸Ş¼¼Áö(data address) ¿¹¿Ü¸¦ ¹ß»ı -> ºñÁ¤»ó Á¾·á
- * OPCODE_GOTO = 2                1 Á¡ÇÁÇÒ code address
- * OPCODE_NO_OPERATION = 3        0 ¾Æ¹« ÀÏµµ ÇÏÁö ¾Ê´Â´Ù.
+ * OPCODE_TERMINATE = 0           0 X ì •ìƒ ì¢…ë£Œ
+ * OPCODE_EXCEPTION = 1           1 ì—ëŸ¬ë©”ì„¸ì§€(data address) ì˜ˆì™¸ë¥¼ ë°œìƒ -> ë¹„ì •ìƒ ì¢…ë£Œ
+ * OPCODE_GOTO = 2                1 ì í”„í•  code address
+ * OPCODE_NO_OPERATION = 3        0 ì•„ë¬´ ì¼ë„ í•˜ì§€ ì•ŠëŠ”ë‹¤.
  * 
- * OPCODE_PRINT = 4               1 ÇÁ¸°Æ®ÇÒ µ¥ÀÌÅÍ(String)(data address)
+ * OPCODE_PRINT = 4               1 í”„ë¦°íŠ¸í•  ë°ì´í„°(String)(data address)
  * 
  * OPCODE_LOAD_HANDLER = 10       2 tag handler name(data address), reflection parameter(data address)
  * OPCODE_LOAD_PAGE_HANDLER = 11  2 tag handler name(data address), reflection parameter(data address)
  * OPCODE_RELEASE_HANDLER = 12    0 X
  * 
  * // conditional jump operation
- * OPCODE_DO_START_TAG = 20       3 SKIP_BODYÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_BODY_INCLUDEÀÏ °æ¿ì,EVAL_BODY_BUFFEREDÀÏ °æ¿ì
- * OPCODE_DO_END_TAG = 21         2 SKIP_PAGEÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_PAGEÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),
- * OPCODE_DO_AFTER_BODY = 22      2 SKIP_BODYÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_BODY_AGAINÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address)
+ * OPCODE_DO_START_TAG = 20       3 SKIP_BODYì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_BODY_INCLUDEì¼ ê²½ìš°,EVAL_BODY_BUFFEREDì¼ ê²½ìš°
+ * OPCODE_DO_END_TAG = 21         2 SKIP_PAGEì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_PAGEì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),
+ * OPCODE_DO_AFTER_BODY = 22      2 SKIP_BODYì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_BODY_AGAINì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address)
  * 
- * OPCODE_DO_START_TEMPLATE = 23  2 SKIP_PAGEÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_PAGEÀÏ ¶§ Á¡ÇÁÇÒ ÁÖ¼Ò(code address)
+ * OPCODE_DO_START_TEMPLATE = 23  2 SKIP_PAGEì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_PAGEì¼ ë•Œ ì í”„í•  ì£¼ì†Œ(code address)
  * OPCODE_DO_END_TEMPLATE = 24    0 X
  * OPCODE_DO_CREATE_PAGEINFO = 25 0 X
- * OPCODE_DO_AFTER_PAGE = 26      2 SKIP_PAGE/SKIP_PAGE_WITHOUT_PAGE_GENERATIONÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_PAGE_AGAIN/EVAL_PAGE_AGAIN_WITHOUT_PAGE_GENERATIONÀÏ ¶§ Á¡ÇÁÇÒ ÁÖ¼Ò(code address)
+ * OPCODE_DO_AFTER_PAGE = 26      2 SKIP_PAGE/SKIP_PAGE_WITHOUT_PAGE_GENERATIONì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_PAGE_AGAIN/EVAL_PAGE_AGAIN_WITHOUT_PAGE_GENERATIONì¼ ë•Œ ì í”„í•  ì£¼ì†Œ(code address)
  * 
  * // evaluating mark for error tracing
- * OPCODE_EVAL_MARK = 30          1 ÇöÀç ÀÛ¾÷ÁßÀÎ tagÀÇ Marker(net.ion.framework.Marker)(data address)
+ * OPCODE_EVAL_MARK = 30          1 í˜„ì¬ ì‘ì—…ì¤‘ì¸ tagì˜ Marker(net.ion.framework.Marker)(data address)
  * </pre>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -42,31 +42,31 @@ import java.util.ArrayList;
 
 public class OperationCode {
 	// operation code -----------------------------------------------------------------------------
-	// operator operand (ÇÇ¿¬»êÀÚ ¼ö,ÀÇ¹Ì(Å¸ÀÔ))
+	// operator operand (í”¼ì—°ì‚°ì ìˆ˜,ì˜ë¯¸(íƒ€ì…))
 	// --------------------------------------------------------------------------------------------
-	public final static int OPCODE_TERMINATE = 0; // 0 X Á¤»ó Á¾·á
-	public final static int OPCODE_EXCEPTION = 1; // 1 ¿¡·¯¸Ş¼¼Áö(data address) ¿¹¿Ü¸¦ ¹ß»ı -> ºñÁ¤»ó Á¾·á
-	public final static int OPCODE_GOTO = 2; // 1 Á¡ÇÁÇÒ code address
-	public final static int OPCODE_NO_OPERATION = 3; // 0 ¾Æ¹« ÀÏµµ ÇÏÁö ¾Ê´Â´Ù.
+	public final static int OPCODE_TERMINATE = 0; // 0 X ì •ìƒ ì¢…ë£Œ
+	public final static int OPCODE_EXCEPTION = 1; // 1 ì—ëŸ¬ë©”ì„¸ì§€(data address) ì˜ˆì™¸ë¥¼ ë°œìƒ -> ë¹„ì •ìƒ ì¢…ë£Œ
+	public final static int OPCODE_GOTO = 2; // 1 ì í”„í•  code address
+	public final static int OPCODE_NO_OPERATION = 3; // 0 ì•„ë¬´ ì¼ë„ í•˜ì§€ ì•ŠëŠ”ë‹¤.
 
-	public final static int OPCODE_PRINT = 4; // 1 ÇÁ¸°Æ®ÇÒ µ¥ÀÌÅÍ(String)(data address)
+	public final static int OPCODE_PRINT = 4; // 1 í”„ë¦°íŠ¸í•  ë°ì´í„°(String)(data address)
 
 	public final static int OPCODE_LOAD_HANDLER = 10; // 2 tag handler name(data address), reflection parameter(data address)
 	public final static int OPCODE_LOAD_PAGE_HANDLER = 11; // 2 tag handler name(data address), reflection parameter(data address)
 	public final static int OPCODE_RELEASE_HANDLER = 12; // 0 X
 
 	// conditional jump operation
-	public final static int OPCODE_DO_START_TAG = 20; // 3 SKIP_BODYÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_BODY_INCLUDEÀÏ °æ¿ì,EVAL_BODY_BUFFEREDÀÏ °æ¿ì
-	public final static int OPCODE_DO_END_TAG = 21; // 2 SKIP_PAGEÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_PAGEÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),
-	public final static int OPCODE_DO_AFTER_BODY = 22; // 2 SKIP_BODYÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_BODY_AGAINÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address)
+	public final static int OPCODE_DO_START_TAG = 20; // 3 SKIP_BODYì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_BODY_INCLUDEì¼ ê²½ìš°,EVAL_BODY_BUFFEREDì¼ ê²½ìš°
+	public final static int OPCODE_DO_END_TAG = 21; // 2 SKIP_PAGEì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_PAGEì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),
+	public final static int OPCODE_DO_AFTER_BODY = 22; // 2 SKIP_BODYì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_BODY_AGAINì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address)
 
-	public final static int OPCODE_DO_START_TEMPLATE = 23; // 2 SKIP_PAGEÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_PAGEÀÏ ¶§ Á¡ÇÁÇÒ ÁÖ¼Ò(code address)
+	public final static int OPCODE_DO_START_TEMPLATE = 23; // 2 SKIP_PAGEì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_PAGEì¼ ë•Œ ì í”„í•  ì£¼ì†Œ(code address)
 	public final static int OPCODE_DO_END_TEMPLATE = 24; // 0 X
 	public final static int OPCODE_DO_CREATE_PAGEINFO = 25; // 0 X
-	public final static int OPCODE_DO_AFTER_PAGE = 26; // 2 SKIP_PAGE/SKIP_PAGE_WITHOUT_PAGE_GENERATIONÀÏ °æ¿ì Á¡ÇÁÇÒ ÁÖ¼Ò(code address),EVAL_PAGE_AGAIN/EVAL_PAGE_AGAIN_WITHOUT_PAGE_GENERATIONÀÏ ¶§ Á¡ÇÁÇÒ ÁÖ¼Ò(code address)
+	public final static int OPCODE_DO_AFTER_PAGE = 26; // 2 SKIP_PAGE/SKIP_PAGE_WITHOUT_PAGE_GENERATIONì¼ ê²½ìš° ì í”„í•  ì£¼ì†Œ(code address),EVAL_PAGE_AGAIN/EVAL_PAGE_AGAIN_WITHOUT_PAGE_GENERATIONì¼ ë•Œ ì í”„í•  ì£¼ì†Œ(code address)
 
 	// evaluating mark for error tracing
-	public final static int OPCODE_EVAL_MARK = 30; // 1 ÇöÀç ÀÛ¾÷ÁßÀÎ tagÀÇ Marker(net.ion.framework.Marker)(data address)
+	public final static int OPCODE_EVAL_MARK = 30; // 1 í˜„ì¬ ì‘ì—…ì¤‘ì¸ tagì˜ Marker(net.ion.framework.Marker)(data address)
 	// --------------------------------------------------------------------------------------------
 
 	private ArrayList<int[]> code = null;
@@ -76,11 +76,11 @@ public class OperationCode {
 	}
 
 	/**
-	 * »õ·Î¿î opcode¸¦ Ãß°¡ÇÑ´Ù.
+	 * ìƒˆë¡œìš´ opcodeë¥¼ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * @param opcode
 	 *            int operation code
-	 * @return int code°¡ Ãß°¡µÈ ÁÖ¼Ò
+	 * @return int codeê°€ ì¶”ê°€ëœ ì£¼ì†Œ
 	 */
 	public int add(int opcode) {
 		int[] c = new int[] { opcode };
@@ -89,13 +89,13 @@ public class OperationCode {
 	}
 
 	/**
-	 * »õ·Î¿î opcode¸¦ Ãß°¡ÇÑ´Ù.
+	 * ìƒˆë¡œìš´ opcodeë¥¼ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * @param opcode
 	 *            int operation code
 	 * @param operand1
 	 *            int operand 1
-	 * @return int code°¡ Ãß°¡µÈ ÁÖ¼Ò
+	 * @return int codeê°€ ì¶”ê°€ëœ ì£¼ì†Œ
 	 */
 	public int add(int opcode, int operand1) {
 		int[] c = new int[] { opcode, operand1 };
@@ -104,7 +104,7 @@ public class OperationCode {
 	}
 
 	/**
-	 * »õ·Î¿î opcode¸¦ Ãß°¡ÇÑ´Ù.
+	 * ìƒˆë¡œìš´ opcodeë¥¼ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * @param opcode
 	 *            int operation code
@@ -112,7 +112,7 @@ public class OperationCode {
 	 *            int operand 1
 	 * @param operand2
 	 *            int operand 2
-	 * @return int code°¡ Ãß°¡µÈ ÁÖ¼Ò
+	 * @return int codeê°€ ì¶”ê°€ëœ ì£¼ì†Œ
 	 */
 	public int add(int opcode, int operand1, int operand2) {
 		int[] c = new int[] { opcode, operand1, operand2 };
@@ -121,7 +121,7 @@ public class OperationCode {
 	}
 
 	/**
-	 * »õ·Î¿î opcode¸¦ Ãß°¡ÇÑ´Ù.
+	 * ìƒˆë¡œìš´ opcodeë¥¼ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * @param opcode
 	 *            int operation code
@@ -131,7 +131,7 @@ public class OperationCode {
 	 *            int operand 2
 	 * @param operand3
 	 *            int operand 3
-	 * @return int code°¡ Ãß°¡µÈ ÁÖ¼Ò
+	 * @return int codeê°€ ì¶”ê°€ëœ ì£¼ì†Œ
 	 */
 	public int add(int opcode, int operand1, int operand2, int operand3) {
 		int[] c = new int[] { opcode, operand1, operand2, operand3 };
@@ -140,7 +140,7 @@ public class OperationCode {
 	}
 
 	/**
-	 * Æ¯Á¤ ÁÖ¼ÒÀÇ ÄÚµå °ªÀ» °¡Á®¿Â´Ù.
+	 * íŠ¹ì • ì£¼ì†Œì˜ ì½”ë“œ ê°’ì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param address
 	 *            int
@@ -151,22 +151,22 @@ public class OperationCode {
 	}
 
 	/**
-	 * Æ¯Á¤ ÁÖ¼ÒÀÇ ÄÚµå °ªÀ» »õ·Î¿î °ÍÀ¸·Î ±³Ã¼ÇÑ´Ù.
+	 * íŠ¹ì • ì£¼ì†Œì˜ ì½”ë“œ ê°’ì„ ìƒˆë¡œìš´ ê²ƒìœ¼ë¡œ êµì²´í•œë‹¤.
 	 * 
 	 * @param address
-	 *            int ±³Ã¼ÇÒ ÁÖ¼Ò
+	 *            int êµì²´í•  ì£¼ì†Œ
 	 * @param newCode
-	 *            int[] »õ ÄÚµå °ª
+	 *            int[] ìƒˆ ì½”ë“œ ê°’
 	 */
 	public void updateCodeAt(int address, int[] newCode) {
 		this.code.set(address, newCode);
 	}
 
 	/**
-	 * Æ¯Á¤ ÁÖ¼ÒÀÇ ÄÚµå °ªÀ» »õ·Î¿î °ÍÀ¸·Î ±³Ã¼ÇÑ´Ù.
+	 * íŠ¹ì • ì£¼ì†Œì˜ ì½”ë“œ ê°’ì„ ìƒˆë¡œìš´ ê²ƒìœ¼ë¡œ êµì²´í•œë‹¤.
 	 * 
 	 * @param address
-	 *            int ±³Ã¼ÇÒ ÁÖ¼Ò
+	 *            int êµì²´í•  ì£¼ì†Œ
 	 * @param index
 	 *            int operation code
 	 * @param value
@@ -179,7 +179,7 @@ public class OperationCode {
 	}
 
 	/**
-	 * code°¡ ÀúÀåµÈ ¸¶Áö¸· ÁÖ¼Ò(ÀÎµ¦½º)
+	 * codeê°€ ì €ì¥ëœ ë§ˆì§€ë§‰ ì£¼ì†Œ(ì¸ë±ìŠ¤)
 	 * 
 	 * @return
 	 */
@@ -188,7 +188,7 @@ public class OperationCode {
 	}
 
 	/**
-	 * ´ÙÀ½ code°¡ ÀúÀåµÉ ÁÖ¼Ò = getLastAddress()+1
+	 * ë‹¤ìŒ codeê°€ ì €ì¥ë  ì£¼ì†Œ = getLastAddress()+1
 	 * 
 	 * @return
 	 */
@@ -197,7 +197,7 @@ public class OperationCode {
 	}
 
 	/**
-	 * ´ÙÀ½ code°¡ ÀúÀåµÇ°í ³­ ´ÙÀ½ ¹ø ÀúÀåÇÒ ÁÖ¼Ò = getAddressToAdd()+1 = getLastAddress()+2
+	 * ë‹¤ìŒ codeê°€ ì €ì¥ë˜ê³  ë‚œ ë‹¤ìŒ ë²ˆ ì €ì¥í•  ì£¼ì†Œ = getAddressToAdd()+1 = getLastAddress()+2
 	 * 
 	 * @return
 	 */
@@ -206,7 +206,7 @@ public class OperationCode {
 	}
 
 	/**
-	 * ÄÚµå ±æÀÌ
+	 * ì½”ë“œ ê¸¸ì´
 	 * 
 	 * @return int
 	 */
@@ -215,14 +215,14 @@ public class OperationCode {
 	}
 
 	/**
-	 * Ã¹¹øÂ° index -> code address, µÎ¹øÂ° index -> operation code(0) ¶Ç´Â operand index(1,2,3)
+	 * ì²«ë²ˆì§¸ index -> code address, ë‘ë²ˆì§¸ index -> operation code(0) ë˜ëŠ” operand index(1,2,3)
 	 * 
 	 * <pre>
 	 *  int[][] code = cs.getCodeArray();
-	 *  code[1][2]  -> address:1 ÀÇ operand2
-	 *  code[1][0]  -> address:1 ÀÇ operation code
-	 *  code[1][1]  -> address:1 ÀÇ operand1
-	 *  code[2][3]  -> address:2 ÀÇ operand3
+	 *  code[1][2]  -> address:1 ì˜ operand2
+	 *  code[1][0]  -> address:1 ì˜ operation code
+	 *  code[1][1]  -> address:1 ì˜ operand1
+	 *  code[2][3]  -> address:2 ì˜ operand3
 	 * </pre>
 	 * 
 	 * @return

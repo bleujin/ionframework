@@ -10,7 +10,7 @@ import net.ion.framework.template.parse.Marker;
 import net.ion.framework.util.GenericCache;
 
 /**
- * ÁßÀ§ Ç¥±â¹ıÀ» ÈÄÀ§ Ç¥±â¹ıÀ¸·Î ¹Ù²Û´Ù.
+ * ì¤‘ìœ„ í‘œê¸°ë²•ì„ í›„ìœ„ í‘œê¸°ë²•ìœ¼ë¡œ ë°”ê¾¼ë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -18,7 +18,7 @@ import net.ion.framework.util.GenericCache;
 
 public class ToPostfixExpress {
 	private String[][][] ops;
-	private String[] plainOps; // ÇÇ¿¬»êÀÚ¼ö,¿ì¼±¼øÀ§¸¦ ¹«½ÃÇÏ°í ´Ü¼ø ¿¬»êÀÚ ¸®½ºÆ®
+	private String[] plainOps; // í”¼ì—°ì‚°ììˆ˜,ìš°ì„ ìˆœìœ„ë¥¼ ë¬´ì‹œí•˜ê³  ë‹¨ìˆœ ì—°ì‚°ì ë¦¬ìŠ¤íŠ¸
 	private HashMap<String, Integer> opsPriorityMap;
 	private HashMap<String, Integer> opsOperandNumber;
 
@@ -33,10 +33,10 @@ public class ToPostfixExpress {
 	}
 
 	/**
-	 * Ã¹¹øÂ° ÀÎµ¦½º : ¿¬»ê¿¡ ÇÊ¿äÇÑ ÇÇ¿¬»êÀÚ¼ö -> ´ÜÇ×¿¬»êÀÚ, ÀÌÇ×¿¬»êÀÚ,... index¹øÈ£°¡ ÇÇ¿¬»êÀÚ¼ö¸¦ ÀÇ¹ÌÇÑ´Ù. µÎ¹øÂ° ÀÎµ¦½º : ¿ì¼±¼øÀ§ ¼¼¹øÂ° ÀÎµ¦½º : µ¿ÀÏÇÑ ¿ì¼±¼øÀ§ÀÇ ¿¬»êÀÚ ¹è¿­
+	 * ì²«ë²ˆì§¸ ì¸ë±ìŠ¤ : ì—°ì‚°ì— í•„ìš”í•œ í”¼ì—°ì‚°ììˆ˜ -> ë‹¨í•­ì—°ì‚°ì, ì´í•­ì—°ì‚°ì,... indexë²ˆí˜¸ê°€ í”¼ì—°ì‚°ììˆ˜ë¥¼ ì˜ë¯¸í•œë‹¤. ë‘ë²ˆì§¸ ì¸ë±ìŠ¤ : ìš°ì„ ìˆœìœ„ ì„¸ë²ˆì§¸ ì¸ë±ìŠ¤ : ë™ì¼í•œ ìš°ì„ ìˆœìœ„ì˜ ì—°ì‚°ì ë°°ì—´
 	 * 
 	 * <code>
-	 *  ¿¬»êÀÚ ¿¹Á¦)
+	 *  ì—°ì‚°ì ì˜ˆì œ)
 	 *  String[][][] ops = {
 	 *      // operand 0
 	 *      {{}},
@@ -45,7 +45,7 @@ public class ToPostfixExpress {
 	 *      // operand 2
 	 *      {{},{},{"<>","==",">=","<=","=",">","<"},{"&&","||"}}};
 	 * 
-	 *      Âü°í : {}À¸·Î ¿ì¼±¼øÀ§¸¦ ¸ÂÃçÁØ´Ù.
+	 *      ì°¸ê³  : {}ìœ¼ë¡œ ìš°ì„ ìˆœìœ„ë¥¼ ë§ì¶°ì¤€ë‹¤.
      * </code>
 	 * 
 	 * @param orderedOperators
@@ -71,7 +71,7 @@ public class ToPostfixExpress {
 		}
 
 		plainOps = ol.toArray(new String[0]);
-		// ±æÀÌ°¡ ±ä°ÍÀ» ¾ÕÀ¸·ÎÇØ¼­ Á¤·Ä
+		// ê¸¸ì´ê°€ ê¸´ê²ƒì„ ì•ìœ¼ë¡œí•´ì„œ ì •ë ¬
 		Arrays.sort(plainOps, new Comparator<String>() {
 			public int compare(String o1, String o2) {
 				String s1 = (String) o1;
@@ -90,7 +90,7 @@ public class ToPostfixExpress {
 
 	/**
 	 * @param evalString
-	 * @return null if evalStringÀÌ Àß¸øµÇ¾úÀ» °æ¿ì
+	 * @return null if evalStringì´ ì˜ëª»ë˜ì—ˆì„ ê²½ìš°
 	 */
 	public PostfixExpress toPostfixExpress(String evalString) {
 		if (evalString == null) {
@@ -103,21 +103,21 @@ public class ToPostfixExpress {
 			return postfixEx;
 		}
 
-		// ¾Ë°í¸®Áò
-		// 1. ¿¬»êÀÚ°¡ ¾Æ´Ï¸é °á°ú¿¡ ´õÇÑ´Ù.
-		// 2. ¿¬»çÀÚÀÏ °æ¿ì ½ºÅÃ°ú ºñ±³ÇÏ¿© ¿ì¼±¼øÀ§°¡ ³ôÀ» °æ¿ì ½ºÅÃ¿¡ ³Ö´Â´Ù.
-		// 3. ¿ì¼± ¼øÀ§°¡ °°°Å³ª ³·À» °æ¿ì ¿ì¼±¼ø¿ö°¡ ³·À»¶§ ±îÁö ´Ù ²¨³»°í ÀÚ½ÅÀ» ³Ö´Â´Ù.
-		// 4. °ıÈ£´Â ¿ì¼±¼øÀ§°¡ °¡Àå ³ôÀ¸¸ç ÂÍ Æ¯ÀÌÇÏ´Ù. -_-
+		// ì•Œê³ ë¦¬ì¦˜
+		// 1. ì—°ì‚°ìê°€ ì•„ë‹ˆë©´ ê²°ê³¼ì— ë”í•œë‹¤.
+		// 2. ì—°ì‚¬ìì¼ ê²½ìš° ìŠ¤íƒê³¼ ë¹„êµí•˜ì—¬ ìš°ì„ ìˆœìœ„ê°€ ë†’ì„ ê²½ìš° ìŠ¤íƒì— ë„£ëŠ”ë‹¤.
+		// 3. ìš°ì„  ìˆœìœ„ê°€ ê°™ê±°ë‚˜ ë‚®ì„ ê²½ìš° ìš°ì„ ìˆœì›Œê°€ ë‚®ì„ë•Œ ê¹Œì§€ ë‹¤ êº¼ë‚´ê³  ìì‹ ì„ ë„£ëŠ”ë‹¤.
+		// 4. ê´„í˜¸ëŠ” ìš°ì„ ìˆœìœ„ê°€ ê°€ì¥ ë†’ìœ¼ë©° ì«Œ íŠ¹ì´í•˜ë‹¤. -_-
 		Stack<String> os = new Stack<String>();
 
 		ArrayList<String> ex = new ArrayList<String>(); // expression
-		ArrayList<Integer> no = new ArrayList<Integer>(); // ÇÊ¿äÇÑ ÇÇ¿¬»êÀÚ ¼ö -> 0 º¸´Ù Å¬°æ¿ì ¿¬»êÀÚ´Ù. ´ÜÇ×¿¬»êÀÚ 1, ÀÌÇ×¿¬»êÀÚ 2, (¾ÆÁ÷ ´ÜÇ× ¿¬»êÀÚ´Â Áö¿øÇÏÁö ¾ÊÁö¸¸ ¤Ñ.¤Ñ")
+		ArrayList<Integer> no = new ArrayList<Integer>(); // í•„ìš”í•œ í”¼ì—°ì‚°ì ìˆ˜ -> 0 ë³´ë‹¤ í´ê²½ìš° ì—°ì‚°ìë‹¤. ë‹¨í•­ì—°ì‚°ì 1, ì´í•­ì—°ì‚°ì 2, (ì•„ì§ ë‹¨í•­ ì—°ì‚°ìëŠ” ì§€ì›í•˜ì§€ ì•Šì§€ë§Œ ã…¡.ã…¡")
 
 		Integer OPERAND = new Integer(0);
 		// Integer UNARYOP = new Integer(1);
 		// Integer BINARYOP = new Integer(2);
 
-		int parenthesisChecker = 0; // ( )ÀÇ °¹¼ö ¸Â´ÂÁö Ã¼Å©
+		int parenthesisChecker = 0; // ( )ì˜ ê°¯ìˆ˜ ë§ëŠ”ì§€ ì²´í¬
 
 		int parseIdx = 0;
 		Marker mark = null;
@@ -125,10 +125,10 @@ public class ToPostfixExpress {
 		String value;
 
 		while (true) {
-			// parseIdxÀÌÈÄ ¿¬»êÀÚ¸¦ Ã£´Â´Ù.
+			// parseIdxì´í›„ ì—°ì‚°ìë¥¼ ì°¾ëŠ”ë‹¤.
 			mark = indexOf(parseIdx, evalString);
 
-			// ¿¬»êÀÚ¸¦ Ã£Áö ¸øÇÒ °æ¿ì
+			// ì—°ì‚°ìë¥¼ ì°¾ì§€ ëª»í•  ê²½ìš°
 			if (mark == null) {
 				op = null;
 				value = evalString.substring(parseIdx).trim();
@@ -138,7 +138,7 @@ public class ToPostfixExpress {
 					no.add(OPERAND);
 				}
 
-				// ½ºÅÃ¿¡ ÀÖ´Â °Í ¿Å±â±â
+				// ìŠ¤íƒì— ìˆëŠ” ê²ƒ ì˜®ê¸°ê¸°
 				while (!os.isEmpty()) {
 					ex.add(filterSlashMark((String) os.peek()));
 					// io.add(Boolean.TRUE);
@@ -147,11 +147,11 @@ public class ToPostfixExpress {
 				}
 				break;
 			}
-			// ¿¬»êÀÚ¸¦ Ã£¾ÒÀ» °æ¿ì
+			// ì—°ì‚°ìë¥¼ ì°¾ì•˜ì„ ê²½ìš°
 			else {
 				op = mark.getValue();
 
-				// °ıÈ£ Ã¼Å©: ¿­¸°°Å ´İÈù°Å °³¼ö°¡ °°¾Æ¾ßÁö
+				// ê´„í˜¸ ì²´í¬: ì—´ë¦°ê±° ë‹«íŒê±° ê°œìˆ˜ê°€ ê°™ì•„ì•¼ì§€
 				if (op.equals("(")) {
 					++parenthesisChecker;
 				} else if (op.equals(")")) {
@@ -165,10 +165,10 @@ public class ToPostfixExpress {
 					no.add(OPERAND);
 				}
 
-				if (op.equals(")")) { // )¸¦ ¸¸³ª¸é (±îÁö ¸ğµÎ »©³½´Ù.
+				if (op.equals(")")) { // )ë¥¼ ë§Œë‚˜ë©´ (ê¹Œì§€ ëª¨ë‘ ë¹¼ë‚¸ë‹¤.
 					while (true) {
 						if (os.empty()) {
-							return null; // ( À» ¹ß°ßÇÏ±âÀü¿¡ emptyÀÏ ¼ö°¡ ¾ø´Ù.
+							return null; // ( ì„ ë°œê²¬í•˜ê¸°ì „ì— emptyì¼ ìˆ˜ê°€ ì—†ë‹¤.
 						}
 						String oldOp = (String) os.pop();
 						if (oldOp.equals("(")) {
@@ -187,7 +187,7 @@ public class ToPostfixExpress {
 							break;
 						} else {
 							String oldOp = (String) os.peek();
-							if (oldOp.equals("(")) { // (¸¦ ¸¸³ª¸é ½ºÅÃ¿¡¼­ »©³»´Â°Å ÁßÁö
+							if (oldOp.equals("(")) { // (ë¥¼ ë§Œë‚˜ë©´ ìŠ¤íƒì—ì„œ ë¹¼ë‚´ëŠ”ê±° ì¤‘ì§€
 								os.add(op);
 								break;
 							}
@@ -196,7 +196,7 @@ public class ToPostfixExpress {
 							if (pri < 0) {
 								os.add(op);
 								break;
-							} else { // °°°Å³ª ÀÛÀ¸¸é
+							} else { // ê°™ê±°ë‚˜ ì‘ìœ¼ë©´
 								ex.add(filterSlashMark((String) os.peek()));
 								// io.add(Boolean.TRUE);
 								// no.add(BINARYOP);
@@ -230,7 +230,7 @@ public class ToPostfixExpress {
 	 * @param fromIndex
 	 * @param text
 	 * @param ops
-	 * @return fromIndex·Î ºÎÅÍ ´ÙÀ½ operator¸¦ Ã£´Â´Ù.
+	 * @return fromIndexë¡œ ë¶€í„° ë‹¤ìŒ operatorë¥¼ ì°¾ëŠ”ë‹¤.
 	 */
 	// private Marker indexOf(int fromIndex,String text)
 	// {
@@ -257,7 +257,7 @@ public class ToPostfixExpress {
 				if (USE_SLASH_MARK && pivot - 1 >= 0) {
 
 					// backward slash count
-					// slash°¡ È¦¼ö°³ÀÌ¸é
+					// slashê°€ í™€ìˆ˜ê°œì´ë©´
 					int slashCnt = 0;
 					for (int j = pivot - 1; j > 0 && text.charAt(j) == SLASH_MARK; --j) {
 						++slashCnt;
@@ -281,7 +281,7 @@ public class ToPostfixExpress {
 	/**
 	 * @param op1
 	 * @param op2
-	 * @return op1ÀÌ op2º¸´Ù ¿ì¼±¼øÀ§°¡ ³ôÀ¸¸é ¾ç¼ö, ³·À¸¸é À½¼ö, °°À¸¸é 0
+	 * @return op1ì´ op2ë³´ë‹¤ ìš°ì„ ìˆœìœ„ê°€ ë†’ìœ¼ë©´ ì–‘ìˆ˜, ë‚®ìœ¼ë©´ ìŒìˆ˜, ê°™ìœ¼ë©´ 0
 	 */
 	private int compareOpsPriority(String op1, String op2) {
 		int p1 = opsPriorityMap.get(op1).intValue();
@@ -291,12 +291,12 @@ public class ToPostfixExpress {
 	}
 
 	public static boolean checkVectorOperationSyntax(PostfixExpress ex, String[] vectorOps) {
-		// ÁıÇÕÀÇ ¿¬»êÀÌ ÀûÀıÇÑ°¡
+		// ì§‘í•©ì˜ ì—°ì‚°ì´ ì ì ˆí•œê°€
 		String[] es = ex.getExpressions();
 		int[] no = ex.getNeedOperandNumber();
 
 		if (es.length == 0) {
-			return true; // ¾Æ¹«·± ½ÄÀÌ ¾øÀ¸¸é true
+			return true; // ì•„ë¬´ëŸ° ì‹ì´ ì—†ìœ¼ë©´ true
 		}
 
 		int vector = 0;
@@ -314,11 +314,11 @@ public class ToPostfixExpress {
 						break;
 					}
 				}
-				if (isVectorOp) { // vector¿¬»êÀÚÀÌ¸é
-					vector -= 2; // vector µÎ°³¸¦ ²¨³» ¿¬»êÇÑµÚ ÇÏ³ª¸¦ ¸¸µç´Ù.
+				if (isVectorOp) { // vectorì—°ì‚°ìì´ë©´
+					vector -= 2; // vector ë‘ê°œë¥¼ êº¼ë‚´ ì—°ì‚°í•œë’¤ í•˜ë‚˜ë¥¼ ë§Œë“ ë‹¤.
 					++vector;
 				} else {
-					scaler -= 2; // scaler µÎ°³¸¦ °¡Áö°í vectorÇÏ³ª¸¦ ¸¸µç´Ù.
+					scaler -= 2; // scaler ë‘ê°œë¥¼ ê°€ì§€ê³  vectorí•˜ë‚˜ë¥¼ ë§Œë“ ë‹¤.
 					++vector;
 				}
 			}
@@ -345,7 +345,7 @@ public class ToPostfixExpress {
 				else
 					slashCnt = 0;
 
-				// ½½·¹½Ã ¼ö°¡ È¦¼öÀÌ¸é ¾Ã´Â´Ù.
+				// ìŠ¬ë ˆì‹œ ìˆ˜ê°€ í™€ìˆ˜ì´ë©´ ì”¹ëŠ”ë‹¤.
 				if ((slashCnt % 2) > 0)
 					;
 				else

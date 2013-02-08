@@ -31,7 +31,7 @@ public class HashFunction {
 	
 	// A simple hash function from Robert Sedgwicks Algorithms in C book. 
 	// I've added some simple optimizations to the algorithm in order to speed up its hashing process. 
-	private long RSHash(String str) {
+	public static long RSHash(String str) {
 		int b = 378551;
 		int a = 63689;
 		long hash = 0;
@@ -45,7 +45,7 @@ public class HashFunction {
 	}
 
 	// A bitwise hash function written by Justin Sobel 
-	private long JSHash(String str) {
+	public static long JSHash(String str) {
 		long hash = 1315423911;
 
 		for (int i = 0; i < str.length(); i++) {
@@ -58,7 +58,7 @@ public class HashFunction {
 	// This hash algorithm is based on work by Peter J. Weinberger of AT&T Bell Labs. 
 	// The book Compilers (Principles, Techniques and Tools) by Aho, Sethi and Ulman, 
 	// recommends the use of hash functions that employ the hashing methodology found in this particular algorithm. 
-	private long PJWHash(String str) {
+	public static long PJWHash(String str) {
 		long BitsInUnsignedInt = (long) (4 * 8);
 		long ThreeQuarters = (long) ((BitsInUnsignedInt * 3) / 4);
 		long OneEighth = (long) (BitsInUnsignedInt / 8);
@@ -79,7 +79,7 @@ public class HashFunction {
 
 	// Similar to the PJW Hash function, but tweaked for 32-bit processors. 
 	// Its the hash function widely used on most UNIX systems.
-	private long ELFHash(String str) {
+	public static long ELFHash(String str) {
 		long hash = 0;
 		long x = 0;
 
@@ -98,7 +98,7 @@ public class HashFunction {
 	// This hash function comes from Brian Kernighan and Dennis Ritchie's book "The C Programming Language". 
 	// It is a simple hash function using a strange set of possible seeds which all constitute a pattern of 31....31...31 etc, 
 	// it seems to be very similar to the DJB hash function. 
-	private long BKDRHash(String str) {
+	public static long BKDRHash(String str) {
 		long seed = 131; // 31 131 1313 13131 131313 etc..
 		long hash = 0;
 
@@ -111,7 +111,7 @@ public class HashFunction {
 
 	// This is the algorithm of choice which is used in the open source SDBM project. 
 	// The hash function seems to have a good over-all distribution for many different data sets. It seems to work well in situations where there is a high variance in the MSBs of the elements in a data set. 
-	private long SDBMHash(String str) {
+	public static long SDBMHash(String str) {
 		long hash = 0;
 
 		for (int i = 0; i < str.length(); i++) {
@@ -123,7 +123,7 @@ public class HashFunction {
 
 	// An algorithm produced by Professor Daniel J. Bernstein and shown first to the world on the usenet newsgroup comp.lang.c. 
 	// It is one of the most efficient hash functions ever published. 
-	private long DJBHash(String str) {
+	public static long DJBHash(String str) {
 		long hash = 5381;
 
 		for (int i = 0; i < str.length(); i++) {
@@ -134,7 +134,7 @@ public class HashFunction {
 	}
 
 	// An algorithm proposed by Donald E. Knuth in The Art Of Computer Programming Volume 3, under the topic of sorting and search chapter 6.4. 
-	private long DEKHash(String str) {
+	public static long DEKHash(String str) {
 		long hash = str.length();
 
 		for (int i = 0; i < str.length(); i++) {
@@ -144,7 +144,7 @@ public class HashFunction {
 		return hash;
 	}
 
-	private long BPHash(String str) {
+	public static long BPHash(String str) {
 		long hash = 0;
 
 		for (int i = 0; i < str.length(); i++) {
@@ -154,7 +154,7 @@ public class HashFunction {
 		return hash;
 	}
 
-	private long FNVHash(String str) {
+	public static long FNVHash(String str) {
 		long fnv_prime = 0x811C9DC5;
 		long hash = 0;
 
@@ -179,7 +179,7 @@ public class HashFunction {
 	 * 
 	 * Below is a simple algebraic description of the AP hash function: 
 	 */
-	private long APHash(String str) {
+	public static long APHash(String str) {
 		long hash = 0xAAAAAAAA;
 
 		for (int i = 0; i < str.length(); i++) {

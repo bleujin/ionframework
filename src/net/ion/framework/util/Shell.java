@@ -10,7 +10,7 @@ import java.util.Stack;
 import org.apache.commons.io.FileUtils;
 
 /**
- * File System À» ´Ù·ç´Â ±âº» ±â´É ±¸Çö
+ * File System ì„ ë‹¤ë£¨ëŠ” ê¸°ë³¸ ê¸°ëŠ¥ êµ¬í˜„
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -18,7 +18,7 @@ import org.apache.commons.io.FileUtils;
 
 public class Shell {
 	/**
-	 * ÆÄÀÏ(µğ·ºÅä¸®) À» ¿Å±ä´Ù. (ÇÏÀ§ µğ·ºÅä¸® Æ÷ÇÔ)
+	 * íŒŒì¼(ë””ë ‰í† ë¦¬) ì„ ì˜®ê¸´ë‹¤. (í•˜ìœ„ ë””ë ‰í† ë¦¬ í¬í•¨)
 	 * 
 	 * @param source
 	 *            File
@@ -36,7 +36,7 @@ public class Shell {
 	}
 
 	/**
-	 * ÀÌ¸§À» ¹Ù²Û´Ù.
+	 * ì´ë¦„ì„ ë°”ê¾¼ë‹¤.
 	 * 
 	 * @param source
 	 *            File
@@ -74,7 +74,7 @@ public class Shell {
 	}
 
 	/**
-	 * ÆÄÀÏ(µğ·ºÅä¸®)À» º¹»çÇÑ´Ù. (ÇÏÀ§ µğ·ºÅä¸® Æ÷ÇÔ)
+	 * íŒŒì¼(ë””ë ‰í† ë¦¬)ì„ ë³µì‚¬í•œë‹¤. (í•˜ìœ„ ë””ë ‰í† ë¦¬ í¬í•¨)
 	 * 
 	 * @param source
 	 *            File
@@ -128,7 +128,7 @@ public class Shell {
 	}
 
 	/**
-	 * µğ·ºÅä¸®¸¦ ¼±ÅÃÇÏ¸é ÇÏÀ§ µğ·ºÅä¸®±îÁö ¸ğµÎ »èÁ¦
+	 * ë””ë ‰í† ë¦¬ë¥¼ ì„ íƒí•˜ë©´ í•˜ìœ„ ë””ë ‰í† ë¦¬ê¹Œì§€ ëª¨ë‘ ì‚­ì œ
 	 * 
 	 * @param target
 	 *            File

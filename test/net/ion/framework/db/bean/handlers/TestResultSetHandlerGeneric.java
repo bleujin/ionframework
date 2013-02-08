@@ -69,3 +69,45 @@ class Employee {
 		return ename;
 	}
 }
+
+
+interface Shape {
+	public int range() ;
+}
+
+class FixedRetangle implements Shape{
+	private int x ;
+	
+	public FixedRetangle(int x){
+		this.x = x ;
+	}
+	
+	public int range(){
+		return WidthUtil.SELF.range(this.x, this.x) ;
+	}
+}
+
+class WidthUtil {
+	public static final WidthUtil SELF = new WidthUtil() ;
+	
+	public int range(int x, int y ){
+		return x * y ;
+	}
+}
+
+class Retangle implements Shape{
+	private int x ;
+	private int y ;
+	
+	public Retangle(int x, int y){
+		this.x = x ;
+		this.y = y ;
+	}
+	
+	public int range(){
+		return WidthUtil.SELF.range(x, y);
+	}
+	
+	
+}
+

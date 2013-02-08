@@ -3,7 +3,7 @@ package net.ion.framework.template;
 import net.ion.framework.template.parse.Marker;
 
 /**
- * compile ÇÒ ¶§ ¹ß»ıÇÏ´Â ¿¹¿Ü
+ * compile í•  ë•Œ ë°œìƒí•˜ëŠ” ì˜ˆì™¸
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -11,15 +11,15 @@ import net.ion.framework.template.parse.Marker;
 
 public class CompilerException extends Exception {
 	/**
-	 * ¿¹¿Ü°¡ ¹ß»ıÇÑ ÁöÁ¡
+	 * ì˜ˆì™¸ê°€ ë°œìƒí•œ ì§€ì 
 	 */
 	private Marker mark = null;
 
 	/**
 	 * @param mark
-	 *            ¿¹¿Ü ¹ß»ıÇÑ ÁöÁ¡
+	 *            ì˜ˆì™¸ ë°œìƒí•œ ì§€ì 
 	 * @param message
-	 *            ¿¹¿Ü ¸Ş¼¼Áö
+	 *            ì˜ˆì™¸ ë©”ì„¸ì§€
 	 */
 	public CompilerException(Marker mark, String message) {
 		super(message);
@@ -28,11 +28,11 @@ public class CompilerException extends Exception {
 
 	/**
 	 * @param mark
-	 *            Marker ¿¹¿Ü ¹ß»ı ÁöÁ¡
+	 *            Marker ì˜ˆì™¸ ë°œìƒ ì§€ì 
 	 * @param message
-	 *            String ¿¹¿Ü ¸Ş¼¼Áö
+	 *            String ì˜ˆì™¸ ë©”ì„¸ì§€
 	 * @param cause
-	 *            Throwable ¿¹¿Ü ¿øÀÎ
+	 *            Throwable ì˜ˆì™¸ ì›ì¸
 	 */
 	public CompilerException(Marker mark, String message, Throwable cause) {
 		super(message, cause);
@@ -41,9 +41,9 @@ public class CompilerException extends Exception {
 
 	/**
 	 * @param mark
-	 *            Marker ¿¹¿Ü ¹ß»ı ÁöÁ¡
+	 *            Marker ì˜ˆì™¸ ë°œìƒ ì§€ì 
 	 * @param cause
-	 *            Throwable ¿¹¿Ü ¿øÀÎ
+	 *            Throwable ì˜ˆì™¸ ì›ì¸
 	 */
 	public CompilerException(Marker mark, Throwable cause) {
 		super(cause);
@@ -51,7 +51,7 @@ public class CompilerException extends Exception {
 	}
 
 	/**
-	 * @return Marker ¿¹¿Ü ¹ß»ı ÁöÁ¡
+	 * @return Marker ì˜ˆì™¸ ë°œìƒ ì§€ì 
 	 */
 	public Marker getMark() {
 		return mark;

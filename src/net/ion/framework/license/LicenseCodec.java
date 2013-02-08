@@ -5,18 +5,18 @@ import java.lang.reflect.Method;
 import net.ion.framework.util.SerializedString;
 
 /**
- * License °´Ã¼¸¦ serialization/deserialization ÇÑ´Ù.
+ * License ê°ì²´ë¥¼ serialization/deserialization í•œë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
  */
 
 public final class LicenseCodec implements LicenseDecoder {
-	// ÀÎÄÚ´õÀÇ ³»ºÎ°¡ ¾î¶»°Ô »ı°å´ÂÁö ¸ğ¸£°Ô...
-	// ¿ªÄÄÆÄÀÏ ÇØºÁµµ °ñ¶§¸®°ÚÁö~.. ¹ÇÈî~ s--v
+	// ì¸ì½”ë”ì˜ ë‚´ë¶€ê°€ ì–´ë–»ê²Œ ìƒê²¼ëŠ”ì§€ ëª¨ë¥´ê²Œ...
+	// ì—­ì»´íŒŒì¼ í•´ë´ë„ ê³¨ë•Œë¦¬ê² ì§€~.. ë¯€í£~ s--v
 
 	/**
-	 * LicenseEncoderImpl Å¬·¡½º¸¦ ¸¶¼£¸µ ÇÑ °Í SerializedString.saveResource("net/ion/framework/license/LicenseEncoderImpl.class",null); ÀÇ °ªÀÓ
+	 * LicenseEncoderImpl í´ë˜ìŠ¤ë¥¼ ë§ˆìƒ¬ë§ í•œ ê²ƒ SerializedString.saveResource("net/ion/framework/license/LicenseEncoderImpl.class",null); ì˜ ê°’ì„
 	 */
 	private final static String licenseEncoderImplClassString = "yv66vgAAADAAiQoAIQBDCgAVAEQHAEUIAEYKAAMARwoASABJCgBKAEsKABUATAcATQoACQBDCgAJAE4K"
 			+ "AAkATwoAFQBQCgBRAFIKAFEAUwcAVAgAVQoAAwBWBwBXCgATAFgHAFkKAFEAWgoAFQBbCgAVAFwIAF0K"
@@ -89,14 +89,14 @@ public final class LicenseCodec implements LicenseDecoder {
 	}
 
 	/**
-	 * Á÷·ÄÈ­µÈ license °´Ã¼¸¦ °´Ã¼·Î È¯¿ø½ÃÅ²´Ù.
+	 * ì§ë ¬í™”ëœ license ê°ì²´ë¥¼ ê°ì²´ë¡œ í™˜ì›ì‹œí‚¨ë‹¤.
 	 * 
 	 * @param serialNumber
-	 *            String Á÷·ÄÈ­ÇÒ ¶§ »ç¿ëÇÑ serial number
+	 *            String ì§ë ¬í™”í•  ë•Œ ì‚¬ìš©í•œ serial number
 	 * @param activationKey
-	 *            String Á÷·ÄÈ­ÇÒ ¶§ »ç¿ëÇÑ activation key
+	 *            String ì§ë ¬í™”í•  ë•Œ ì‚¬ìš©í•œ activation key
 	 * @throws LicenseException
-	 *             license °´Ã¼¸¦ º¹¿øÇÒ ¼ö ¾øÀ» °æ¿ì ¿¹¿Ü°¡ ¹ß»ıÇÑ´Ù.
+	 *             license ê°ì²´ë¥¼ ë³µì›í•  ìˆ˜ ì—†ì„ ê²½ìš° ì˜ˆì™¸ê°€ ë°œìƒí•œë‹¤.
 	 * @return License
 	 */
 	public License decode(final String serialNumber, final String activationKey) throws LicenseException {
@@ -132,7 +132,7 @@ public final class LicenseCodec implements LicenseDecoder {
 
 // -----------------------------------------------------------------------------
 // For LicenseEncoderImpl
-// ´ÙÀ½ ÄÚµå¸¦ Àû´çÈ÷ ¸¶¼£¸µÇØ¼­ ÅØ½ºÆ®·Î °¡Áö°í ½ÇÄÚµå´Â Á¦°ÅÇÑ´Ù. (°¨Ãá´Ù.)
+// ë‹¤ìŒ ì½”ë“œë¥¼ ì ë‹¹íˆ ë§ˆìƒ¬ë§í•´ì„œ í…ìŠ¤íŠ¸ë¡œ ê°€ì§€ê³  ì‹¤ì½”ë“œëŠ” ì œê±°í•œë‹¤. (ê°ì¶˜ë‹¤.)
 // -----------------------------------------------------------------------------
 //package net.ion.framework.license;
 //

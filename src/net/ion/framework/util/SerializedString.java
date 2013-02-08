@@ -10,7 +10,7 @@ import java.io.ObjectStreamClass;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Object¸¦ StringÀ¸·Î º¯È¯ÇØ ÁØ´Ù °Å²Ù·Î º¯È¯µÈ StringÀ» Object·Î µÇµ¹¸°´Ù.
+ * Objectë¥¼ Stringìœ¼ë¡œ ë³€í™˜í•´ ì¤€ë‹¤ ê±°ê¾¸ë¡œ ë³€í™˜ëœ Stringì„ Objectë¡œ ë˜ëŒë¦°ë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -21,7 +21,7 @@ public class SerializedString {
 	}
 
 	/**
-	 * object¸¦ Á÷·ÄÈ­ ÇÑ´Ù.
+	 * objectë¥¼ ì§ë ¬í™” í•œë‹¤.
 	 * 
 	 * @param o
 	 *            Object
@@ -33,12 +33,12 @@ public class SerializedString {
 	}
 
 	/**
-	 * object¸¦ Á÷·ÄÈ­ ÇÑ´Ù.
+	 * objectë¥¼ ì§ë ¬í™” í•œë‹¤.
 	 * 
 	 * @param o
 	 *            Object
 	 * @param warp
-	 *            boolean trueÀÌ¸é 80±ÛÀÚ ´ÜÀ§·Î ÀÚ¸¥´Ù.
+	 *            boolean trueì´ë©´ 80ê¸€ì ë‹¨ìœ„ë¡œ ìë¥¸ë‹¤.
 	 * @throws SerializedStringException
 	 * @return String
 	 */
@@ -59,7 +59,7 @@ public class SerializedString {
 	}
 
 	/**
-	 * ¹®ÀÚ¿­À» object·Î ¿ªÁ÷·ÄÈ­ ÇÑ´Ù.
+	 * ë¬¸ìì—´ì„ objectë¡œ ì—­ì§ë ¬í™” í•œë‹¤.
 	 * 
 	 * @param s
 	 *            String
@@ -71,7 +71,7 @@ public class SerializedString {
 	}
 
 	/**
-	 * ¹®ÀÚ¿­À» object·Î ¿ªÁ÷·ÄÈ­ ÇÑ´Ù.
+	 * ë¬¸ìì—´ì„ objectë¡œ ì—­ì§ë ¬í™” í•œë‹¤.
 	 * 
 	 * @param s
 	 *            String
@@ -97,7 +97,7 @@ public class SerializedString {
 
 	/**
 	 * @param cls
-	 *            Class ¿ªÁ÷·ÄÈ­ ÇÒ Å¬·¡½º
+	 *            Class ì—­ì§ë ¬í™” í•  í´ë˜ìŠ¤
 	 * @param s
 	 *            String
 	 * @param warp
@@ -201,7 +201,7 @@ public class SerializedString {
 			}
 			return buf.toString();
 		} else {
-			// ' ' '\n' À» ´Ù ¾ø¾Ö ¹ö¸°´Ù.
+			// ' ' '\n' ì„ ë‹¤ ì—†ì•  ë²„ë¦°ë‹¤.
 			StringBuffer buf = new StringBuffer();
 			for (int i = 0, length = s.length(); i < length; ++i) {
 				char c = s.charAt(i);
@@ -216,10 +216,10 @@ public class SerializedString {
 	}
 
 	/**
-	 * class °´Ã¼¸¦ Á÷·ÄÈ­ ÇÑ´Ù.
+	 * class ê°ì²´ë¥¼ ì§ë ¬í™” í•œë‹¤.
 	 * 
 	 * @param name
-	 *            String Á÷·ÄÈ­ ÇÏ°íÀÚ ÇÏ´Â classÀÇ fully qualified class name
+	 *            String ì§ë ¬í™” í•˜ê³ ì í•˜ëŠ” classì˜ fully qualified class name
 	 * @param cl
 	 *            ClassLoader null if uses system default class loader
 	 * @return String null if exception
@@ -246,7 +246,7 @@ public class SerializedString {
 	}
 
 	/**
-	 * Á÷·ÄÈ­ µÈ class string À» nameÀ¸·Î loadingÇÏ´Â classloader¸¦ »ı¼ºÇÑ´Ù.
+	 * ì§ë ¬í™” ëœ class string ì„ nameìœ¼ë¡œ loadingí•˜ëŠ” classloaderë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * @param name
 	 *            String fully qualified class name
@@ -280,7 +280,7 @@ public class SerializedString {
 	}
 
 	/**
-	 * Á÷·ÄÈ­µÈ class stringÀ» nameÀ¸·Î loading ÇÏ¿© class °´Ã¼¸¦ ¸®ÅÏÇÑ´Ù.
+	 * ì§ë ¬í™”ëœ class stringì„ nameìœ¼ë¡œ loading í•˜ì—¬ class ê°ì²´ë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param name
 	 *            String
@@ -300,7 +300,7 @@ public class SerializedString {
 	}
 
 	/**
-	 * Á÷·ÄÈ­µÈ class stringÀ» nameÀ¸·Î loading ÇÏ¿© class °´Ã¼¸¦ ¸®ÅÏÇÑ´Ù.
+	 * ì§ë ¬í™”ëœ class stringì„ nameìœ¼ë¡œ loading í•˜ì—¬ class ê°ì²´ë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * use Thread.currentThread().getContextClassLoader() as a parent class loader
 	 * 
@@ -308,7 +308,7 @@ public class SerializedString {
 	 *            String fully qualified class name
 	 * @param classString
 	 *            String
-	 * @return Class ½ÇÆĞ½Ã null
+	 * @return Class ì‹¤íŒ¨ì‹œ null
 	 */
 	public static final Class<?> loadClass(final String name, final String classString) {
 		return loadClass(name, classString, Thread.currentThread().getContextClassLoader());

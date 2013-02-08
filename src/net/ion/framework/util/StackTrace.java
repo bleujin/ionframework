@@ -1,7 +1,7 @@
 package net.ion.framework.util;
 
 /**
- * Throwable¿¡ ´ëÇÑ stack tracing °á°ú ¹®ÀÚ¿­À» ¾ò´Â´Ù.
+ * Throwableì— ëŒ€í•œ stack tracing ê²°ê³¼ ë¬¸ìì—´ì„ ì–»ëŠ”ë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -11,7 +11,7 @@ public class StackTrace {
 	// private static final int TRACING_DEPTH=5;
 
 	/**
-	 * ¿¹¿Ü¿¡ ´ëÇÑ »ó¼¼ ³»¿ªÀ» e.printStackTrace() Ã³·³ ÀÛ¼ºÇÏ¿© ¸®ÅÏÇÑ´Ù.
+	 * ì˜ˆì™¸ì— ëŒ€í•œ ìƒì„¸ ë‚´ì—­ì„ e.printStackTrace() ì²˜ëŸ¼ ì‘ì„±í•˜ì—¬ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param t
 	 * @return
@@ -21,11 +21,11 @@ public class StackTrace {
 	}
 
 	/**
-	 * ¿¹¿Ü¿¡ ´ëÇÑ »ó¼¼ ³»¿ªÀ» e.printStackTrace() Ã³·³ ÀÛ¼ºÇÏ¿© ¸®ÅÏÇÑ´Ù.
+	 * ì˜ˆì™¸ì— ëŒ€í•œ ìƒì„¸ ë‚´ì—­ì„ e.printStackTrace() ì²˜ëŸ¼ ì‘ì„±í•˜ì—¬ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param t
 	 * @param tracingDepth
-	 *            tracingÇÏ´Â ±íÀÌ (³Ê¹« ±íÀÌ ÃßÀûÇÒ ÇÊ¿ä ¾ø´Ù)
+	 *            tracingí•˜ëŠ” ê¹Šì´ (ë„ˆë¬´ ê¹Šì´ ì¶”ì í•  í•„ìš” ì—†ë‹¤)
 	 * @return
 	 */
 	public static String trace(Throwable t, int tracingDepth) {

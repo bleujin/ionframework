@@ -43,9 +43,9 @@ public class ExpressUtils {
 	private final static ToPostfixExpress ToPostfixEssential = new ToPostfixExpress(EssentialOps, false);
 
 	/**
-	 * ¸¹Àº Á¶°ÇÁß ÇÊ¼ö Á¶°Çµé¸¸ ÃßÃâÇÏ´Â ÇÔ¼ö (»óÈÆÀÌ°¡ ¸¸µé¾îÁáÀ½.. ^^) &&, || ÀÇ µÎ ¿¬»êÀÚ¸¸ Á¸ÀçÇÏ´Â ³í¸®½ÄÀÌ ÀÖ´Ù°í °¡Á¤ÇÏ°í || ¿¬»êÀ» TRUE·Î ÇÏ¿© 2°³ÀÇ ÇÇ¿¬»ê½ÄÀ» »èÁ¦ÇÔ
+	 * ë§ì€ ì¡°ê±´ì¤‘ í•„ìˆ˜ ì¡°ê±´ë“¤ë§Œ ì¶”ì¶œí•˜ëŠ” í•¨ìˆ˜ (ìƒí›ˆì´ê°€ ë§Œë“¤ì–´ì¤¬ìŒ.. ^^) &&, || ì˜ ë‘ ì—°ì‚°ìë§Œ ì¡´ì¬í•˜ëŠ” ë…¼ë¦¬ì‹ì´ ìˆë‹¤ê³  ê°€ì •í•˜ê³  || ì—°ì‚°ì„ TRUEë¡œ í•˜ì—¬ 2ê°œì˜ í”¼ì—°ì‚°ì‹ì„ ì‚­ì œí•¨
 	 * 
-	 * @note ÃÖÁ¾½ÄÀÌ TRUEÀÌ¾î¼­ ¸®ÅÏÇÒ °ÍÀÌ ¾øÀ» °æ¿ì ºó¹®ÀÚ¿­("")À» ¹İÈ¯
+	 * @note ìµœì¢…ì‹ì´ TRUEì´ì–´ì„œ ë¦¬í„´í•  ê²ƒì´ ì—†ì„ ê²½ìš° ë¹ˆë¬¸ìì—´("")ì„ ë°˜í™˜
 	 * 
 	 * @param eval
 	 * @return
@@ -85,7 +85,7 @@ public class ExpressUtils {
 					t = "(" + e2 + " " + e + " " + e1 + ")";
 				s.push(t);
 			} else {
-				// ÁÖÀÇ: Operand 2°¡ ¾Æ´Ñ ¿¬»êÀÚ´Â Áö¿øÇÏÁö ¾ÊÀ½
+				// ì£¼ì˜: Operand 2ê°€ ì•„ë‹Œ ì—°ì‚°ìëŠ” ì§€ì›í•˜ì§€ ì•ŠìŒ
 				throw new UnsupportedOperationException("Only supports the operation which has two operands.");
 			}
 		}

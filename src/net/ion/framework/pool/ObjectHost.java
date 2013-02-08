@@ -1,7 +1,7 @@
 package net.ion.framework.pool;
 
 /**
- * Pool°ú ºñ½ÁÇÑµ¥ poolÀÇ °æ¿ì object¸¦ Ã£Áö ¸øÇÏ¸é nullÀ» ¸®ÅÏÇÏÁö¸¸ host´Â »õ·Î »ı¼ºÇÏ¿© ¸®ÅÏÇÑ´Ù.
+ * Poolê³¼ ë¹„ìŠ·í•œë° poolì˜ ê²½ìš° objectë¥¼ ì°¾ì§€ ëª»í•˜ë©´ nullì„ ë¦¬í„´í•˜ì§€ë§Œ hostëŠ” ìƒˆë¡œ ìƒì„±í•˜ì—¬ ë¦¬í„´í•œë‹¤.
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0
@@ -12,12 +12,12 @@ public abstract class ObjectHost {
 	private Class<?> objectClass = null;
 
 	/**
-	 * object host¸¦ »ı¼ºÇÑ´Ù.
+	 * object hostë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * @param pool
-	 *            ObjectPool host ³»ºÎ¿¡¼­ »ç¿ëÇÒ pooling °´Ã¼
+	 *            ObjectPool host ë‚´ë¶€ì—ì„œ ì‚¬ìš©í•  pooling ê°ì²´
 	 * @param objectClass
-	 *            Class poolingÇÒ objectÀÇ class (pool¿¡ ³²´Â object°¡ ¾øÀ» °æ¿ì ÀÌ class¸¦ instantiationÇÑ´Ù.)
+	 *            Class poolingí•  objectì˜ class (poolì— ë‚¨ëŠ” objectê°€ ì—†ì„ ê²½ìš° ì´ classë¥¼ instantiationí•œë‹¤.)
 	 */
 	public ObjectHost(ObjectPool pool, Class<?> objectClass) {
 		this.pool = pool;
@@ -25,14 +25,14 @@ public abstract class ObjectHost {
 	}
 
 	/**
-	 * object host¸¦ Á¤¸®ÇÑ´Ù.
+	 * object hostë¥¼ ì •ë¦¬í•œë‹¤.
 	 */
 	public void destroy() {
 		this.pool.destroy();
 	}
 
 	/**
-	 * pooling ÇÏ°í ÀÖ´Â object¸¦ ¸®ÅÏÇÑ´Ù. ¿©À¯ÀÖ´Â object°¡ ¾øÀ» °æ¿ì ±âº»»ı¼ºÀÚ·Î »ı¼ºÇÏ¿© ¸®ÅÏÇÏ´Ù.
+	 * pooling í•˜ê³  ìˆëŠ” objectë¥¼ ë¦¬í„´í•œë‹¤. ì—¬ìœ ìˆëŠ” objectê°€ ì—†ì„ ê²½ìš° ê¸°ë³¸ìƒì„±ìë¡œ ìƒì„±í•˜ì—¬ ë¦¬í„´í•˜ë‹¤.
 	 * 
 	 * @return Object
 	 */
@@ -51,7 +51,7 @@ public abstract class ObjectHost {
 	}
 
 	/**
-	 * »ç¿ëÀÌ ³¡³­ object¸¦ ¹İÈ¯¹Ş´Â´Ù.
+	 * ì‚¬ìš©ì´ ëë‚œ objectë¥¼ ë°˜í™˜ë°›ëŠ”ë‹¤.
 	 * 
 	 * @param o
 	 *            Object
@@ -62,18 +62,18 @@ public abstract class ObjectHost {
 	}
 
 	/**
-	 * askObject()¿¡¼­ ÃÖÁ¾ object°¡ returnµÇ±â Àü¿¡ ºÒ·¯Áø´Ù.
+	 * askObject()ì—ì„œ ìµœì¢… objectê°€ returnë˜ê¸° ì „ì— ë¶ˆëŸ¬ì§„ë‹¤.
 	 * 
 	 * @param o
-	 *            Object ¸®ÅÏµÉ object
+	 *            Object ë¦¬í„´ë  object
 	 */
 	public abstract void beforeAskObject(Object o);
 
 	/**
-	 * releaseObject()¿¡¼­ ÃÖÁ¾ pool·Î µ¹¾Æ°¡±âÀü ºÒ·¯Áø´Ù.
+	 * releaseObject()ì—ì„œ ìµœì¢… poolë¡œ ëŒì•„ê°€ê¸°ì „ ë¶ˆëŸ¬ì§„ë‹¤.
 	 * 
 	 * @param o
-	 *            Object pool¿¡ releaseµÉ object
+	 *            Object poolì— releaseë  object
 	 */
 	public abstract void beforeReleaseObject(Object o);
 }

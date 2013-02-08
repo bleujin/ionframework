@@ -1,7 +1,7 @@
 package net.ion.framework.template.tagext;
 
 /**
- * ÀÛ¾÷ ÁßÀÎ page¿¡ ´ëÇÑ Á¤º¸
+ * ì‘ì—… ì¤‘ì¸ pageì— ëŒ€í•œ ì •ë³´
  * 
  * @author Kim, Sanghoon (wizest@i-on.net)
  * @version 1.0

@@ -1,17 +1,18 @@
 package net.ion.framework.template;
 
 /**
- * TemplateRuntime ÀÌ page¸¦ generationg ÇÑ ÈÄ¿¡ ¿Ï¼ºµÈ text¸¦ ³Ñ°ÜÁÙ ¶§ »ç¿ë
+ * TemplateRuntime ì´ pageë¥¼ generationg í•œ í›„ì— ì™„ì„±ëœ textë¥¼ ë„˜ê²¨ì¤„ ë•Œ ì‚¬ìš©
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
  */
 public interface PageReceiver {
 	/**
-	 * TemplateRuntime¿¡ ÀÇÇØ ºÒ·¯Áø´Ù.
+	 * TemplateRuntimeì— ì˜í•´ ë¶ˆëŸ¬ì§„ë‹¤.
 	 * 
 	 * @param page
-	 *            Page »ı¼ºµÈ page
+	 *            Page ìƒì„±ëœ page
 	 */
 	void receivePage(Page page);
 }
+

@@ -1,22 +1,19 @@
 package net.ion.framework.db.sample.servant;
 
-import java.io.IOException;
 import java.util.List;
-
-import org.apache.commons.chain.web.ChainServlet;
+import java.util.concurrent.Executors;
 
 import net.ion.framework.db.DBController;
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.sample.TestBaseSample;
 import net.ion.framework.db.servant.AfterTask;
+import net.ion.framework.db.servant.AsyncServant;
 import net.ion.framework.db.servant.ChannelServant;
 import net.ion.framework.db.servant.IExtraServant;
 import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.db.servant.ServantChain;
-import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.util.Debug;
-import junit.framework.TestCase;
 
 public class TestExtraServant extends TestBaseSample{
 
@@ -70,8 +67,8 @@ public class TestExtraServant extends TestBaseSample{
 		DBController newDc = new DBController("test", dc.getDBManager(), schain) ;
 		
 		assertEquals(true, newDc.getServantChain() == schain) ;
-		List<IExtraServant> servants = newDc.getServantChain().getServants() ;
-		assertEquals(3, servants.size()) ;
+		List<IExtraServant> servants = newDc.getServantChain().getServantList() ;
+		assertEquals(2, servants.size()) ;
 	}
 	
 	public void testChannelServant2() throws Exception {
@@ -86,8 +83,8 @@ public class TestExtraServant extends TestBaseSample{
 
 		DBController newDc = new DBController("test", dc.getDBManager(), schain) ;
 
-		List<IExtraServant> servants = newDc.getServantChain().getServants() ;
-		assertEquals(4, servants.size()) ;
+		List<IExtraServant> servants = newDc.getServantChain().getServantList() ;
+		assertEquals(2, servants.size()) ;
 	}
 	
 	public void testChannelServant3() throws Exception {
@@ -101,8 +98,8 @@ public class TestExtraServant extends TestBaseSample{
 
 		DBController newDc = new DBController("test", dc.getDBManager(), schain) ;
 
-		List<IExtraServant> servants = newDc.getServantChain().getServants() ;
-		assertEquals(3, servants.size()) ;
+		List<IExtraServant> servants = newDc.getServantChain().getServantList() ;
+		assertEquals(2, servants.size()) ;
 		
 	}
 	
@@ -136,22 +133,16 @@ public class TestExtraServant extends TestBaseSample{
 		assertEquals(12, count) ;
 	}
 	
-	public void testChannelThread2() throws Exception {
-		PrintOutServant std = new PrintOutServant();
-		ChannelServant cs = new ChannelServant(std) ;
-		DBController newDc = new DBController("test", dc.getDBManager(), cs) ;
-
-		Debug.line(newDc.getServantChain().getServants().get(0)) ;
+	public void testAsyncServant() throws Exception {
+		DBController newDc = new DBController("test", dc.getDBManager(), new PrintOutServant()) ;
 		
-		assertEquals(true, std == newDc.getServantChain().getServants().get(0)) ;
-		
+		for (int i = 0; i < 10; i++) {
+			Rows rows = newDc.getRows("select * from dual" ) ;
+		}
+		newDc.close() ;
 	}
 	
-	public void testEmptyChannel() throws Exception {
-		ChannelServant cs = new ChannelServant() ;
-		DBController newDc = new DBController("test", dc.getDBManager(), cs) ;
-		assertEquals(true, IExtraServant.BLANK == newDc.getServantChain().getServants().get(0)) ;
-	}
+	
 }
 
 class ExceptionServant implements IExtraServant{

@@ -1,10 +1,10 @@
 package net.ion.framework.template.tagext;
 
 /**
- * body ¸¦ °¡Áö´Â tag modelÀÇ ±âº» ±¸Çö body tag¸¦ ÀÛ¼º½Ã ÀÌ Å¬·¡½º¸¦ »ó¼ÓÇÑ´Ù.
+ * body ë¥¼ ê°€ì§€ëŠ” tag modelì˜ ê¸°ë³¸ êµ¬í˜„ body tagë¥¼ ì‘ì„±ì‹œ ì´ í´ë˜ìŠ¤ë¥¼ ìƒì†í•œë‹¤.
  * 
  * <pre>
- * È£Ãâ ¼ø¼­
+ * í˜¸ì¶œ ìˆœì„œ
  * 1. setParent
  * 2. setPageContext
  * 3. doStartTag -[EVAL_BODY_BUFFERED]->4 / -[EVAL_BODY_INCLUDE]->6 /  -[SKIP_BODY]->7
@@ -26,7 +26,7 @@ public abstract class BodyTagSupport extends TagSupport implements BodyTag {
 	}
 
 	/**
-	 * start tag À§Ä¡¿¡¼­
+	 * start tag ìœ„ì¹˜ì—ì„œ
 	 * 
 	 * @throws TagException
 	 * @return int { SKIP_BODY | EVAL_BODY_INCLUDE | EVAL_BODY_BUFFERED }
@@ -36,7 +36,7 @@ public abstract class BodyTagSupport extends TagSupport implements BodyTag {
 	}
 
 	/**
-	 * end tag À§Ä¡¿¡¼­
+	 * end tag ìœ„ì¹˜ì—ì„œ
 	 * 
 	 * @throws TagException
 	 * @return int { EVAL_PAGE | SKIP_PAGE }
@@ -46,7 +46,7 @@ public abstract class BodyTagSupport extends TagSupport implements BodyTag {
 	}
 
 	/**
-	 * »õ·Î¿î body content°¡ ½ÃÀÛµÉ ¶§
+	 * ìƒˆë¡œìš´ body contentê°€ ì‹œì‘ë  ë•Œ
 	 * 
 	 * @param b
 	 *            BodyContent
@@ -56,7 +56,7 @@ public abstract class BodyTagSupport extends TagSupport implements BodyTag {
 	}
 
 	/**
-	 * setBodyContent ÀÌÈÄ ºÒ·¯Áü
+	 * setBodyContent ì´í›„ ë¶ˆëŸ¬ì§
 	 * 
 	 * @throws TagException
 	 */
@@ -64,7 +64,7 @@ public abstract class BodyTagSupport extends TagSupport implements BodyTag {
 	}
 
 	/**
-	 * end tag Á÷Àü¿¡
+	 * end tag ì§ì „ì—
 	 * 
 	 * @throws TagException
 	 * @return int { EVAL_BODY_AGAIN | SKIP_BODY }
@@ -74,7 +74,7 @@ public abstract class BodyTagSupport extends TagSupport implements BodyTag {
 	}
 
 	/**
-	 * tag¸¦ Á¤¸®ÇÑ´Ù.
+	 * tagë¥¼ ì •ë¦¬í•œë‹¤.
 	 */
 	public void release() {
 		bodyContent = null;
@@ -86,7 +86,7 @@ public abstract class BodyTagSupport extends TagSupport implements BodyTag {
 	}
 
 	/**
-	 * doStartTag °¡ EVAL_BODY_BUFFERED¸¦ return ÇÏ¿´À» ¶§ pageWriter°¡ ÇÑ layer ¿Ã·ÁÁö´Âµ¥ ÀÌÀü layerÀÇ pageWriter¸¦ ¾ò´Â´Ù.
+	 * doStartTag ê°€ EVAL_BODY_BUFFEREDë¥¼ return í•˜ì˜€ì„ ë•Œ pageWriterê°€ í•œ layer ì˜¬ë ¤ì§€ëŠ”ë° ì´ì „ layerì˜ pageWriterë¥¼ ì–»ëŠ”ë‹¤.
 	 * 
 	 * @return PageWriter
 	 */

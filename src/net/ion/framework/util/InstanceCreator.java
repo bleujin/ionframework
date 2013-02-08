@@ -12,25 +12,25 @@ import net.ion.framework.configuration.ConfigurationException;
 import net.ion.framework.configuration.NotFoundXmlTagException;
 
 /**
- * Java Introspection & Reflection ±â´ÉÀ» ÀÌ¿ëÇÒ ¶§ Class ¿Í Object¸¦ ¾ò±â ½±°ÔÇÑ´Ù. StringÀ¸·Î µÈ Class ÀÌ¸§°ú Value¸¦ ÁÖ¸é ÇØ´ç Class ¶Ç´Â Object·Î InstanceÈ­ ½ÃÅ²´Ù.
+ * Java Introspection & Reflection ê¸°ëŠ¥ì„ ì´ìš©í•  ë•Œ Class ì™€ Objectë¥¼ ì–»ê¸° ì‰½ê²Œí•œë‹¤. Stringìœ¼ë¡œ ëœ Class ì´ë¦„ê³¼ Valueë¥¼ ì£¼ë©´ í•´ë‹¹ Class ë˜ëŠ” Objectë¡œ Instanceí™” ì‹œí‚¨ë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
  */
 
 public class InstanceCreator {
-	// "µ¿ÀûÀ¸·Î object¸¦ »ç¿ëÇÏ´Â °÷¿¡¼­ ÀÚÁÖ »ç¿ëÇÏ°Ô µÉ °ÍÀÌ¾ä ¤Ñ.¤ÑV"
+	// "ë™ì ìœ¼ë¡œ objectë¥¼ ì‚¬ìš©í•˜ëŠ” ê³³ì—ì„œ ìì£¼ ì‚¬ìš©í•˜ê²Œ ë  ê²ƒì´ì–Œ ã…¡.ã…¡V"
 
-	// ÀÌ Å¬·¡½º´Â »ı¼º ¸øÇØ¿ä -,.-
-	// ÀüºÎ static class
+	// ì´ í´ë˜ìŠ¤ëŠ” ìƒì„± ëª»í•´ìš” -,.-
+	// ì „ë¶€ static class
 	private InstanceCreator() {
 	}
 
 	/**
-	 * configuraion¿¡ ÀÛ¼ºµÈ ¼³Á¤´ë·Î object¸¦ »ı¼ºÇÑ´Ù.
+	 * configuraionì— ì‘ì„±ëœ ì„¤ì •ëŒ€ë¡œ objectë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * <pre>
-	 * * configuration ÀÛ¼º ¿¹Á¦:
+	 * * configuration ì‘ì„± ì˜ˆì œ:
 	 * 
 	 *   &lt;configured-object&gt;
 	 *       &lt;class-name&gt;java.util.logging.FileHandler&lt;/class-name&gt;
@@ -63,10 +63,10 @@ public class InstanceCreator {
 	 *   &lt;/configured-object&gt;
 	 * </pre>
 	 * 
-	 * &lt;class-name/&gt; ´Â ¹İµå½Ã ÇÊ¿äÇÏ¸ç &lt;constructor/&gt; ¿Í &lt;property/&gt; ´Â ¾ø¾îµµ µÈ´Ù. <br>
+	 * &lt;class-name/&gt; ëŠ” ë°˜ë“œì‹œ í•„ìš”í•˜ë©° &lt;constructor/&gt; ì™€ &lt;property/&gt; ëŠ” ì—†ì–´ë„ ëœë‹¤. <br>
 	 * <br>
-	 * * inner configured object¸¦ Çã¿ëÇÑ´Ù. -> <b> &lt;value/&gt; ¾È¿¡ &lt;configured-object/&gt; °¡ µé¾î°¡µµ ±¦Âú´Ù.!!</b> <br>
-	 * &lt;value/&gt; ·Î nullÀ» ³Ö°í ½ÍÀ» °æ¿ì <b>&lt;null/&gt;</b> ¸¦ ÀÔ·ÂÇÑ´Ù.
+	 * * inner configured objectë¥¼ í—ˆìš©í•œë‹¤. -> <b> &lt;value/&gt; ì•ˆì— &lt;configured-object/&gt; ê°€ ë“¤ì–´ê°€ë„ ê´œì°®ë‹¤.!!</b> <br>
+	 * &lt;value/&gt; ë¡œ nullì„ ë„£ê³  ì‹¶ì„ ê²½ìš° <b>&lt;null/&gt;</b> ë¥¼ ì…ë ¥í•œë‹¤.
 	 * 
 	 * <pre>
 	 * ex)
@@ -94,7 +94,7 @@ public class InstanceCreator {
 		}
 
 		try {
-			// »ı¼ºÀÚ ÆÄ¶ó¹ÌÅÍ°¡ Á¸ÀçÇÒ ¶§
+			// ìƒì„±ì íŒŒë¼ë¯¸í„°ê°€ ì¡´ì¬í•  ë•Œ
 			Object object = null;
 			String className = config.getChild("class-name").getValue();
 			// if (className.equals("null"))
@@ -114,15 +114,15 @@ public class InstanceCreator {
 					Object paramObject = null;
 
 					try {
-						// value°¡ ´Ù½Ã <configured-object/> ·Î ±¸¼ºµÈ object ÀÏ °æ¿ì Àç±Í È£Ãâ!!
+						// valueê°€ ë‹¤ì‹œ <configured-object/> ë¡œ êµ¬ì„±ëœ object ì¼ ê²½ìš° ì¬ê·€ í˜¸ì¶œ!!
 						paramObject = InstanceCreator.createConfiguredInstance(constructorParams[j].getChild("value.configured-object"));
 					} catch (NotFoundXmlTagException nx) {
 						try {
-							// value°¡ ´Ù½Ã <null/> ÀÏ °æ¿ì null
+							// valueê°€ ë‹¤ì‹œ <null/> ì¼ ê²½ìš° null
 							if (constructorParams[j].getChild("value.null") != null)
 								paramObject = null;
 						} catch (NotFoundXmlTagException nx2) {
-							// value°¡ <null/> °¡ ¾Æ´Ò °æ¿ì
+							// valueê°€ <null/> ê°€ ì•„ë‹ ê²½ìš°
 							String paramValue = constructorParams[j].getChild("value").getValue();
 							paramObject = getObjectInstance(paramClass, paramValue);
 						}
@@ -134,7 +134,7 @@ public class InstanceCreator {
 
 				object = objectClass.getConstructor(paramClasses).newInstance(paramObjects);
 			} catch (NotFoundXmlTagException notFoundEx) {
-				// »ı¼ºÀÚÀÇ ÆÄ¶ó¹ÌÅÍ°¡ Á¸Àç ÇÏÁö ¾ÊÀ» ¶§
+				// ìƒì„±ìì˜ íŒŒë¼ë¯¸í„°ê°€ ì¡´ì¬ í•˜ì§€ ì•Šì„ ë•Œ
 				object = objectClass.newInstance();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -144,12 +144,12 @@ public class InstanceCreator {
 			try {
 				Configuration[] properties = config.getChildren("property");
 
-				// property ÀÇ set method ¸¦ tableÈ­ ½ÃÅ´
+				// property ì˜ set method ë¥¼ tableí™” ì‹œí‚´
 				BeanInfo beanInfo = Introspector.getBeanInfo(objectClass);
 				PropertyDescriptor[] descriptors = beanInfo.getPropertyDescriptors();
 				HashMap<String, Method> methodMap = new HashMap<String, Method>();
 				for (int i = 0; i < descriptors.length; ++i) {
-					String propertyName = descriptors[i].getName(); // .toLowerCase(); ÁÖÀÇ!!!!!!
+					String propertyName = descriptors[i].getName(); // .toLowerCase(); ì£¼ì˜!!!!!!
 					Method method = descriptors[i].getWriteMethod();
 
 					methodMap.put(propertyName, method);
@@ -157,7 +157,7 @@ public class InstanceCreator {
 
 				for (int i = 0; i < properties.length; ++i) {
 					Configuration property = properties[i];
-					String name = property.getChild("name").getValue(); // .toLowerCase(); ÁÖÀÇ!!!!!!!
+					String name = property.getChild("name").getValue(); // .toLowerCase(); ì£¼ì˜!!!!!!!
 
 					Method setter = (Method) methodMap.get(name);
 					if (setter == null) {
@@ -170,15 +170,15 @@ public class InstanceCreator {
 
 					Object paramObject = null;
 					try {
-						// value°¡ ´Ù½Ã <configured-object/> ·Î ±¸¼ºµÈ object ÀÏ °æ¿ì Àç±Í È£Ãâ!!
+						// valueê°€ ë‹¤ì‹œ <configured-object/> ë¡œ êµ¬ì„±ëœ object ì¼ ê²½ìš° ì¬ê·€ í˜¸ì¶œ!!
 						paramObject = InstanceCreator.createConfiguredInstance(property.getChild("value.configured-object"));
 					} catch (NotFoundXmlTagException nx) {
 						try {
-							// value°¡ ´Ù½Ã <null/> ÀÏ °æ¿ì null
+							// valueê°€ ë‹¤ì‹œ <null/> ì¼ ê²½ìš° null
 							if (property.getChild("value.null") != null)
 								paramObject = null;
 						} catch (NotFoundXmlTagException nx2) {
-							// value°¡ <null/> °¡ ¾Æ´Ò °æ¿ì
+							// valueê°€ <null/> ê°€ ì•„ë‹ ê²½ìš°
 							String value = property.getChild("value").getValue();
 							paramObject = getObjectInstance(setter.getParameterTypes()[0], value);
 						}
@@ -205,7 +205,7 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * className ¿¡ ÇØ´çÇÏ´Â Class Instance¸¦ ¸®ÅÏ (SystemClassLoader¸¦ »ç¿ëÇÑ´Ù.)
+	 * className ì— í•´ë‹¹í•˜ëŠ” Class Instanceë¥¼ ë¦¬í„´ (SystemClassLoaderë¥¼ ì‚¬ìš©í•œë‹¤.)
 	 * 
 	 * @param className
 	 * @return
@@ -218,9 +218,9 @@ public class InstanceCreator {
 	private static HashMap<String, Class<?>> classCache = new HashMap<String, Class<?>>();
 
 	/**
-	 * className ¿¡ ÇØ´çÇÏ´Â class¸¦ °¡Á®¿Â´Ù.
+	 * className ì— í•´ë‹¹í•˜ëŠ” classë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
-	 * primitive type ÀÏ °æ¿ì¿¡´Â ÇØ´çÇÏ´Â class type¸¦ °¡Á®¿Â´Ù.
+	 * primitive type ì¼ ê²½ìš°ì—ëŠ” í•´ë‹¹í•˜ëŠ” class typeë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param loader
 	 * @param className
@@ -233,7 +233,7 @@ public class InstanceCreator {
 			try {
 				cls = loader.loadClass(className);
 			} catch (ClassNotFoundException ex) {
-				// primitive typeÀÎÁö Ã¼Å©
+				// primitive typeì¸ì§€ ì²´í¬
 				if (className.equals("int")) {
 					cls = int.class;
 				} else if (className.equals("boolean")) {
@@ -263,21 +263,21 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * clazz¸¦ value·Î »ı¼ºÇÑ »õ·Î¿î object¸¦ ¸®ÅÏ clazz°¡ primitive typeÀÏ °æ¿ì ÇØ´çÇÏ´Â wapper class¸¦ »ı¼ºÇØ¼­ µ¹·ÁÁØ´Ù.
+	 * clazzë¥¼ valueë¡œ ìƒì„±í•œ ìƒˆë¡œìš´ objectë¥¼ ë¦¬í„´ clazzê°€ primitive typeì¼ ê²½ìš° í•´ë‹¹í•˜ëŠ” wapper classë¥¼ ìƒì„±í•´ì„œ ëŒë ¤ì¤€ë‹¤.
 	 * 
-	 * clazz ÀÇ »ı¼ºÀÚÀÇ ÀÎÀÚ°¡ ¹İµå½Ã String ÇüÀÌ ÀÖ¾î¾ß »ı¼º °¡´ÉÇÏ´Ù.
+	 * clazz ì˜ ìƒì„±ìì˜ ì¸ìê°€ ë°˜ë“œì‹œ String í˜•ì´ ìˆì–´ì•¼ ìƒì„± ê°€ëŠ¥í•˜ë‹¤.
 	 * 
 	 * <pre>
-	 * clazz °¡ primitive typeÀÏ °æ¿ì ±× type¿¡ ÇØ´çÇÏ´Â wapper class¸¦ objectÈ­ ÇÏ¿© ¸®ÅÏÇÑ´Ù.
-	 * ÀÚ¹Ù reflection ±â´ÉÀ» »ç¿ëÇÒ ¶§ À¯¿ëÇÏ´Ù.
+	 * clazz ê°€ primitive typeì¼ ê²½ìš° ê·¸ typeì— í•´ë‹¹í•˜ëŠ” wapper classë¥¼ objectí™” í•˜ì—¬ ë¦¬í„´í•œë‹¤.
+	 * ìë°” reflection ê¸°ëŠ¥ì„ ì‚¬ìš©í•  ë•Œ ìœ ìš©í•˜ë‹¤.
 	 * 
-	 * ex) getObject(int.class,"10") -> Interger.valueOf(10) °ú µ¿ÀÏ
+	 * ex) getObject(int.class,"10") -> Interger.valueOf(10) ê³¼ ë™ì¼
 	 * 
 	 * </pre>
 	 * 
 	 * @param clazz
 	 * @param value
-	 * @return »ı¼ºÇÒ ¼ö ¾øÀ» °æ¿ì null
+	 * @return ìƒì„±í•  ìˆ˜ ì—†ì„ ê²½ìš° null
 	 * 
 	 * @see net.ion.framework.logging.LogBroker
 	 */
@@ -288,11 +288,11 @@ public class InstanceCreator {
 			if (clazz == int.class) {
 				try {
 					object = Integer.valueOf(value);
-				} catch (NumberFormatException nf) { // value°¡ ¼ıÀÚÇüÀÌ ¾Æ´Ï¾î¼­ ¿¡·¯°¡ »ı±â¸é 0À¸·Î
+				} catch (NumberFormatException nf) { // valueê°€ ìˆ«ìí˜•ì´ ì•„ë‹ˆì–´ì„œ ì—ëŸ¬ê°€ ìƒê¸°ë©´ 0ìœ¼ë¡œ
 					object = new Integer(0);
 				}
 			} else if (clazz == boolean.class) {
-				// ¿ø·¡ spec¿¡ µû¸£¸é "yes"´Â booleanÀ¸·Î falseÀÌÁö¸¸ "yes"ÀÏ °æ¿ì¿¡µµ true·Î ÇÑ´Ù. ±×¿Ü¿¡µµ T,Yµµ true·Î ÇÑ´Ù.
+				// ì›ë˜ specì— ë”°ë¥´ë©´ "yes"ëŠ” booleanìœ¼ë¡œ falseì´ì§€ë§Œ "yes"ì¼ ê²½ìš°ì—ë„ trueë¡œ í•œë‹¤. ê·¸ì™¸ì—ë„ T,Yë„ trueë¡œ í•œë‹¤.
 				if (value.equalsIgnoreCase("T") || value.equalsIgnoreCase("YES") || value.equalsIgnoreCase("1") || value.equalsIgnoreCase("Y")) {
 					object = Boolean.TRUE;
 				} else {
@@ -315,7 +315,7 @@ public class InstanceCreator {
 			if (clazz == String.class) {
 				object = value;
 			} else if (clazz == Boolean.class) {
-				// ¿ø·¡ spec¿¡ µû¸£¸é "yes"´Â booleanÀ¸·Î falseÀÌÁö¸¸ "yes"ÀÏ °æ¿ì¿¡µµ true·Î ÇÑ´Ù. ±×¿Ü¿¡µµ T,Yµµ true·Î ÇÑ´Ù.
+				// ì›ë˜ specì— ë”°ë¥´ë©´ "yes"ëŠ” booleanìœ¼ë¡œ falseì´ì§€ë§Œ "yes"ì¼ ê²½ìš°ì—ë„ trueë¡œ í•œë‹¤. ê·¸ì™¸ì—ë„ T,Yë„ trueë¡œ í•œë‹¤.
 				if (value.equalsIgnoreCase("T") || value.equalsIgnoreCase("YES") || value.equalsIgnoreCase("1") || value.equalsIgnoreCase("Y")) {
 					object = Boolean.TRUE;
 				} else {
@@ -335,9 +335,9 @@ public class InstanceCreator {
 
 	/**
 	 * @param className
-	 *            »ı¼ºÇÏ°íÀÚ ÇÏ´Â className ex) java.lang.Integer , int
+	 *            ìƒì„±í•˜ê³ ì í•˜ëŠ” className ex) java.lang.Integer , int
 	 * @param value
-	 *            »ı¼º½Ã¿¡ »ç¿ëÇÒ value ex) 10
+	 *            ìƒì„±ì‹œì— ì‚¬ìš©í•  value ex) 10
 	 * @return
 	 */
 	public static Object getObjectInstance(String className, String value) throws ClassNotFoundException, InstanceCreationException {
@@ -346,7 +346,7 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * classÀÇ property write method¸¦ method nameÀ» key·Î ÇÏ¿© hash mapÀ¸·Î ¸¸µç´Ù.
+	 * classì˜ property write methodë¥¼ method nameì„ keyë¡œ í•˜ì—¬ hash mapìœ¼ë¡œ ë§Œë“ ë‹¤.
 	 * 
 	 * @param clazz
 	 * @return
@@ -354,7 +354,7 @@ public class InstanceCreator {
 	 */
 	private static HashMap<String, Method> getWriteMethodMapTable(Class<?> clazz) throws InstanceCreationException {
 		try {
-			// property ÀÇ set method ¸¦ tableÈ­ ½ÃÅ´
+			// property ì˜ set method ë¥¼ tableí™” ì‹œí‚´
 			HashMap<String, Method> methodMap = cachedMethodMapTable.get(clazz);
 
 			if (methodMap == null) {
@@ -363,13 +363,13 @@ public class InstanceCreator {
 				methodMap = new HashMap<String, Method>();
 
 				for (int i = 0; i < descriptors.length; ++i) {
-					String propertyName = descriptors[i].getName(); // .toLowerCase(); !!!!!!!!!!!! ÁÖÀÇ!!!!
+					String propertyName = descriptors[i].getName(); // .toLowerCase(); !!!!!!!!!!!! ì£¼ì˜!!!!
 					Method method = descriptors[i].getWriteMethod();
 
 					methodMap.put(propertyName, method);
 				}
 
-				// ´ÙÀ½¹ø »ğÁúÀ» ÇÇÇÏ±â À§ÇØ cachingÇÑ´Ù~
+				// ë‹¤ìŒë²ˆ ì‚½ì§ˆì„ í”¼í•˜ê¸° ìœ„í•´ cachingí•œë‹¤~
 				cachedMethodMapTable.put(clazz, methodMap);
 			}
 
@@ -379,13 +379,13 @@ public class InstanceCreator {
 		}
 	}
 
-	private static Hashtable<Class<?>, HashMap<String, Method>> cachedMethodMapTable = new Hashtable<Class<?>, HashMap<String, Method>>(); // write method ¸¦ cacheÇØ¼­ introspectionÀ» ´ú ÇÏµµ·Ï..
+	private static Hashtable<Class<?>, HashMap<String, Method>> cachedMethodMapTable = new Hashtable<Class<?>, HashMap<String, Method>>(); // write method ë¥¼ cacheí•´ì„œ introspectionì„ ëœ í•˜ë„ë¡..
 
 	/**
-	 * property nameÀÇ value¸¦ ¼³Á¤ÇÑ bean object¸¦ »ı¼ºÇÑ´Ù.
+	 * property nameì˜ valueë¥¼ ì„¤ì •í•œ bean objectë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * <p>
-	 * ÁÖÀÇ: °°Àº property¿¡ ÇØ´çÇÏ´Â names¿Í values´Â index°¡ ¼­·Î ÀÏÄ¡ÇØ¾ßÇÑ´Ù.
+	 * ì£¼ì˜: ê°™ì€ propertyì— í•´ë‹¹í•˜ëŠ” namesì™€ valuesëŠ” indexê°€ ì„œë¡œ ì¼ì¹˜í•´ì•¼í•œë‹¤.
 	 * </p>
 	 * 
 	 * @param beanClass
@@ -406,10 +406,10 @@ public class InstanceCreator {
 	}
 
 	/**
-	 * bean objectÀÇ property¸¦ ÇØ´çÇÏ´Â key value·Î setting ÇÑ´Ù.
+	 * bean objectì˜ propertyë¥¼ í•´ë‹¹í•˜ëŠ” key valueë¡œ setting í•œë‹¤.
 	 * 
 	 * <p>
-	 * ÁÖÀÇ: °°Àº property¿¡ ÇØ´çÇÏ´Â names¿Í values´Â index°¡ ¼­·Î ÀÏÄ¡ÇØ¾ßÇÑ´Ù.
+	 * ì£¼ì˜: ê°™ì€ propertyì— í•´ë‹¹í•˜ëŠ” namesì™€ valuesëŠ” indexê°€ ì„œë¡œ ì¼ì¹˜í•´ì•¼í•œë‹¤.
 	 * </p>
 	 * 
 	 * @param beanObject
@@ -420,13 +420,13 @@ public class InstanceCreator {
 	 */
 	public static Object setPropertyValues(Object beanObject, String[] propertyNames, Object[] propertyValues) throws InstanceCreationException {
 		try {
-			// property ÀÇ set method ¸¦ tableÈ­ ½ÃÅ´
+			// property ì˜ set method ë¥¼ tableí™” ì‹œí‚´
 			Class<?> beanClass = beanObject.getClass();
 			HashMap<String, Method> methodMap = getWriteMethodMapTable(beanClass);
 
 			String[] names = propertyNames;
 			for (int i = 0; i < names.length; ++i) {
-				String name = names[i]; // .toLowerCase(); ÁÖÀÇ!!!!!!!!!!!!!!
+				String name = names[i]; // .toLowerCase(); ì£¼ì˜!!!!!!!!!!!!!!
 				Object value = propertyValues[i];
 				Method setter = (Method) methodMap.get(name);
 
@@ -437,14 +437,14 @@ public class InstanceCreator {
 
 				try {
 					setter.invoke(beanObject, new Object[] { value });
-				} catch (Exception ex) { // ¿©±â ºÎºĞÀ» ÃÖÀûÈ­ ÇÒ ÇÊ¿ä°¡ ÀÖÀ½.
-					if (value == null) { // primitive Å¸ÀÔ¿¡ nullÀ» Áı¾î ³Ö¾úÀ» °æ¿ì ¿©±â·Î ¿Â´Ù. (objectÇü¿¡´Â nullÀ» ÁÙ ¼ö ÀÖÀ¸´Ï exceptionÀÌ ¹ß»ıÇÏÁö ¾Ê´Â´Ù.)
+				} catch (Exception ex) { // ì—¬ê¸° ë¶€ë¶„ì„ ìµœì í™” í•  í•„ìš”ê°€ ìˆìŒ.
+					if (value == null) { // primitive íƒ€ì…ì— nullì„ ì§‘ì–´ ë„£ì—ˆì„ ê²½ìš° ì—¬ê¸°ë¡œ ì˜¨ë‹¤. (objectí˜•ì—ëŠ” nullì„ ì¤„ ìˆ˜ ìˆìœ¼ë‹ˆ exceptionì´ ë°œìƒí•˜ì§€ ì•ŠëŠ”ë‹¤.)
 						System.err.println("InstanceCreator.setPropertyValues():CAUTION:primitive type do not allow null.:setting passed.");
-					} else { // setterÀÇ parameter Å¸ÀÔÀÌ ¸ÂÁö ¾ÊÀ» °æ¿ì - type mismatch
+					} else { // setterì˜ parameter íƒ€ì…ì´ ë§ì§€ ì•Šì„ ê²½ìš° - type mismatch
 						Class<?> param = setter.getParameterTypes()[0];
 						if (param.isPrimitive()) {
-							// setterÀÇ argument°¡ primitiveÇüÀÌ¸é¼­ value°¡ NumberÇüÀÌ¸é ÇüÀ» ¸Â°Ô º¯Çü½ÃÄÑ Àç½Ãµµ!
-							// ºÎ¸ğ°¡ NumberÇüÀÌ¸é typeÀ» Ã£¾Æ¼­ Àç½Ãµµ!
+							// setterì˜ argumentê°€ primitiveí˜•ì´ë©´ì„œ valueê°€ Numberí˜•ì´ë©´ í˜•ì„ ë§ê²Œ ë³€í˜•ì‹œì¼œ ì¬ì‹œë„!
+							// ë¶€ëª¨ê°€ Numberí˜•ì´ë©´ typeì„ ì°¾ì•„ì„œ ì¬ì‹œë„!
 							value = getObjectInstance(param, value.toString());
 							setter.invoke(beanObject, new Object[] { value });
 						} else {
@@ -462,12 +462,12 @@ public class InstanceCreator {
 	}
 
 	// /**
-	// * method parameter type¿Í objectÀÇ typeÀ» Ã¼Å©ÇÑ ÈÄ object ÇüÀ» º¯ÇüÇØ¾ßÇÒ °æ¿ì º¯ÇüÇÏ¿© ¸®ÅÏÇÑ´Ù.
-	// * ÀÌ¿ÜÀÇ °æ¿ì inputµÈ o¸¦ ±×´ë·Î ¸®ÅÏÇÑ´Ù.
+	// * method parameter typeì™€ objectì˜ typeì„ ì²´í¬í•œ í›„ object í˜•ì„ ë³€í˜•í•´ì•¼í•  ê²½ìš° ë³€í˜•í•˜ì—¬ ë¦¬í„´í•œë‹¤.
+	// * ì´ì™¸ì˜ ê²½ìš° inputëœ oë¥¼ ê·¸ëŒ€ë¡œ ë¦¬í„´í•œë‹¤.
 	// * <pre>
-	// * 1. method parameter typeÀÌ primitiveÀÏ °æ¿ì
-	// * a. object typeÀÌ NumberÇüÀÇ ÀÚ¼ÕÀÏ¶§ ÀûÀıÇÑ primitive wrapper object·Î º¯È¯ÇÏ¿© ¸®ÅÏ
-	// * b. object °¡ nullÀÏ °æ¿ì exception ¹ß»ı
+	// * 1. method parameter typeì´ primitiveì¼ ê²½ìš°
+	// * a. object typeì´ Numberí˜•ì˜ ìì†ì¼ë•Œ ì ì ˆí•œ primitive wrapper objectë¡œ ë³€í™˜í•˜ì—¬ ë¦¬í„´
+	// * b. object ê°€ nullì¼ ê²½ìš° exception ë°œìƒ
 	// * </pre>
 	// *
 	// * @param m

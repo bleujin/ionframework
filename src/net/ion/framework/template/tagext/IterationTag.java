@@ -1,7 +1,7 @@
 package net.ion.framework.template.tagext;
 
 /**
- * iteration °¡´ÉÇÑ tag model
+ * iteration ê°€ëŠ¥í•œ tag model
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -12,7 +12,7 @@ public interface IterationTag extends UniPageTag {
 	public static final int EVAL_BODY_AGAIN = 2;
 
 	/**
-	 * IterationTag.EVAL_BODY_AGAIN ¶Ç´Â IterationTag.SKIP_BODY ¸¦ ¸®ÅÏÇÑ´Ù.
+	 * IterationTag.EVAL_BODY_AGAIN ë˜ëŠ” IterationTag.SKIP_BODY ë¥¼ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @return
 	 * @throws TagException

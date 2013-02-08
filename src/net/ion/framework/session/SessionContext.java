@@ -3,7 +3,7 @@ package net.ion.framework.session;
 import java.util.Enumeration;
 
 /**
- * °³º° sessionÀÌ ÀúÀåµÉ °ø°£
+ * ê°œë³„ sessionì´ ì €ì¥ë  ê³µê°„
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -12,21 +12,21 @@ public interface SessionContext {
 	public Enumeration<?> getSessions();
 
 	/**
-	 * sessionÀ» Ãß°¡ÇÑ´Ù.
+	 * sessionì„ ì¶”ê°€í•œë‹¤.
 	 * 
 	 * @param session
 	 */
 	public void add(AbstractSession session);
 
 	/**
-	 * sessionÀ» »èÁ¦ÇÑ´Ù.
+	 * sessionì„ ì‚­ì œí•œë‹¤.
 	 * 
 	 * @param sessionId
 	 */
 	public void remove(String sessionId);
 
 	/**
-	 * session id·Î sessionÀ» Ã£´Â´Ù.
+	 * session idë¡œ sessionì„ ì°¾ëŠ”ë‹¤.
 	 * 
 	 * @param sessionId
 	 * @return
@@ -34,21 +34,21 @@ public interface SessionContext {
 	public AbstractSession find(String sessionId);
 
 	/**
-	 * ÀüÃ¼ sessionÀ» °¡Á®¿Â´Ù
+	 * ì „ì²´ sessionì„ ê°€ì ¸ì˜¨ë‹¤
 	 * 
 	 * @return
 	 */
 	public AbstractSession[] findSessions();
 
 	/**
-	 * sessionÀÇ ¼ö
+	 * sessionì˜ ìˆ˜
 	 * 
 	 * @return
 	 */
 	public int size();
 
 	/**
-	 * session context implementation Á¤º¸¸¦ ¾ò´Â´Ù.
+	 * session context implementation ì •ë³´ë¥¼ ì–»ëŠ”ë‹¤.
 	 * 
 	 * @return
 	 */

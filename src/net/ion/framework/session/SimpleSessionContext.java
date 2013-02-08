@@ -5,7 +5,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
- * °³º° sessionÀÌ ÀúÀåµÉ °ø°£
+ * ê°œë³„ sessionì´ ì €ì¥ë  ê³µê°„
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0

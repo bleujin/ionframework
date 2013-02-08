@@ -10,14 +10,14 @@ package net.ion.framework.license;
 public interface LicenseDecoder {
 	// String encode(final String serialNumber,final License license) throws LicenseException ;
 	/**
-	 * Á÷·ÄÈ­µÈ license °´Ã¼¸¦ °´Ã¼·Î È¯¿ø½ÃÅ²´Ù.
+	 * ì§ë ¬í™”ëœ license ê°ì²´ë¥¼ ê°ì²´ë¡œ í™˜ì›ì‹œí‚¨ë‹¤.
 	 * 
 	 * @param serialNumber
-	 *            String Á÷·ÄÈ­ÇÒ ¶§ »ç¿ëÇÑ serial number
+	 *            String ì§ë ¬í™”í•  ë•Œ ì‚¬ìš©í•œ serial number
 	 * @param activationKey
-	 *            String Á÷·ÄÈ­ÇÒ ¶§ »ç¿ëÇÑ activation key
+	 *            String ì§ë ¬í™”í•  ë•Œ ì‚¬ìš©í•œ activation key
 	 * @throws LicenseException
-	 *             license °´Ã¼¸¦ º¹¿øÇÒ ¼ö ¾øÀ» °æ¿ì ¿¹¿Ü°¡ ¹ß»ıÇÑ´Ù.
+	 *             license ê°ì²´ë¥¼ ë³µì›í•  ìˆ˜ ì—†ì„ ê²½ìš° ì˜ˆì™¸ê°€ ë°œìƒí•œë‹¤.
 	 * @return License
 	 */
 

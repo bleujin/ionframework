@@ -8,7 +8,7 @@ import net.ion.framework.session.SessionManagerFactory;
 import net.ion.framework.session.SimpleSessionManagerFactory;
 
 /**
- * time-out object pool - ÀÏÁ¤ ½Ã°£µ¿¾È »ç¿ëÇÏÁö ¾ÊÀ¸¸é pool¿¡¼­ object°¡ ¾ø¾îÁø´Ù.
+ * time-out object pool - ì¼ì • ì‹œê°„ë™ì•ˆ ì‚¬ìš©í•˜ì§€ ì•Šìœ¼ë©´ poolì—ì„œ objectê°€ ì—†ì–´ì§„ë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -18,24 +18,24 @@ public final class TimeOutObjectPool implements ObjectPool {
 	private final static int MAX_OBJECT = 16;
 	private final static int EMPTY = 0;
 
-	// objectº°·Î »ç¿ë¿¡ µû¸¥ time-outÀ» ÁÖ±âÀ§ÇØ sessionÀ» ±â¹İÀ¸·Î ÄÚµùÇÑ´Ù.
+	// objectë³„ë¡œ ì‚¬ìš©ì— ë”°ë¥¸ time-outì„ ì£¼ê¸°ìœ„í•´ sessionì„ ê¸°ë°˜ìœ¼ë¡œ ì½”ë”©í•œë‹¤.
 	private SessionManager manager = null;
 	private int maxObject = MAX_OBJECT;
 	private int objectIndex = EMPTY;
 	private int inactiveIntervalSecond = 60;
 
 	/**
-	 * time-out 60ÃÊ. maxObject 16°³ÀÎ poolÀ» ¸¸µç´Ù.
+	 * time-out 60ì´ˆ. maxObject 16ê°œì¸ poolì„ ë§Œë“ ë‹¤.
 	 */
 	public TimeOutObjectPool() {
-		this(60, MAX_OBJECT); // 60ÃÊ
+		this(60, MAX_OBJECT); // 60ì´ˆ
 	}
 
 	/**
 	 * @param inactiveIntervalSecond
-	 *            ¾ï¼¼½º ÇÏÁö ¾ÊÀ» °æ¿ì object¸¦ pool¿¡¼­ »èÁ¦ÇØ ¹ö¸± time-out(ÃÊ) ½Ã°£
+	 *            ì–µì„¸ìŠ¤ í•˜ì§€ ì•Šì„ ê²½ìš° objectë¥¼ poolì—ì„œ ì‚­ì œí•´ ë²„ë¦´ time-out(ì´ˆ) ì‹œê°„
 	 * @param maxObject
-	 *            pool¿¡ ¼ö¿ëÇÒ ÃÖ´ë object ¼ö
+	 *            poolì— ìˆ˜ìš©í•  ìµœëŒ€ object ìˆ˜
 	 */
 	public TimeOutObjectPool(int inactiveIntervalSecond, int maxObject) {
 		SessionManagerFactory factory = SimpleSessionManagerFactory.createFactory();
@@ -66,7 +66,7 @@ public final class TimeOutObjectPool implements ObjectPool {
 	}
 
 	/**
-	 * pool¿¡¼­ object class name ¿¡ ÇØ´çÇÏ´Â object ¸¦ °¡Á®¿Â´Ù. ¿©À¯ºĞÀÌ ¾øÀ» °æ¿ì null;
+	 * poolì—ì„œ object class name ì— í•´ë‹¹í•˜ëŠ” object ë¥¼ ê°€ì ¸ì˜¨ë‹¤. ì—¬ìœ ë¶„ì´ ì—†ì„ ê²½ìš° null;
 	 * 
 	 * @param tagName
 	 * @return
@@ -85,7 +85,7 @@ public final class TimeOutObjectPool implements ObjectPool {
 	}
 
 	/**
-	 * »ç¿ëÇÑ object¸¦ pool¿¡ È¯¿øÇÑ´Ù.
+	 * ì‚¬ìš©í•œ objectë¥¼ poolì— í™˜ì›í•œë‹¤.
 	 * 
 	 * @param className
 	 * @param object
@@ -95,7 +95,7 @@ public final class TimeOutObjectPool implements ObjectPool {
 	}
 
 	/**
-	 * pool¿¡ object¸¦ className¿¡ ¸Â°Ô Ãß°¡ÇÑ´Ù. pool¿¡ Á¸ÀçÇÏ´Â object ¼ö°¡ maxObject º¸´Ù ¸¹À¸¸é ¹«½ÃÇÑ´Ù.
+	 * poolì— objectë¥¼ classNameì— ë§ê²Œ ì¶”ê°€í•œë‹¤. poolì— ì¡´ì¬í•˜ëŠ” object ìˆ˜ê°€ maxObject ë³´ë‹¤ ë§ìœ¼ë©´ ë¬´ì‹œí•œë‹¤.
 	 * 
 	 * @param tagName
 	 * @param tag
@@ -109,7 +109,7 @@ public final class TimeOutObjectPool implements ObjectPool {
 	}
 
 	/**
-	 * poolÀ» ¼Ò¸ê½ÃÅ²´Ù.
+	 * poolì„ ì†Œë©¸ì‹œí‚¨ë‹¤.
 	 */
 	public synchronized void destroy() {
 		if (this.manager != null)

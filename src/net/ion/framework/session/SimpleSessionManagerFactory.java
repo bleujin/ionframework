@@ -11,7 +11,7 @@ import net.ion.framework.configuration.Configuration;
 
 public class SimpleSessionManagerFactory extends SessionManagerFactory {
 	/**
-	 * config¿¡ °ü°è ¾øÀÌ manager¸¦ »ı¼ºÇÏ¹Ç·Î nullÀ» ÀÔ·ÂÇÏ¸éµÈ´Ù.-_-;;
+	 * configì— ê´€ê³„ ì—†ì´ managerë¥¼ ìƒì„±í•˜ë¯€ë¡œ nullì„ ì…ë ¥í•˜ë©´ëœë‹¤.-_-;;
 	 * 
 	 * @param config
 	 * @return

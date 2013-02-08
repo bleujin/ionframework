@@ -4,7 +4,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 
 /**
- * °£´ÜÇÑ session ±¸Çö
+ * ê°„ë‹¨í•œ session êµ¬í˜„
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -22,14 +22,14 @@ public class SimpleSession extends AbstractSession {
 	boolean isNew;
 
 	/**
-	 * sessionÀ» »ı¼ºÇÑ´Ù.
+	 * sessionì„ ìƒì„±í•œë‹¤.
 	 * 
 	 * @param context
 	 *            SessionContext session context
 	 * @param id
 	 *            String session id
 	 * @param maxInactiveInterval
-	 *            int ¼¼¼Ç ¸¸·á Ã¼Å© ½Ã°£ (ms)
+	 *            int ì„¸ì…˜ ë§Œë£Œ ì²´í¬ ì‹œê°„ (ms)
 	 */
 	public SimpleSession(SessionContext context, String id, int maxInactiveInterval) {
 		this.repository = new Hashtable<String, Object>();
@@ -43,7 +43,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¼¼¼Ç »ı¼º ½Ã°¢
+	 * ì„¸ì…˜ ìƒì„± ì‹œê°
 	 * 
 	 * @return long he difference, measured in milliseconds, between the current time and midnight, January 1, 1970 UTC.
 	 */
@@ -52,7 +52,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¼¼¼Ç »ı¼º ½Ã°¢
+	 * ì„¸ì…˜ ìƒì„± ì‹œê°
 	 * 
 	 * @param time
 	 *            long long he difference, measured in milliseconds, between the current time and midnight, January 1, 1970 UTC.
@@ -63,7 +63,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * @return String ¼¼¼Ç id
+	 * @return String ì„¸ì…˜ id
 	 */
 	public String getId() {
 		return this.id;
@@ -71,7 +71,7 @@ public class SimpleSession extends AbstractSession {
 
 	/**
 	 * @param id
-	 *            String ¼¼¼¾ id
+	 *            String ì„¸ì„¼ id
 	 */
 	public void setId(String id) {
 		if (id == null) {
@@ -81,7 +81,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¸¶Áö¸· ¼¼¼Ç Á¢±Ù ½Ã°¢
+	 * ë§ˆì§€ë§‰ ì„¸ì…˜ ì ‘ê·¼ ì‹œê°
 	 * 
 	 * @return long
 	 */
@@ -90,7 +90,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¸¶Áö¸· ¼¼¼Ç Á¢±Ù ½Ã°¢
+	 * ë§ˆì§€ë§‰ ì„¸ì…˜ ì ‘ê·¼ ì‹œê°
 	 * 
 	 * @param time
 	 *            long
@@ -100,7 +100,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * »ç¿ëÁßÀÎ session context
+	 * ì‚¬ìš©ì¤‘ì¸ session context
 	 * 
 	 * @return SessionContext
 	 */
@@ -109,7 +109,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * »ç¿ëÇÒ session context¸¦ ÁöÁ¤
+	 * ì‚¬ìš©í•  session contextë¥¼ ì§€ì •
 	 * 
 	 * @param context
 	 *            SessionContext
@@ -119,7 +119,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¸¸·á ¿©ºÎ¸¦ Ã¼Å©ÇÒ ÃÖ¼Ò ½Ã°£À» ¸®ÅÏÇÑ´Ù.
+	 * ë§Œë£Œ ì—¬ë¶€ë¥¼ ì²´í¬í•  ìµœì†Œ ì‹œê°„ì„ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @return int
 	 */
@@ -128,7 +128,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¸¸·á ¿©ºÎ¸¦ Ã¼Å©ÇÒ ÃÖ¼Ò ½Ã°£À» ¼³Á¤ÇÑ´Ù.
+	 * ë§Œë£Œ ì—¬ë¶€ë¥¼ ì²´í¬í•  ìµœì†Œ ì‹œê°„ì„ ì„¤ì •í•œë‹¤.
 	 * 
 	 * @param interval
 	 *            int
@@ -138,11 +138,11 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¼¼¼Ç¿¡ ÀúÀåµÈ ¼Ó¼º °ªÀ» ¸®ÅÏÇÑ´Ù.
+	 * ì„¸ì…˜ì— ì €ì¥ëœ ì†ì„± ê°’ì„ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param name
-	 *            String ¼Ó¼ºÅ°
-	 * @return Object ¼Ó¼º°ª
+	 *            String ì†ì„±í‚¤
+	 * @return Object ì†ì„±ê°’
 	 */
 	public Object getAttribute(String name) {
 		refreshAccessedTime();
@@ -154,12 +154,12 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¼¼¼Ç¿¡ ÀúÀåµÈ ¼Ó¼º °ªÀ» ÁöÁ¤ÇÑ´Ù.
+	 * ì„¸ì…˜ì— ì €ì¥ëœ ì†ì„± ê°’ì„ ì§€ì •í•œë‹¤.
 	 * 
 	 * @param name
-	 *            String ¼Ó¼ºÅ°
+	 *            String ì†ì„±í‚¤
 	 * @param value
-	 *            Object ¼Ó¼º°ª
+	 *            Object ì†ì„±ê°’
 	 */
 	public void setAttribute(String name, Object value) {
 		refreshAccessedTime();
@@ -174,10 +174,10 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ÀúÀåµÈ ¼Ó¼ºÀ» Á¦°ÅÇÑ´Ù.
+	 * ì €ì¥ëœ ì†ì„±ì„ ì œê±°í•œë‹¤.
 	 * 
 	 * @param name
-	 *            String Á¦°ÅÇÒ ¼Ó¼ºÀÇ Å°
+	 *            String ì œê±°í•  ì†ì„±ì˜ í‚¤
 	 */
 	public void removeAttribute(String name) {
 		refreshAccessedTime();
@@ -185,7 +185,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¼¼¼±¿¡ ÀúÀåµÈ ¸ğµç ¼Ó¼ºÀ» Á¦°ÅÇÑ´Ù.
+	 * ì„¸ì„ ì— ì €ì¥ëœ ëª¨ë“  ì†ì„±ì„ ì œê±°í•œë‹¤.
 	 */
 	public void removeAttributeAll() {
 		refreshAccessedTime();
@@ -193,7 +193,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ÀúÀåµÈ ¸ğµç ¼Ó¼ºÀÇ Å°¸¦ Ä«Á®¿Â´Ù.
+	 * ì €ì¥ëœ ëª¨ë“  ì†ì„±ì˜ í‚¤ë¥¼ ì¹´ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return Enumeration java.lang.String type
 	 */
@@ -203,7 +203,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¼¼¼ÇÀ» ¸¸·á½ÃÅ²´Ù. (¹«È¿È­½ÃÅ´)
+	 * ì„¸ì…˜ì„ ë§Œë£Œì‹œí‚¨ë‹¤. (ë¬´íš¨í™”ì‹œí‚´)
 	 */
 	public void invalidate() {
 		refreshAccessedTime();
@@ -211,7 +211,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¼¼·Î »ı¼ºÇÑ ¼¼¼ÇÀÎÁö ¿©ºÎ
+	 * ì„¸ë¡œ ìƒì„±í•œ ì„¸ì…˜ì¸ì§€ ì—¬ë¶€
 	 * 
 	 * @return boolean
 	 */
@@ -220,7 +220,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * »õ·Î »ı¼º ¿©ºÎ °áÁ¤
+	 * ìƒˆë¡œ ìƒì„± ì—¬ë¶€ ê²°ì •
 	 * 
 	 * @param isNew
 	 *            boolean
@@ -230,7 +230,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * sessionÀÇ class nameÀ» °¡Á®¿Â´Ù.
+	 * sessionì˜ class nameì„ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @return String
 	 */
@@ -239,7 +239,7 @@ public class SimpleSession extends AbstractSession {
 	}
 
 	/**
-	 * ¸¶Áö¸· ¼¼¼Ç Á¢±Ù ½Ã°¢À» »õ·Î°íÄ£´Ù.
+	 * ë§ˆì§€ë§‰ ì„¸ì…˜ ì ‘ê·¼ ì‹œê°ì„ ìƒˆë¡œê³ ì¹œë‹¤.
 	 */
 	private void refreshAccessedTime() {
 		this.setLastAccessedTime(System.currentTimeMillis());

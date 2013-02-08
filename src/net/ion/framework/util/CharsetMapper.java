@@ -8,7 +8,7 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 /**
- * Æ¯Á¤ localeÀÇ ±âº» charsetÀ» ¾Ë·ÁÁØ´Ù.
+ * íŠ¹ì • localeì˜ ê¸°ë³¸ charsetì„ ì•Œë ¤ì¤€ë‹¤.
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -29,7 +29,7 @@ public class CharsetMapper {
 	}
 
 	/**
-	 * localeÀÇ default charsetÀ» ¸®ÅÏÇÑ´Ù.
+	 * localeì˜ default charsetì„ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param locale
 	 * @return
@@ -45,9 +45,9 @@ public class CharsetMapper {
 	}
 
 	/**
-	 * localeÀÇ default charsetÀ» ¸®ÅÏÇÑ´Ù.
+	 * localeì˜ default charsetì„ ë¦¬í„´í•œë‹¤.
 	 * 
-	 * Âü°í) localeStringÀº ´ÙÀ½°ú °°´Ù. ko_KR,ja_JP,en_US... ¶Ç´Â ko,ja,en,zh...
+	 * ì°¸ê³ ) localeStringì€ ë‹¤ìŒê³¼ ê°™ë‹¤. ko_KR,ja_JP,en_US... ë˜ëŠ” ko,ja,en,zh...
 	 * 
 	 * @param localeString
 	 *            ISO Language Code - http://www.ics.uci.edu/pub/ietf/http/related/iso639.txt
@@ -87,7 +87,7 @@ public class CharsetMapper {
 	}
 
 	/**
-	 * iso-8859-1 ¹®ÀÚ¿­À» ÇØ´ç localeÀÇ charsetÀ¸·Î encoding
+	 * iso-8859-1 ë¬¸ìì—´ì„ í•´ë‹¹ localeì˜ charsetìœ¼ë¡œ encoding
 	 * 
 	 * @param locale
 	 * @param iso_8859_1_string

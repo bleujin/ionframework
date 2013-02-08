@@ -1,7 +1,7 @@
 package net.ion.framework.configuration;
 
 /**
- * È¯°æ¼³Á¤ÀÌ ÇÊ¿äÇÑ class ¿¡ implement ÇÑ´Ù.
+ * í™˜ê²½ì„¤ì •ì´ í•„ìš”í•œ class ì— implement í•œë‹¤.
  * 
  * @author Choi sei hwan<a href="mailto:sehan@i-on.net">sehan@i-on.net</a>
  * @version 1.0
@@ -9,12 +9,12 @@ package net.ion.framework.configuration;
 
 public interface Configurable {
 	/**
-	 * Configuration À» ³Ñ°ÜÁØ´Ù. ÀÌ ¸Ş¼Òµå´Â »ı¼ºÀÚ°¡ È£ÃâµÈÈÄ¿¡ ´Ù¸¥¸Ş¼Òµå°¡ È£ÃâµÇ±âÀü¿¡ ¹İµå½Ã ½ÇÇàµÇ¾î¾ßÇÑ´Ù.
+	 * Configuration ì„ ë„˜ê²¨ì¤€ë‹¤. ì´ ë©”ì†Œë“œëŠ” ìƒì„±ìê°€ í˜¸ì¶œëœí›„ì— ë‹¤ë¥¸ë©”ì†Œë“œê°€ í˜¸ì¶œë˜ê¸°ì „ì— ë°˜ë“œì‹œ ì‹¤í–‰ë˜ì–´ì•¼í•œë‹¤.
 	 * 
 	 * @param configuration
-	 *            ¼³Á¤ÇÒ Configuration class
+	 *            ì„¤ì •í•  Configuration class
 	 * @throws ConfigurationException
-	 *             configure ½ÇÇàÁß¿¡ ¹®Á¦°¡ »ı°åÀ»¶§
+	 *             configure ì‹¤í–‰ì¤‘ì— ë¬¸ì œê°€ ìƒê²¼ì„ë•Œ
 	 */
 	void configure(Configuration configuration) throws ConfigurationException;
 }

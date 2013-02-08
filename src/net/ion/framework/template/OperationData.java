@@ -3,7 +3,7 @@ package net.ion.framework.template;
 import java.util.ArrayList;
 
 /**
- * ÅØ½ºÆ® ÅÛÇÃ¸´¿¡¼­ µ¥ÀÌÅÍ ºÎºĞ¸¸ ºĞ¸® Ç¥ÇöÇÑ Å¬·¡½º
+ * í…ìŠ¤íŠ¸ í…œí”Œë¦¿ì—ì„œ ë°ì´í„° ë¶€ë¶„ë§Œ ë¶„ë¦¬ í‘œí˜„í•œ í´ë˜ìŠ¤
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -19,8 +19,8 @@ public class OperationData {
 
 	/**
 	 * @param dataObject
-	 *            µ¥ÀÌÅÍ
-	 * @return dataObject°¡ ÀúÀåµÈ address
+	 *            ë°ì´í„°
+	 * @return dataObjectê°€ ì €ì¥ëœ address
 	 */
 	public int add(Object dataObject) {
 		data.add(dataObject);
@@ -28,32 +28,32 @@ public class OperationData {
 	}
 
 	/**
-	 * @return int ¸¶Áö¸·À¸·Î ÀúÀåµÈ µ¥ÀÌÅÍ ÁÖ¼Ò
+	 * @return int ë§ˆì§€ë§‰ìœ¼ë¡œ ì €ì¥ëœ ë°ì´í„° ì£¼ì†Œ
 	 */
 	public int getLastAddress() {
 		return data.size() - 1;
 	}
 
 	/**
-	 * @return int ÃÑ ÁÖ¼Ò Å©±â
+	 * @return int ì´ ì£¼ì†Œ í¬ê¸°
 	 */
 	public int getSize() {
 		return data.size();
 	}
 
 	/**
-	 * @return Object[] ÀúÀåµÈ µ¥ÀÌÅÍ ¹è¿­
+	 * @return Object[] ì €ì¥ëœ ë°ì´í„° ë°°ì—´
 	 */
 	public final Object[] getDataArray() {
 		return data.toArray();
 	}
 
 	/**
-	 * Æ¯Á¤ ÁÖ¼Ò¿¡¼­ µ¥ÀÌÅÍ¸¦ °¡Á®¿Â´Ù.
+	 * íŠ¹ì • ì£¼ì†Œì—ì„œ ë°ì´í„°ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @param address
-	 *            int °¡Á®¿Ã ÁÖ¼Ò
-	 * @return Object µ¥ÀÌÅÍ
+	 *            int ê°€ì ¸ì˜¬ ì£¼ì†Œ
+	 * @return Object ë°ì´í„°
 	 */
 	public final Object getDataAt(int address) {
 		return data.get(address);

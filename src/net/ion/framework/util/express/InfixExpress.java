@@ -1,7 +1,7 @@
 package net.ion.framework.util.express;
 
 /**
- * ¿¬»êÀÚ ÁßÀ§ Ç¥±â¹ı
+ * ì—°ì‚°ì ì¤‘ìœ„ í‘œê¸°ë²•
  * 
  * @author Kim Sanghoon wizest@i-on.net
  * @version 1.0
@@ -16,14 +16,14 @@ public class InfixExpress {
 	private boolean[] operator;
 
 	/**
-	 * ÁßÀ§ Ç¥±â¹ıÀ¸·Î ³ªÅ¸³½´Ù.
+	 * ì¤‘ìœ„ í‘œê¸°ë²•ìœ¼ë¡œ ë‚˜íƒ€ë‚¸ë‹¤.
 	 * 
 	 * @param origin
-	 *            String ¿ø ¹®ÀÚ¿­
+	 *            String ì› ë¬¸ìì—´
 	 * @param express
-	 *            String[] ÁßÀ§ Ç¥±â¹ıÀ¸·Î ³ªÅ¸³½ ¹®ÀÚ¿­ ¹è¿­
+	 *            String[] ì¤‘ìœ„ í‘œê¸°ë²•ìœ¼ë¡œ ë‚˜íƒ€ë‚¸ ë¬¸ìì—´ ë°°ì—´
 	 * @param operator
-	 *            boolean[] °¢ ¹®ÀÚ¿­ ¹è¿­ ÀÎµ¦½º¿¡¼­ ¿¬»êÀÚ ¿©ºÎ
+	 *            boolean[] ê° ë¬¸ìì—´ ë°°ì—´ ì¸ë±ìŠ¤ì—ì„œ ì—°ì‚°ì ì—¬ë¶€
 	 */
 	public InfixExpress(String origin, String[] express, boolean[] operator) {
 		this.origin = origin;

@@ -2,15 +2,15 @@ package net.ion.framework.template.parse;
 
 
 /**
- * ¼Ó¼º ÀÌ¸§À» ¾ò´Â´Ù.
+ * ì†ì„± ì´ë¦„ì„ ì–»ëŠ”ë‹¤.
  * 
  * <pre>
  *  [[--TAGNAME,A1,A2,A3,A4name:A4value--]]
- *      A1,A2,A3,A4name:A4value °¡ °¢°¢ ¼Ó¼ºÀÌ¸ç
- *      ':' ±¸ºĞÀÚ¿¡ ÀÇÇØ¼­ name°ú value°¡ Á¤ÇØÁø´Ù.
- *      ±¸ºĞÀÚ°¡ ¾øÀ» °æ¿ì nameÀº nullÀÌ¸ç value¸¸ ÀÖ´Ù.
+ *      A1,A2,A3,A4name:A4value ê°€ ê°ê° ì†ì„±ì´ë©°
+ *      ':' êµ¬ë¶„ìì— ì˜í•´ì„œ nameê³¼ valueê°€ ì •í•´ì§„ë‹¤.
+ *      êµ¬ë¶„ìê°€ ì—†ì„ ê²½ìš° nameì€ nullì´ë©° valueë§Œ ìˆë‹¤.
  * 
- *      Âü°í : [[--Tag,:value--]] ¿Í °°ÀÌ ':'ÀÌ ¼Ó¼ºÀÇ Ã¹¹øÂ° Ä­¿¡ ¿Ã °æ¿ì nameÀº null·Î ÆÄ½ÌµÈ´Ù.
+ *      ì°¸ê³  : [[--Tag,:value--]] ì™€ ê°™ì´ ':'ì´ ì†ì„±ì˜ ì²«ë²ˆì§¸ ì¹¸ì— ì˜¬ ê²½ìš° nameì€ nullë¡œ íŒŒì‹±ëœë‹¤.
  * </pre>
  * 
  * @author Kim Sanghoon wizest@i-on.net
@@ -27,7 +27,7 @@ public class AttributeNameParser extends Parser {
 		int start = getParsingPoint();
 		int end = text.indexOf(ATTR_SEPARATOR);
 
-		if (start == 0 && end > 0) { // attribute nameÀÌ ÀÖÀ» °æ¿ì
+		if (start == 0 && end > 0) { // attribute nameì´ ìˆì„ ê²½ìš°
 			marker = new Marker(start, end, text.substring(0, end).trim().toUpperCase());
 		}
 

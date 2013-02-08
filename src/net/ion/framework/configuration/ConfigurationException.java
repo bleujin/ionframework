@@ -1,7 +1,7 @@
 package net.ion.framework.configuration;
 
 /**
- * Configuration ½Ã ¹ß»ıµÇ´Â ¸ğµç ¿¡·¯
+ * Configuration ì‹œ ë°œìƒë˜ëŠ” ëª¨ë“  ì—ëŸ¬
  * 
  * @author Choi sei hwan <a href="mailto:sehan@i-on.net">Choi sei hwan</a>
  * @version 1.0
