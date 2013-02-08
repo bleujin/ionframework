@@ -108,4 +108,8 @@ public class FileUtil extends FileUtils {
 		}
 		return true;
 	}
+	
+	public void nullF() throws Exception {
+		
+	}
 }
