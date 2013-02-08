@@ -94,4 +94,18 @@ public class FileUtil extends FileUtils {
 		return result.toArray(new File[0]);
 	}
 
+	public static boolean forceMkdirQuietly(File directory) {
+		if (!directory.exists()) {
+			synchronized (Shell.class) {
+				if (!directory.exists()) {
+					return directory.mkdirs();
+				}
+			}
+		} else {
+			if(directory.isFile()){
+				return false;
+			}
+		}
+		return true;
+	}
 }
