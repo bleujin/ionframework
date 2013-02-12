@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.concurrent.CountDownLatch;
 
 import javax.swing.filechooser.FileView;
 
@@ -125,4 +126,35 @@ public class TestJava extends TestCase{
 	}
 	
 
+	public void testlatch() throws Exception {
+		CountDownLatch latch = new CountDownLatch(1) ;
+		Thread thread = new Thread(new Sleeping(latch));
+		thread.start() ;
+		
+		latch.countDown() ;
+		latch.countDown() ;
+		thread.join() ;
+	}
+	
 }
+
+
+class Sleeping implements Runnable {
+
+	
+	private CountDownLatch latch;
+	Sleeping(CountDownLatch latch){
+		this.latch = latch ;
+	}
+	
+	public void run() {
+		try {
+			latch.await() ;
+			Debug.line() ;
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+}
+

@@ -131,6 +131,7 @@ public class XMLResourceFactory {
 
 	private Messages makeMessages(String localeStr, Reader reader) throws IOException {
 		Messages messages = new Messages();
+		messages.setLocale(localeStr);
 		HTag rootTag = HTag.createGeneral(reader, "messages");
 		List<HTag> contents = rootTag.getChildren("message");
 		for (HTag content : contents) {
