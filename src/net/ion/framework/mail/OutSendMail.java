@@ -2,10 +2,12 @@ package net.ion.framework.mail;
 
 import java.io.File;
 
+import oracle.net.aso.a;
+
 import net.ion.framework.util.StringUtil;
 
 /**
- * ½ÇÁ¦ ¸ÞÀÏÀ» º¸³»Áö ¾Ê°í console¿¡ º¸¿©ÁØ´Ù.
+ * ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê°ï¿½ consoleï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
  */
 public class OutSendMail extends SendMail {
 	public OutSendMail(String smtpHost, int smtpPort, final String smtpUser, final String smtpPass) {
@@ -28,7 +30,11 @@ public class OutSendMail extends SendMail {
 	public void enqueueSend(String from, String to, String subject, String text) {
 		enqueueSend(from, StringUtil.split(to), null, null, null, null, subject, text, null);
 	}
-
+	@Override
+	public void sendWithSendMail(String from, String[] to, String[] cc, String[] bcc, String charset, String subject, String text, File[] attachments) throws MailException {
+		send(from, to, cc, bcc, charset, "",  subject, text, attachments) ;
+	}
+	
 	public void send(String from, String[] to, String[] cc, String[] bcc, String charset, String contentType, String subject, String text, File[] attachments)
 			throws MailException {
 

@@ -7,7 +7,6 @@ import org.apache.commons.lang.ArrayUtils;
 
 public class ArrayUtil extends ArrayUtils{
 
-	
 	public static <T> T[] newSubArray(T[] array, int startIndexInclusive, int endIndexExclusive){
 		if(array == null)
             return null;

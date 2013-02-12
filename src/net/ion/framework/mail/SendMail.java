@@ -195,6 +195,7 @@ public class SendMail {
 		}
 	}
 
+	@Deprecated
 	public void sendWithSendMail(String from, String[] to, String[] cc, String[] bcc, String charset, String subject, String text, File[] attachments) throws MailException {
 		SendMail sm = new SendMail(smtpHost, smtpPort, smtpUser, smtpPass, null);
 		sm.send(from, to, cc, bcc, charset, null, subject, text, attachments);
