@@ -35,5 +35,4 @@ public class ArrayUtil extends ArrayUtils{
 		return (S[]) list.toArray();
 	}
 	
-	public void nullif(){} ;
 }
