@@ -172,7 +172,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	public DBController(String name, DBManager dataBaseManager, IExtraServant servant) {
 		this.name = name;
 		this.dbm = dataBaseManager;
-		this.schain.addServant((servant instanceof AsyncServant) ? ((AsyncServant)servant) : new AsyncServant(this.threadPool).add(servant));
+		this.schain.addServant((servant instanceof AsyncServant) ? ((AsyncServant)servant) : new AsyncServant(Executors.newFixedThreadPool(2)).add(servant));
 	}
 
 	public void setDBManager(DBManager dbm) {
@@ -348,7 +348,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 		return upt;
 	}
 
-	public IBatchQueryable createBatchParameterQuery(IDBController dc, String strSQL) {
+	public IBatchQueryable createBatchParameterQuery(String strSQL) {
 		IBatchQueryable upt = getService().createBatchParameterQuery(this, strSQL);
 		upt.setPage(Page.create(getLimitedRows(), 1));
 		return upt;

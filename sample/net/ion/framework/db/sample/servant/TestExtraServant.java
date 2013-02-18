@@ -28,6 +28,17 @@ public class TestExtraServant extends TestBaseSample{
 		
 		newDc.getRows("select 1 from dual") ; 
 	}
+	
+	public void xtestWhenFail() throws Exception {
+		ServantChain schain = new ServantChain().addServant(new PrintOutServant()).addServant(new PrintOutServant()) ;
+		ChannelServant channel = new ChannelServant(new SlowServant(), new PrintOutServant()) ;
+		schain.addServant(channel) ;
+		
+		IDBController newDc = new DBController("test", dc.getDBManager(), schain) ;
+		
+		newDc.getRows("select 1 from dualdual") ; 
+	}
+	
 
 	private static class SlowServant implements IExtraServant{
 

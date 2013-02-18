@@ -43,18 +43,6 @@ public class CacheImpl implements Cache {
 					continue;
 				try {
 					myLock.readLock();
-					// if (foundType.isAdd()) {
-					// Map<String, Object> cached = stores.get(group.getId());
-					// if (cached == null) Debug.line("MAY BE... CACHE DESTORYED BY OTHER CALL", group.getId(), stores.keySet(), stores.size()) ;
-					// Object value = cached.get(makeCacheKey(squery));
-					// if (value != null) {
-					// if (value instanceof Rows) {
-					// ((Rows) value).beforeFirst();
-					// }
-					// cm.hitCache(squery);
-					// return value;
-					// }
-					// }
 					if (foundType.isAdd()) {
 						Map<String, Object> cached = stores.get(group.getId());
 						Object value = cached.get(makeCacheKey(squery));

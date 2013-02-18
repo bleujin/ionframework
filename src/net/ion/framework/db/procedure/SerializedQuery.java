@@ -95,7 +95,7 @@ public class SerializedQuery implements Serializable, Queryable {
 			if (this.queryType == QueryType.USER_COMMAND || this.queryType == QueryType.USER_PROCEDURE) {
 				result = remoteDC.createParameterQuery(this.procSQL);
 			} else { // 
-				result = remoteDC.createBatchParameterQuery(remoteDC, this.procSQL);
+				result = remoteDC.createBatchParameterQuery(this.procSQL);
 			}
 
 			result.setParamValues(getParams(), getTypes());

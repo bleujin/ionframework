@@ -22,11 +22,13 @@ public class CacheDBManager extends DBManager implements CacheManager {
 	private Cache cache;
 	private long hitCount = 0L;
 
+	private CacheRepositoryService rservice ;
 	public CacheDBManager(CacheConfig config, DBManager dbm) {
 		this.config = config;
 		this.dbm = dbm;
 
 		this.cache = config.getCache(this);
+		this.rservice = new CacheRepositoryService(this, dbm) ;
 	}
 
 	public IDBController getDBController() {
@@ -50,7 +52,7 @@ public class CacheDBManager extends DBManager implements CacheManager {
 
 	@Override
 	public RepositoryService getRepositoryService() {
-		return new CacheRepositoryService(this, dbm);
+		return rservice;
 	}
 
 	@Override

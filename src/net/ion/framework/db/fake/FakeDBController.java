@@ -48,7 +48,7 @@ public class FakeDBController implements IDBController {
 		return getRepositoryService().createUserCommandBatch(this, procSQL);
 	}
 
-	public IBatchQueryable createBatchParameterQuery(IDBController dc, String strSQL) {
+	public IBatchQueryable createBatchParameterQuery(String strSQL) {
 		return getRepositoryService().createBatchParameterQuery(this, strSQL);
 	}
 

@@ -23,7 +23,7 @@ public interface IQueryFactory {
 
 	public IUserProcedureBatch createUserProcedureBatch(String procSQL);
 
-	public IBatchQueryable createBatchParameterQuery(IDBController dc, String strSQL);
+	public IBatchQueryable createBatchParameterQuery(String strSQL);
 	
 	
 

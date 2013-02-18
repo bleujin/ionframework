@@ -25,7 +25,8 @@ import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.Queryable;
 
 public class ProxyRows extends RowsImpl implements Rows {
-
+	private static final long serialVersionUID = -7948909263945927470L;
+	
 	private int pos = -1;
 	private int maxrow;
 	private final Vector<Row> cached;
