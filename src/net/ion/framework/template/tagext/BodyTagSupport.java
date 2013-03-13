@@ -20,6 +20,8 @@ package net.ion.framework.template.tagext;
  */
 
 public abstract class BodyTagSupport extends TagSupport implements BodyTag {
+
+	private static final long serialVersionUID = 8682003764896152865L;
 	protected BodyContent bodyContent = null;
 
 	public BodyTagSupport() {

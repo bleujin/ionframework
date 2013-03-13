@@ -2,6 +2,7 @@ package net.ion.framework.template;
 
 import java.util.Stack;
 
+import net.ion.framework.exception.ExecutionRuntimeException;
 import net.ion.framework.template.parse.AttributeValueEvalParser;
 import net.ion.framework.template.parse.Marker;
 import net.ion.framework.template.parse.Parser;
@@ -404,6 +405,9 @@ public class TemplateRuntime {
 		} catch (InstanceCreationException ie) {
 			String line = (tagMark == null || templateText == null) ? "" : " in Line " + getLineNumber(templateText, tagMark.getBeginIndex());
 			throw new TemplateRuntimeException(tagMark, "could not reflect tag attributes for the handler" + line, ie);
+		} catch (ExecutionRuntimeException te) { // in generic cache..
+			String line = (tagMark == null || templateText == null) ? "" : " in Line " + getLineNumber(templateText, tagMark.getBeginIndex());
+			throw new TemplateRuntimeException(tagMark, te.getMessage() + line, te);
 		} catch (TagException te) {
 			String line = (tagMark == null || templateText == null) ? "" : " in Line " + getLineNumber(templateText, tagMark.getBeginIndex());
 			throw new TemplateRuntimeException(tagMark, te.getMessage() + line, te);

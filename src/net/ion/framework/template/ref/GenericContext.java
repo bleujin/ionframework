@@ -1,6 +1,9 @@
 package net.ion.framework.template.ref;
 
 import java.util.HashMap;
+import java.util.concurrent.Callable;
+
+import net.ion.framework.exception.ExecutionRuntimeException;
 
 /**
  * ��� �۾� ��
@@ -42,6 +45,27 @@ public class GenericContext implements Context {
 	public Object getAttribute(String name) {
 		synchronized (map) {
 			return map.get(name);
+		}
+	}
+
+	public <V> V getAttribute(String name, Callable<V> call) {
+		try {
+			
+			V value = (V) map.get(name);
+			if (value != null) return value ;
+			
+			synchronized (map) {
+				value = (V) map.get(name);
+				if (value == null) {
+					value = call.call();
+					map.put(name, value);
+					return value ;
+				} else {
+					return value;
+				}
+			}
+		} catch (Exception ex) {
+			throw new ExecutionRuntimeException(ex, ex.getMessage()) ;
 		}
 	}
 

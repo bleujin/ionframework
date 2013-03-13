@@ -68,7 +68,7 @@ public class ToInfixExpress {
 
 	private void init(String[] plainOps) {
 		this.plainOps = plainOps;
-		this.cache = new GenericCache(ToInfixExpress.MAX_CACHE);
+		this.cache = new GenericCache.Builder(ToInfixExpress.MAX_CACHE).old();
 	}
 
 	public InfixExpress toInfixExpress(String evalString) {

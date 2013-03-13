@@ -12,6 +12,7 @@ import net.ion.framework.db.Page;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IParameterQueryable;
+import net.ion.framework.db.procedure.IQueryable;
 
 public abstract class AsyncParameterQueryable implements IParameterQueryable {
 
@@ -262,7 +263,8 @@ public abstract class AsyncParameterQueryable implements IParameterQueryable {
 		return inner.getQueryType();
 	}
 
-	public void setPage(Page page) {
+	public IQueryable setPage(Page page) {
 		inner.setPage(page) ;
+		return this ;
 	}
 }

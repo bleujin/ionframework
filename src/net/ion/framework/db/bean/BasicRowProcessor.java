@@ -93,6 +93,14 @@ public class BasicRowProcessor implements RowProcessor {
 		} else {
 			value = rs.getObject(column);
 		}
+		
+		if (value == null){
+			int type = meta.getColumnType(column) ;
+			if (type == Types.CHAR || type == Types.VARCHAR || type == Types.LONGVARCHAR || type == Types.CLOB) {
+					return "";
+			}
+		}
+		
 		return value;
 	}
 

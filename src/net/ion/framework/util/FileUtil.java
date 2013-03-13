@@ -109,7 +109,8 @@ public class FileUtil extends FileUtils {
 		return true;
 	}
 	
-	public void nullF() throws Exception {
-		
+	public interface FileClosure<V> {
+		public V walk(File file) ;
 	}
+
 }

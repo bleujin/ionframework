@@ -17,12 +17,12 @@ import java.util.Arrays;
  * @see DataSpace
  */
 
-public class DataSpace {
+public class DataSpace<K, D> {
 	private DataKeys keys;
 	private DataReader reader;
 
 	private int blockSize;
-	private Slots slots;
+	private Slots<K, D> slots;
 
 	DataSpace() {
 	}
@@ -31,7 +31,7 @@ public class DataSpace {
 		this.keys = keys;
 		this.reader = reader;
 		this.blockSize = blockSize;
-		this.slots = new Slots(slotSize);
+		this.slots = new Slots<K, D>(slotSize);
 	}
 
 	public DataKeys getDataKeys() {
@@ -44,13 +44,13 @@ public class DataSpace {
 	 * @param key
 	 * @return null if not found
 	 */
-	public/* synchronized */Object find(Object key) {
+	public/* synchronized */D find(K key) {
 		int keyIndex = keys.indexOf(key);
 		if (keyIndex < 0)
 			return null;
 
 		int blkIndex = keyIndex / blockSize;
-		DataBlock blk = slots.getSlot(blkIndex);
+		DataBlock<K, D> blk = slots.getSlot(blkIndex);
 
 		// load data block into data space ; 해당 블럭이 없으면 DB에서 로드한다.
 		if (blk == null) {
@@ -72,14 +72,14 @@ public class DataSpace {
 	}
 }
 
-class Slots {
+class Slots<K, D> {
 	private int size;
-	private DataBlock[] dbSlots;
+	private DataBlock<K, D>[] dbSlots;
 	private int[] blkIdxSlots;
 	private int slotPtr;
 
 	private int cachePtr;
-	private DataBlock cacheSlot;
+	private DataBlock<K, D> cacheSlot;
 
 	public Slots(int size) {
 		this.size = size;
@@ -92,7 +92,7 @@ class Slots {
 		cacheSlot = null;
 	}
 
-	public synchronized void feedNewSlot(int blkIndex, DataBlock blk) {
+	public synchronized void feedNewSlot(int blkIndex, DataBlock<K, D> blk) {
 		dbSlots[slotPtr] = blk;
 		blkIdxSlots[slotPtr] = blkIndex;
 		slotPtr = ++slotPtr % size;
@@ -102,7 +102,7 @@ class Slots {
 	 * @param blkIndex
 	 * @return not if not found
 	 */
-	public synchronized DataBlock getSlot(int blkIndex) {
+	public synchronized DataBlock<K, D> getSlot(int blkIndex) {
 		if (cachePtr == blkIndex) {
 			return cacheSlot;
 		} else {

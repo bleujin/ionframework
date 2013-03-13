@@ -16,6 +16,7 @@ import net.ion.framework.util.CaseInsensitiveHashMap;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.MapUtil;
 
+@Deprecated
 public class Transformer {
 
 	public static <T> T[] transformIntoBeans(Rows rs, Class<T> beanClass) throws SQLException {
@@ -34,17 +35,6 @@ public class Transformer {
 
 		List<T> list = (List<T>) rs.toHandle(new BeanListHandler(beanClass));
 		return (T[]) list.toArray((T[]) Array.newInstance(beanClass, 0));
-	}
-
-	public static synchronized Map<String, Object> fetchFirstToMap(RowSet rows) {
-		try {
-			if (!rows.first()) {
-				throw RepositoryException.throwIt("No Data Found\n");
-			}
-			return currentRowToMap(rows);
-		} catch (SQLException ex) {
-			throw RepositoryException.throwIt(ex);
-		}
 	}
 
 	public static Map<String, Object> currentRowToMap(RowSet rows) {
@@ -107,17 +97,6 @@ public class Transformer {
 		}
 	}
 
-	public static Row fetchFirstToRow(Rows rows) {
-		try {
-			if (!rows.first()) {
-				throw RepositoryException.throwIt("No Data Found\n");
-			}
-			return new Row(currentRowToMap(rows), getColumnsNames(rows));
-		} catch (SQLException ex) {
-			throw RepositoryException.throwIt(ex);
-		}
-	}
-
 	private static Object getValue(RowSet rows, int i, ResultSetMetaData meta) throws SQLException {
 		if (meta.getColumnType(i) == Types.CLOB) {
 			return RowsUtils.clobToString(rows.getClob(i));
@@ -140,14 +119,4 @@ public class Transformer {
 		return value;
 	}
 
-	private static String[] getColumnsNames(RowSet rs) throws SQLException {
-		ResultSetMetaData meta = rs.getMetaData();
-		String[] names = new String[meta.getColumnCount()];
-
-		for (int i = 0; i < names.length; ++i) {
-			names[i] = meta.getColumnName(i + 1).toUpperCase();
-		}
-
-		return names;
-	}
 }

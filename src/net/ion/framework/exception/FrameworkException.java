@@ -19,6 +19,8 @@ package net.ion.framework.exception;
  */
 
 public abstract class FrameworkException extends RuntimeException {
+	private static final long serialVersionUID = 1943492039493304299L;
+
 	public FrameworkException(Throwable cause) {
 		super(cause.getMessage(), cause);
 	}

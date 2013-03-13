@@ -22,6 +22,7 @@ public class BeanListHandler<T> implements ResultSetHandler<List<T>> {
 	}
 
 	public List<T> handle(ResultSet rs) throws SQLException {
+		rs.beforeFirst() ;
 		return this.convert.toBeanList(rs, type);
 	}
 

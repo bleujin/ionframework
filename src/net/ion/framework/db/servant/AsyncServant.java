@@ -11,7 +11,7 @@ import org.apache.ecs.xhtml.li;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 
-public class AsyncServant implements IExtraServant {
+public class AsyncServant implements IExtraServant, GroupServant {
 
 	private List<IExtraServant> listHandler = ListUtil.newList();
 	private ExecutorService es;

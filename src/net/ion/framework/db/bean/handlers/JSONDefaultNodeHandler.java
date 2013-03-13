@@ -36,7 +36,7 @@ public class JSONDefaultNodeHandler extends AbstractXMLHandler implements Result
 			cols.add(meta.getColumnName(column).toLowerCase());
 		}
 
-		List<Map<String, Object>> list = new MapListHandler().handleString(rs, cols.toArray(new String[0]), cols.toArray(new String[0]));
+		List<Map<String, ? extends Object>> list = new MapListHandler().handle(rs);
 
 		JsonObject body = new JsonObject();
 

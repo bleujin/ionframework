@@ -140,6 +140,16 @@ public class TestJava extends TestCase{
 		}
 	}
 	
+	
+	public void testNullCatch() throws Exception {
+		
+		String s = null ;
+		try {
+			s.toUpperCase() ;
+			fail() ;
+		} catch(Exception expect){
+		}
+	}
 
 }
 

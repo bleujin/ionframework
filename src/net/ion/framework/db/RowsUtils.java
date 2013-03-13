@@ -6,15 +6,18 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.Clob;
+import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.sql.RowSet;
 
 import net.ion.framework.db.procedure.Queryable;
+import net.ion.framework.util.CaseInsensitiveHashMap;
 import net.ion.framework.util.IOUtil;
 
 import org.apache.commons.io.IOUtils;
@@ -51,24 +54,11 @@ public class RowsUtils {
 			fos = new FileOutputStream(file);
 			is = blob.getBinaryStream();
 
-			IOUtils.copy(is, fos);
-
-			fos.flush();
-			fos.close();
-			is.close();
-			file.delete();
+			IOUtil.copyNClose(is, fos);
 		} catch (IOException ex) {
 			throw new SQLException("Blob: " + ex.getMessage());
 		} finally {
-			try {
-				if (fos != null) {
-					fos.close();
-				}
-				if (is != null) {
-					is.close();
-				}
-			} catch (IOException ex) {
-			}
+			IOUtil.closeSilent(fos, is) ;
 		}
 
 		return file.getAbsolutePath();
@@ -78,12 +68,12 @@ public class RowsUtils {
 		return getTuple(rs);
 	}
 
-	private static ArrayList<Object> getTuple(RowSet rs) throws SQLException {
+	private static List<Object> getTuple(RowSet rs) throws SQLException {
 		ArrayList<Object> tuple = new ArrayList<Object>();
 		ResultSetMetaData meta = rs.getMetaData();
 
 		for (int i = 1, last = meta.getColumnCount(); i <= last; i++) {
-			// clob Ã³¸®
+			// clob Ã³ï¿½ï¿½
 			if (meta.getColumnType(i) == Types.CLOB) {
 				if (rs.getClob(i) == null) {
 					tuple.add(i - 1, null);
@@ -97,6 +87,46 @@ public class RowsUtils {
 			}
 		}
 		return tuple;
+	}
+
+
+	public static Map<String, Object> currentRowToMap(ResultSet rows) {
+		try {
+			Map<String, Object> result = new CaseInsensitiveHashMap<Object>();
+			ResultSetMetaData rsmd = rows.getMetaData();
+			int cols = rsmd.getColumnCount();
+
+			for (int i = 1; i <= cols; i++) {
+				// result.put(rsmd.getColumnName(i), getValue(rows, i, rsmd));
+				result.put(rsmd.getColumnName(i), getNullObjectValue(rows, i, rsmd));
+			}
+
+			return result;
+		} catch (SQLException ex) {
+			throw RepositoryException.throwIt(ex);
+		}
+	}
+	
+	private static Object getValue(ResultSet rows, int i, ResultSetMetaData meta) throws SQLException {
+		if (meta.getColumnType(i) == Types.CLOB) {
+			return RowsUtils.clobToString(rows.getClob(i));
+		} else {
+			return rows.getObject(i);
+		}
+	}
+	
+	private static Object getNullObjectValue(ResultSet rows, int i, ResultSetMetaData meta) throws SQLException {
+		Object value = getValue(rows, i, meta);
+		int type = meta.getColumnType(i);
+		switch (type) {
+		case Types.CHAR:
+		case Types.VARCHAR:
+		case Types.LONGVARCHAR:
+		case Types.CLOB:
+			if (value == null)
+				return "";
+		}
+		return value;
 	}
 
 }

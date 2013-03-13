@@ -13,10 +13,16 @@ public class BeanHandler<T> implements ResultSetHandler<T> {
 
 	private Class<T> type ;
 	private RowProcessor convert;
+	private T nullValue;
 
 	public BeanHandler(Class<T> type) {
+		this(type, (T)null) ;
+	}
+
+	public BeanHandler(Class<T> type, T nullValue) {
 		this.type = type;
-		convert = BasicRowProcessor.instance();
+		this.convert = BasicRowProcessor.instance();
+		this.nullValue = nullValue ;
 	}
 
 	public BeanHandler(Class<T> type, RowProcessor convert) {
@@ -25,7 +31,7 @@ public class BeanHandler<T> implements ResultSetHandler<T> {
 	}
 
 	public T handle(ResultSet rs) throws SQLException {
-		return rs.next() ? this.convert.toBean(rs, this.type) : null;
+		return rs.next() ? this.convert.toBean(rs, this.type) : nullValue;
 	}
 
 }

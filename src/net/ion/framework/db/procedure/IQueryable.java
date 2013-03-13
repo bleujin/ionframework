@@ -12,7 +12,7 @@ public interface IQueryable  extends Serializable{
 	public final int QUERY_COMMAND = 1;
 	public final int UPDATE_COMMAND = 2;
 
-	public void setPage(Page page);
+	public IQueryable setPage(Page page);
 
 	public Page getPage();
 

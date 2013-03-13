@@ -6,12 +6,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.parse.gson.JsonObject;
 import net.ion.framework.parse.gson.JsonParser;
+import net.ion.framework.util.ArrayUtil;
 
 public class JSONNodeListHandler extends AbstractListHandler implements ResultSetHandler<JsonObject> {
+
+	private static final long serialVersionUID = -4499992880931321488L;
 
 	public JSONNodeListHandler(String[] attrNames, String[] attrColNames) {
 		super(attrNames, attrColNames);
@@ -34,7 +38,14 @@ public class JSONNodeListHandler extends AbstractListHandler implements ResultSe
 			}
 		}
 
-		List<Map<String, Object>> list = new MapListHandler().handleString(rs, getAttributeNames(), getColumnNames());
+		List<Map<String, String>> list = new StringMapListHandler().handle(rs) ;
+		for (Map<String, String> map : list) {
+			for (Entry<String, String> entry : map.entrySet()) {
+				if (! ArrayUtil.contains(getAttributeNames(), entry.getKey())){
+					map.remove(entry.getKey()) ;
+				}
+			}
+		}
 
 		JsonObject body = new JsonObject();
 

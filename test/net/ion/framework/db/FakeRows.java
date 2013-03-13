@@ -142,6 +142,7 @@ public class FakeRows implements Rows {
 	}
 
 	public Object toHandle(ResultSetHandler rsh) throws SQLException {
+		this.beforeFirst() ;
 		return rsh.handle(this);
 	}
 

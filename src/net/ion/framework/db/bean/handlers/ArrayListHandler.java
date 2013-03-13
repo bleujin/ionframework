@@ -4,6 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
+import net.ion.framework.db.bean.BasicRowProcessor;
 import net.ion.framework.db.bean.RowProcessor;
 import net.ion.framework.util.ListUtil;
 
@@ -13,7 +14,7 @@ public class ArrayListHandler extends AbListHandler<Object[]> {
 	private RowProcessor convert ;
 
 	public ArrayListHandler() {
-		this(ArrayHandler.ROW_PROCESSOR) ;
+		this(BasicRowProcessor.instance()) ;
 	}
 
 	public ArrayListHandler(RowProcessor convert) {

@@ -209,8 +209,9 @@ public class SerializedQuery implements Serializable, Queryable {
 		return deserializedQuery.getQueryType();
 	}
 
-	public void setPage(Page page) {
+	public IQueryable setPage(Page page) {
 		deserializedQuery.setPage(page) ;
+		return this ;
 	}
 
 	public Serializable getParam(int i) {

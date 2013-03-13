@@ -2,7 +2,9 @@ package net.ion.framework.template.tagext;
 
 import java.util.HashMap;
 import java.util.Stack;
+import java.util.concurrent.Callable;
 
+import net.ion.framework.exception.ExecutionRuntimeException;
 import net.ion.framework.template.ref.Context;
 
 /**
@@ -85,6 +87,26 @@ public class PageContext implements Context {
 
 	public Object getAttribute(String name) {
 		return this.attribute.get(name);
+	}
+
+	public <V> V getAttribute(String name, Callable<V> call) {
+		try {
+			V value = (V) attribute.get(name);
+			if (value != null) return value ;
+
+			synchronized (attribute) {
+				value = (V) attribute.get(name);
+				if (value == null) {
+					value = call.call();
+					attribute.put(name, value);
+					return value ;
+				} else {
+					return value;
+				}
+			}
+		} catch (Exception ex) {
+			throw new ExecutionRuntimeException(ex, ex.getMessage()) ;
+		}
 	}
 
 	public void removeAttribute(String name) {

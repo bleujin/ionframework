@@ -12,7 +12,7 @@ package net.ion.framework.template.data;
  * @see DataSpace
  */
 
-public interface DataKeys {
+public interface DataKeys<K> {
 	/**
 	 * 전체 key 크기
 	 * 
@@ -27,7 +27,7 @@ public interface DataKeys {
 	 * @param key
 	 * @return -1 if not found
 	 */
-	int indexOf(Object key);
+	int indexOf(K key);
 
 	/**
 	 * 전체 key에서 from에서 to까지 key를 배열로 리턴<br/>
@@ -37,5 +37,5 @@ public interface DataKeys {
 	 * @param to
 	 * @return key array
 	 */
-	Object[] indexRange(int from, int to);
+	K[] indexRange(int from, int to);
 }

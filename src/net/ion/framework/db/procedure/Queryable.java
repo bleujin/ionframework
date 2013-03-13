@@ -94,7 +94,7 @@ public interface Queryable extends IQueryable {
 			throw new IllegalStateException("null query") ;
 		}
 
-		public void setPage(Page page) {
+		public IQueryable setPage(Page page) {
 			throw new IllegalStateException("null query") ;
 		}
 		

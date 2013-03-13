@@ -95,8 +95,9 @@ public class AsyncUserProcedures implements IUserProcedures {
 		return inner.getQueryType();
 	}
 
-	public void setPage(Page page) {
+	public IQueryable setPage(Page page) {
 		inner.setPage(page) ;
+		return this ;
 	}
 
 	public Queryable getQuery(int i) {

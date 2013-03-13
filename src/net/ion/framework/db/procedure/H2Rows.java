@@ -24,6 +24,8 @@ import net.ion.framework.db.RowsUtils;
 import net.ion.framework.db.ScreenInfo;
 import net.ion.framework.db.Transformer;
 import net.ion.framework.db.bean.ResultSetHandler;
+import net.ion.framework.db.bean.handlers.FirstRowHandler;
+import net.ion.framework.db.bean.handlers.StringMapListHandler;
 import net.ion.framework.db.rowset.WebRowSet;
 import net.ion.framework.util.StringUtil;
 
@@ -244,7 +246,7 @@ public class H2Rows extends WebRowSet implements Rows {
 	}
 
 	public Row firstRow() {
-		return Transformer.fetchFirstToRow(this);
+		return FirstRowHandler.SELF.handle(this) ;
 	}
 
 	public Rows nextPageRows() throws SQLException {

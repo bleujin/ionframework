@@ -37,7 +37,6 @@ import net.ion.framework.db.procedure.RepositoryService;
 import net.ion.framework.db.procedure.SerializedQuery;
 import net.ion.framework.db.servant.AfterTask;
 import net.ion.framework.db.servant.AsyncServant;
-import net.ion.framework.db.servant.ChannelServant;
 import net.ion.framework.db.servant.IExtraServant;
 import net.ion.framework.db.servant.PrimaryServant;
 import net.ion.framework.db.servant.ServantChain;
@@ -85,7 +84,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	private static Logger log = LogBroker.getLogger(DBController.class);
 	private long modify_count = 0;
 
-	private ExecutorService threadPool = Executors.newCachedThreadPool() ;
+	private ExecutorService threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("eventLogThread-%d")) ;
 	
 	public DBController(Configuration dbconfig) throws DBControllerInstantiationException {
 

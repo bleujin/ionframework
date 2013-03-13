@@ -19,6 +19,7 @@ import java.sql.Types;
 import java.util.Map;
 
 import net.ion.framework.db.bean.ResultSetHandler;
+import net.ion.framework.db.bean.handlers.FirstRowHandler;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.Queryable;
 import net.ion.framework.db.rowset.WebRowSet;
@@ -191,7 +192,7 @@ public class RowsImpl extends WebRowSet implements Rows {
 	}
 
 	public Row firstRow() {
-		return Transformer.fetchFirstToRow(this);
+		return FirstRowHandler.SELF.handle(this) ;
 	}
 
 	public Rows nextPageRows() throws SQLException {

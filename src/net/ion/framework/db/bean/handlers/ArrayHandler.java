@@ -10,12 +10,10 @@ import net.ion.framework.db.bean.RowProcessor;
 public class ArrayHandler implements ResultSetHandler<Object[]> {
 	private static final long serialVersionUID = 1330244531886427503L;
 
-	static final RowProcessor ROW_PROCESSOR = BasicRowProcessor.instance();
-	
 	private RowProcessor convert = BasicRowProcessor.instance();
 
 	public ArrayHandler() {
-		this(ROW_PROCESSOR) ;
+		this(BasicRowProcessor.instance()) ;
 	}
 
 	public ArrayHandler(RowProcessor convert) {

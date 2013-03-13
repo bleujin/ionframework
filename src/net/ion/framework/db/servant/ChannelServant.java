@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class ChannelServant implements IExtraServant {
+public class ChannelServant implements IExtraServant, GroupServant {
 
 	private final int capacity ;
 	private final BlockingQueue<AfterTask> queue;

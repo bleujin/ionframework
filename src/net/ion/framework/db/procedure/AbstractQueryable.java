@@ -41,8 +41,9 @@ public abstract class AbstractQueryable implements Queryable {
 		return page;
 	}
 
-	public final void setPage(Page page) {
+	public final IQueryable setPage(Page page) {
 		this.page = page;
+		return this ;
 	}
 
 	public final String getDBType() {

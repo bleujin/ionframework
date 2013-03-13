@@ -11,9 +11,13 @@ public class Row implements Serializable {
 	final String[] fieldNames;
 
 	// only created in same package
-	protected Row(Map<String, ?> fields, String[] sycnFieldNames) {
+	protected Row(Map<String, ?> fields, String[] syncFieldNames) {
 		this.fields = fields;
-		this.fieldNames = sycnFieldNames;
+		this.fieldNames = syncFieldNames;
+	}
+	
+	public static Row create(Map<String, ?> fields, String[] sycnFieldNames){
+		return new Row(fields, sycnFieldNames) ;
 	}
 
 	public String getString(String fieldName) {

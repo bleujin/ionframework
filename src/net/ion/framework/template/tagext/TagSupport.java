@@ -19,6 +19,8 @@ import java.io.Serializable;
  */
 
 public abstract class TagSupport extends BaseTagSupport implements IterationTag, Serializable {
+
+	private static final long serialVersionUID = -5488937706461541678L;
 	// reserved replace words..
 	protected final String SPACE = "#SPACE#";
 	protected final String SPACE_VALUE = " ";

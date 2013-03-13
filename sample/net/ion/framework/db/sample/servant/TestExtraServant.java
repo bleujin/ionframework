@@ -3,6 +3,8 @@ package net.ion.framework.db.sample.servant;
 import java.util.List;
 import java.util.concurrent.Executors;
 
+import oracle.net.aso.s;
+
 import net.ion.framework.db.DBController;
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
@@ -77,9 +79,10 @@ public class TestExtraServant extends TestBaseSample{
 		
 		DBController newDc = new DBController("test", dc.getDBManager(), schain) ;
 		
-		assertEquals(true, newDc.getServantChain() == schain) ;
+//		assertEquals(true, newDc.getServantChain() == schain) ;
 		List<IExtraServant> servants = newDc.getServantChain().getServantList() ;
-		assertEquals(2, servants.size()) ;
+		Debug.line(servants) ;
+		assertEquals(3, servants.size()) ;
 	}
 	
 	public void testChannelServant2() throws Exception {
@@ -95,7 +98,7 @@ public class TestExtraServant extends TestBaseSample{
 		DBController newDc = new DBController("test", dc.getDBManager(), schain) ;
 
 		List<IExtraServant> servants = newDc.getServantChain().getServantList() ;
-		assertEquals(2, servants.size()) ;
+		assertEquals(4, servants.size()) ;
 	}
 	
 	public void testChannelServant3() throws Exception {
@@ -110,7 +113,7 @@ public class TestExtraServant extends TestBaseSample{
 		DBController newDc = new DBController("test", dc.getDBManager(), schain) ;
 
 		List<IExtraServant> servants = newDc.getServantChain().getServantList() ;
-		assertEquals(2, servants.size()) ;
+		assertEquals(3, servants.size()) ;
 		
 	}
 	

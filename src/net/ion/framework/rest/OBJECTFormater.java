@@ -23,12 +23,8 @@ public class OBJECTFormater implements ResultSetHandler<List<Map<String, ? exten
 	}
 
 	public Representation toRepresentation(IRequest req, ResultSet rows, IResponse res) throws ResourceException {
-		try {
-			List<Map<String, ? extends Object>> datas = new MapListHandler().handle(rows);
-			return toRepresentation(req, datas, res) ;
-		} catch (SQLException e) {
-			throw new ResourceException(e) ;
-		}
+		List<Map<String, ? extends Object>> datas = new MapListHandler().handle(rows);
+		return toRepresentation(req, datas, res) ;
 	}
 
 	public List<Map<String, ? extends Object>> handle(ResultSet rs) throws SQLException {

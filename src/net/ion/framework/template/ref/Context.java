@@ -1,5 +1,7 @@
 package net.ion.framework.template.ref;
 
+import java.util.concurrent.Callable;
+
 /**
  * 작업 공간
  * 
@@ -29,6 +31,10 @@ public interface Context {
 	 */
 	void setAttribute(String name, Object obj);
 
+	
+	
+	<V> V getAttribute(String name, Callable<V> call) ;
+	
 	/**
 	 * 속성을 가져온다.
 	 * 

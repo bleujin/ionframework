@@ -160,7 +160,7 @@ public class XAUserProcedure implements IQueryable {
 	}
 
 	public void cancel() throws SQLException, InterruptedException {
-		rollback(); // TODO ½ÇÇàµµÁß¿¡ Áß´ÜÇÒ ¹æ¹ýÀÌ.... =¤µ=
+		rollback(); // TODO ï¿½ï¿½ï¿½àµµï¿½ß¿ï¿½ ï¿½ß´ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½.... =ï¿½ï¿½=
 	}
 
 	public Rows execQuery() throws SQLException {
@@ -179,7 +179,7 @@ public class XAUserProcedure implements IQueryable {
 		return QueryType.USER_PROCEDURE;
 	}
 
-	public void setPage(Page page) {
+	public IQueryable setPage(Page page) {
 		throw new UnsupportedOperationException("this type is only permitted execUpdate");
 	}
 

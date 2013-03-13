@@ -85,7 +85,7 @@ public class ToPostfixExpress {
 			}
 		});
 
-		this.cache = new GenericCache(ToPostfixExpress.MAX_CACHE);
+		this.cache = new GenericCache.Builder(ToPostfixExpress.MAX_CACHE).old();
 	}
 
 	/**
