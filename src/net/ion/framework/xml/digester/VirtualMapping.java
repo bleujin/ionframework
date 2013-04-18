@@ -1,7 +1,6 @@
 package net.ion.framework.xml.digester;
 
 /**
- * virtualURI, realPath�� ����� ������ Bean
  * 
  * @author bleujin
  * @version 1.0

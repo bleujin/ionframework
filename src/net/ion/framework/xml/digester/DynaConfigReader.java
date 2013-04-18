@@ -8,7 +8,7 @@ import org.apache.commons.digester.xmlrules.DigesterLoader;
 import org.xml.sax.SAXException;
 
 /**
- * config Rule과 config 파일을 읽어들여서 동적으로 config 정보를 설정한다.
+ * 
  * 
  * @author not attributable
  * @version 1.0
@@ -24,7 +24,7 @@ public class DynaConfigReader implements ConfigReader {
 	}
 
 	/**
-	 * config Rule파일과 config 파일을 읽어들여 ServerConfig 인스턴스를 생성하고 생성한 인스턴스를 return 한다.
+	 * 
 	 * 
 	 * @throws IOException
 	 * @throws SAXException

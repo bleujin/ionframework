@@ -3,7 +3,9 @@ package net.ion.framework.util;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class MapUtil {
 	public final static Map EMPTY = Collections.EMPTY_MAP ;
@@ -62,6 +64,32 @@ public class MapUtil {
         	throw new IllegalArgumentException(iex) ;
 		}
     }
+
+	public static Map<String, Object> toFlat(Map<String, Object> map) {
+		return toFlat(map, '.') ;
+	}
+	
+	public static Map<String, Object> toFlat(Map<String, Object> map, char div) {
+		Map<String, Object> result = newMap() ;
+		for (Entry<String, Object> entry : map.entrySet()) {
+			recursiveObject(result, entry.getKey(), div, entry.getValue()) ;
+		}
+
+		return result ;
+	}
+	
+	private static void recursiveObject(Map<String, Object> parent, String parentPath, char div, Object value){
+		if (value instanceof Map){
+			Map<String, Object> that = (Map) value ;
+			for (Entry<String, Object> entry : that.entrySet()) {
+				recursiveObject(parent, parentPath +  div + entry.getKey(), div, entry.getValue()) ;
+			}
+		} else if (value instanceof List){
+			parent.put(parentPath, value) ;
+		} else {
+			parent.put(parentPath, value) ;
+		}
+	}
 
 	
 }

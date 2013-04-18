@@ -3,7 +3,7 @@ package net.ion.framework.xml.digester;
 import java.util.HashMap;
 
 /**
- * 서버정보를 가지고 있는 클래스. 포트, 서버이름, DocumentRoot 등을 저장하고 있다.
+ * 
  * 
  * @author not attributable
  * @version 1.0
@@ -16,7 +16,7 @@ public class ServerConfig {
 	private HashMap<String, VirtualMapping> mapping = new HashMap<String, VirtualMapping>();
 
 	/**
-	 * 서버이름, documentRoot, 서버포트를 설정한다.
+	 *
 	 * 
 	 * @param serverName
 	 *            String
@@ -32,7 +32,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * 서버포트를 가져온다.
+	 *
 	 * 
 	 * @return int
 	 */
@@ -41,7 +41,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * 서버포트를 설정한다.
+	 *
 	 * 
 	 * @param port
 	 *            int
@@ -51,7 +51,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * 서버이름을 가져온다.
+	 * 
 	 * 
 	 * @return String
 	 */
@@ -60,7 +60,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * 서버이름을 설정한다.
+	 * 
 	 * 
 	 * @param serverName
 	 *            String
@@ -70,7 +70,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * DocumentRoot를 가져온다.
+	 * DocumentRoot占쏙옙 占쏙옙占쏙옙占승댐옙.
 	 * 
 	 * @return String
 	 */
@@ -79,7 +79,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * DocumentRoot를 설정한다.
+	 * 
 	 * 
 	 * @param documentRoot
 	 *            String
@@ -89,7 +89,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * VirtualMapping을 추가한다.
+	 * 
 	 * 
 	 * @param map
 	 *            VirtualMapping
@@ -99,7 +99,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * uri를 가지는 VirtualMapping을 가져온다.
+	 * 
 	 * 
 	 * @param uri
 	 *            String
@@ -110,7 +110,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * 모든 Mapping들을 HashMap으로 가져온다.
+	 * 
 	 * 
 	 * @return HashMap
 	 */
