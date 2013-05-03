@@ -29,8 +29,8 @@ public final class JsonObject extends JsonElement {
 	public JsonObject() {
 	}
 
-	public final static JsonObject create(){
-		return new JsonObject() ;
+	public final static JsonObject create() {
+		return new JsonObject();
 	}
 
 	public void add(String property, JsonElement value) {
@@ -71,7 +71,7 @@ public final class JsonObject extends JsonElement {
 	public boolean has(String memberName) {
 		return members.containsKey(memberName);
 	}
-	
+
 	public JsonElement get(String memberName) {
 		if (members.containsKey(memberName)) {
 			JsonElement member = members.get(memberName);
@@ -105,13 +105,11 @@ public final class JsonObject extends JsonElement {
 	public int hashCode() {
 		return members.hashCode();
 	}
-	
-	
+
 	private JsonElement getIfNotExist(String memberName) {
 		JsonElement result = get(memberName);
 		return result == null ? NotFoundJsonElement.NOT_FOUND : result;
 	}
-
 
 	public String asString(String key) {
 		return getIfNotExist(key).getAsString();
@@ -171,7 +169,8 @@ public final class JsonObject extends JsonElement {
 
 	public int asInt(String key, int dftvalue) {
 		JsonElement ele = getIfNotExist(key);
-		if (ele == NotFoundJsonElement.NOT_FOUND) return dftvalue ;
+		if (ele == NotFoundJsonElement.NOT_FOUND)
+			return dftvalue;
 		return ele.getAsInt();
 	}
 
@@ -184,7 +183,7 @@ public final class JsonObject extends JsonElement {
 
 		for (Entry<String, JsonElement> entry : members.entrySet()) {
 			Object simpleObject = JsonUtil.toSimpleObject(entry.getValue());
-			result.put(entry.getKey(), simpleObject) ;
+			result.put(entry.getKey(), simpleObject);
 		}
 
 		return result;
@@ -217,13 +216,12 @@ public final class JsonObject extends JsonElement {
 		return this;
 	}
 
-	
-	public final static JsonObject fromString(String jsonString){
-		return JsonParser.fromString(jsonString).getAsJsonObject() ;
+	public final static JsonObject fromString(String jsonString) {
+		return JsonParser.fromString(jsonString).getAsJsonObject();
 	}
 
-	public final static JsonObject fromObject(Object obj){
-		return JsonParser.fromObject(obj).getAsJsonObject() ;
+	public final static JsonObject fromObject(Object obj) {
+		return JsonParser.fromObject(obj).getAsJsonObject();
 	}
 
 }

@@ -59,7 +59,7 @@ import net.ion.framework.parse.gson.stream.JsonWriter;
  *   }}
  * </pre>
  * 
- * With this type adapter installed, Gson will convert {@code Points} to JSON as strings like {@code "5,8"} rather than objects like {@code "x":5,"y":8}}. In this case the type adapter binds a rich Java class to a compact JSON value.
+ * With this type adapter installed, Gson will convert {@code Points} to JSON as strings like {@code "5,8"} rather than objects like {@code "x":5,"y":8} . In this case the type adapter binds a rich Java class to a compact JSON value.
  * 
  * <p>
  * The {@link #read(JsonReader) read()} method must read exactly one value and {@link #write(JsonWriter,Object) write()} must write exactly one value. For primitive types this is means readers should make exactly one call to {@code nextBoolean()}, {@code nextDouble()}, {@code nextInt()}, {@code nextLong()}, {@code nextString()} or {@code nextNull()}. Writers should make exactly one call to one of

@@ -263,7 +263,7 @@
 
             <fatjar.jarsource file="${basedir}\util\jai_codec.jar" relpath=""/>
             <fatjar.jarsource file="${basedir}\util\jai_core.jar" relpath=""/>
-            <fatjar.jarsource file="${basedir}\util\log4j-1.2.8.jar" relpath=""/>
+            <fatjar.jarsource file="${basedir}\util\log4j-1.2.14.jar" relpath=""/>
 
         	<fatjar.jarsource file="${basedir}\util\jlibdiff.jar" relpath=""/>
         	<fatjar.jarsource file="${basedir}\util\batik-all-1.7.jar" relpath=""/><!-- Batik is a Java-based toolkit for applications or applets that want to use images in the Scalable Vector Graphics (SVG)-->

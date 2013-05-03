@@ -27,26 +27,26 @@ import net.ion.framework.parse.gson.stream.JsonWriter;
 
 /**
  * Adapts a BigInteger type to and from its JSON representation.
- *
+ * 
  * @author Joel Leitch
  */
 public final class BigIntegerTypeAdapter extends TypeAdapter<BigInteger> {
 
-  @Override
-  public BigInteger read(JsonReader in) throws IOException {
-    if (in.peek() == JsonToken.NULL) {
-      in.nextNull();
-      return null;
-    }
-    try {
-      return new BigInteger(in.nextString());
-    } catch (NumberFormatException e) {
-      throw new JsonSyntaxException(e);
-    }
-  }
+	@Override
+	public BigInteger read(JsonReader in) throws IOException {
+		if (in.peek() == JsonToken.NULL) {
+			in.nextNull();
+			return null;
+		}
+		try {
+			return new BigInteger(in.nextString());
+		} catch (NumberFormatException e) {
+			throw new JsonSyntaxException(e);
+		}
+	}
 
-  @Override
-  public void write(JsonWriter out, BigInteger value) throws IOException {
-    out.value(value);
-  }
+	@Override
+	public void write(JsonWriter out, BigInteger value) throws IOException {
+		out.value(value);
+	}
 }

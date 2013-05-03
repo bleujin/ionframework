@@ -16,7 +16,6 @@
 
 package net.ion.framework.parse.gson;
 
-
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Date;
@@ -153,14 +152,15 @@ public final class JsonPrimitive extends JsonElement {
 		return value instanceof String ? new LazilyParsedNumber((String) value) : (Number) value;
 	}
 
-	
-	public Date getAsDate(){
-		if (value instanceof Long) 
-			return new Date((Long) value) ;
-		else 
-			throw new IllegalArgumentException("not date timeformat") ;
+	public Date getAsDate() {
+		if (value instanceof Long)
+			return new Date((Long) value);
+		else if (value instanceof LazilyParsedNumber)
+			return new Date(((LazilyParsedNumber) value).longValue());
+		else
+			throw new IllegalArgumentException("not date timeformat");
 	}
-	
+
 	/**
 	 * Check whether this primitive contains a String value.
 	 * 
@@ -346,8 +346,8 @@ public final class JsonPrimitive extends JsonElement {
 		}
 		return false;
 	}
-	
-	public Object getValue(){
-		return value ;
+
+	public Object getValue() {
+		return value;
 	}
 }

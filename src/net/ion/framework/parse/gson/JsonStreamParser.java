@@ -27,7 +27,6 @@ import net.ion.framework.parse.gson.stream.JsonReader;
 import net.ion.framework.parse.gson.stream.JsonToken;
 import net.ion.framework.parse.gson.stream.MalformedJsonException;
 
-
 /**
  * A streaming parser that allows reading of multiple {@link JsonElement}s from the specified reader asynchronously.
  * 

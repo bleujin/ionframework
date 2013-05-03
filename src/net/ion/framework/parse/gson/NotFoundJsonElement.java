@@ -5,11 +5,11 @@ import java.math.BigInteger;
 
 public class NotFoundJsonElement extends JsonElement {
 
-	
-	public final static NotFoundJsonElement NOT_FOUND = new NotFoundJsonElement() ;
+	public final static NotFoundJsonElement NOT_FOUND = new NotFoundJsonElement();
 
-	private NotFoundJsonElement(){}
-	
+	private NotFoundJsonElement() {
+	}
+
 	public boolean isJsonArray() {
 		return false;
 	}
@@ -27,71 +27,71 @@ public class NotFoundJsonElement extends JsonElement {
 	}
 
 	public JsonObject getAsJsonObject() {
-		return null ;
+		return null;
 	}
 
 	public JsonArray getAsJsonArray() {
-		return null ;
+		return null;
 	}
 
 	public JsonPrimitive getAsJsonPrimitive() {
-		return null ;
+		return null;
 	}
 
 	public JsonNull getAsJsonNull() {
-		return null ;
+		return null;
 	}
 
 	public boolean getAsBoolean() {
-		return false ;
+		return false;
 	}
 
 	Boolean getAsBooleanWrapper() {
-		return null ;
+		return null;
 	}
 
 	public Number getAsNumber() {
-		return null ;
+		return null;
 	}
 
 	public String getAsString() {
-		return null ;
+		return null;
 	}
 
 	public double getAsDouble() {
-		return 0.0d ;
+		return 0.0d;
 	}
 
 	public float getAsFloat() {
-		return 0.0f ;
+		return 0.0f;
 	}
 
 	public long getAsLong() {
-		return 0L ;
+		return 0L;
 	}
 
 	public int getAsInt() {
-		return 0 ;
+		return 0;
 	}
 
 	public byte getAsByte() {
-		return '\0' ;
+		return '\0';
 	}
 
 	public char getAsCharacter() {
-		return '\0' ;
+		return '\0';
 	}
 
 	public BigDecimal getAsBigDecimal() {
-		return null ;
+		return null;
 	}
 
 	public BigInteger getAsBigInteger() {
-		return null ;
+		return null;
 	}
 
 	public short getAsShort() {
-		return 0 ;
+		return 0;
 	}
 
 }

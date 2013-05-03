@@ -32,7 +32,6 @@ import net.ion.framework.parse.gson.internal.Primitives;
 import net.ion.framework.parse.gson.internal.bind.TypeAdapters;
 import net.ion.framework.parse.gson.reflect.TypeToken;
 
-
 /**
  * <p>
  * Use this builder to construct a {@link Gson} instance when you need to set configuration options other than the default. For {@link Gson} with default configuration, it is simpler to use {@code new Gson()}. {@code GsonBuilder} is best used by creating it, and then invoking its various configuration methods, and finally calling create.
@@ -173,7 +172,7 @@ public final class GsonBuilder {
 	 * </pre>
 	 * 
 	 * <h3>Maps as JSON arrays</h3>
-	 * For this case, assume that a type adapter was NOT registered for some {@code Point} class, but rather the default Gson serialization is applied. In this case, some {@code new Point(2,3)} would serialize as {@code {"x":2,"y":5}}.
+	 * For this case, assume that a type adapter was NOT registered for some {@code Point} class, but rather the default Gson serialization is applied. In this case, some {@code new Point(2,3)} would serialize as {@code "x":2,"y":5}}.
 	 * 
 	 * <p>
 	 * Given the assumption above, a {@code Map<Point, String>} will be serialize as an array of arrays (can be viewed as an entry set of pairs).

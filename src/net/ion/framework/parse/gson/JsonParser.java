@@ -107,52 +107,60 @@ public final class JsonParser {
 			json.setLenient(lenient);
 		}
 	}
-	
-	public final static JsonObject fromMap(Map<String, ? extends Object> map){
-		JsonObject jso = new JsonObject() ;
+
+	public final static JsonObject fromMap(Map<String, ? extends Object> map) {
+		JsonObject jso = new JsonObject();
 		for (Entry<String, ? extends Object> entry : map.entrySet()) {
-			jso.add(entry.getKey(), fromObject(entry.getValue())) ;
+			jso.add(entry.getKey(), fromObject(entry.getValue()));
 		}
-		return jso ;
-//		Type mapType = new TypeToken<Map<String, ? extends Object>>() {}.getType();
-//		JsonElement jso = new Gson().toJsonTree(map, mapType) ;
-//		return jso.getAsJsonObject() ;
+		return jso;
+		// Type mapType = new TypeToken<Map<String, ? extends Object>>() {}.getType();
+		// JsonElement jso = new Gson().toJsonTree(map, mapType) ;
+		// return jso.getAsJsonObject() ;
 	}
-	
-	public final static JsonArray fromList(List list){
-		JsonArray array = new JsonArray() ;
+
+	public final static JsonArray fromList(List list) {
+		JsonArray array = new JsonArray();
 		for (Object object : list) {
-			array.add(fromObject(object)) ;
+			array.add(fromObject(object));
 		}
-		return array ;
-		
+		return array;
+
 		// return new Gson().toJsonTree(list, new TypeToken<List>(){}.getType()).getAsJsonArray() ;
 	}
 
 	public final static JsonElement fromString(String json) throws JsonSyntaxException {
-		if (StringUtil.isBlank(json)) return new JsonObject() ;
+		if (StringUtil.isBlank(json))
+			return new JsonObject();
 		return new JsonParser().parse(json);
 	}
 
-	private static DefaultExclusionStrategy DStrategy = new DefaultExclusionStrategy() ;
+	private static DefaultExclusionStrategy DStrategy = new DefaultExclusionStrategy();
+
 	public static JsonElement fromObject(Object src) {
-		return fromObject(DStrategy, src) ;
+		return fromObject(DStrategy, src);
 	}
 
 	public static JsonElement fromObject(ExclusionStrategy strategy, Object src) {
-		if (src == null) return JsonNull.INSTANCE ;
-		if (src instanceof JsonElement) return (JsonElement) src ; 
-		if (src instanceof ChainMap) return fromMap(((ChainMap)src).toMap()) ;
-		if (src instanceof Map) return fromMap((Map<String, Object>)src) ;
-		if (src instanceof Collection) return fromList(new ArrayList((Collection)src)) ;
-		if (src instanceof JsonString) return fromString(((JsonString)src).toJsonString()) ;
-		//		if (src instanceof String) {
-//			if (StringUtil.isBlank((String)src)) return new JsonPrimitive("") ; 
-//			return new JsonPrimitive((String)src) ;
-//		}
-		return new GsonBuilder().addSerializationExclusionStrategy(strategy).create().toJsonTree(src) ;
+		if (src == null)
+			return JsonNull.INSTANCE;
+		if (src instanceof JsonElement)
+			return (JsonElement) src;
+		if (src instanceof ChainMap)
+			return fromMap(((ChainMap) src).toMap());
+		if (src instanceof Map)
+			return fromMap((Map<String, Object>) src);
+		if (src instanceof Collection)
+			return fromList(new ArrayList((Collection) src));
+		if (src instanceof JsonString)
+			return fromString(((JsonString) src).toJsonString());
+		// if (src instanceof String) {
+		// if (StringUtil.isBlank((String)src)) return new JsonPrimitive("") ;
+		// return new JsonPrimitive((String)src) ;
+		// }
+		return new GsonBuilder().addSerializationExclusionStrategy(strategy).create().toJsonTree(src);
 	}
-	
+
 	private static class DefaultExclusionStrategy implements ExclusionStrategy {
 
 		public boolean shouldSkipClass(Class<?> clazz) {
@@ -162,6 +170,6 @@ public final class JsonParser {
 		public boolean shouldSkipField(FieldAttributes f) {
 			return false;
 		}
-		
+
 	}
 }

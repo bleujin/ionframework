@@ -16,7 +16,6 @@
 
 package net.ion.framework.parse.gson.internal.bind;
 
-
 import java.io.IOException;
 import java.math.BigDecimal;
 
@@ -28,26 +27,26 @@ import net.ion.framework.parse.gson.stream.JsonWriter;
 
 /**
  * Adapts a BigDecimal type to and from its JSON representation.
- *
+ * 
  * @author Joel Leitch
  */
 public final class BigDecimalTypeAdapter extends TypeAdapter<BigDecimal> {
 
-  @Override
-  public BigDecimal read(JsonReader in) throws IOException {
-    if (in.peek() == JsonToken.NULL) {
-      in.nextNull();
-      return null;
-    }
-    try {
-      return new BigDecimal(in.nextString());
-    } catch (NumberFormatException e) {
-      throw new JsonSyntaxException(e);
-    }
-  }
+	@Override
+	public BigDecimal read(JsonReader in) throws IOException {
+		if (in.peek() == JsonToken.NULL) {
+			in.nextNull();
+			return null;
+		}
+		try {
+			return new BigDecimal(in.nextString());
+		} catch (NumberFormatException e) {
+			throw new JsonSyntaxException(e);
+		}
+	}
 
-  @Override
-  public void write(JsonWriter out, BigDecimal value) throws IOException {
-    out.value(value);
-  }
+	@Override
+	public void write(JsonWriter out, BigDecimal value) throws IOException {
+		out.value(value);
+	}
 }

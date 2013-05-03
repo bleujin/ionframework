@@ -295,11 +295,10 @@ public final class JsonArray extends JsonElement implements Iterable<JsonElement
 	public int hashCode() {
 		return elements.hashCode();
 	}
-	
-	public JsonElement[] toArray(){
-		return elements.toArray(new JsonElement[0]) ;
-	}
 
+	public JsonElement[] toArray() {
+		return elements.toArray(new JsonElement[0]);
+	}
 
 	public String asString(int key) {
 		return get(key).getAsString();
@@ -348,13 +347,13 @@ public final class JsonArray extends JsonElement implements Iterable<JsonElement
 	public <T> T asObject(int key, Class<T> clz) {
 		return new Gson().fromJson(get(key), clz);
 	}
-	
-	public <T> List<T> asList(Class<T> clz){
-		List<T> result = ListUtil.newList() ;
+
+	public <T> List<T> asList(Class<T> clz) {
+		List<T> result = ListUtil.newList();
 		for (JsonElement ele : toArray()) {
-			result.add(ele.getAsJsonObject().getAsObject(clz)) ;
-		} 
-		return result ;
+			result.add(ele.getAsJsonObject().getAsObject(clz));
+		}
+		return result;
 	}
 
 	public Iterator<JsonElement> asJsonArrayElement(int key) {
@@ -370,9 +369,9 @@ public final class JsonArray extends JsonElement implements Iterable<JsonElement
 	}
 
 	public Object[] toObjectArray() {
-		List result = ListUtil.newList() ;
+		List result = ListUtil.newList();
 		for (JsonElement ele : toArray()) {
-			result.add(JsonUtil.toSimpleObject(ele)) ;
+			result.add(JsonUtil.toSimpleObject(ele));
 		}
 		return result.toArray();
 	}
