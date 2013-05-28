@@ -150,6 +150,13 @@ public class TestJava extends TestCase{
 		} catch(Exception expect){
 		}
 	}
+	
+	public void testXor() throws Exception {
+		assertEquals(true, true ^ false) ;
+		assertEquals(true, false ^ true) ;
+		assertEquals(false, true ^ true) ;
+		assertEquals(false, false ^ false) ;
+	}
 
 }
 

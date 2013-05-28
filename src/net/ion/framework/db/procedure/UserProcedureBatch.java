@@ -18,7 +18,7 @@ public abstract class UserProcedureBatch extends UserProcedure implements IUserP
 
 	private int idx = 0;
 
-	UserProcedureBatch(IDBController dc, String procSQL) {
+	protected UserProcedureBatch(IDBController dc, String procSQL) {
 		super(dc, procSQL, QueryType.USER_PROCEDURE_BATCH);
 	}
 

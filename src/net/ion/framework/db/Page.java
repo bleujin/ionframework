@@ -119,4 +119,12 @@ public class Page implements Serializable{
 		return (getCurrentScreen() - 1) * screenCount;
 	}
 
+	public int getSkipOnScreen() {
+		return getScreenCount() * (getCurrentScreen() - 1) * getListNum();
+	}
+
+	public int getOffsetOnScreen() {
+		return getScreenCount() * getListNum() + 1 ;
+	}
+
 }

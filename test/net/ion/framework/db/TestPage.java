@@ -28,4 +28,24 @@ public class TestPage extends TestCase {
 		Page page = Page.create(2, 2) ;
 		Debug.line(page.getStartLoc(), page.getEndLoc()) ;
 	}
+	
+	
+	public void testSkipOnScreen() throws Exception {
+		Page page = Page.create(10, 2, 10);
+		assertEquals(0, page.getSkipOnScreen() ) ;
+
+		page = Page.create(10, 12, 10);
+		assertEquals(100, page.getSkipOnScreen() ) ;
+	}
+	
+
+	public void testOffsetOnScreen() throws Exception {
+		assertEquals(101, Page.create(10, 2, 10).getOffsetOnScreen()) ;
+		assertEquals(101, Page.create(10, 12, 10).getOffsetOnScreen()) ;
+
+		assertEquals(21, Page.create(2, 2, 10).getOffsetOnScreen()) ;
+		assertEquals(21, Page.create(2, 12, 10).getOffsetOnScreen()) ;
+	}
+	
+
 }
