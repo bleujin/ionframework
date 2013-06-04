@@ -63,7 +63,7 @@ public class Row implements Serializable {
 	}
 
 	public boolean getBoolean(String fieldName) {
-		return ("T".equals(fields.get(fieldName)) || "true".equals(fields.get(fieldName))) ? true : false;
+		return ("T".equals(fields.get(fieldName)) || "true".equals(fields.get(fieldName)) || Boolean.TRUE.equals(fields.get(fieldName))) ? true : false;
 	}
 
 	public boolean getBoolean(int fieldIndex) {
