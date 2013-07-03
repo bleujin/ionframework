@@ -149,7 +149,7 @@ public final class JsonPrimitive extends JsonElement {
 	 */
 	@Override
 	public Number getAsNumber() {
-		return value instanceof String ? new LazilyParsedNumber((String) value) : (Number) value;
+		return value instanceof Number ? (Number) value : new LazilyParsedNumber(value.toString()) ;
 	}
 
 	public Date getAsDate() {
