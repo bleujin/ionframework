@@ -35,7 +35,7 @@ public class TestClobString extends TestCase{
 	public void testClobString() throws Exception {
 		String cacheString = "{ cache:[ { groupId:'category_cach', count:5000, add:['Select ARTCONT from article_tblc where artId = 1204636 and rownum = 1'], reset:[] } ]}" ;
 		
-		DBManager dbm = new OracleCacheDBManager("jdbc:oracle:thin:@dev-oracle.i-on.net:1521:DEV10G", "dev_ics6", "dev_ics6") ;
+		DBManager dbm = OracleCacheDBManager.test();
 		CacheConfig config = new CacheConfigImpl(cacheString);
 		CacheDBManager cdbm = new CacheDBManager(config, dbm) ;
 		

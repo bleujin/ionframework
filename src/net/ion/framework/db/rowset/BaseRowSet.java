@@ -148,7 +148,9 @@ public abstract class BaseRowSet implements Serializable, Cloneable {
 	protected void notifyCursorMoved() {
 		if (existListener()) {
 			RowSetEvent rowsetevent = new RowSetEvent((RowSet) this);
-			for (Iterator<RowSetListener> iterator = listeners.iterator(); iterator.hasNext(); (iterator.next()).rowSetChanged(rowsetevent))
+			for (Iterator<RowSetListener> iterator = listeners.iterator(); iterator.hasNext(); ){
+				(iterator.next()).cursorMoved(rowsetevent) ;
+			}
 				;
 		}
 	}
