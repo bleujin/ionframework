@@ -1,9 +1,14 @@
 package net.ion.framework.db;
 
+import java.util.Arrays;
+import java.util.Iterator;
+
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OracleCacheDBManager;
 import net.ion.framework.db.manager.OracleDBManager;
+import net.ion.framework.util.ArrayUtil;
 import net.ion.framework.util.Debug;
+import net.ion.framework.util.ListUtil;
 import junit.framework.TestCase;
 
 public class TestPage extends TestCase {
@@ -46,6 +51,14 @@ public class TestPage extends TestCase {
 		assertEquals(21, Page.create(2, 2, 10).getOffsetOnScreen()) ;
 		assertEquals(21, Page.create(2, 12, 10).getOffsetOnScreen()) ;
 	}
+
 	
+	public void testSubIterator() throws Exception {
+		Iterator<Integer> iter = ListUtil.rangeNum(20).iterator();
+		assertEquals(true, Arrays.equals(new Integer[]{5,6,7,8,9}, Page.create(5, 2).subList(iter).toArray(new Integer[0]) )) ;
+		
+		iter = ListUtil.rangeNum(20).iterator();
+		assertEquals(true, Arrays.equals(new Integer[]{6,7,8}, Page.create(3, 3).subList(iter).toArray(new Integer[0]) )) ;
+	}
 
 }

@@ -51,6 +51,9 @@ public class TestListener extends TestCase {
 	}
 }
 
+
+
+
 class LoggerHandler<T> implements ResultSetHandler<T> {
 
 	private static final long serialVersionUID = 1L;

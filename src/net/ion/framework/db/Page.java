@@ -2,7 +2,12 @@ package net.ion.framework.db;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+
+import net.ion.framework.util.ListUtil;
+
+import org.apache.log4j.lf5.StartLogFactor5;
 
 public class Page implements Serializable{
 
@@ -69,6 +74,21 @@ public class Page implements Serializable{
 
 		return result.subList(getStartLoc(), Math.min(result.size(), getEndLoc()));
 	}
+	
+	public <T> List<T> subList(Iterator<T> iter) {
+		int startLoc = getStartLoc();
+		int endLoc = getEndLoc() ;
+		
+		List<T> result = ListUtil.newList() ;
+		int currLoc = 0 ;
+		while(iter.hasNext()){
+			T next = iter.next();
+			if (currLoc >= startLoc) result.add(next) ;
+			if (++currLoc >= endLoc) break ;
+		}
+		return result ;
+	}
+
 
 	public String toString() {
 		return "listNum:" + getListNum() + ", pageNo:" + getPageNo();
@@ -126,5 +146,6 @@ public class Page implements Serializable{
 	public int getOffsetOnScreen() {
 		return getScreenCount() * getListNum() + 1 ;
 	}
+
 
 }
