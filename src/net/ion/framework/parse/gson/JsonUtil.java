@@ -1,10 +1,13 @@
 package net.ion.framework.parse.gson;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import net.ion.framework.parse.gson.internal.LazilyParsedNumber;
+import net.ion.framework.parse.gson.stream.JsonReader;
+import net.ion.framework.parse.gson.stream.JsonToken;
 import net.ion.framework.util.ArrayUtil;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.ObjectUtil;
@@ -104,4 +107,100 @@ public class JsonUtil {
 		return result;
 	}
 
+	
+	public static JsonArray nextJsonArray(JsonReader jreader)  throws IOException {
+		JsonArray result = new JsonArray() ;
+		
+		jreader.beginArray() ;
+		while(jreader.hasNext()){
+			result.add(nextNamedElement(jreader, "").element()) ;
+		}
+		jreader.endArray() ;
+		return result ;
+	}
+	
+	public static JsonObject nextJsonObject(JsonReader jreader) throws IOException{
+		JsonObject result = new JsonObject() ;
+		
+		jreader.beginObject() ;
+		while(jreader.hasNext()){
+			String name = jreader.nextName() ;
+			result.add(name, nextNamedElement(jreader, name).element()) ;
+		}
+		jreader.endObject() ;
+		
+		return result ;
+	}
+	
+	public static NamedElement nextNamedElement(JsonReader jreader, String name) throws IOException {
+		JsonToken nextToken = jreader.peek();
+
+		switch(nextToken){
+			case BOOLEAN :
+				return new NamedElement(name, new JsonPrimitive(jreader.nextBoolean())) ;
+			case NUMBER :
+				try {
+					return new NamedElement(name, new JsonPrimitive(jreader.nextLong())) ;
+				} catch(NumberFormatException ex){
+					return new NamedElement(name, new JsonPrimitive(jreader.nextDouble())) ;
+				}
+			case NULL :
+				return new NamedElement(name, JsonNull.INSTANCE) ;
+			case STRING :
+				return new NamedElement(name, new JsonPrimitive(jreader.nextString())) ;
+			case BEGIN_OBJECT :
+				jreader.beginObject() ;
+				JsonToken inextToken = jreader.peek();
+				if (inextToken == JsonToken.END_OBJECT) { // blank
+					 jreader.endObject() ;
+					 return new NamedElement(name, new JsonObject()) ;
+				}
+				
+				String nextName = jreader.nextName() ;
+				JsonObject json = new JsonObject();
+				while(jreader.hasNext()){
+					final NamedElement nextNamedElement = nextNamedElement(jreader, nextName);
+					json.add(nextNamedElement.name(), nextNamedElement.element()) ;
+				} ;
+				jreader.endObject() ;
+				return new NamedElement(name, json) ;
+			case BEGIN_ARRAY :
+				jreader.beginArray() ;
+				JsonArray jarray = new JsonArray() ;
+				while(jreader.hasNext()){
+					final NamedElement nextNamedElement = nextNamedElement(jreader, name);
+					jarray.add(nextNamedElement.element()) ;
+				} ;
+				jreader.endArray() ;
+				return new NamedElement(name, jarray) ;
+			case NAME :
+				return nextNamedElement(jreader, jreader.nextName()) ;
+			default : 
+				throw new IllegalStateException("not acceptable token") ;
+		}
+		
+//		throw new IllegalStateException("not acceptable token") ;
+	}
+
 }
+
+
+class NamedElement {
+	private String name ;
+	private JsonElement element ;
+
+	public NamedElement(String name, JsonElement element) {
+		this.name = name ;
+		this.element = element ;
+	}
+
+	public String name() {
+		return name;
+	}
+
+	public JsonElement element() {
+		return element;
+	}
+}
+
+

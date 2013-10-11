@@ -70,6 +70,27 @@
 		</jar>
 	</target>
 	
+	
+	<target name="mobile_publish">
+		<delete file="publish/iframework_mobile_${version.number}.${build.number}.jar"></delete>
+		<jar destfile="publish/iframework_mobile_${version.number}.${build.number}.jar">
+			<manifest>
+			  <attribute name="Built-By" value="${user.name}"/>
+			  <attribute name="Created-By" value="${user.name}"/>
+			  <!-- attribute name="Main-Class" value="${manifest.main.class}"/ -->
+			  <attribute name="Built-Date" value="${TODAY_MY}" />
+			  <attribute name="Class-Path" value="${manifes.classpath}" />
+			  <section name="common">
+			    <attribute name="Specification-Title" value="i-on common framework"/>
+			    <attribute name="Specification-Version" value="${version.number}.${build.number}"/>
+			    <attribute name="Specification-Vendor" value="i-on"/>
+			  </section>
+			</manifest>
+			<fileset dir="${binDir}/" includes="net/**" />
+		</jar>
+	</target>
+	
+	
 	<target name="copy" depends="publish">
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/IBR/ibr/WEB-INF/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="${workspaceDir}/ToonServer/alone/lib/" />

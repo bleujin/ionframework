@@ -84,6 +84,10 @@ public final class JsonPrimitive extends JsonElement {
 	JsonPrimitive(Object primitive) {
 		setValue(primitive);
 	}
+	
+	public static JsonPrimitive create(Object primitive){
+		return new JsonPrimitive(primitive) ;
+	}
 
 	void setValue(Object primitive) {
 		if (primitive instanceof Character) {
@@ -91,6 +95,8 @@ public final class JsonPrimitive extends JsonElement {
 			// character string
 			char c = ((Character) primitive).charValue();
 			this.value = String.valueOf(c);
+		} else if (primitive instanceof Date) {
+			this.value = ((Date)primitive).getTime() ;
 		} else {
 			$Gson$Preconditions.checkArgument(primitive instanceof Number || isPrimitiveOrString(primitive));
 			this.value = primitive;

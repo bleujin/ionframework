@@ -57,6 +57,15 @@ public class TestJsonObject extends TestCase{
 	}
 	
 	
+	public void testPerformance() throws Exception {
+		String jsonString = "{'greeting':'hello', 'name':'bleujin', 'age':20}" ;
+//		JsonObject.fromString("{ddd}") ;
+		
+		for (int i = 0; i < 1000000; i++) {
+			JsonObject.fromString(jsonString).asString("name") ;
+//			JsonParser.fromString(jsonString) ;
+		}
+	}
 	
 	
 }
