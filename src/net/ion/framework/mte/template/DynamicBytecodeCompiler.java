@@ -99,8 +99,7 @@ public class DynamicBytecodeCompiler implements TemplateCompiler {
 	private final static int EXCEPTION = 3;
 	private final static int HIGHEST = EXCEPTION;
 
-	// all the compiled classes live as long as this class loader lives
-	// this class loader lives as long as this compiler
+	// all the compiled classes live as long as this class loader lives this class loader lives as long as this compiler
 	private final DelegatingClassLoader cloadLoader = new DelegatingClassLoader(DynamicBytecodeCompiler.class.getClassLoader());
 
 	private final UniqueNameGenerator<String, String> uniqueNameGenerator = new UniqueNameGenerator<String, String>(COMPILED_TEMPLATE_NAME_PREFIX);
@@ -131,8 +130,7 @@ public class DynamicBytecodeCompiler implements TemplateCompiler {
 		classWriter = new ClassWriter(ClassWriter.COMPUTE_FRAMES);
 		// only for debugging
 		// writer = new StringWriter();
-		// TraceClassVisitor traceClassVisitor = new TraceClassVisitor(
-		// classWriter, new PrintWriter(writer));
+		// TraceClassVisitor traceClassVisitor = new TraceClassVisitor(classWriter, new PrintWriter(writer));
 		// classVisitor = new CheckClassAdapter(traceClassVisitor);
 		// classVisitor = traceClassVisitor;
 		classVisitor = classWriter;
@@ -447,9 +445,7 @@ public class DynamicBytecodeCompiler implements TemplateCompiler {
 	private void codeGenerateIfToken(IfToken ifToken) {
 		if (ifToken instanceof IfCmpToken) {
 
-			// IfCmpToken token1 = new IfCmpToken(Arrays
-			// .asList(new String[] { "address" }), "address", "Fillbert",
-			// false);
+			// IfCmpToken token1 = new IfCmpToken(Arrays.asList(new String[] { "address" }), "address", "Fillbert",false);
 			mv.visitTypeInsn(NEW, "net/ion/framework/mte/token/IfCmpToken");
 			mv.visitInsn(DUP);
 			pushList(ifToken.getSegments());
@@ -459,8 +455,7 @@ public class DynamicBytecodeCompiler implements TemplateCompiler {
 			mv.visitMethodInsn(INVOKESPECIAL, "net/ion/framework/mte/token/IfCmpToken", "<init>", "(Ljava/util/List;Ljava/lang/String;Ljava/lang/String;Z)V");
 
 		} else {
-			// IfToken token1 = new IfToken(Arrays.asList(new String[] { "bean",
-			// "trueCond" }), "bean.trueCond", true);
+			// IfToken token1 = new IfToken(Arrays.asList(new String[] { "bean", "trueCond" }), "bean.trueCond", true);
 
 			mv.visitTypeInsn(NEW, "net/ion/framework/mte/token/IfToken");
 			mv.visitInsn(DUP);
@@ -571,9 +566,8 @@ public class DynamicBytecodeCompiler implements TemplateCompiler {
 	}
 
 	private void codeGenerateForeachToken(ForEachToken feToken) {
-		// ForEachToken token1 = new ForEachToken(Arrays
-		// .asList(new String[] { "list" }),"list", "item", "\n");
-		mv.visitTypeInsn(NEW, "com/floreysoft/jmte/token/ForEachToken");
+		// ForEachToken token1 = new ForEachToken(Arrays.asList(new String[] { "list" }),"list", "item", "\n");
+		mv.visitTypeInsn(NEW, "net/ion/framework/mte/token/ForEachToken");
 		mv.visitInsn(DUP);
 		pushList(feToken.getSegments());
 		pushConstant(feToken.getExpression());

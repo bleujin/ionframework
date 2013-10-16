@@ -15,7 +15,7 @@ public class TestMiniparser extends TestCase {
 	MiniParser miniParserIgnoreCase = MiniParser.ignoreCaseInstance();
 	MiniParser rawMiniParser = MiniParser.rawOutputInstance();
 
-	NestedParser nestedParser = new NestedParser();
+	NestedParser nestedParser = NestedParser.create();
 
 	public void testReplaceSimple() throws Exception {
 		String output = miniParser.replace("Input String", "Str", "R");
@@ -216,7 +216,7 @@ public class TestMiniparser extends TestCase {
 	public static void main(String[] args) {
 		String input = "string=unparsed,unprocessed(maxLength=10, trim, uppercase)";
 		String[] operators = { "()", ",", "=" };
-		List<Object> parse = new NestedParser().parse(input, operators);
+		List<Object> parse = NestedParser.create().parse(input, operators);
 		System.out.println(parse);
 
 	}

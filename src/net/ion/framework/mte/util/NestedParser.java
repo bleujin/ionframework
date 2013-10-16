@@ -39,6 +39,28 @@ public final class NestedParser {
 	private final static MiniParser MINI_PARSER = MiniParser.rawOutputInstance();
 	private final static MiniParser INNER_MINI_PARSER = MiniParser.trimmedInstance();
 
+	private SelectionParser selectionParser ;
+	
+	public NestedParser(SelectionParser selectionParser) {
+		this.selectionParser = selectionParser ;
+	}
+
+	public static NestedParser create(){
+		return new NestedParser(new SelectionParser(){
+			public MiniParser select(boolean innerLoop) {
+				return innerLoop ? INNER_MINI_PARSER : MINI_PARSER;
+			}
+		}) ;
+	}
+	
+	public static NestedParser createOnlyMini(){
+		return new NestedParser(new SelectionParser(){
+			public MiniParser select(boolean innerLoop) {
+				return MINI_PARSER;
+			}
+		}) ;
+	}
+
 	public static String access(final List<? extends Object> ast, final int index) {
 		return access(ast, index, null);
 	}
@@ -59,12 +81,17 @@ public final class NestedParser {
 		return defaultValue;
 	}
 
+	
+	public interface SelectionParser{
+		public MiniParser select(boolean innerLoop) ;
+	}
+	
 	// TODO create a version that allows for multi character operators
 	public List<Object> parse(final String input, final List<String> operators) {
 		final List<Object> result = new ArrayList<Object>();
 		if (operators.size() != 0) {
 			final boolean innerLoop = operators.size() == 1;
-			final MiniParser currentParser = innerLoop ? INNER_MINI_PARSER : MINI_PARSER;
+			final MiniParser currentParser = selectionParser.select(innerLoop);
 			final String operator = operators.get(0);
 			final List<String> segments;
 			if (operator.length() == 1) {

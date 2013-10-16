@@ -1,5 +1,7 @@
 package net.ion.framework.mte;
 
+import java.util.Locale;
+
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.MapUtil;
 import junit.framework.TestCase;
@@ -22,9 +24,27 @@ public class TestMethodCall extends TestCase{
 		assertEquals("bleujin", engine.transform("${person.privateName}", MapUtil.<String, Object>create("person", new PersonField("bleujin", true)))) ;
 	}
 	
-	public void testNestedFunction() throws Exception {
-		Debug.debug(engine.transform("${person.name}", MapUtil.<String, Object>create("person", new PersonField("bleujin[maxLength=5]", true)))) ;
+	public void testCompile() throws Exception {
+		assertEquals("bleujin", engine.getTemplate("${person.name}").transform(MapUtil.<String, Object>create("person", new PersonField("bleujin", true)), Locale.KOREA)) ;
 	}
+	
+	public void testArgumentFunction() throws Exception {
+		assertEquals("bleujin hello 3", engine.transform("${person.nestedName(\" hello \",  3)}", MapUtil.<String, Object>create("person", new PersonField("bleujin", true)))) ;
+	}
+	
+
+	public void testTemplateFunction() throws Exception {
+		assertEquals("bleujin", engine.getTemplate("${person.meName}").transform(MapUtil.<String, Object>create("person", new PersonField("bleujin", true)), Locale.KOREA)) ;
+		assertEquals("bleujin", engine.getTemplate("${person.myName}").transform(MapUtil.<String, Object>create("person", new PersonField("bleujin", true)), Locale.KOREA)) ;
+		assertEquals("bleujin", engine.getTemplate("${person.privateName}").transform(MapUtil.<String, Object>create("person", new PersonField("bleujin", true)), Locale.KOREA)) ;
+	}
+
+
+	public void testArgumentTemplateFunction() throws Exception {
+		assertEquals("bleujin hello 3", engine.getTemplate("${person.nestedName(\" hello \",  3)}").transform(MapUtil.<String, Object>create("person", new PersonField("bleujin", true)), Locale.KOREA)) ;
+	}
+	
+
 }
 
 
@@ -49,6 +69,10 @@ class PersonField {
 
 	private String privateName(){
 		return name ;
+	}
+	
+	public String nestedName(String add, int i){
+		return name + add + i;
 	}
 
 }

@@ -1,6 +1,7 @@
 package net.ion.framework.mte;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -10,7 +11,12 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.Callable;
 
+import org.apache.commons.lang.reflect.MethodUtils;
+import org.apache.ecs.xhtml.pre;
+
 import net.ion.framework.mte.token.Token;
+import net.ion.framework.mte.util.MiniParser;
+import net.ion.framework.mte.util.NestedParser;
 
 /**
  * Default implementation of the model adapter.
@@ -78,7 +84,7 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 			result = map.get(attributeName);
 		} else {
 			try {
-				result = getPropertyValue(o, attributeName);
+				result = getPropertyValue(o, attributeName, token);
 			} catch (Exception e) {
 				errorHandler.error("property-access-error", token, new ModelBuilder("property", attributeName, "object", o, "exception", e).build());
 				result = "";
@@ -88,7 +94,7 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 	}
 
 	@SuppressWarnings("rawtypes")
-	protected Object getPropertyValue(Object o, String propertyName) {
+	protected Object getPropertyValue(Object o, String propertyName, Token token) {
 		try {
 			// XXX this is so strange, can not call invoke on key and value for
 			// Map.Entry, so we have to get this done like this:
@@ -132,7 +138,7 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 					if (!method.isAccessible())
 						method.setAccessible(true);
 
-					value = method.invoke(o, (Object[]) null);
+					value = invokeMethod(o, method, token);
 					valueSet = true;
 					member = method;
 					break;
@@ -153,5 +159,11 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	private Object invokeMethod(Object o, Method method, Token token) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+		String text = token.getText();
+		return method.invoke(o, FunArgumentParser.getInstance().parseArgs(text)) ;
+//		return MethodUtils.invokeMethod(o, method.getName(), null) ;
 	}
 }
