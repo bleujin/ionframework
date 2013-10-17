@@ -6,7 +6,6 @@ import java.util.List;
 import net.ion.framework.mte.util.StartEndPair;
 import net.ion.framework.mte.util.Util;
 
-
 public class TokenStream {
 	private final Lexer lexer = new Lexer();
 	private final String sourceName;
@@ -19,8 +18,7 @@ public class TokenStream {
 	private transient int currentTokenIndex = -1;
 	private transient Token currentToken = null;
 
-	public TokenStream(String sourceName, String input, String splitStart,
-			String splitEnd) {
+	public TokenStream(String sourceName, String input, String splitStart, String splitEnd) {
 		this.sourceName = sourceName;
 		this.input = input;
 		this.splitStart = splitStart;
@@ -34,18 +32,15 @@ public class TokenStream {
 		int offset = 0;
 		int index = 0;
 		for (StartEndPair startEndPair : scan) {
-			int plainTextLengthBeforeNextToken = startEndPair.start
-					- splitStart.length() - offset;
+			int plainTextLengthBeforeNextToken = startEndPair.start - splitStart.length() - offset;
 			if (plainTextLengthBeforeNextToken != 0) {
-				AbstractToken token = new PlainTextToken(Util.NO_QUOTE_MINI_PARSER.unescape(new String(inputChars,
-						offset, plainTextLengthBeforeNextToken)));
+				AbstractToken token = new PlainTextToken(Util.NO_QUOTE_MINI_PARSER.unescape(new String(inputChars, offset, plainTextLengthBeforeNextToken)));
 				token.setTokenIndex(index++);
 				tokens.add(token);
 			}
 			offset = startEndPair.end + splitEnd.length();
 
-			AbstractToken token = lexer.nextToken(inputChars,
-					startEndPair.start, startEndPair.end);
+			AbstractToken token = lexer.nextToken(inputChars, startEndPair.start, startEndPair.end);
 			// == null means this is a comment or other skipable stuff
 			if (token == null) {
 				continue;
@@ -60,8 +55,7 @@ public class TokenStream {
 		// chunk indeed)
 		int remainingChars = input.length() - offset;
 		if (remainingChars != 0) {
-			AbstractToken token = new PlainTextToken(Util.NO_QUOTE_MINI_PARSER.unescape(new String(inputChars,
-					offset, remainingChars)));
+			AbstractToken token = new PlainTextToken(Util.NO_QUOTE_MINI_PARSER.unescape(new String(inputChars, offset, remainingChars)));
 			token.setTokenIndex(index++);
 			tokens.add(token);
 		}
@@ -108,6 +102,6 @@ public class TokenStream {
 	}
 
 	public void reset() {
-		currentTokenIndex = 0;		
+		currentTokenIndex = 0;
 	}
 }

@@ -8,7 +8,6 @@ import net.ion.framework.mte.TemplateContext;
 import net.ion.framework.mte.encoder.Encoder;
 import net.ion.framework.mte.renderer.RawRenderer;
 
-
 public class StringToken extends ExpressionToken {
 	// ${<h1>,address(NIX),</h1>;long(full)}
 	private final String defaultValue; // NIX
@@ -21,8 +20,7 @@ public class StringToken extends ExpressionToken {
 		this("", "", null, null, null, null, null);
 	}
 
-	public StringToken(String text, String variableName, String defaultValue,
-			String prefix, String suffix, String rendererName, String parameters) {
+	public StringToken(String text, String variableName, String defaultValue, String prefix, String suffix, String rendererName, String parameters) {
 		super(variableName);
 		this.defaultValue = defaultValue;
 		this.prefix = prefix;
@@ -36,9 +34,7 @@ public class StringToken extends ExpressionToken {
 		this(variableName, variableName, null, null, null, null, null);
 	}
 
-	public StringToken(String text, List<String> segments, String variableName,
-			String defaultValue, String prefix, String suffix,
-			String rendererName, String parameters) {
+	public StringToken(String text, List<String> segments, String variableName, String defaultValue, String prefix, String suffix, String rendererName, String parameters) {
 		super(segments, variableName);
 		this.defaultValue = defaultValue;
 		this.prefix = prefix;
@@ -81,8 +77,7 @@ public class StringToken extends ExpressionToken {
 		} else {
 			String namedRendererResult = null;
 			if (rendererName != null && !rendererName.equals("")) {
-				final NamedRenderer rendererForName = context
-						.resolveNamedRenderer(rendererName);
+				final NamedRenderer rendererForName = context.resolveNamedRenderer(rendererName);
 				if (rendererForName != null) {
 					if (rendererForName instanceof RawRenderer) {
 						rawRendering = true;
@@ -93,8 +88,7 @@ public class StringToken extends ExpressionToken {
 			if (namedRendererResult != null) {
 				renderedResult = namedRendererResult;
 			} else {
-				final Renderer<Object> rendererForClass = (Renderer<Object>) context
-						.resolveRendererForClass(value.getClass());
+				final Renderer<Object> rendererForClass = (Renderer<Object>) context.resolveRendererForClass(value.getClass());
 				if (rendererForClass != null) {
 					if (rendererForClass instanceof RawRenderer) {
 						rawRendering = true;
@@ -128,25 +122,25 @@ public class StringToken extends ExpressionToken {
 		return parameters;
 	}
 
-  @Override
-  public String emit() {
-    StringBuilder sb = new StringBuilder();
-    if ( prefix != null ) {
-      sb.append(prefix).append(',');
-    }
-    sb.append(getExpression());
-    if ( defaultValue != null ) {
-      sb.append('(').append(defaultValue).append(')');
-    }
-    if ( suffix != null ) {
-      sb.append(',').append(suffix);
-    }
-    if ( rendererName != null ) {
-      sb.append(';').append(rendererName);
-    }
-    if ( parameters != null ) {
-      sb.append('(').append(parameters).append(')');
-    }
-    return sb.toString();
-  }
+	@Override
+	public String emit() {
+		StringBuilder sb = new StringBuilder();
+		if (prefix != null) {
+			sb.append(prefix).append(',');
+		}
+		sb.append(getExpression());
+		if (defaultValue != null) {
+			sb.append('(').append(defaultValue).append(')');
+		}
+		if (suffix != null) {
+			sb.append(',').append(suffix);
+		}
+		if (rendererName != null) {
+			sb.append(';').append(rendererName);
+		}
+		if (parameters != null) {
+			sb.append('(').append(parameters).append(')');
+		}
+		return sb.toString();
+	}
 }

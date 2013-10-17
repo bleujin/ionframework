@@ -26,16 +26,4 @@ public class TestFunction extends TestCase {
 		
 	}
 	
-	public void testArg() throws Exception {
-		FunArgumentParser parser = FunArgumentParser.getInstance();
-		
-		Object[] presult = parser.parseArgs("person.nestedName(\"dd\", 3)");
-		assertEquals(2, presult.length) ;
-		assertEquals("dd", presult[0]) ;
-		assertEquals(3, presult[1]) ;
-
-		presult = parser.parseArgs("person.nestedName(\"dd\")");
-		assertEquals(1, presult.length) ;
-		assertEquals("dd", presult[0]) ;
-	}
 }

@@ -213,6 +213,10 @@ public class TestMiniparser extends TestCase {
 		assertEquals("uppercase", uppercaseParam);
 	}
 
+	
+	
+	
+	
 	public static void main(String[] args) {
 		String input = "string=unparsed,unprocessed(maxLength=10, trim, uppercase)";
 		String[] operators = { "()", ",", "=" };

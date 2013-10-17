@@ -17,6 +17,10 @@ import org.apache.ecs.xhtml.pre;
 import net.ion.framework.mte.token.Token;
 import net.ion.framework.mte.util.MiniParser;
 import net.ion.framework.mte.util.NestedParser;
+import net.ion.framework.util.Debug;
+import net.ion.framework.util.ListUtil;
+import net.ion.framework.util.NumberUtil;
+import net.ion.framework.util.StringUtil;
 
 /**
  * Default implementation of the model adapter.
@@ -95,9 +99,12 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 
 	@SuppressWarnings("rawtypes")
 	protected Object getPropertyValue(Object o, String propertyName, Token token) {
+		return getPropertyValue(o, propertyName, token.getText()) ;
+	}	
+	protected Object getPropertyValue(Object o, String _propertyName, String tokenText) {
 		try {
-			// XXX this is so strange, can not call invoke on key and value for
-			// Map.Entry, so we have to get this done like this:
+			// XXX this is so strange, can not call invoke on key and value for Map.Entry, so we have to get this done like this:
+			String propertyName = innerParser.parse(_propertyName, new String[]{"()"}).get(0).toString() ;
 			if (o instanceof Map.Entry) {
 				final Map.Entry entry = (Entry) o;
 				if (propertyName.equals("key")) {
@@ -120,8 +127,10 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 			} else {
 				member = members.get(propertyName);
 				if (member != null) {
-					if (member.getClass() == Method.class)
-						return ((Method) member).invoke(o);
+					if (member.getClass() == Method.class){
+						return invokeMethod(o, (Method) member, _propertyName, tokenText) ;
+//						return ((Method) member).invoke(o);
+					}
 					if (member.getClass() == Field.class) {
 						final Field field = (Field) member;
 						if (!field.isAccessible())
@@ -138,7 +147,8 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 					if (!method.isAccessible())
 						method.setAccessible(true);
 
-					value = invokeMethod(o, method, token);
+					value = invokeMethod(o, method, _propertyName, tokenText);
+//					method.invoke(o, (Object[])null) ;
 					valueSet = true;
 					member = method;
 					break;
@@ -161,9 +171,43 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 		}
 	}
 	
-	private Object invokeMethod(Object o, Method method, Token token) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-		String text = token.getText();
-		return method.invoke(o, FunArgumentParser.getInstance().parseArgs(text)) ;
-//		return MethodUtils.invokeMethod(o, method.getName(), null) ;
+	
+	private static NestedParser innerParser = NestedParser.createOnlyMini() ;
+	private Object invokeMethod(Object o, Method method, String _propertyName, String tokenText) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+		List<Object> parsed = innerParser.parse(_propertyName, new String[]{"."});
+		if (parsed.size() <= 2) {
+			return method.invoke(o, parseArgs(_propertyName)) ;
+		} else {
+			// [person, address(), cityName(sungnam)]
+			String argTokenText = parsed.get(0) + "." + parsed.get(1);
+			String fnName = innerParser.parse(parsed.get(1).toString(), new String[]{"("}).get(0).toString() ;
+			String propName = innerParser.parse(parsed.get(2).toString(), new String[]{"("}).get(0).toString() ;
+			
+			String remainTokenText = fnName + "." + StringUtil.join(parsed.subList(2, parsed.size()).toArray(new String[0]), ".") ;
+			
+			Debug.debug(tokenText, argTokenText, propName, remainTokenText) ;
+//			return getPropertyValue(method.invoke(o, parseArgs(argTokenText)), "eq", "children.eq()") ;
+			return getPropertyValue(method.invoke(o, parseArgs(argTokenText)), propName, remainTokenText) ;
+		}
+	}
+	
+	public Object[] parseArgs(String input) {
+		List<Object> presult = innerParser.parse(input, new String[]{"()", ","});
+		
+		if (presult.size() <=1) return (Object[])null ;
+		
+		Object argsExpr = presult.get(1);
+		if (StringUtil.isBlank(argsExpr.toString())) return (Object[])null ;
+		String[] argString = (List.class.isInstance(argsExpr)) ? ((List<String>)argsExpr).toArray(new String[0]) :  new String[]{argsExpr.toString()} ;
+
+		List<Object> result = ListUtil.newList() ; 
+		if (argString.length ==0) return (Object[])null ;
+		for(String arg : argString){
+			String trimedArg = arg.trim();
+			if(NumberUtil.isNumber(trimedArg)) result.add(Integer.parseInt(trimedArg)) ;
+			else result.add(trimedArg) ;
+		}
+		
+		return result.toArray();
 	}
 }

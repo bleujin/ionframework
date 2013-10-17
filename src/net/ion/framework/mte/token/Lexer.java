@@ -6,11 +6,9 @@ import java.util.List;
 
 import net.ion.framework.mte.util.Util;
 
-
 public class Lexer {
 
-	public AbstractToken nextToken(final char[] template, final int start,
-			final int end) {
+	public AbstractToken nextToken(final char[] template, final int start, final int end) {
 		String input = new String(template, start, end - start);
 		if (input.startsWith("--")) {
 			// comment
@@ -22,11 +20,11 @@ public class Lexer {
 		token.setColumn(template, start, end);
 		return token;
 	}
-	
-	private String unescapeAccess(List<? extends Object> arr,int index){
-		String val = access(arr,index);
-		if (val!=null && val.trim().length()>0){
-			val = Util.NO_QUOTE_MINI_PARSER.unescape(val); 
+
+	private String unescapeAccess(List<? extends Object> arr, int index) {
+		String val = access(arr, index);
+		if (val != null && val.trim().length() > 0) {
+			val = Util.NO_QUOTE_MINI_PARSER.unescape(val);
 		}
 		return val;
 	}
@@ -35,17 +33,14 @@ public class Lexer {
 		final String input = Util.trimFront(untrimmedInput);
 		// annotation
 		if (input.length() > 0 && input.charAt(0) == '@') {
-			final List<String> split = Util.RAW_MINI_PARSER.splitOnWhitespace(
-					input.substring(1), 2);
+			final List<String> split = Util.RAW_MINI_PARSER.splitOnWhitespace(input.substring(1), 2);
 			String receiver = access(split, 0);
 			String arguments = access(split, 1);
-			AnnotationToken annotationToken = new AnnotationToken(receiver,
-					arguments);
+			AnnotationToken annotationToken = new AnnotationToken(receiver, arguments);
 			return annotationToken;
 		}
 
-		final List<String> split = Util.RAW_MINI_PARSER
-				.splitOnWhitespace(input);
+		final List<String> split = Util.RAW_MINI_PARSER.splitOnWhitespace(input);
 
 		// LENGTH 0
 		if (split.size() == 0) {
@@ -103,19 +98,17 @@ public class Lexer {
 						if (gapCount == 3) {
 							break;
 						} else {
-							while (Character.isWhitespace(c = input
-									.charAt(separatorBegin)))
+							while (Character.isWhitespace(c = input.charAt(separatorBegin)))
 								separatorBegin++;
 						}
 					}
 				}
 
 				String separator = input.substring(separatorBegin);
-				if (separator !=null){
+				if (separator != null) {
 					separator = Util.NO_QUOTE_MINI_PARSER.unescape(separator);
 				}
-				return new ForEachToken(objectExpression, varName, separator
-						.length() != 0 ? separator : null);
+				return new ForEachToken(objectExpression, varName, separator.length() != 0 ? separator : null);
 			}
 		}
 
@@ -144,24 +137,19 @@ public class Lexer {
 		// be sure to use the raw input as we might have to preserve
 		// whitespace for prefix and postfix
 		// only innermost parsers are allowed to unescape
-		final List<String> strings = Util.RAW_OUTPUT_MINI_PARSER.split(
-				untrimmedInput, ';', 2);
+		final List<String> strings = Util.RAW_OUTPUT_MINI_PARSER.split(untrimmedInput, ';', 2);
 		// <h1>,address(NIX),</h1>
 		final String complexVariable = strings.get(0);
 		// only innermost parsers are allowed to unescape
-		final List<String> wrappedStrings = Util.RAW_OUTPUT_MINI_PARSER.split(
-				complexVariable, ',', 3);
+		final List<String> wrappedStrings = Util.RAW_OUTPUT_MINI_PARSER.split(complexVariable, ',', 3);
 		// <h1>
 		prefix = wrappedStrings.size() == 3 ? unescapeAccess(wrappedStrings, 0) : null;
 		// </h1>
 		suffix = wrappedStrings.size() == 3 ? unescapeAccess(wrappedStrings, 2) : null;
 
 		// address(NIX)
-		final String completeDefaultString = (wrappedStrings.size() == 3 ? unescapeAccess(
-				wrappedStrings, 1)
-				: complexVariable).trim();
-		final List<String> defaultStrings = Util.MINI_PARSER.greedyScan(
-				completeDefaultString, "(", ")");
+		final String completeDefaultString = (wrappedStrings.size() == 3 ? unescapeAccess(wrappedStrings, 1) : complexVariable).trim();
+		final List<String> defaultStrings = Util.MINI_PARSER.greedyScan(completeDefaultString, "[", "]");
 		// address
 		variableName = unescapeAccess(defaultStrings, 0);
 		// NIX
@@ -169,8 +157,7 @@ public class Lexer {
 
 		// long(full)
 		final String format = access(strings, 1);
-		final List<String> scannedFormat = Util.MINI_PARSER.greedyScan(format,
-				"(", ")");
+		final List<String> scannedFormat = Util.MINI_PARSER.greedyScan(format, "[", "]");
 		// long
 		rendererName = access(scannedFormat, 0);
 		// full
@@ -181,9 +168,7 @@ public class Lexer {
 			return new InvalidToken();
 		}
 
-		final StringToken stringToken = new StringToken(untrimmedInput,
-				variableName, defaultValue, prefix, suffix, rendererName,
-				parameters);
+		final StringToken stringToken = new StringToken(untrimmedInput, variableName, defaultValue, prefix, suffix, rendererName, parameters);
 		return stringToken;
 
 	}

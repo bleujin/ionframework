@@ -53,7 +53,7 @@ public class TestRender extends TestCase {
 		});
 		
 		assertEquals("total 1.234.567,89 €", engine.transform("total ${total;currency}",  MapUtil.<String,Object>create("total", new BigDecimal(1234567.89))));
-		assertEquals("total 0", engine.transform("total ${total;currency(myform)}",  MapUtil.<String,Object>create("total", new BigDecimal(1234567.89)))); // format
+		assertEquals("total 0", engine.transform("total ${total;currency[myform]}",  MapUtil.<String,Object>create("total", new BigDecimal(1234567.89)))); // format
 	}
 	
 	

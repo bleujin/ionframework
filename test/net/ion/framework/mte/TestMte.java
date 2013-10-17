@@ -38,14 +38,14 @@ public class TestMte extends TestCase{
 	}
 	
 	public void testConditionDefault() throws Exception {
-		assertEquals("bleujin", engine.transform("${name(empty)}", MapUtil.<String,Object>create("name", "bleujin")));
-		assertEquals("empty", engine.transform("${name(empty)}", new HashMap<String, Object>()));
+		assertEquals("bleujin", engine.transform("${name[empty]}", MapUtil.<String,Object>create("name", "bleujin")));
+		assertEquals("empty", engine.transform("${name[empty]}", new HashMap<String, Object>()));
 	}
 	
 	
 	public void testConditionShortcuts() throws Exception {
 		assertEquals("unknown", engine.transform("${if name}${name}${else}unknown${end}", new HashMap<String, Object>()));
-		assertEquals("unknown", engine.transform("${name(unknown)}", new HashMap<String, Object>()));
+		assertEquals("unknown", engine.transform("${name[unknown]}", new HashMap<String, Object>()));
 		assertEquals("", engine.transform("${<h1>,name,</h1>}", new HashMap<String, Object>()));
 		assertEquals("<h1>bleujin</h1>", engine.transform("${<h1>,name,</h1>}", MapUtil.<String,Object>create("name", "bleujin")));
 	}

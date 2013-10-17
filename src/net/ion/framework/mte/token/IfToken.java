@@ -8,7 +8,6 @@ import java.util.Map;
 import net.ion.framework.mte.TemplateContext;
 import net.ion.framework.mte.util.Util;
 
-
 public class IfToken extends ExpressionToken {
 	public static final String IF = "if";
 
@@ -42,8 +41,7 @@ public class IfToken extends ExpressionToken {
 		final Object value = evaluatePlain(context);
 
 		final boolean condition;
-		if (value == null || value.toString().equals("")
-				|| value.toString().equalsIgnoreCase("false")) {
+		if (value == null || value.toString().equals("") || value.toString().equalsIgnoreCase("false")) {
 			condition = false;
 		} else if (value instanceof Boolean) {
 			condition = (Boolean) value;

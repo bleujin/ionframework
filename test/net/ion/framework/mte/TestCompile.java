@@ -35,5 +35,15 @@ public class TestCompile extends TestCase {
 		Debug.line(System.currentTimeMillis() - start) ;
 	}
 	
+	public void xtestNamedCache() throws Exception {
+		Engine engine = EngineConfig.newBuilder().useCompilation(true).createEngine();
+
+		final Template template = engine.getTemplate("Hello ${name}", "hello");
+		assertEquals("Hello bleujin", template.transform(MapUtil.stringMap("name", "bleujin"), Locale.KOREA)) ;
+		
+		
+		assertEquals("Hi bleujin", engine.getTemplate("Hi ${name}", "hello").transform(MapUtil.stringMap("name", "bleujin"), Locale.KOREA)) ;
+	}
+	
 	
 }
