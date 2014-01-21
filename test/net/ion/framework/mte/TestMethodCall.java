@@ -60,13 +60,15 @@ public class TestMethodCall extends TestCase{
 		assertEquals("sungnam", engine.transform("${person.address().chain().chain().cityName(\"sungnam\")}", MapUtil.<String, Object>create("person", new Person("bleujin", true)))) ;
 	}
 	
-	public void testChainIn() throws Exception {
+	public void xtestChainIn() throws Exception {
 		String result = engine.transform("${persons.children().eq()}", MapUtil.<String, Object>create("persons", new Persons())) ;
 		Debug.line(result) ;
 	}
 	
-	public void xtestInChain() throws Exception {
-		String result = engine.transform("${foreach persons.children().eq() person \\$ }${person.address()}${end}", MapUtil.<String, Object>create("persons", new Persons())) ;
+	public void testInChain() throws Exception {
+		String result = engine.transform("${foreach persons.children().remove(bleujin).remove(jin) person , }${person}${end}", MapUtil.<String, Object>create("persons", new Persons())) ;
+		Debug.line(result) ;
+		result = engine.getTemplate("${foreach persons.children().remove(bleujin).remove(jin) person , }${person}${end}", "m").transform(MapUtil.<String, Object>create("persons", new Persons()), Locale.KOREA) ;
 		Debug.line(result) ;
 	}
 	
@@ -91,9 +93,12 @@ class PersonWrapper implements Iterable<Person>{
 		return datas.iterator();
 	}
 	
-	public PersonWrapper eq(){
-//		datas = datas.subList(1, datas.size()) ;
-		Debug.line() ;
+	public PersonWrapper remove(String name){
+		List<Person> newData = ListUtil.newList();
+		for (Person p : datas) {
+			if (! name.equals(p.getMyName())) newData.add(p) ;
+		}
+		this.datas = newData ;
 		return this ;
 	}
 	

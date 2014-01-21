@@ -158,6 +158,12 @@ public class TestJava extends TestCase{
 		assertEquals(false, false ^ false) ;
 	}
 
+	public void testParseInt() throws Exception {
+		String str = "2000.0" ;
+		assertEquals(2000, (int)Double.parseDouble(str)) ;
+		assertEquals(2000L, (long)Double.parseDouble(str)) ;
+	}
+	
 }
 
 

@@ -128,7 +128,7 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 				member = members.get(propertyName);
 				if (member != null) {
 					if (member.getClass() == Method.class){
-						return invokeMethod(o, (Method) member, _propertyName, tokenText) ;
+						return invokeMethod(o, (Method) member, _propertyName) ;
 //						return ((Method) member).invoke(o);
 					}
 					if (member.getClass() == Field.class) {
@@ -141,19 +141,26 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 			}
 
 			final String suffix = Character.toUpperCase(propertyName.charAt(0)) + propertyName.substring(1);
-			final Method[] declaredMethods = clazz.getDeclaredMethods();
-			for (Method method : declaredMethods) {
-				if (method.getName().equals("get" + suffix) || method.getName().equals("is" + suffix) || method.getName().equals(propertyName)) {
-					if (!method.isAccessible())
-						method.setAccessible(true);
+			Class current = clazz ;
+			while((current != null) && (current != Object.class)){
+				final Method[] declaredMethods = current.getDeclaredMethods();
+				for (Method method : declaredMethods) {
+					if (method.getName().equals("get" + suffix) || method.getName().equals("is" + suffix) || method.getName().equals(propertyName)) {
+						
+						if (!method.isAccessible())
+							method.setAccessible(true);
 
-					value = invokeMethod(o, method, _propertyName, tokenText);
-//					method.invoke(o, (Object[])null) ;
-					valueSet = true;
-					member = method;
-					break;
+						value = invokeMethod(o, method, _propertyName);
+//						method.invoke(o, (Object[])null) ;
+						valueSet = true;
+						member = method;
+						current = Object.class ;
+						break;
+					}
 				}
+				current = current.getSuperclass() ;
 			}
+			
 			if (!valueSet) {
 				final Field field = clazz.getDeclaredField(propertyName);
 				if (!field.isAccessible())
@@ -173,22 +180,8 @@ public class DefaultModelAdaptor implements ModelAdaptor {
 	
 	
 	private static NestedParser innerParser = NestedParser.createOnlyMini() ;
-	private Object invokeMethod(Object o, Method method, String _propertyName, String tokenText) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
-		List<Object> parsed = innerParser.parse(_propertyName, new String[]{"."});
-		if (parsed.size() <= 2) {
-			return method.invoke(o, parseArgs(_propertyName)) ;
-		} else {
-			// [person, address(), cityName(sungnam)]
-			String argTokenText = parsed.get(0) + "." + parsed.get(1);
-			String fnName = innerParser.parse(parsed.get(1).toString(), new String[]{"("}).get(0).toString() ;
-			String propName = innerParser.parse(parsed.get(2).toString(), new String[]{"("}).get(0).toString() ;
-			
-			String remainTokenText = fnName + "." + StringUtil.join(parsed.subList(2, parsed.size()).toArray(new String[0]), ".") ;
-			
-			Debug.debug(tokenText, argTokenText, propName, remainTokenText) ;
-//			return getPropertyValue(method.invoke(o, parseArgs(argTokenText)), "eq", "children.eq()") ;
-			return getPropertyValue(method.invoke(o, parseArgs(argTokenText)), propName, remainTokenText) ;
-		}
+	private Object invokeMethod(Object o, Method method, String _propertyName) throws IllegalArgumentException, IllegalAccessException, InvocationTargetException, NoSuchMethodException {
+		return method.invoke(o, parseArgs(_propertyName)) ;
 	}
 	
 	public Object[] parseArgs(String input) {

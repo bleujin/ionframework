@@ -2,12 +2,6 @@ package net.ion.framework.xml.digester;
 
 import java.util.HashMap;
 
-/**
- * 
- * 
- * @author not attributable
- * @version 1.0
- */
 public class ServerConfig {
 
 	private int port;
@@ -16,7 +10,7 @@ public class ServerConfig {
 	private HashMap<String, VirtualMapping> mapping = new HashMap<String, VirtualMapping>();
 
 	/**
-	 *
+	 * 
 	 * 
 	 * @param serverName
 	 *            String
@@ -32,7 +26,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 *
+	 * 
 	 * 
 	 * @return int
 	 */
@@ -41,7 +35,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 *
+	 * 
 	 * 
 	 * @param port
 	 *            int
