@@ -69,12 +69,5 @@ public class UseHandler extends TestBaseSample {
 		Object secondValue = rows.toHandle(new ScalarHandler(2)) ;
 		assertEquals("01", secondValue) ;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
