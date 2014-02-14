@@ -15,7 +15,8 @@ import net.ion.framework.db.procedure.IQueryable;
 // Future Pattern.Host
 public class AsyncDBController implements Closeable {
 	private final IDBController dc;
-	private ExecutorService es ;
+	private volatile ExecutorService es ;
+	private volatile ExceptionHandler ehandler = ExceptionHandler.PrintHandler;
 
 	public AsyncDBController(IDBController dc) {
 		this(dc, Executors.newCachedThreadPool());
@@ -26,10 +27,14 @@ public class AsyncDBController implements Closeable {
 		this.es = es;
 	}
 
-
-	
-	public void setExecutorService(ExecutorService es) {
+	public AsyncDBController executorService(ExecutorService es) {
 		this.es = es;
+		return this ;
+	}
+	
+	public AsyncDBController exceptionHandler(ExceptionHandler ehandler){
+		this.ehandler = ehandler ;
+		return this ;
 	}
 
 	DBManager dbManager() {
@@ -39,9 +44,7 @@ public class AsyncDBController implements Closeable {
 	IDBController dbController() {
 		return dc;
 	}
-	
-	
-	
+
 	public Future<Rows> getRows(final String query) {
 		return getRows(dc.createUserCommand(query));
 	}
@@ -51,7 +54,7 @@ public class AsyncDBController implements Closeable {
 	}
 
 	public Future<Rows> getRows(final IQueryable query) {
-		return getRows(query, ExceptionHandler.PrintHandler);
+		return getRows(query, this.ehandler);
 	}
 
 	public Future<Rows> getRows(final IQueryable query, final ExceptionHandler handler) {
@@ -77,7 +80,7 @@ public class AsyncDBController implements Closeable {
 	}
 
 	public Future<Integer> execUpdate(final IQueryable query) {
-		return execUpdate(query, ExceptionHandler.PrintHandler ); 
+		return execUpdate(query, this.ehandler ); 
 	}
 
 	public Future<Integer> execUpdate(final IQueryable query, final ExceptionHandler handler) {
@@ -105,6 +108,10 @@ public class AsyncDBController implements Closeable {
 	}
 
 	public <T> Future<T> tran(final AsyncTransactionJob<T> job) {
+		return tran(job, this.ehandler) ;
+	}
+	
+	public <T> Future<T> tran(final AsyncTransactionJob<T> job, final ExceptionHandler ehandler) {
 		final AsyncDBController self = this;
 		return es.submit(new Callable<T>() {
 			public T call() throws Exception {
@@ -117,13 +124,12 @@ public class AsyncDBController implements Closeable {
 					return result;
 				} catch (Throwable ex) {
 					session.rollback(ex);
-					job.fail(ex);
+					ehandler.handle(ex) ;
 				} finally {
 					session.free();
 				}
 				return null;
 			}
-
 		});
 	}
 

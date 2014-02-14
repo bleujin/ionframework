@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import net.ion.framework.db.bean.ResultSetHandler;
 
-public class ScalarHandler extends ColNameHelper implements ResultSetHandler<Object> {
+public class ScalarHandler<T> extends ColNameHelper implements ResultSetHandler<T> {
 
 	private static final long serialVersionUID = 6636753643880285420L;
 
@@ -20,14 +20,14 @@ public class ScalarHandler extends ColNameHelper implements ResultSetHandler<Obj
 	public ScalarHandler(String columnName) {
 		super(columnName);
 	}
-
-	public Object handle(ResultSet rs) throws SQLException {
+	
+	public T handle(ResultSet rs) throws SQLException {
 
 		if (rs.next()) {
 			if (this.columnName() == null) {
-				return rs.getObject(this.columnIndex());
+				return (T)rs.getObject(this.columnIndex());
 			} else {
-				return rs.getObject(this.columnName());
+				return (T)rs.getObject(this.columnName());
 			}
 
 		} else {

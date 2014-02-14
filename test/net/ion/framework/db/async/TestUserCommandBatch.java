@@ -31,10 +31,6 @@ public class TestUserCommandBatch extends H2TestCase{
 				session.createUserCommand("delete from emp").execUpdate() ;
 				return rows;
 			}
-
-			public void fail(Throwable ex) {
-				ex.printStackTrace() ;
-			}
 		}).get();
 
 		assertEquals(5, rows.getRowCount()) ;
@@ -58,10 +54,6 @@ public class TestUserCommandBatch extends H2TestCase{
 				
 				session.createUserCommand("delete from emp").execUpdate() ;
 				return rows;
-			}
-
-			public void fail(Throwable ex) {
-				assertEquals(true, ex instanceof SQLException) ;
 			}
 		}).get();
 
@@ -89,10 +81,6 @@ public class TestUserCommandBatch extends H2TestCase{
 				
 				session.createUserCommand("delete from emp").execUpdate() ;
 				return rows;
-			}
-
-			public void fail(Throwable ex) {
-				ex.printStackTrace() ;
 			}
 		}).get();
 

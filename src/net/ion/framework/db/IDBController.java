@@ -20,7 +20,7 @@ public interface IDBController extends IQueryFactory {
 
 	public long getModifyCount();
 
-	// for patch.. throw no sqlexception
+	// for patch.. throw no sql exception
 	public int execUpdate(IQueryable upt);
 
 	public Rows getRows(IQueryable queryable);

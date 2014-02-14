@@ -72,10 +72,6 @@ public class TestAsyncDBController extends TestCase{
 				session.createUserCommand("delete from emp where empno = ?").addParam(1).execUpdate() ;
 				return rows;
 			}
-
-			public void fail(Throwable ex) {
-				ex.printStackTrace() ;
-			}
 		}).get();
 		
 		assertEquals(1, rows.getRowCount()) ;
@@ -99,10 +95,6 @@ public class TestAsyncDBController extends TestCase{
 				
 				session.createUserCommand("delete from emp where empno = ?").addParam(1).execUpdate() ;
 				return rows;
-			}
-
-			public void fail(Throwable ex) {
-				ex.printStackTrace() ;
 			}
 		}).get();
 		

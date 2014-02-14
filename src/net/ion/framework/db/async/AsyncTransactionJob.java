@@ -5,6 +5,4 @@ import java.sql.SQLException;
 public interface AsyncTransactionJob<T> {
 
 	public T handle(AsyncSession session) throws SQLException ;
-
-	public void fail(Throwable ex);
 }

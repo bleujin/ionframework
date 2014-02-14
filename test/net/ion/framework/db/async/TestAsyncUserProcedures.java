@@ -27,10 +27,6 @@ public class TestAsyncUserProcedures extends H2TestCase{
 				session.createUserCommand("delete from emp where empno in (?, ?)").addParam(1).addParam(2).execUpdate() ;
 				return rows;
 			}
-
-			public void fail(Throwable ex) {
-				ex.printStackTrace() ;
-			}
 		}).get();
 		
 		assertEquals(2, rows.getRowCount()) ;
@@ -51,10 +47,6 @@ public class TestAsyncUserProcedures extends H2TestCase{
 				
 				Rows rows = session.createUserProcedure("emp@select").execQuery();
 				return rows;
-			}
-
-			public void fail(Throwable ex) {
-				assertEquals(true, ex instanceof SQLException) ;
 			}
 		}).get();
 		
