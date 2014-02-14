@@ -81,7 +81,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	private HashMap<String, String> midgard = new CaseInsensitiveHashMap<String>(); // etc property...
 	private PrimaryServant pservant = null;
 
-	private static Logger log = LogBroker.getLogger(DBController.class);
+	private Logger log = LogBroker.getLogger(DBController.class);
 	private long modify_count = 0;
 
 	private ExecutorService threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("eventLogThread-%d")) ;
@@ -142,9 +142,9 @@ public class DBController implements IDBController, Closeable { // implements Co
 				this.dbm = cdbm;
 
 			} catch (NotFoundXmlTagException ex) {
+				log.warning(ex.getMessage()) ;
 			} catch (IOException e) {
-				Debug.debug("cause " + e.getMessage(), "cacheManager not setted..");
-				e.printStackTrace();
+				log.warning("cause " + e.getMessage() + "\n cacheManager not setted..") ;
 			}
 		} catch (NotFoundXmlTagException ex) {
 			throw new DBControllerInstantiationException("Few parameter to initialize DBController.", ex);

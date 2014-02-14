@@ -83,6 +83,10 @@ public class TestAsyncDBController extends TestCase{
 		adc.dbController().createUserProcedure("emp@createtable").execUpdate() ;
 		
 		final boolean isSuccess = false ;
+		adc.exceptionHandler(new ExceptionHandler() {
+			public void handle(Throwable ignore) {
+			}
+		}) ;
 		Rows rows = adc.tran(new AsyncTransactionJob<Rows>(){
 			
 			public Rows handle(AsyncSession session) throws SQLException {

@@ -2,9 +2,11 @@ package net.ion.framework.db.manager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.procedure.RepositoryService;
+import net.ion.framework.logging.LogBroker;
 import net.ion.framework.util.Debug;
 
 /**
@@ -34,7 +36,8 @@ public abstract class DBManager {
 	private String jdbcURL = null;
 	private String userId = null;
 	private String userPwd = null;
-
+	private Logger log = LogBroker.getLogger(DBManager.class) ;
+	
 	public DBManager() {
 		this("", "", "", "");
 	}
@@ -64,12 +67,12 @@ public abstract class DBManager {
 		if (isCreated())
 			return;
 		if (dc.getDBManager() == this && owner == null) {
-			Debug.debug("set Owner", this);
+			log.info("set Owner : " +  this);
 			owner = dc; // set Owner
 		}
 
 		myInitPool();
-		Debug.debug("Init Pool ", getClass().getName(), "owner:" + owner.getName(), isCreate);
+		log.info("Init Pool : " + getClass().getName() +  ", owner:" + owner.getName() + ", created");
 		setCreated(true);
 		heartbeatQuery(dc);
 	}
@@ -84,7 +87,7 @@ public abstract class DBManager {
 				return;
 
 			myDestroyPool();
-			Debug.debug("Destroy Pool ", "owner:" + owner.getName(), isCreate);
+			log.info("Destroy Pool, owner:" + owner.getName());
 			setCreated(false);
 		} catch (Exception e) {
 			throw new SQLException(e.getMessage());
