@@ -1,10 +1,13 @@
 package net.ion.framework.parse.gson;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.sql.Types;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import net.ion.framework.db.Rows;
 import net.ion.framework.parse.gson.internal.LazilyParsedNumber;
 import net.ion.framework.parse.gson.stream.JsonReader;
 import net.ion.framework.parse.gson.stream.JsonToken;
@@ -182,6 +185,91 @@ public class JsonUtil {
 //		throw new IllegalStateException("not acceptable token") ;
 	}
 
+	
+	
+	
+	
+
+	public static Rows toRows(JsonElement jelement, String firstCol, String... cols) throws SQLException {
+		JsonRows result = new JsonRows(new JsonQueryable(jelement));
+
+		if (jelement.isJsonArray() && jelement.getAsJsonArray().size() > 0){
+			JsonArray jarray = jelement.getAsJsonArray() ;
+			makeMeta(result, jarray.get(0).getAsJsonObject(), firstCol, cols);
+			return result.populate(jarray) ;
+		} else if (jelement.isJsonArray() && jelement.getAsJsonArray().size() == 0 && StringUtil.isNotBlank(firstCol)) {
+			JsonArray jarray = jelement.getAsJsonArray() ;
+			makeMeta(result, firstCol, cols);
+			return result.populate(jarray) ;
+		} else if (jelement.isJsonObject()){
+			JsonObject jobject = jelement.getAsJsonObject() ;
+			makeMeta(result, jobject, firstCol, cols);
+			return result.populate(jobject) ;
+		}
+		throw new IllegalArgumentException("by bleujin") ;
+	}
+	
+	public static Rows toRows(JsonElement jelement) throws SQLException {
+		JsonRows result = new JsonRows(new JsonQueryable(jelement));
+
+		if (jelement.isJsonArray() && jelement.getAsJsonArray().size() > 0){
+			JsonArray jarray = jelement.getAsJsonArray() ;
+			makeMeta(result, jarray.get(0).getAsJsonObject());
+			return result.populate(jarray) ;
+		} else if (jelement.isJsonObject()){
+			JsonObject jobject = jelement.getAsJsonObject() ;
+			makeMeta(result, jobject);
+			return result.populate(jobject) ;
+		}
+		throw new IllegalArgumentException("data blank and no metadata. use toRows(jele, colNames...) by bleujin") ;
+	}
+	
+	private static void makeMeta(JsonRows jsonRows, String firstCol, String[] cols) throws SQLException {
+		RowsMetaDataImpl meta = new RowsMetaDataImpl() ;
+		meta.newCol(firstCol).colType(Types.OTHER) ;
+		for (String col : cols) {
+			meta.newCol(col).colType(Types.OTHER) ;
+		}
+		
+		jsonRows.setMetaData(meta);
+	}
+
+	private static void makeMeta(JsonRows jsonRows, JsonObject json, String firstCol, String[] cols) throws SQLException {
+		RowsMetaDataImpl meta = new RowsMetaDataImpl() ;
+		addColInfo(meta, firstCol, ObjectUtil.coalesce(json.get(firstCol), JsonNull.INSTANCE));
+		for (String col : cols) {
+			addColInfo(meta, col, ObjectUtil.coalesce(json.get(col), JsonNull.INSTANCE)) ;
+		}
+		
+		jsonRows.setMetaData(meta);
+	}
+
+	private static void makeMeta(JsonRows jsonRows, JsonObject json) throws SQLException {
+		RowsMetaDataImpl meta = new RowsMetaDataImpl() ;
+		
+		for(Entry<String, JsonElement> entry : json.entrySet()){
+			addColInfo(meta, entry.getKey(), entry.getValue()) ;
+		}
+		jsonRows.setMetaData(meta);
+		
+	}
+	
+	
+	private static void addColInfo(RowsMetaDataImpl meta, String name, JsonElement element){
+		if(element.isJsonPrimitive()){
+			meta.newCol(name).colType(Types.OTHER) ;
+		} else if (element.isJsonArray()){
+			meta.newCol(name).colType(Types.ARRAY) ;
+		} else if (element.isJsonObject()){
+			for(Entry<String, JsonElement> entry : element.getAsJsonObject().entrySet()){
+				addColInfo(meta, name + "." + entry.getKey(), entry.getValue());
+			}
+		} else if (element.isJsonNull()){
+			meta.newCol(name).colType(Types.OTHER).nullable(1) ;
+		}
+	}
+
+	
 }
 
 
