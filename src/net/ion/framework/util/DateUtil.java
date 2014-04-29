@@ -268,6 +268,10 @@ public class DateUtil {
         }
         return httpFormatter.get();
     }
+    
+    public static long gregorianTime(){
+    	return GregorianCalendar.getInstance().getTimeInMillis() ;
+    }
 	
 	private static Hashtable dateFormatter = new Hashtable();
 	private static final String STD_FORMAT = "yyyyMMdd-HHmmss";

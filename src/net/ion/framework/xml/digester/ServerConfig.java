@@ -64,7 +64,7 @@ public class ServerConfig {
 	}
 
 	/**
-	 * DocumentRoot�� �����´�.
+	 * DocumentRoot 
 	 * 
 	 * @return String
 	 */
