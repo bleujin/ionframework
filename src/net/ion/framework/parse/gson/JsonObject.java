@@ -116,6 +116,10 @@ public final class JsonObject extends JsonElement {
 	public String asString(String key) {
 		return getIfNotExist(key).getAsString();
 	}
+	
+	public Object asPath(String path){
+		return JsonUtil.findSimpleObject(this, path) ;
+	}
 
 	public long asLong(String key) {
 		return getIfNotExist(key).getAsLong();

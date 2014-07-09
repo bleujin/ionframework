@@ -54,7 +54,12 @@ public class TestJsonUtil extends TestCase {
 		assertEquals(true, JsonUtil.findElement(jso, "Name") != null) ;
 		assertEquals(true, JsonUtil.findElement(jso, "un") == null) ;
 		assertEquals(true, JsonUtil.findElement(jso, "loc.un") == null) ;
+		
+		assertEquals(true, JsonUtil.findSimpleObject(jso, "loc.city").equals("seoul")) ;
+		assertEquals(true, JsonUtil.findSimpleObject(jso, "loc.notfound") == null) ;
 	}
+	
+	
 	
 	
 	
