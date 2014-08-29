@@ -19,7 +19,6 @@
 	<classpathentry kind="lib" path="lib/jsp-api-2.1.jar"/>
 	<classpathentry kind="lib" path="lib_source/ant.jar"/>
 	<classpathentry kind="lib" path="lib/postgresql-8.3-607.jdbc2ee.jar"/>
-	<classpathentry kind="lib" path="lib/rest_fat.jar"/>
 	<classpathentry kind="lib" path="lib_source/guava-jdk5-13.0.jar"/>
 	<classpathentry kind="lib" path="lib_source/asm/asm-3.3.1.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/3"/>

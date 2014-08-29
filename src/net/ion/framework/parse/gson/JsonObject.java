@@ -66,6 +66,10 @@ public final class JsonObject extends JsonElement {
 		return value == null ? JsonNull.INSTANCE : new JsonPrimitive(value);
 	}
 
+	public Set<String> keySet(){
+		return members.keySet() ;
+	}
+	
 	public Set<Map.Entry<String, JsonElement>> entrySet() {
 		return members.entrySet();
 	}
