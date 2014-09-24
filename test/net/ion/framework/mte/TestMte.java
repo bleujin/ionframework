@@ -36,6 +36,7 @@ public class TestMte extends TestCase{
 		String result = engine.transform("${if name}greeting ${name}${end}", MapUtil.<String,Object>create("name", "bleujin"));
 		assertEquals("greeting bleujin", result) ;
 	}
+
 	
 	public void testConditionDefault() throws Exception {
 		assertEquals("bleujin", engine.transform("${name[empty]}", MapUtil.<String,Object>create("name", "bleujin")));

@@ -189,7 +189,7 @@ public final class JsonObject extends JsonElement {
 	}
 
 	public Map<String, Object> toMap() {
-		Map<String, Object> result = MapUtil.newCaseInsensitiveMap();
+		Map<String, Object> result = MapUtil.newMap();
 
 		for (Entry<String, JsonElement> entry : members.entrySet()) {
 			Object simpleObject = JsonUtil.toSimpleObject(entry.getValue());
