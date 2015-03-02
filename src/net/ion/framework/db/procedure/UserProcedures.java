@@ -112,7 +112,7 @@ public class UserProcedures extends AbstractQueryable implements IUserProcedures
 	}
 
 	@Override
-	public Object myHandlerQuery(Connection conn, ResultSetHandler handler) throws SQLException {
+	public <T> T myHandlerQuery(Connection conn, ResultSetHandler<T> handler) throws SQLException {
 		for (int i = 0; i < querys.size(); i++) {
 			Queryable query = getQuery(i);
 			return query.myHandlerQuery(conn, handler);

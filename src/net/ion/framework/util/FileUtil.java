@@ -109,6 +109,17 @@ public class FileUtil extends FileUtils {
 		return true;
 	}
 	
+	public static boolean forceWriteUTF8(File file, String content) throws IOException{
+		boolean created = true ;
+		if (!file.getParentFile().exists()){
+			created = file.getParentFile().mkdirs() ;
+		}
+		if (created){
+			FileUtils.writeStringToFile(file, content, "UTF-8");
+		}
+		return created ;
+	}
+	
 	public interface FileClosure<V> {
 		public V walk(File file) ;
 	}

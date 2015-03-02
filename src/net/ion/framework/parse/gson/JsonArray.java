@@ -19,6 +19,7 @@ package net.ion.framework.parse.gson;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,6 +62,13 @@ public final class JsonArray extends JsonElement implements Iterable<JsonElement
 		return this ;
 	}
 
+	public JsonArray addCollection(Collection col){
+		for(Object value : col){
+			add(JsonUtil.toProperElement(value)) ;
+		}
+		return this ;
+	}
+	
 	/**
 	 * Adds all the elements of the specified array to self.
 	 * 

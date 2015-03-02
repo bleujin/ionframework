@@ -118,11 +118,11 @@ public class CombinedUserProcedures extends AbstractQueryable implements ICombin
 	}
 
 	@Override
-	public Object myHandlerQuery(Connection conn, ResultSetHandler handler) throws SQLException {
+	public <T> T myHandlerQuery(Connection conn, ResultSetHandler<T> handler) throws SQLException {
 		throw new UnsupportedOperationException();
 	}
 
-	public Object myHandlerQuery(ResultSetHandler handler) throws SQLException {
+	public <T> T myHandlerQuery(ResultSetHandler<T> handler) throws SQLException {
 		throw new UnsupportedOperationException();
 	}
 

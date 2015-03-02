@@ -42,7 +42,7 @@ public interface Queryable extends IQueryable {
 			throw new IllegalStateException("null query") ;
 		}
 
-		public Object myHandlerQuery(Connection conn, ResultSetHandler handler) throws SQLException {
+		public <T> T myHandlerQuery(Connection conn, ResultSetHandler<T> handler) throws SQLException {
 			throw new IllegalStateException("null query") ;
 		}
 

@@ -28,11 +28,11 @@ public abstract class UserProcedureBatch extends UserProcedure implements IUserP
 	}
 
 	@Override
-	public Object myHandlerQuery(Connection conn, ResultSetHandler handler) throws SQLException {
+	public <T> T myHandlerQuery(Connection conn, ResultSetHandler<T> handler) throws SQLException {
 		throw new SQLException("Curren Type is Batch, Select Method not yet implemented.");
 	}
 
-	public Object execHandlerQuery(ResultSetHandler handler) throws SQLException {
+	public <T> T execHandlerQuery(ResultSetHandler<T> handler) throws SQLException {
 		throw new UnsupportedOperationException();
 	}
 

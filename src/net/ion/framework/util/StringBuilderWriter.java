@@ -3,12 +3,8 @@ package net.ion.framework.util;
 import java.io.IOException;
 import java.io.Writer;
 
-/* ------------------------------------------------------------ */
-/**
- * A Writer to a StringBuffer.
- * 
- * @author bleujin
- */
+import org.apache.commons.lang.SystemUtils;
+
 public class StringBuilderWriter extends Writer {
 
 	private StringBuilder _buffer;
@@ -17,12 +13,20 @@ public class StringBuilderWriter extends Writer {
 		_buffer = new StringBuilder();
 	}
 
+	public StringBuilderWriter(int size) {
+		_buffer = new StringBuilder(size);
+	}
+
 	public StringBuilderWriter(StringBuilder buffer) {
 		_buffer = buffer;
 	}
 
 	public StringBuilder getStringBuilder() {
 		return _buffer;
+	}
+
+	public StringBuffer getStringBuffer() {
+		return new StringBuffer(_buffer);
 	}
 
 	public void write(char c) throws IOException {
@@ -41,6 +45,16 @@ public class StringBuilderWriter extends Writer {
 		_buffer.append(s);
 	}
 
+	public StringBuilderWriter appendLine(CharSequence s){
+		_buffer.append(s).append(SystemUtils.LINE_SEPARATOR) ;
+		return this ;
+	}
+
+	public StringBuilderWriter append(CharSequence s){
+		_buffer.append(s);
+		return this ;
+	}
+	
 	public void write(String s, int offset, int length) throws IOException {
 		for (int i = 0; i < length; i++)
 			_buffer.append(s.charAt(offset + i));

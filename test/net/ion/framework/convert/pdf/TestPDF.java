@@ -34,8 +34,9 @@ import junit.framework.TestCase;
 public class TestPDF extends TestCase {
 
 	public void testPDF() throws Exception {
-		URL uri = new File("data/weekdayList.nhn.html").toURL() ;
-		String outputFileName = "data/weekdayList.nhn.pdf" ;
+		URL uri = new File("./resource/data/AChristmasCarol.txt").toURL() ;
+		// URL uri = new URL("http://61.250.201.157:9000/admin/craken/") ;
+		String outputFileName = "./resource/data/mlbnation.pdf" ;
 		createPDFFile(uri, outputFileName);
 	}
 	

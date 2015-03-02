@@ -1,33 +1,28 @@
 package net.ion.framework.util;
 
 import java.io.File;
-import java.io.ObjectOutputStream;
 import java.net.InetAddress;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.Callable;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-
-import javax.swing.filechooser.FileView;
-
-import net.ion.framework.db.DBController;
-import net.ion.framework.db.IDBController;
-import net.ion.framework.db.manager.OraclePoolDBManager;
-import net.ion.framework.parse.gson.JsonObject;
-import net.ion.framework.parse.gson.JsonParser;
-
-import org.apache.axis.utils.ByteArrayOutputStream;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
-import org.apache.commons.io.filefilter.FileFilterUtils;
-import org.apache.commons.io.filefilter.IOFileFilter;
-import org.apache.commons.lang.ArrayUtils;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.atomic.AtomicReference;
 
 import junit.framework.TestCase;
+import net.ion.framework.parse.gson.JsonArray;
+
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.FileFilterUtils;
+import org.apache.commons.io.filefilter.IOFileFilter;
+
+import com.google.common.cache.Cache;
+import com.google.common.cache.CacheBuilder;
 
 /**
  * <p>Title: TestJava.java</p>
@@ -162,6 +157,54 @@ public class TestJava extends TestCase{
 		String str = "2000.0" ;
 		assertEquals(2000, (int)Double.parseDouble(str)) ;
 		assertEquals(2000L, (long)Double.parseDouble(str)) ;
+	}
+	
+	public void testSortedMap() throws Exception {
+	    Map<Float,String> mySortedMap = new TreeMap<Float, String>();
+	    // Put some values in it
+	    mySortedMap.put(1.0f,"One");
+	    mySortedMap.put(0.0f,"Zero");
+	    mySortedMap.put(3.0f,"Three");
+
+	    // Iterate through it and it'll be in order!
+	    for(Map.Entry<Float,String> entry : mySortedMap.entrySet()) {
+	        System.out.println(entry.getValue());
+	    } 
+	}
+	
+	
+	public void testCacheWrite() throws Exception {
+		final Cache<String, String> dcache = CacheBuilder.newBuilder().build() ;
+		final Cache<String, String> scache = CacheBuilder.newBuilder().expireAfterWrite(2, TimeUnit.SECONDS).build() ;
+		
+		for (int i = 0; i < 100; i++) {
+			Thread.sleep(500);
+			
+			String result = scache.get("1", new Callable<String>() {
+				public String call() throws Exception {
+					
+					String cvalue = dcache.getIfPresent("1") ;
+					
+					Thread thread = new Thread() {
+						public void run(){
+							try {
+								Thread.sleep(1000);
+							} catch (InterruptedException e) {
+							}
+							dcache.put("1", System.currentTimeMillis() + "");
+						}
+					};
+					thread.start(); 
+					
+					if (cvalue == null) {
+						thread.join();
+						cvalue = dcache.getIfPresent("1") ;
+					}
+					return cvalue;
+				}
+			}) ;
+			Debug.debug(System.currentTimeMillis(), result);
+		}
 	}
 	
 }

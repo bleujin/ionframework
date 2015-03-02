@@ -2,6 +2,10 @@ package net.ion.framework.util;
 
 public class InfinityThread extends Thread {
 
+	public InfinityThread(){
+		super("infinity-thread") ;
+	}
+	
 	public void run() {
 		try {
 			while (true) {

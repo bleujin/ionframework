@@ -99,6 +99,7 @@
 
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../WebSocketPlug/libs/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../ISearcher/lib/" />
+		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../aradon311/lib/ref/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Aradon/aradon_lib/aradon/embed/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../AradonClient/lib/" />
 		<copy file="publish/iframework_${version.number}.${build.number}.jar" todir="../Craken/lib/ref/" />
