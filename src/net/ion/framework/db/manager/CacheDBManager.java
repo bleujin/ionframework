@@ -63,7 +63,7 @@ public class CacheDBManager extends DBManager implements CacheManager {
 
 	@Override
 	protected void myInitPool() throws SQLException {
-		dbm.myInitPool();
+		if (! dbm.isCreated()) dbm.myInitPool();
 	}
 
 	protected void heartbeatQuery(IDBController dc) throws SQLException {

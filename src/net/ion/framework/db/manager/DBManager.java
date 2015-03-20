@@ -53,7 +53,7 @@ public abstract class DBManager {
 		this.isCreate = isCreate;
 	}
 
-	private boolean isCreated() {
+	protected boolean isCreated() {
 		return isCreate;
 	}
 
