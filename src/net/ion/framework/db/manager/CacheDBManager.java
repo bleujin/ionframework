@@ -27,7 +27,7 @@ public class CacheDBManager extends DBManager implements CacheManager {
 		this.config = config;
 		this.dbm = dbm;
 
-		this.cache = config.getCache(this);
+		this.cache = config.build(this);
 		this.rservice = new CacheRepositoryService(this, dbm) ;
 	}
 

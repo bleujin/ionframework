@@ -51,7 +51,7 @@ public class CacheConfigImpl implements CacheConfig {
 		}
 	}
 
-	public Cache getCache(CacheManager cm) {
+	public Cache build(CacheManager cm) {
 		return new CacheImpl(this, groups, cm);
 	}
 

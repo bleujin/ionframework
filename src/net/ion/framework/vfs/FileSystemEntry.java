@@ -45,16 +45,16 @@ public class FileSystemEntry {
 	public VFile resolveFile(VPath vpath, FileSystemOptions options) throws FileSystemException {
 		
 		FileObject resolveFile = fsm.resolveFile(vpath.stringPath(), options);
-		return VFile.create(resolveFile);
+		return VFile.create(resolveFile, this);
 	}
 
 	
 	public VFile toVFile(File file) throws FileSystemException{
-		return VFile.create(fsm.toFileObject(file)) ;
+		return VFile.create(fsm.toFileObject(file), this) ;
 	}
 	
 	public VFile getBaseFile() throws FileSystemException {
-		return VFile.create(fsm.getBaseFile()) ;
+		return VFile.create(fsm.getBaseFile(), this) ;
 	}
 
 	public CacheStrategy getCacheStrategy(){
@@ -98,7 +98,7 @@ public class FileSystemEntry {
 	}
 
 	public VFile resolveFile(VFile baseFile, String uri) throws FileSystemException {
-		return VFile.create(fsm.resolveFile(baseFile.getFileObject(), uri));
+		return VFile.create(fsm.resolveFile(baseFile.getFileObject(), uri), this);
 	}
 
 	

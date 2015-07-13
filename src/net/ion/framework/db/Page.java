@@ -89,6 +89,10 @@ public class Page implements Serializable{
 		return result ;
 	}
 
+	
+	public String str(){
+		return "lnum:" + getListNum() + ", pno:" + getPageNo() + ", sco:" + getScreenCount();
+	}
 
 	public String toString() {
 		return "listNum:" + getListNum() + ", pageNo:" + getPageNo();

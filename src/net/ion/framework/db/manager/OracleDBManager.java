@@ -34,7 +34,7 @@ public class OracleDBManager extends DBManager {
 	}
 	
 	public final static OracleDBManager test(){
-		return new OracleDBManager("jdbc:oracle:thin:@dev-oracle.i-on.net:1521:dev10g", "dev_ics6", "dev_ics6") ;
+		return new OracleDBManager("jdbc:oracle:thin:@125.131.88.212:1521:dev10g", "dev_ics6", "dev_ics6") ;
 		// return new OracleDBManager("jdbc:oracle:thin:@61.250.201.76:1521:TOONTALK", "toontalk", "toon0711") ;
 	}
 

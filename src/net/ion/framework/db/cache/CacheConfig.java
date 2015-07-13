@@ -18,5 +18,5 @@ public interface CacheConfig {
 		}
 	}
 
-	public Cache getCache(CacheManager cm);
+	public Cache build(CacheManager cm);
 }

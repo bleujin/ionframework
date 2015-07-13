@@ -13,7 +13,7 @@ public class TestVFSCreate extends TestCase {
 
 	protected void setUp() throws Exception {
 		super.setUp();
-		entry = VFS.DEFAULT;
+		entry = VFS.createEmpty() ;
 		LocalSubDirFileProvider aprovider = new LocalSubDirFileProvider();
 		aprovider.setPrefixDir("c:/working/") ;
 		if (! entry.hasProvider("afield")) entry.addProvider("afield", aprovider);
@@ -25,12 +25,18 @@ public class TestVFSCreate extends TestCase {
 		VFile vf = entry.resolveFile("afield:/imsi/temp/myfile.txt");
 		vf.write(new StringInputStream("Hello Bleujin" + new Date()));
 		vf.close();
-		
 	}
 
 	public void testyRead() throws Exception {
 		VFile vf = entry.resolveFile("afield:/imsi/temp/myfile.txt");
 		Debug.debug(UTF8TextFile.create(vf).readAsString());
+	}
+	
+	public void testAbsPath() throws Exception {
+		VFile root = entry.resolveFile("afield:/") ;
+		
+		VFile mypath = root.getChild("mypath") ;
+		Debug.line(mypath, mypath.exists());
 	}
 
 	public void testConfirm() throws Exception {

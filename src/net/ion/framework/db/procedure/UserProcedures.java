@@ -142,6 +142,7 @@ public class UserProcedures extends AbstractQueryable implements IUserProcedures
 
 		for (int i = 0; i < querys.size(); i++) {
 			query = getQuery(i);
+			
 			setCurrentQuery(query);
 			sumUpdateRow += query.myUpdate(conn);
 		}

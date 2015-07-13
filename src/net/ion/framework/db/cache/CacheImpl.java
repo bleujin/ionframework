@@ -47,7 +47,7 @@ public class CacheImpl implements Cache {
 						Map<String, Object> cached = stores.get(group.getId());
 						Object value = cached.get(makeCacheKey(squery));
 						if (cached == null)
-							Debug.line("MAY BE... CACHE DESTORYED BY OTHER CALL", group.getId(), stores.keySet(), stores.size());
+							Debug.error("MAY BE... CACHE DESTORYED BY OTHER CALL", group.getId(), stores.keySet(), stores.size());
 						if (value != null) {
 							cm.hitCache(squery);
 							if (value instanceof Rows) {
@@ -78,7 +78,7 @@ public class CacheImpl implements Cache {
 	}
 
 	private String makeCacheKey(IQueryable query) {
-		return StringUtil.deleteWhitespace(query.getProcFullSQL() + query.getPage().toString()).toUpperCase();
+		return StringUtil.deleteWhitespace(query.getProcFullSQL() + query.getPage().str()).toUpperCase();
 	}
 
 	public void putValue(IQueryable query, Object value) {
@@ -90,16 +90,20 @@ public class CacheImpl implements Cache {
 					continue;
 				try {
 					myLock.writeLock();
+					Map<String, Object> cached = stores.get(group.getId());
+					if (cached == null)
+						Debug.error("MAY BE... CACHE DESTORYED BY OTHER CALL", group.getId(), stores.keySet(), stores.size());
+					
 					if (foundType.isAdd()) {
 						if (value instanceof Rows) {
 							final Rows rows = (Rows) value;
 							rows.clearQuery();
-							stores.get(group.getId()).put(makeCacheKey(squery), ProxyRows.create(rows, (Queryable) squery));
+							cached.put(makeCacheKey(squery), ProxyRows.create(rows, (Queryable) squery));
 						} else {
-							stores.get(group.getId()).put(makeCacheKey(squery), value);
+							cached.put(makeCacheKey(squery), value);
 						}
 					} else if (foundType.isReset()) {
-						stores.get(group.getId()).clear();
+						cached.clear();
 					}
 				} catch (InterruptedException ignore) {
 				} catch (SQLException ignore) {

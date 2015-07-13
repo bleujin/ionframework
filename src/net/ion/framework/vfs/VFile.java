@@ -22,13 +22,15 @@ import org.apache.commons.vfs2.operations.FileOperations;
 public class VFile implements Closeable {
 
 	private FileObject fo;
+	private FileSystemEntry fse;
 
-	private VFile(FileObject fo) {
+	private VFile(FileObject fo, FileSystemEntry fse) {
 		this.fo = fo;
+		this.fse = fse ;
 	}
 
-	public static VFile create(FileObject fo) {
-		return new VFile(fo);
+	public static VFile create(FileObject fo, FileSystemEntry fse) {
+		return new VFile(fo, fse);
 	}
 
 	public void createFile() throws FileSystemException {
@@ -60,11 +62,11 @@ public class VFile implements Closeable {
 	}
 
 	public VFile getParent() throws FileSystemException {
-		return create(fo.getParent());
+		return create(fo.getParent(), fse);
 	}
 
 	public VFile getChild(String childName) throws FileSystemException {
-		return create(fo.getChild(childName));
+		return fse.resolveFile(this, childName) ;
 	}
 
 	public List<VFile> getChildren() throws FileSystemException {
@@ -72,7 +74,7 @@ public class VFile implements Closeable {
 		FileObject[] fos = fo.getChildren();
 		if (fos == null || fos.length== 0) return Collections.<VFile>emptyList();
 		for (FileObject fileObject : fos) {
-			result.add(create(fileObject));
+			result.add(create(fileObject, fse));
 		}
 
 		return result;
@@ -137,7 +139,7 @@ public class VFile implements Closeable {
 	}
 
 	public boolean rename(String rename) throws FileSystemException {
-		VFile target = VFile.create(fo.getFileSystem().resolveFile(getParent().getName().getPath() + "/" + rename)) ; 
+		VFile target = VFile.create(fo.getFileSystem().resolveFile(getParent().getName().getPath() + "/" + rename), fse) ; 
 		return moveTo(target);
 	}
 	
@@ -196,7 +198,7 @@ public class VFile implements Closeable {
 		
 		List<VFile> result = ListUtil.newList() ;
 		for (FileObject fo : fos) {
-			result.add(new VFile(fo)) ;
+			result.add(new VFile(fo, fse)) ;
 		}
 
 		return result.toArray(new VFile[0]);

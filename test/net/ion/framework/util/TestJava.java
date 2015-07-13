@@ -18,6 +18,7 @@ import junit.framework.TestCase;
 import net.ion.framework.parse.gson.JsonArray;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.io.filefilter.FileFilterUtils;
 import org.apache.commons.io.filefilter.IOFileFilter;
 
@@ -206,7 +207,13 @@ public class TestJava extends TestCase{
 			Debug.debug(System.currentTimeMillis(), result);
 		}
 	}
+
 	
+	public void testFileName() throws Exception {
+		File file = new File("./resource/a.txt") ;
+		String fname = FilenameUtils.separatorsToUnix(file.getCanonicalPath());
+		Debug.line(fname.substring(FilenameUtils.getPrefixLength(fname))) ;
+	}
 }
 
 
