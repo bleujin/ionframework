@@ -5,7 +5,7 @@ import net.ion.framework.xml.XmlSerializable;
 import net.ion.framework.xml.excetion.XmlException;
 
 /**
- * XmlSerializableÇÑ ÀÎ½ºÅÏ½ºµéÀ» ÇÏ³ªÀÇ XML·Î ¸¸µé¾î net.ion.framework.xml.XmlDocument ÇüÅÂ·Î Á¦°øÇÑ´Ù.
+ * XmlSerializable net.ion.framework.xml.XmlDocument 
  * 
  * @author not attributable
  * @version 1.0
@@ -25,7 +25,7 @@ public class XmlWrapper {
 	}
 
 	/**
-	 * XmlSerializableÇÑ ÀÎ½ºÅÏ½ºµéÀ» °¢ ÀÎ½ºÅÏ½ºÀÇ toXml() ¸Þ¼Òµå¸¦ ÀÌ¿ëÇÏ¿© ÇÏ³ªÀÇ XML StringÀ¸·Î ¸¸µé¾îÁØ´Ù.
+	 * XmlSerializableï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ toXml() ï¿½Þ¼Òµå¸¦ ï¿½Ì¿ï¿½ï¿½Ï¿ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ XML Stringï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
 	 * 
 	 * @throws XmlException
 	 */
@@ -38,7 +38,7 @@ public class XmlWrapper {
 	}
 
 	/**
-	 * init()·Î »ý¼ºÇÑ XML StringÀ» net.ion.framework.xml.XmlDocument ÇüÅÂ·Î °¡Á®¿Â´Ù.
+	 * init()ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ XML Stringï¿½ï¿½ net.ion.framework.xml.XmlDocument ï¿½ï¿½ï¿½Â·ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @throws XmlException
 	 * @return XmlDocument

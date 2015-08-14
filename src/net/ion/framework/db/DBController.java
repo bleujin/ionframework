@@ -76,7 +76,8 @@ public class DBController implements IDBController, Closeable { // implements Co
 	protected DBManager dbm = null;
 	protected int limitRows = Page.ALL.getListNum();
 	protected String name = null;
-	private final ServantChain schain = new ServantChain() ;
+	private final ServantChain schain ;
+	private final ExecutorService threadPool ;
 
 	private HashMap<String, String> midgard = new CaseInsensitiveHashMap<String>(); // etc property...
 	private PrimaryServant pservant = null;
@@ -84,7 +85,6 @@ public class DBController implements IDBController, Closeable { // implements Co
 	private Logger log = LogBroker.getLogger(DBController.class);
 	private long modify_count = 0;
 
-	private ExecutorService threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("eventLogThread-%d")) ;
 	
 	public DBController(Configuration dbconfig) throws DBControllerInstantiationException {
 
@@ -95,16 +95,17 @@ public class DBController implements IDBController, Closeable { // implements Co
 			// �ݵ�� �ʿ��� �͵�...
 			this.name = dbconfig.getChild("controller-name").getValue();
 			this.dbm = (DBManager) InstanceCreator.createConfiguredInstance(dbconfig.getChild("database-manager.configured-object"));
+			this.threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("dc-inner-Thread-%d")) ;
+			this.schain = new ServantChain(this.threadPool) ;
 
 			Configuration[] configOfServant = dbconfig.getChildren("extra-servant.configured-object");
 
-			AsyncServant as = new AsyncServant(threadPool) ;
 			//ChannelServant echannel = new ChannelServant();
 			for (int i = 0; i < configOfServant.length; i++) {
 				IExtraServant eservant = (IExtraServant) InstanceCreator.createConfiguredInstance(configOfServant[i]);
-				as.add(eservant) ;
+				schain.addServant(eservant) ;
 			}
-			schain.addServant(as) ;
+			schain.eservice(threadPool) ;
 			
 			log.info(this.name + " [---DBController Start---] ..............");
 
@@ -164,14 +165,14 @@ public class DBController implements IDBController, Closeable { // implements Co
 	 *            controller's name : recognize dbc, but dont need unique name
 	 * @param dataBaseManager
 	 */
-	public DBController(String name, DBManager dbm) {
-		this(name, dbm, IExtraServant.BLANK);
-	}
-
-	public DBController(String name, DBManager dataBaseManager, IExtraServant servant) {
+	public DBController(String name, DBManager dbm, IExtraServant... servants) {
 		this.name = name;
-		this.dbm = dataBaseManager;
-		this.schain.addServant((servant instanceof AsyncServant) ? ((AsyncServant)servant) : new AsyncServant(Executors.newFixedThreadPool(2)).add(servant));
+		this.dbm = dbm;
+		this.threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("dc-inner-Thread-%d")) ;
+		this.schain = new ServantChain(this.threadPool) ;
+		for (IExtraServant servant : servants) {
+			this.schain.addServant(servant);
+		}
 	}
 
 	public void setDBManager(DBManager dbm) {

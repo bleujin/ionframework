@@ -118,6 +118,11 @@ public class DateUtil {
 		return dateToString(new Date(), format);
 	}
 
+	public static String currentDateString() {
+		return dateToString(new Date(), DEFAULT_FORMAT);
+	}
+
+
 	public static Date stringToDate(String s) throws ParseException {
 		if (s.endsWith("+02"))
 			s = s.substring(0, s.length() - 3);

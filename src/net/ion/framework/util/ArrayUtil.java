@@ -35,4 +35,12 @@ public class ArrayUtil extends ArrayUtils{
 		return (S[]) list.toArray();
 	}
 	
+	public static <T> T[] create(int size, Class<T> c, T value){
+		T[] result = (T[])Array.newInstance(c, size) ;
+		for (int i = 0; i < result.length; i++) {
+			result[i] = value ;
+		}
+		return result ;
+	}
+	
 }

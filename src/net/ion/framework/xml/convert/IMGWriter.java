@@ -9,12 +9,12 @@ import sun.misc.BASE64Encoder;
 
 public class IMGWriter {
 	/**
-	 * 이미지를 BASE64인코딩하여 return
+	 * 
 	 * 
 	 * @param urlSrc
 	 *            String
 	 * @throws Exception
-	 * @return String 이미지가 BASE64로 인코딩된 문자열
+	 * @return String 
 	 */
 	public static String createIMG(String urlSrc) throws Exception {
 		String result = "<null/>";
