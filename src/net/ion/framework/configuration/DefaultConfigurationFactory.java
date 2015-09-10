@@ -17,19 +17,19 @@ import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 /**
- * Configuration Factory Å¬·¡½º<br>
+ * Configuration Factory Å¬ï¿½ï¿½ï¿½ï¿½<br>
  * 
  * <pre>
- * Configuration instance¸¦ ¸¸µé¾î³½´Ù. factory ÀÎ½ºÅÏ½º´Â static À¸·Î Ç×»ó ÇÏ³ªÀÇ instance¸¦ À¯Áö
- * ÇÑ´Ù.
+ * Configuration instanceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½î³½ï¿½ï¿½. factory ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ static ï¿½ï¿½ï¿½ï¿½ ï¿½×»ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ instanceï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+ * ï¿½Ñ´ï¿½.
  * 
- * Instance¸¦ ¾ò±â
+ * Instanceï¿½ï¿½ ï¿½ï¿½ï¿½
  * ex>
  *      ConfigurationFactory factory = ConfigurationFactory.newinstance();
  * 
- * Configuration »ý»êÇÏ±â
+ * Configuration ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
  * ex>
- *      factory.getConfiguration( "elementPathString" ); // elementPathStringÀº <config><sys>... ÀÏ°æ¿ì "config.sys. " ¿Í°°ÀÌ Ç¥ÇöÇÑ´Ù.
+ *      factory.getConfiguration( "elementPathString" ); // elementPathStringï¿½ï¿½ <config><sys>... ï¿½Ï°ï¿½ï¿½ "config.sys. " ï¿½Í°ï¿½ï¿½ï¿½ Ç¥ï¿½ï¿½ï¿½Ñ´ï¿½.
  * 
  * 
  * </pre>
@@ -42,13 +42,13 @@ import org.xml.sax.SAXException;
 public class DefaultConfigurationFactory extends ConfigurationFactory {
 	private Element documentElement;
 
-	// »ý¼ºÇÑ Configuration ÀÎ½ºÅÏ½º¸¦ º¸°üÇÏ´Â hashtable
+	// ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ hashtable
 	private Hashtable configurationCache = new Hashtable();
 
 	private ConfigurationType configurationType = ConfigurationType.DEFAULT;
 
 	/**
-	 * instanceKeyName À» °¡Áö´Â ÀÎ½ºÅÏ½º¸¦ »ý¼ºÇÑ´Ù.
+	 * instanceKeyName ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @param instanceKeyName
 	 *            String
@@ -64,7 +64,7 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	}
 
 	/**
-	 * DocumentBuilder ¸¦ »ý¼ºÇÑ´Ù.
+	 * DocumentBuilder ï¿½ï¿½ ï¿½ï¿½ï¿½Ñ´ï¿½.
 	 * 
 	 * @throws ConfigurationBuildException
 	 * @return DocumentBuilder
@@ -83,9 +83,9 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	}
 
 	// /**
-	// * ÆÄÀÏ·Î ºÎÅÍ DocumentElement ¸¦ ¾ò¾î¿Â´Ù.
+	// * ï¿½ï¿½ï¿½Ï·ï¿½ ï¿½ï¿½ï¿½ï¿½ DocumentElement ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	// *
-	// * @param configFile - È¯°æ¼³Á¤¿¡ »ç¿ëµÉ XMLÆÄÀÏ ÀÎ½ºÅÏ½º
+	// * @param configFile - È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ XMLï¿½ï¿½ï¿½ï¿½ ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	// * @throws ConfigurationBuildException
 	// */
 	// private void createDocumentFromFile( File configFile ) throws ConfigurationBuildException
@@ -109,10 +109,10 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	// }
 
 	/**
-	 * org.xml.sax.InputSource ·Î ºÎÅÍ DocumentElement ¸¦ ¾ò¾î¿Â´Ù.
+	 * org.xml.sax.InputSource ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ DocumentElement ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param inputsource
-	 *            InputSource È¯°æ¼³Á¤¿¡ »ç¿ëµÉ InputSource ÀÎ½ºÅÏ½º
+	 *            InputSource È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ InputSource ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	 * @throws ConfigurationBuildException
 	 */
 	private void createDocument(InputSource inputsource) throws ConfigurationBuildException {
@@ -134,10 +134,10 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	// }
 
 	/**
-	 * inputsource ¸¦ ÅëÇØ¼­ xml config Á¤º¸¸¦ ÀÐ¾îµéÀÎ´Ù.
+	 * inputsource ï¿½ï¿½ ï¿½ï¿½ï¿½Ø¼ï¿½ xml config ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ð¾ï¿½ï¿½ï¿½Î´ï¿½.
 	 * 
 	 * @param inputsource
-	 *            InputSource È¯°æ¼³Á¤¿¡ »ç¿ëµÉ InputSource Class
+	 *            InputSource È¯ï¿½æ¼³ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ InputSource Class
 	 * @throws ConfigurationBuildException
 	 */
 	public void build(InputSource inputsource) throws ConfigurationBuildException {
@@ -145,12 +145,12 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	}
 
 	/**
-	 * Ã£°íÀÚÇÏ´Â Element °¡ Root Element ÀÎÁö¸¦ È®ÀÎ
+	 * Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Element ï¿½ï¿½ Root Element ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ È®ï¿½ï¿½
 	 * 
 	 * @param elementToken
-	 *            ElementInfoTokenizer Ã£°íÀÚÇÏ´Â element ÀÇ Á¤º¸¸¦ °¡Áö°í ÀÖ´Â ElementInfoTokenizer
+	 *            ElementInfoTokenizer Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ element ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ElementInfoTokenizer
 	 * @throws NotFoundXmlTagException
-	 * @return boolean Ã£À»·Á°íÇÏ´Â element °¡ root °¡ ¸ÂÀ¸¸é true ¾Æ´Ï¸é false
+	 * @return boolean Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ element ï¿½ï¿½ root ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ true ï¿½Æ´Ï¸ï¿½ false
 	 */
 	private boolean isRootElement(ElementInfoTokenizer elementToken) throws NotFoundXmlTagException {
 		String rootElementName = elementToken.nextToken().getElementName();
@@ -169,32 +169,32 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	}
 
 	/**
-	 * Ã³À½»ý¼ºµÈ Configuration ÀÎ½ºÅÏ½º¸¦ Hashtable¿¡ Ãß°¡ÇÑ´Ù.ÇÑ¹ø»ý¼ºÇÑ Configuration ÀÎ½ºÅÏ½ºµéÀº Hashtable¿¡ Ãß°¡µÈ´Ù.
+	 * Ã³ï¿½ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ Hashtableï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ñ´ï¿½.ï¿½Ñ¹ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ Hashtableï¿½ï¿½ ï¿½ß°ï¿½ï¿½È´ï¿½.
 	 * 
 	 * @param key
-	 *            String Configuration ÀÎ½ºÅÏ½ºÀÇ Å°°ª. elementPathString°ú ¸ÅÇÎµÈ´Ù.
+	 *            String Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½. elementPathStringï¿½ï¿½ ï¿½ï¿½ï¿½ÎµÈ´ï¿½.
 	 * @param obj
-	 *            Object »ý¼ºµÈ Configuration ÀÎ½ºÅÏ½º
+	 *            Object ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	 */
 	private void addConfigurationCache(String key, Object obj) {
 		configurationCache.put(key, obj);
 	}
 
 	/**
-	 * HashtableÀ» °Ë»öÇØ¼­ ConfigurationÀ» returnÇÑ´Ù.
+	 * Hashtableï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ø¼ï¿½ Configurationï¿½ï¿½ returnï¿½Ñ´ï¿½.
 	 * 
 	 * @param key
-	 *            String Configuration ÀÎ½ºÅÏ½ºÀÇ Å°°ª. elementPathString°ú ¸ÅÇÎµÈ´Ù.
-	 * @return Object Object( Configuration ÀÎ½ºÅÏ½º )
+	 *            String Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ Å°ï¿½ï¿½. elementPathStringï¿½ï¿½ ï¿½ï¿½ï¿½ÎµÈ´ï¿½.
+	 * @return Object Object( Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ )
 	 */
 	private Object searchConfigurationCache(String key) {
 		return configurationCache.get(key);
 	}
 
 	/**
-	 * ConfigurationFactoryÀÇ build ¸Þ¼Òµå°¡ ½ÇÇàµÇ¾ú´ÂÁö¸¦ Ã¼Å©ÇÑ´Ù. build¸Þ¼Òµå°¡ ¼öÇàµÇ¾î documentElement °¡ »ý¼ºµÇ¾ú´ÂÁö ¿©ºÎ¸¦ Ã¼Å©.
+	 * ConfigurationFactoryï¿½ï¿½ build ï¿½Þ¼Òµå°¡ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ñ´ï¿½. buildï¿½Þ¼Òµå°¡ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ documentElement ï¿½ï¿½ ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½ Ã¼Å©.
 	 * 
-	 * @return boolean build°¡ ¼öÇàµÇ¾úÀ¸¸é true, ±×·¸Áö ¾ÊÀ¸¸é false
+	 * @return boolean buildï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ true, ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ false
 	 */
 	private boolean isBuild() {
 		if (this.documentElement != null)
@@ -204,10 +204,10 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	}
 
 	/**
-	 * elementPathString¿¡ ÇØ´çÇÏ´Â Configuration ÀÎ½ºÅÏ½º¸¦ °¡Á®¿Â´Ù.
+	 * elementPathStringï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param elementPathString
-	 *            String °¡Á®¿Ã Configuration ÀÎ½ºÅÏ½ºÀÇ path ¹®ÀÚ¿­
+	 *            String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ path ï¿½ï¿½ï¿½Ú¿ï¿½
 	 * @throws NotFoundXmlTagException
 	 * @throws NotBuildException
 	 * @throws ConfigurationException
@@ -218,28 +218,33 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	}
 
 	/**
-	 * ºÎ¸ð¿¡¼­ ÀÚ½Ä Element ÀÇ Configuration À» ÇÏ³ª ¾ò¾î¿Â´Ù. ÇÏ³ªÀÌ»ó Á¸ÀçÇÏ¸é °¡Àå ¸ÕÀú ¹ß°ßµÇ´Â°ÍÀ» ¾ò¾î¿Â´Ù.
+	 * ï¿½Î¸ð¿¡¼ï¿½ ï¿½Ú½ï¿½ Element ï¿½ï¿½ Configuration ï¿½ï¿½ ï¿½Ï³ï¿½ ï¿½ï¿½ï¿½Â´ï¿½. ï¿½Ï³ï¿½ï¿½Ì»ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ß°ßµÇ´Â°ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param childElementName
-	 *            String ÀÚ½Ä element ÀÇ ÀÌ¸§
+	 *            String ï¿½Ú½ï¿½ element ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 * @param parentConfiguration
-	 *            DefaultConfiguration ºÎ¸ð Configuration ÀÎ½ºÅÏ½º
+	 *            DefaultConfiguration ï¿½Î¸ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	 * @throws NotFoundXmlTagException
 	 * @throws NotBuildException
 	 * @throws ConfigurationException
-	 * @return Configuration ÀÚ½Ä Element ÀÇ Configuration ÀÎ½ºÅÏ½º
+	 * @return Configuration ï¿½Ú½ï¿½ Element ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	 */
-	public Configuration getConfiguration(String childElementName, DefaultConfiguration parentConfiguration) throws NotFoundXmlTagException, NotBuildException,
-			ConfigurationException {
+	public Configuration getConfiguration(String childElementName, DefaultConfiguration parentConfiguration) throws NotFoundXmlTagException, NotBuildException, ConfigurationException {
 		return (this.getConfigurations(childElementName, parentConfiguration))[0];
-
 	}
 
+	public Configuration configuration(String childElementName, DefaultConfiguration parentConfiguration) throws NotFoundXmlTagException, NotBuildException, ConfigurationException {
+		Configuration[] result = this.configurations(childElementName, parentConfiguration);
+		if (result.length == 0) throw new NotFoundXmlTagException(parentConfiguration + " : " + childElementName);
+		return result[0];
+	}
+
+
 	/**
-	 * elementPathString¿¡ ÇØ´çÇÏ´Â Configuration ÀÎ½ºÅÏ½ºµéÀ» °¡Á®¿Â´Ù.
+	 * elementPathStringï¿½ï¿½ ï¿½Ø´ï¿½ï¿½Ï´ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param elementPathString
-	 *            String °¡Á®¿Ã Configuration ÀÎ½ºÅÏ½ºÀÇ path ¹®ÀÚ¿­
+	 *            String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ path ï¿½ï¿½ï¿½Ú¿ï¿½
 	 * @throws NotFoundXmlTagException
 	 * @throws NotBuildException
 	 * @throws ConfigurationException
@@ -250,37 +255,43 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 	}
 
 	/**
-	 * ºÎ¸ð¿¡¼­ ÀÚ½Ä Element ÀÇ ConfigurationµéÀ» ¾ò¾î¿Â´Ù.
+	 * ï¿½Î¸ð¿¡¼ï¿½ ï¿½Ú½ï¿½ Element ï¿½ï¿½ Configurationï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @param childElementName
-	 *            String ÀÚ½Ä element ÀÇ ÀÌ¸§
+	 *            String ï¿½Ú½ï¿½ element ï¿½ï¿½ ï¿½Ì¸ï¿½
 	 * @param parentConfiguration
-	 *            DefaultConfiguration º¸¸ð Configuration ÀÎ½ºÅÏ½º
+	 *            DefaultConfiguration ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½
 	 * @throws NotFoundXmlTagException
 	 * @throws NotBuildException
 	 * @throws ConfigurationException
-	 * @return Configuration[] ÀÚ½Ä Element ÀÇ Configuration []
+	 * @return Configuration[] ï¿½Ú½ï¿½ Element ï¿½ï¿½ Configuration []
 	 */
-	public Configuration[] getConfigurations(String childElementName, DefaultConfiguration parentConfiguration) throws NotFoundXmlTagException,
-			NotBuildException, ConfigurationException {
+	public Configuration[] getConfigurations(String childElementName, DefaultConfiguration parentConfiguration) throws NotFoundXmlTagException, NotBuildException, ConfigurationException {
+		Configuration[] result = configurations(childElementName, parentConfiguration) ;
+		if (result.length == 0) throw new NotFoundXmlTagException(parentConfiguration.getElementPathString() + " : " + childElementName) ;
+		return result ;
+	}
+
+	
+	public Configuration[] configurations(String childElementName, DefaultConfiguration parentConfiguration) throws NotBuildException, ConfigurationException {
 		Element currentElement = null;
 		String elementIndexStringTemp = null;
 		String elementIndexString = null;
 		String elementPathString = null;
 		int elementDepth = 0;
 
-		// ºÎ¸ð Element ¸¦ ¼³Á¤ÇÑ´Ù.
+		// ï¿½Î¸ï¿½ Element ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		if (parentConfiguration != null) {
-			// ºÎ¸ð°¡ ÀÖÀ»¶§
-			// parentConfiguration ÀÇ Element ¿¡¼­ºÎÅÍ Ã£´Â´Ù.
+			// ï¿½Î¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// parentConfiguration ï¿½ï¿½ Element ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Â´ï¿½.
 			currentElement = parentConfiguration.getElement();
 			elementPathString = parentConfiguration.getElementPathString() + "." + childElementName;
 			elementIndexString = parentConfiguration.getElementIndexString();
 			elementIndexStringTemp = elementIndexString;
 			elementDepth = parentConfiguration.getElementDepth();
 		} else {
-			// º¸¸ð°¡ ¾øÀ»¶§
-			// DocumentElement ¿¡¼­ºÎÅÍ Ã£´Â´Ù.
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			// DocumentElement ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½Â´ï¿½.
 			currentElement = documentElement;
 			elementPathString = childElementName;
 			int count = (new StringTokenizer(elementPathString, ".")).countTokens() - 2;
@@ -289,7 +300,7 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 				elementIndexString += ".0";
 				count--;
 			}
-			// elementIndexString ÀÌ "" ÀÌ¸é ÃÖ»óÀ§ element ´Â ÇÏ³ªÀÌ¹Ç·Î "0" À» ±âº»À¸·Î ÇÑ´Ù.
+			// elementIndexString ï¿½ï¿½ "" ï¿½Ì¸ï¿½ ï¿½Ö»ï¿½ï¿½ï¿½ element ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½Ì¹Ç·ï¿½ "0" ï¿½ï¿½ ï¿½âº»ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ´ï¿½.
 			elementIndexStringTemp = "";
 		}
 		// DEBUG
@@ -298,14 +309,14 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 		// System.out.println( "- elementPathString : " + elementPathString );
 		// System.out.println( "- elementIndexString : " + elementIndexString );
 
-		// build µÇ¾ú´ÂÁö¸¦ °Ë»çÇÑ´Ù.
+		// build ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
 		if (!isBuild())
 			throw new NotBuildException("ConfigurationFactory.build() not execute!");
 
 		ElementInfoTokenizer elementToken = new ElementInfoTokenizer(elementPathString, elementIndexString);
 
-		// Configuration Cache Table À» °Ë»öÇÑ´Ù.
-		// Ã£¾ÒÀ¸¸é return ±×·¸Ä¡ ¾ÊÀ¸¸é configurations ÃÊ±âÈ­
+		// Configuration Cache Table ï¿½ï¿½ ï¿½Ë»ï¿½ï¿½Ñ´ï¿½.
+		// Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ return ï¿½×·ï¿½Ä¡ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ configurations ï¿½Ê±ï¿½È­
 		Vector configurations = null;
 		if ((configurations = (Vector) searchConfigurationCache(elementPathString + ":" + elementIndexString)) != null)
 			return (Configuration[]) configurations.toArray(new Configuration[0]);
@@ -314,9 +325,9 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 
 		Vector elements = new Vector();
 
-		// root element ÀÌ¸§ ´ÙÀ½ºÎÅÍ element ¸¦ Ã£´Â´Ù. elememntToken À» next 1È¸
+		// root element ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ element ï¿½ï¿½ Ã£ï¿½Â´ï¿½. elememntToken ï¿½ï¿½ next 1È¸
 		if (!isRootElement(elementToken)) {
-			// Ã£°íÀÚÇÏ´Â Element °¡ Root Element °¡ ¾Æ´Ò¶§
+			// Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Element ï¿½ï¿½ Root Element ï¿½ï¿½ ï¿½Æ´Ò¶ï¿½
 
 			NodeList currentNodeList = null;
 			boolean isFindElement = false;
@@ -334,7 +345,7 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 				// System.out.println( "currentToken elementName : " + currentToken.getElementName() );
 				// System.out.println( "currentToken elementIndex : " + currentToken.getElementIndex() );
 
-				// xml element ÀÇ »ó´Ü¿¡¼­ ºÎÅÍ ÇØ´ç element ¸¦ Ã£´Â´Ù.
+				// xml element ï¿½ï¿½ ï¿½ï¿½Ü¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ element ï¿½ï¿½ Ã£ï¿½Â´ï¿½.
 				currentNodeList = currentElement.getChildNodes();
 
 				indexCount = 0;
@@ -343,8 +354,7 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 					// System.out.println( "element type : " + currentNodeList.item(i).getNodeType() );
 					// System.out.println( "element node name : " + currentNodeList.item(i).getNodeName() );
 
-					if (currentNodeList.item(i).getNodeType() == NODETYPE.ELEMENT
-							&& currentNodeList.item(i).getNodeName().equalsIgnoreCase(currentToken.getElementName())) {
+					if (currentNodeList.item(i).getNodeType() == NODETYPE.ELEMENT && currentNodeList.item(i).getNodeName().equalsIgnoreCase(currentToken.getElementName())) {
 						if (elementToken.hasMoreTokens()) {
 							// DEBUG
 							// System.out.println( "element name : " + currentNodeList.item( i ).getNodeName() );
@@ -352,7 +362,7 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 								currentElement = (Element) currentNodeList.item(i);
 								i = currentNodeList.getLength();
 
-								// elementIndexString ¸¸µé±â
+								// elementIndexString ï¿½ï¿½ï¿½ï¿½ï¿½
 								if (elementIndexStringTemp != "")
 									elementIndexStringTemp += ".";
 								elementIndexStringTemp += currentToken.getElementIndex();
@@ -372,48 +382,46 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 				}
 
 				if (!isFindElement) {
-					throw new NotFoundXmlTagException(elementPathString + ":" + currentToken.getElementName() + "( " + (currentToken.getElementIndex() + 1)
-							+ " )");
+					return new Configuration[0] ;
 				}
 			}
 		} else {
-			// Ã£°íÀÚÇÏ´Â Element °¡ Root Element ÀÏ¶§
+			// Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ Element ï¿½ï¿½ Root Element ï¿½Ï¶ï¿½
 			elements.add(documentElement);
 		}
 
 		// DEBUG
 		// System.out.println( "elementIndexStringTemp : " + elementIndexStringTemp );
 
-		// Element¸¦ obj·Î °¡Áö°í ÀÖ´Â elements Vector¸¦ Configuration À» obj·Î °¡Áö´Â Vector·Î ¼³Á¤ÇÑ´Ù.
+		// Elementï¿½ï¿½ objï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ elements Vectorï¿½ï¿½ Configuration ï¿½ï¿½ objï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Vectorï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		setElementToConfiguration(elementPathString, elementIndexStringTemp, elements, configurations);
 
-		// Configuration Cache Table ¿¡ Configurations Object ¸¦ µî·ÏÇÑ´Ù.
+		// Configuration Cache Table ï¿½ï¿½ Configurations Object ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ñ´ï¿½.
 		addConfigurationCache(elementPathString + ":" + elementIndexStringTemp, configurations);
 
 		return (Configuration[]) configurations.toArray(new Configuration[0]);
 	}
-
+	
 	/**
-	 * elements Vector ¿¡ Element typeÀÇ Object ¸¦ Configuration type ÀÇ Object ·Î º¯È¯½ÃÅ²´Ù.
+	 * elements Vector ï¿½ï¿½ Element typeï¿½ï¿½ Object ï¿½ï¿½ Configuration type ï¿½ï¿½ Object ï¿½ï¿½ ï¿½ï¿½È¯ï¿½ï¿½Å²ï¿½ï¿½.
 	 * 
 	 * @param elementPathString
-	 *            String °¡Á®¿Ã Configuration ÀÎ½ºÅÏ½ºÀÇ path ¹®ÀÚ¿­
+	 *            String ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Configuration ï¿½Î½ï¿½ï¿½Ï½ï¿½ï¿½ï¿½ path ï¿½ï¿½ï¿½Ú¿ï¿½
 	 * @param elementIndexString
-	 *            String ÀÌÀü´Ü°è±îÁöÀÇ IndexString
+	 *            String ï¿½ï¿½ï¿½ï¿½Ü°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ IndexString
 	 * @param elements
-	 *            Vector Element ¸¦ °¡Áö´Â Vector
+	 *            Vector Element ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Vector
 	 * @param configurations
-	 *            Vector Configuration À» °¡Áö´Â Vector
+	 *            Vector Configuration ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Vector
 	 * @throws ConfigurationException
 	 */
-	private void setElementToConfiguration(final String elementPathString, final String elementIndexString, Vector elements, Vector configurations)
-			throws ConfigurationException {
+	private void setElementToConfiguration(final String elementPathString, final String elementIndexString, Vector elements, Vector configurations) throws ConfigurationException {
 		Class configurationClass = null;
 		Constructor configurationConstructor = null;
-		// »ý¼ºÀÚ ÆÄ¶ó¹ÌÅÍ ÇüÀÇ Class
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Class
 		Class[] parameterTypes = new Class[] { Element.class, String.class, String.class, String.class };
 		Object[] parameterValues = null;
-		// elementPathString ¿¡ ¸Â´Â Configuration Instance ¸¦ Configurations¿¡ ³Ö´Â´Ù.
+		// elementPathString ï¿½ï¿½ ï¿½Â´ï¿½ Configuration Instance ï¿½ï¿½ Configurationsï¿½ï¿½ ï¿½Ö´Â´ï¿½.
 		for (int j = 0; j < elements.size(); j++) {
 			try {
 				configurationClass = Class.forName(configurationType.getClassName());
@@ -429,7 +437,7 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 				throw new ConfigurationException("No such method : " + configurationType.getClassName() + " Constructor", ex1);
 			}
 
-			// »ý¼ºÀÚ ÆÄ¶ó¹ÌÅÍÀÇ value Object
+			// ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ value Object
 			String elementIndexStringTemp = null;
 			if (elementIndexString == "")
 				elementIndexStringTemp = String.valueOf(j);
@@ -454,15 +462,15 @@ public class DefaultConfigurationFactory extends ConfigurationFactory {
 
 /**
  * <pre>
- * ±¸ºÐÀÚ(.) ·Î ±¸ºÐµÇ¾îÁö´Â ¹®ÀÚ¿­ elementPath ¿Í elementIndex µÎ¹®ÀÚ¿­À» ¹Þ¾Æ
- * ElementInfo ÇüÅÂ·Î Token À» ¸¸µé¾îÁØ´Ù.
- * elementPath ¿Í elementIndexÀÇ °°Àº À§Ä¡¿¡ ÀÖ´Â token ÀÌ ÇÏ³ªÀÇ ElementInfo ÇüÅÂÀÇ TokenÀÌ µÈ´Ù.
+ * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(.) ï¿½ï¿½ ï¿½ï¿½ï¿½ÐµÇ¾ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ú¿ï¿½ elementPath ï¿½ï¿½ elementIndex ï¿½Î¹ï¿½ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½
+ * ElementInfo ï¿½ï¿½ï¿½Â·ï¿½ Token ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.
+ * elementPath ï¿½ï¿½ elementIndexï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½Ö´ï¿½ token ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ElementInfo ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Tokenï¿½ï¿½ ï¿½È´ï¿½.
  * 
  * ex)
  *      elementPath = "aaaa.bbbb.cccc";
  *      elementIndex = "0.1.0";
- *      ÀÌ¶ó¸é
- *      {aaaa, 0 }, {bbbb, 1}, {cccc, 0} ¿Í °°ÀÌ ¹­¿©¼­ ÇÏ³ªÀÇ ElementInfo ¸¦ÀÌ·é´Ù.
+ *      ï¿½Ì¶ï¿½ï¿½
+ *      {aaaa, 0 }, {bbbb, 1}, {cccc, 0} ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½ï¿½ï¿½ ElementInfo ï¿½ï¿½ï¿½Ì·ï¿½ï¿½.
  * 
  * </pre>
  * 
@@ -482,7 +490,7 @@ class ElementInfoTokenizer {
 	}
 
 	/**
-	 * ElementIndexString °¡Á®¿À±â
+	 * ElementIndexString ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return String
 	 */
@@ -491,7 +499,7 @@ class ElementInfoTokenizer {
 	}
 
 	/**
-	 * ElementPathString °¡Á®¿À±â
+	 * ElementPathString ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * 
 	 * @return String
 	 */
@@ -500,18 +508,18 @@ class ElementInfoTokenizer {
 	}
 
 	/**
-	 * ElementInfoToken ÀÇ °³¼ö¸¦ ¾ò¾î¿Â´Ù.
+	 * ElementInfoToken ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
-	 * @return ElementInfoTokenÀÇ °³¼ö
+	 * @return ElementInfoTokenï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 	 */
 	public int countTokens() {
 		return pathToken.countTokens();
 	}
 
 	/**
-	 * ´ÙÀ½ ElementInfoToken À» °¡Á®¿Â´Ù.
+	 * ï¿½ï¿½ï¿½ï¿½ ElementInfoToken ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
-	 * @return ElementInfo ´ÙÀ½ ElementInfoToken
+	 * @return ElementInfo ï¿½ï¿½ï¿½ï¿½ ElementInfoToken
 	 */
 	public ElementInfo nextToken() {
 		int index = 0;
@@ -522,9 +530,9 @@ class ElementInfoTokenizer {
 	}
 
 	/**
-	 * Token ÀÌ ³²¾ÆÀÖ´ÂÁö¸¦ Ã¼Å©ÇÑ´Ù.
+	 * Token ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ö´ï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½Ñ´ï¿½.
 	 * 
-	 * @return boolean ³²¾ÆÀÖÀ¸¸é true ±×·¸Áö ¾ÊÀ¸¸é false
+	 * @return boolean ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ true ï¿½×·ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ false
 	 */
 	public boolean hasMoreTokens() {
 		return pathToken.hasMoreTokens();
@@ -533,7 +541,7 @@ class ElementInfoTokenizer {
 }
 
 /**
- * elementName °ú elementIndex ÇÑ½ÖÀÇ ¸â¹ö·Î ±¸¼ºµÈ´Ù. elementName, elementIndex¸¦ °¡Áö´Â ±¸Á¶Ã¼
+ * elementName ï¿½ï¿½ elementIndex ï¿½Ñ½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½. elementName, elementIndexï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼
  * 
  * @author Choi sei hwan <a href="mailto:sehan@i-on.net">Choi sei hwan</a>
  * @version 1.0
@@ -548,7 +556,7 @@ class ElementInfo {
 	}
 
 	/**
-	 * ElementNameÀ» °¡Á®¿Â´Ù.
+	 * ElementNameï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @return String
 	 */
@@ -557,7 +565,7 @@ class ElementInfo {
 	}
 
 	/**
-	 * ElementIndex¸¦ °¡Á®¿Â´Ù.
+	 * ElementIndexï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Â´ï¿½.
 	 * 
 	 * @return int
 	 */

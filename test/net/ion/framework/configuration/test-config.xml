@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ics contextPath="/ics" port="8080">
+    
+    <debug enable="false" />
+</ics>

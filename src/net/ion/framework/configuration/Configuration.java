@@ -188,4 +188,7 @@ public interface Configuration
 	// void setValue( String value );
 
 	String getXML() throws ConfigurationException;
+
+	Configuration[] children(String childElementName)  throws ConfigurationException;
+	boolean hasChild(String childElementName)  throws ConfigurationException;
 }
