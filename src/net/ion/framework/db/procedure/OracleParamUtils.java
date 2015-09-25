@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.List;
 
+import net.ion.framework.util.Debug;
 import oracle.sql.BLOB;
 import oracle.sql.CLOB;
 
@@ -82,8 +83,8 @@ public class OracleParamUtils {
 				try {
 					blob.freeTemporary();
 					BLOB.freeTemporary(blob) ;
-				} catch (SQLException e) {
-					e.printStackTrace();
+				} catch (SQLException ignore) {
+					Debug.warn(ignore.getMessage());
 				}
 			}
 		}

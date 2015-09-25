@@ -11,6 +11,8 @@ import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.procedure.IQueryable;
+import net.ion.framework.db.procedure.IUserCommand;
+import net.ion.framework.db.procedure.IUserProcedure;
 
 // Future Pattern.Host
 public class AsyncDBController implements Closeable {
@@ -72,7 +74,13 @@ public class AsyncDBController implements Closeable {
 		return future;
 	}
 
-	
+	public IUserCommand createUserCommand(String proc){
+		return dc.createUserCommand(proc) ;
+	}
+
+	public IUserProcedure createUserProcedure(String proc){
+		return dc.createUserProcedure(proc) ;
+	}
 
 	
 	public Future<Integer> execUpdate(final String query) {

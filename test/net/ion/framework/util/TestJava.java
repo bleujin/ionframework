@@ -12,10 +12,8 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicReference;
 
 import junit.framework.TestCase;
-import net.ion.framework.parse.gson.JsonArray;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
@@ -214,6 +212,7 @@ public class TestJava extends TestCase{
 		String fname = FilenameUtils.separatorsToUnix(file.getCanonicalPath());
 		Debug.line(fname.substring(FilenameUtils.getPrefixLength(fname))) ;
 	}
+
 }
 
 
