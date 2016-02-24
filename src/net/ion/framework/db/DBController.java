@@ -95,7 +95,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 			// �ݵ�� �ʿ��� �͵�...
 			this.name = dbconfig.getChild("controller-name").getValue();
 			this.dbm = (DBManager) InstanceCreator.createConfiguredInstance(dbconfig.getChild("database-manager.configured-object"));
-			this.threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("dc-inner-Thread-%d")) ;
+			this.threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("dc-" + name + "-Thread-%d")) ;
 			this.schain = new ServantChain(this.threadPool) ;
 
 			Configuration[] configOfServant = dbconfig.getChildren("extra-servant.configured-object");
@@ -168,7 +168,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	public DBController(String name, DBManager dbm, IExtraServant... servants) {
 		this.name = name;
 		this.dbm = dbm;
-		this.threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("dc-inner-Thread-%d")) ;
+		this.threadPool = Executors.newCachedThreadPool(ThreadFactoryBuilder.createThreadFactory("dc-" + name + "-Thread-%d")) ;
 		this.schain = new ServantChain(this.threadPool) ;
 		for (IExtraServant servant : servants) {
 			this.schain.addServant(servant);

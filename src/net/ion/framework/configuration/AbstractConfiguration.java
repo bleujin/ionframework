@@ -249,4 +249,19 @@ public abstract class AbstractConfiguration implements Configuration {
 			return defaultValue;
 		}
 	}
+	
+	
+	
+	public boolean getValueAsBoolean(String path, boolean dftValue) throws ConfigurationException{
+		return (hasChild(path)) ? getChild(path).getValueAsBoolean(dftValue) : dftValue ;
+	}
+	public int getValueAsInt(String path, int dftValue) throws ConfigurationException{
+		return (hasChild(path)) ? getChild(path).getValueAsInt(dftValue) : dftValue ;
+	}
+	public float getValueAsFloat(String path, float dftValue) throws ConfigurationException{ 
+		return (hasChild(path)) ? getChild(path).getValueAsFloat(dftValue) : dftValue ;
+	}
+	public String getValue(String path, String dftValue) throws ConfigurationException{
+		return (hasChild(path)) ? getChild(path).getValue(dftValue) : dftValue ;
+	}
 }

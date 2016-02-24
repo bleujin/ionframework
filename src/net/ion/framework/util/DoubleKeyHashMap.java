@@ -239,7 +239,9 @@ public class DoubleKeyHashMap<K1, K2, V> {
 	public HashMap<K2, V> innerHashMap(K1 key1) {
 		HashMap<K2, V> inner = map.get(key1);
 		if (inner == null) {
-			return new HashMap<K2, V>();
+			final HashMap<K2, V> result = new HashMap<K2, V>();
+			map.put(key1, result) ;
+			return result;
 		} else {
 			return inner;
 		}

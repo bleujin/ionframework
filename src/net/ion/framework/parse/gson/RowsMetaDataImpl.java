@@ -191,5 +191,4 @@ public class RowsMetaDataImpl implements RowSetMetaData, Serializable {
 		columnInfo(i).tableName(s);
 	}
 
-
 }

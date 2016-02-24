@@ -411,8 +411,7 @@ public class DynamicBytecodeCompiler implements TemplateCompiler {
 	}
 
 	private void codeGenerateIfBranchStart() {
-		// TODO Auto-generated method stub
-
+		
 	}
 
 	private void codeGenerateIfBranchEnd(Label finalLabel) {

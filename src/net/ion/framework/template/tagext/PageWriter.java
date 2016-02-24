@@ -130,6 +130,17 @@ public class PageWriter extends StringWriter {
 		newLine();
 	}
 
+	public PageWriter cprint(CharSequence cq){
+		print(cq) ;
+		return this ;
+	}
+	
+	public PageWriter cprintln(CharSequence cq){
+		println(cq);
+		return this ;
+	}
+	
+	
 	public String toString() {
 		return super.toString();
 	}

@@ -16,7 +16,7 @@ public class BlankDBManager extends DBManager{
 
 	@Override
 	public int getDBManagerType() {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
@@ -32,13 +32,13 @@ public class BlankDBManager extends DBManager{
 
 	@Override
 	protected void myDestroyPool() throws Exception {
-		// TODO Auto-generated method stub
+
 		
 	}
 
 	@Override
 	protected void myInitPool() throws SQLException {
-		// TODO Auto-generated method stub
+
 		
 	}
 

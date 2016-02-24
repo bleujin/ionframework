@@ -88,6 +88,10 @@ public class DefaultConfiguration extends AbstractConfiguration {
 	public boolean hasChild(String childElementName) throws NotBuildException, ConfigurationException { 
 		return children(childElementName).length > 0 ;
 	}
+	
+	public boolean hasAttribute(String attributeName) throws ConfigurationException {
+		return getElement().hasAttribute(attributeName) ;
+	}
 
 	
 	/**

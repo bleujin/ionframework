@@ -191,4 +191,14 @@ public interface Configuration
 
 	Configuration[] children(String childElementName)  throws ConfigurationException;
 	boolean hasChild(String childElementName)  throws ConfigurationException;
+	boolean hasAttribute(String attributeName) throws ConfigurationException ;
+
+	
+	// ignore not found xml tag
+	
+	boolean getValueAsBoolean(String path, boolean dftValue) throws ConfigurationException;
+	int getValueAsInt(String path, int dftValue) throws ConfigurationException;
+	float getValueAsFloat(String path, float dftValue)  throws ConfigurationException;
+	String getValue(String path, String dftValue) throws ConfigurationException;
+	
 }

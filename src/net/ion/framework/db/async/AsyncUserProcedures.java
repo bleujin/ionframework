@@ -115,17 +115,17 @@ public class AsyncUserProcedures implements IUserProcedures {
 
 
 //	public <T> T execHandlerQuery(ResultSetHandler<T> handler) throws SQLException {
-//		// TODO Auto-generated method stub
+
 //		return null;
 //	}
 //	
 //	public Rows execQuery() throws SQLException {
-//		// TODO Auto-generated method stub
+
 //		return null;
 //	}
 //
 //	public int execUpdate() throws SQLException {
-//		// TODO Auto-generated method stub
+
 //		return 0;
 //	}
 

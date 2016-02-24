@@ -2,6 +2,8 @@ package net.ion.framework.db.manager;
 
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.concurrent.Callable;
+import java.util.logging.Logger;
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.cache.Cache;
@@ -10,6 +12,7 @@ import net.ion.framework.db.cache.CacheManager;
 import net.ion.framework.db.cache.CacheRepositoryService;
 import net.ion.framework.db.procedure.IQueryable;
 import net.ion.framework.db.procedure.RepositoryService;
+import net.ion.framework.logging.LogBroker;
 import net.ion.framework.util.Debug;
 import net.ion.framework.util.StringUtil;
 
@@ -21,6 +24,7 @@ public class CacheDBManager extends DBManager implements CacheManager {
 	private DBManager dbm;
 	private Cache cache;
 	private long hitCount = 0L;
+	private Logger log = LogBroker.getLogger(getClass()) ;
 
 	private CacheRepositoryService rservice ;
 	public CacheDBManager(CacheConfig config, DBManager dbm) {
@@ -84,7 +88,9 @@ public class CacheDBManager extends DBManager implements CacheManager {
 
 	public void hitCache(Object key) {
 		this.hitCount++;
-		Debug.debug("Hit Cache", this.hitCount, StringUtil.deleteWhitespace(key.toString()));
+		
+		log.fine("Hit Cache : " + this.hitCount + " " + StringUtil.deleteWhitespace(key.toString()));
+		
 		// , cache.countUsageMemory()
 	}
 }

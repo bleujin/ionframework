@@ -12,6 +12,19 @@ public class StringUtil extends org.apache.commons.lang.StringUtils {
 	public final static String T = "T";
 	public final static String TRUE = "TRUE";
 
+	
+	// for jdk8 script engine
+	public static boolean isBlank(String val){
+		return StringUtils.isBlank(val) ;
+	}
+
+	public static boolean isEmpty(String val){
+		return StringUtils.isEmpty(val) ;
+	}
+
+	// for jdk8 script engine
+	
+	
 	public static boolean isAlphanumericUnderbar(String str) {
 
 		if (str == null) {

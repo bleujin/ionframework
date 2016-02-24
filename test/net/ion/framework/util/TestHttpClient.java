@@ -41,7 +41,6 @@ public class TestHttpClient extends TestCase {
 		rest.execute("index.htm", new JsonResponsHandler<Void>(){
 			@Override
 			public Void handle(JsonObject json) {
-				// TODO Auto-generated method stub
 				return null;
 			}
 		});

@@ -127,9 +127,9 @@ public class ProxyRows extends RowsImpl implements Rows {
 	}
 
 	public boolean first() throws SQLException {
-		if (maxrow >= 0)
+		if (maxrow > 0)
 			pos = 0;
-		return maxrow >= 0;
+		return maxrow > 0;
 	}
 
 	public int getRow() throws SQLException {

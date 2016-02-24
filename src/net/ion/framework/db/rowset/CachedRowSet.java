@@ -1509,8 +1509,7 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 
 			cachedRows.add(row);
 		}
-		// TODO screen count ?
-
+		
 		numRows = i;
 		RowSetMD = new RowSetMetaDataImpl();
 		initMetaData(RowSetMD, RSMD);

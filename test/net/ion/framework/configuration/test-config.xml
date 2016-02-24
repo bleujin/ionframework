@@ -2,4 +2,5 @@
 <ics contextPath="/ics" port="8080">
     
     <debug enable="false" />
+    <path><mv>true</mv><str>hi</str></path>
 </ics>

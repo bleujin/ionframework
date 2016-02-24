@@ -49,7 +49,6 @@ public class TestExtraServant extends TestBaseSample{
 				Thread.sleep(2000) ;
 				Debug.line() ;
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}

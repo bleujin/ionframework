@@ -24,7 +24,7 @@ public class VFile implements Closeable {
 	private FileObject fo;
 	private FileSystemEntry fse;
 
-	private VFile(FileObject fo, FileSystemEntry fse) {
+	protected VFile(FileObject fo, FileSystemEntry fse) {
 		this.fo = fo;
 		this.fse = fse ;
 	}
@@ -179,6 +179,11 @@ public class VFile implements Closeable {
 	public FileObject getFileObject() {
 		return fo ;
 	}
+	
+	public FileSystemEntry getFileSystemEntry(){
+		return fse ;
+	}
+	
 	
 	public FileOperations getFileOperations() throws FileSystemException{
 		return fo.getFileOperations() ;

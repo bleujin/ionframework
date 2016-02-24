@@ -38,7 +38,7 @@ public class TestMailer extends TestCase {
                 msg.setContentLanguage(new String[]{"UTF-8"});
                 msg.setSentDate(new Date());
                 msg.setHeader("Content-Type", "text/html; charset=UTF-8");
-                msg.setText("<h1>한글 내용2</h1>", "UTF-8");
+                msg.setContent("<h1>한글 내용2</h1>", "text/html; charset=UTF-8");
                 return msg;
             }
         }).get();

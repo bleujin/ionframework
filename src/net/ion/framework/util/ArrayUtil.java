@@ -43,4 +43,8 @@ public class ArrayUtil extends ArrayUtils{
 		return result ;
 	}
 	
+	public static String[] asStrings(String... objs){
+		return objs ;
+	}
+	
 }

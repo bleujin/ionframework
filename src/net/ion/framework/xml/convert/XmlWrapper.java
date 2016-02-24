@@ -25,7 +25,7 @@ public class XmlWrapper {
 	}
 
 	/**
-	 * XmlSerializable�� �ν��Ͻ����� �� �ν��Ͻ��� toXml() �޼ҵ带 �̿��Ͽ� �ϳ��� XML String���� ������ش�.
+	 * XmlSerializable 
 	 * 
 	 * @throws XmlException
 	 */

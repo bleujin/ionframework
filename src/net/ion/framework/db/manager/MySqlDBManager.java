@@ -17,7 +17,7 @@ public class MySqlDBManager extends DBManager implements DBType {
 	}
 
 	protected void myDestroyPool() throws SQLException {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public Connection getConnection() throws SQLException {
