@@ -3,6 +3,7 @@ package net.ion.framework.util;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.Iterator;
@@ -122,6 +123,20 @@ public class FileUtil extends FileUtils {
 	
 	public interface FileClosure<V> {
 		public V walk(File file) ;
+	}
+
+	public static void visit(File parent, FilenameFilter filter, VisitorFile<Void> visitor) {
+		if (parent.isDirectory()){
+			visitor.visit(parent) ;
+			String[] childs = parent.list(filter) ;
+			if (childs == null) return ;
+			for(String child : childs){
+				visit(new File(parent, child), filter, visitor) ;
+			}
+		} else {
+			visitor.visit(parent) ;
+		}
+		
 	}
 
 }

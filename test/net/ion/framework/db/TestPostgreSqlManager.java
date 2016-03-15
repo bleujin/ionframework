@@ -3,7 +3,7 @@ package net.ion.framework.db;
 
 import junit.framework.TestCase;
 import net.ion.framework.db.manager.DBManager;
-import net.ion.framework.db.manager.PostgreSqlDBManager;
+import net.ion.framework.db.manager.PostSqlDBManager;
 import net.ion.framework.db.servant.StdOutServant;
 
 public class TestPostgreSqlManager extends TestCase {
@@ -19,7 +19,7 @@ public class TestPostgreSqlManager extends TestCase {
 
     protected void setUp() throws java.lang.Exception {
         super.setUp();
-        DBManager dbm = new PostgreSqlDBManager("jdbc:postgresql://social.i-on.net:54321/postgres", "postgres", "") ;
+        DBManager dbm = new PostSqlDBManager("jdbc:postgresql://social.i-on.net:54321/postgres", "postgres", "") ;
         dc = new DBController("Default", dbm) ;
         dc.addServant(new StdOutServant()) ;
         dc.initSelf() ;

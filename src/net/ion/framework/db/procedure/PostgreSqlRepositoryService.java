@@ -1,6 +1,8 @@
 package net.ion.framework.db.procedure;
 
 import net.ion.framework.db.IDBController;
+import net.ion.framework.db.postgre.PostgreSQLUserCommand;
+import net.ion.framework.db.postgre.PostgreUserProcedure;
 
 public class PostgreSqlRepositoryService extends RepositoryService {
 
@@ -13,7 +15,7 @@ public class PostgreSqlRepositoryService extends RepositoryService {
 	}
 
 	public IUserProcedure createUserProcedure(IDBController dc, String proc) {
-		throw new UnsupportedOperationException();
+		return new PostgreUserProcedure(dc, proc);
 	}
 
 	public IUserProcedureBatch createUserProcedureBatch(IDBController dc, String procSQL) {

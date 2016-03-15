@@ -8,11 +8,11 @@ import net.ion.framework.db.IDBController;
 import net.ion.framework.db.procedure.MySqlRepositoryService;
 import net.ion.framework.db.procedure.RepositoryService;
 
-public class MySqlDBManager extends DBManager implements DBType {
+public class MySSQLDBManager extends DBManager implements DBType {
 
 	protected final static String DRIVER_NAME = "com.mysql.jdbc.Driver";
 
-	public MySqlDBManager(String jdbcURL, String user, String passwd) {
+	public MySSQLDBManager(String jdbcURL, String user, String passwd) {
 		super(DRIVER_NAME, jdbcURL, user, passwd);
 	}
 

@@ -5,6 +5,8 @@ import java.sql.Connection;
 import junit.framework.TestCase;
 import net.ion.framework.db.DBController;
 import net.ion.framework.db.IDBController;
+import net.ion.framework.db.h2.H2EmbedPoolDBManager;
+import net.ion.framework.db.hsql.HSQLBean;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.parse.gson.JsonObject;
 import net.ion.framework.parse.gson.JsonParser;

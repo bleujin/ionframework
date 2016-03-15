@@ -2,6 +2,11 @@ package net.ion.framework.db.procedure;
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.RepositoryException;
+import net.ion.framework.db.h2.H2ChainUserProcedure;
+import net.ion.framework.db.h2.H2UserCommand;
+import net.ion.framework.db.h2.H2UserProcedure;
+import net.ion.framework.db.hsql.HSQLBean;
+import net.ion.framework.db.hsql.HSQLExtendRepositoryService;
 import net.ion.framework.util.StringUtil;
 
 public class H2EmbedRepositoryService extends HSQLExtendRepositoryService {

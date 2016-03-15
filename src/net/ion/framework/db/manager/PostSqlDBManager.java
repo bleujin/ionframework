@@ -8,11 +8,11 @@ import net.ion.framework.db.IDBController;
 import net.ion.framework.db.procedure.PostgreSqlRepositoryService;
 import net.ion.framework.db.procedure.RepositoryService;
 
-public class PostgreSqlDBManager extends DBManager implements DBType {
+public class PostSqlDBManager extends DBManager implements DBType {
 
 	protected final static String DRIVER_NAME = "org.postgresql.Driver";
 
-	public PostgreSqlDBManager(String jdbcURL, String user, String passwd) {
+	public PostSqlDBManager(String jdbcURL, String user, String passwd) {
 		super(DRIVER_NAME, jdbcURL, user, passwd);
 	}
 
@@ -48,6 +48,10 @@ public class PostgreSqlDBManager extends DBManager implements DBType {
 
 	protected void heartbeatQuery(IDBController dc) throws SQLException {
 		; // no action
+	}
+
+	public static DBManager test() {
+		return new PostSqlDBManager("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "redf");
 	}
 }
 

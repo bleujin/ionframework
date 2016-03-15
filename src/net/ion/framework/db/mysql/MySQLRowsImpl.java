@@ -53,7 +53,6 @@ public class MySQLRowsImpl extends RowsImpl {
 				// int bcount = IOUtils.copy(reader, writer);
 				// reader.close() ;
 				// writer.flush() ;
-				Debug.line(result, result.length());
 				return result;
 			} else {
 				return RowsUtils.clobToString(this.getClob(i));

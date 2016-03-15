@@ -4,10 +4,10 @@ import junit.framework.TestCase;
 import net.ion.framework.db.DBController;
 import net.ion.framework.db.cache.CacheConfig;
 import net.ion.framework.db.cache.CacheConfigImpl;
+import net.ion.framework.db.h2.H2EmbedPoolDBManager;
 import net.ion.framework.db.manager.CacheDBManager;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OracleCacheDBManager;
-import net.ion.framework.db.procedure.H2EmbedPoolDBManager;
 
 
 public class TestDBManger extends TestCase {

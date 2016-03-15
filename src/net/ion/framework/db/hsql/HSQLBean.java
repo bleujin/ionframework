@@ -1,9 +1,10 @@
-package net.ion.framework.db.procedure;
+package net.ion.framework.db.hsql;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import net.ion.framework.db.procedure.ProcedureBean;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.MapUtil;
 

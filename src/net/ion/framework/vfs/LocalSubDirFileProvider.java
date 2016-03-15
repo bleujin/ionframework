@@ -23,11 +23,11 @@ import org.apache.commons.vfs2.provider.local.LocalFileSystem;
 public class LocalSubDirFileProvider extends AbstractOriginatingFileProvider {
 
 	private String prefixDir = "./";
-	public static final Collection capabilities;
+	private static final Collection capabilities;
 
 	static {
 		capabilities = Collections.unmodifiableCollection(Arrays.asList(new Capability[] { Capability.CREATE, Capability.DELETE, Capability.RENAME, Capability.GET_TYPE, Capability.GET_LAST_MODIFIED, Capability.SET_LAST_MODIFIED_FILE, Capability.SET_LAST_MODIFIED_FOLDER, Capability.LIST_CHILDREN,
-				Capability.READ_CONTENT, Capability.URI, Capability.WRITE_CONTENT, Capability.APPEND_CONTENT, Capability.RANDOM_ACCESS_READ, Capability.RANDOM_ACCESS_WRITE }));
+				Capability.READ_CONTENT, Capability.URI, Capability.WRITE_CONTENT, Capability.APPEND_CONTENT, Capability.RANDOM_ACCESS_READ, Capability.RANDOM_ACCESS_WRITE}));
 	}
 
 	public LocalSubDirFileProvider() {

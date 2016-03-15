@@ -4,8 +4,8 @@ import java.sql.SQLException;
 
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.handlers.ScalarHandler;
+import net.ion.framework.db.h2.H2EmbedDBManager;
 import net.ion.framework.db.manager.DBManager;
-import net.ion.framework.db.procedure.H2EmbedDBManager;
 import net.ion.framework.db.procedure.IUserCommandBatch;
 import net.ion.framework.db.procedure.IUserProcedureBatch;
 import net.ion.framework.db.procedure.ProcedureBean;

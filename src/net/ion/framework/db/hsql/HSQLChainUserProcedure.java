@@ -1,4 +1,4 @@
-package net.ion.framework.db.procedure;
+package net.ion.framework.db.hsql;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -12,6 +12,11 @@ import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.DBType;
+import net.ion.framework.db.procedure.IQueryable;
+import net.ion.framework.db.procedure.IUserProcedures;
+import net.ion.framework.db.procedure.Queryable;
+import net.ion.framework.db.procedure.RepositoryService;
+import net.ion.framework.db.procedure.UserProcedure;
 import net.ion.framework.util.StringUtil;
 
 public class HSQLChainUserProcedure extends UserProcedure {

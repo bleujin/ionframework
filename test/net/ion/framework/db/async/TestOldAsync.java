@@ -4,7 +4,7 @@ import java.sql.SQLException;
 
 import net.ion.framework.db.DBController;
 import net.ion.framework.db.Rows;
-import net.ion.framework.db.procedure.H2EmbedPoolDBManager;
+import net.ion.framework.db.h2.H2EmbedPoolDBManager;
 import net.ion.framework.db.servant.PrintOutServant;
 import net.ion.framework.util.Debug;
 import junit.framework.TestCase;

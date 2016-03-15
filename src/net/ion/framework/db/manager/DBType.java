@@ -49,6 +49,7 @@ public interface DBType {
 	public final static int MySQLPoolDBManager = 71;
 
 	public final static int PostgreSQLDBManager = 8;
+	public final static int PostgreSQLPoolDBManager = 81;
 
 	public final static int UNKNOWN = 9;
 

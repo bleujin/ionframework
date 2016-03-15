@@ -7,8 +7,7 @@ package net.ion.framework.promise;
  * 
  * <pre>
  * <code>
- * Deferred deferredObject = new DeferredObject();
- * Promise promise = deferredObject.promise(); promise.done(new DoneCallback() public void onDone(Object result) { // Done! } });
+ * Deferred deferredObject = new DeferredObject(); Promise promise = deferredObject.promise(); promise.done(new DoneCallback() public void onDone(Object result) // Done! } });
  * 
  * // another thread using the same deferredObject deferredObject.resolve("OK");
  * 
