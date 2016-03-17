@@ -1,9 +1,11 @@
 package net.ion.bleujin.db.postgre;
 
 import java.io.StringReader;
+import java.sql.Array;
 
 import net.ion.framework.db.Rows;
 import net.ion.framework.util.Debug;
+import net.ion.framework.util.StringUtil;
 
 public class TestPostgreProcedure extends TestBasePG{
 
@@ -12,11 +14,10 @@ public class TestPostgreProcedure extends TestBasePG{
 		Rows rows = dc.createUserProcedure("emp@listBy(?)").addParam(5).execQuery() ;
 		while(rows.next()){
 			for (int i = 1; i <= rows.getMetaData().getColumnCount(); i++) {
-				Debug.debug(rows.getString(i), rows.getMetaData().getColumnTypeName(i)) ;
+				Debug.debug(StringUtil.left(rows.getString(i), 20), rows.getMetaData().getColumnTypeName(i)) ;
 			}
 		}
 	}
-	
 	
 	public void testInsertProcedure() throws Exception {
 		StringBuilder sb = new StringBuilder() ;
@@ -39,6 +40,15 @@ public class TestPostgreProcedure extends TestBasePG{
 		assertEquals(1, rowcount);
 	}
 	
+
+	public void testWith() throws Exception {
+		Rows rows = dc.createUserCommand("with emptree as (select * from emp_tree(7839)) select * from emptree x1, emp x2 where x1.empno = x2.empno").execQuery();
+		while(rows.next()){
+			final Array array = rows.getArray("path");
+			Object[] rs = (Object[]) array.getArray() ;
+			Debug.line(rs.length, rs[0].getClass());
+		}
+	}
 	
 	
 	
