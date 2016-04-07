@@ -3,7 +3,7 @@ package net.ion.framework.db.manager;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class MySQLPoolDBManager extends MySSQLDBManager {
+public class MySQLPoolDBManager extends MySQLDBManager {
 
 	private PoolHelper pHelper;
 

@@ -549,6 +549,8 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 		}
 		if (obj instanceof Boolean)
 			return ((Boolean) obj).booleanValue();
+		if (obj instanceof String)
+			return "T".equalsIgnoreCase(obj.toString()) || "TRUE".equalsIgnoreCase(obj.toString()) ;
 		try {
 			Double double1 = new Double(obj.toString());
 			return double1.compareTo(new Double(0.0D)) != 0;

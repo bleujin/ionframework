@@ -35,6 +35,9 @@
         	<!-- mysql 5.1-->
         	<fatjar.jarsource file="${basedir}\jdbc\mysql-connector-java-5.1.6-bin.jar" relpath=""/>
 
+        	<!-- postgre 9.3-->
+        	<fatjar.jarsource file="${basedir}\jdbc\postgresql-9.3-1103.jdbc3.jar" relpath=""/>
+        	
         	<!-- mongo 2.1-->
         	<fatjar.jarsource file="${basedir}\jdbc\mongo-2.6.3.jar" relpath=""/>
         	<fatjar.jarsource file="${basedir}\jdbc\jsqlparser.jar" relpath=""/>

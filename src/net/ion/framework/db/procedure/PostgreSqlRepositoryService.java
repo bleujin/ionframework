@@ -2,7 +2,9 @@ package net.ion.framework.db.procedure;
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.postgre.PostgreSQLUserCommand;
+import net.ion.framework.db.postgre.PostgreUserCommandBatch;
 import net.ion.framework.db.postgre.PostgreUserProcedure;
+import net.ion.framework.db.postgre.PostgreUserProcedureBatch;
 
 public class PostgreSqlRepositoryService extends RepositoryService {
 
@@ -11,15 +13,16 @@ public class PostgreSqlRepositoryService extends RepositoryService {
 	}
 
 	public IUserCommandBatch createUserCommandBatch(IDBController dc, String sql) {
-		return new UserCommandBatch(dc, sql);
+		return new PostgreUserCommandBatch(dc, sql);
 	}
 
 	public IUserProcedure createUserProcedure(IDBController dc, String proc) {
 		return new PostgreUserProcedure(dc, proc);
 	}
 
-	public IUserProcedureBatch createUserProcedureBatch(IDBController dc, String procSQL) {
-		throw new UnsupportedOperationException();
+	public IUserProcedureBatch createUserProcedureBatch(IDBController dc, String proc) {
+		throw new UnsupportedOperationException("if you see this message, call bleujin") ;
+		// return new PostgreUserProcedureBatch(dc, proc);
 	}
 
 }

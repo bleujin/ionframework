@@ -29,6 +29,12 @@ public class TestPage extends TestCase {
 	}
 	
 	
+	public void testMax() throws Exception {
+		
+		
+	}
+	
+	
 	public void testPage() throws Exception {
 		Page page = Page.create(2, 2) ;
 		Debug.line(page.getStartLoc(), page.getEndLoc()) ;
