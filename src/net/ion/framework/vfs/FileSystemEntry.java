@@ -1,5 +1,6 @@
 package net.ion.framework.vfs;
 
+import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,12 +10,13 @@ import org.apache.commons.io.IOUtils;
 import org.apache.commons.vfs2.CacheStrategy;
 import org.apache.commons.vfs2.FileObject;
 import org.apache.commons.vfs2.FileSystemException;
+import org.apache.commons.vfs2.FileSystemManager;
 import org.apache.commons.vfs2.FileSystemOptions;
 import org.apache.commons.vfs2.impl.DefaultFileSystemManager;
 import org.apache.commons.vfs2.operations.FileOperationProvider;
 import org.apache.commons.vfs2.provider.FileProvider;
 
-public class FileSystemEntry {
+public class FileSystemEntry implements Closeable{
 	
 	private DefaultFileSystemManager fsm ;
 	private FileSystemEntry(DefaultFileSystemManager fsm) {
@@ -101,5 +103,11 @@ public class FileSystemEntry {
 		return VFile.create(fsm.resolveFile(baseFile.getFileObject(), uri), this);
 	}
 
+	public void close(){
+		fsm.close(); 
+	}
 	
+	public FileSystemManager fsm(){
+		return fsm ;
+	}
 }

@@ -78,4 +78,5 @@ public interface IParameterQueryable extends Queryable {
 	public int getType(int index);
 
 	public void clearParam();
+	
 }

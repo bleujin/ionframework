@@ -4,6 +4,7 @@ import java.util.Date;
 
 import junit.framework.TestCase;
 import net.ion.framework.util.Debug;
+import net.ion.framework.util.IOUtil;
 
 import org.apache.tools.ant.filters.StringInputStream;
 
@@ -52,6 +53,21 @@ public class TestVFSCreate extends TestCase {
 	public void testDuplicateFileName() throws Exception {
 		VFile vf = entry.write(new StringInputStream("Hello Bleujin" + new Date()), "afield:/imsi/temp/myfile.txt", new DefaultRenamePolicy());
 		Debug.debug(vf.getName());
+	}
+	
+	public void testList() throws Exception {
+		VFile vfile = entry.resolveFile("afield:///imsi/hello.txt") ;
+		Debug.line(vfile.exists());
+		
+		
+		VFile dir = entry.resolveFile("afield:///imsi") ;
+		while(true){
+			VFile file = dir.getChild("hello.txt") ;
+			
+			Debug.line(file.exists(), IOUtil.toStringWithClose(file.getInputStream()));
+		}
+		
+		
 	}
 
 }

@@ -355,7 +355,7 @@ public class DBController implements IDBController, Closeable { // implements Co
 	}
 
 	public IUserCommand createUserCommand(String procSQL) {
-		IUserCommand upt = getService().createUserCommand(this, procSQL);
+		IUserCommand upt = (IUserCommand) getService().createUserCommand(this, procSQL);
 		upt.setPage(Page.create(getLimitedRows(), 1));
 		return upt;
 	}

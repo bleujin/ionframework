@@ -43,7 +43,9 @@ public class XmlWrapper {
 	 * @throws XmlException
 	 * @return XmlDocument
 	 */
+	
 	public XmlDocument getXmlDocument() throws XmlException {
+		
 		if (isNotInitialized)
 			init();
 

@@ -33,7 +33,7 @@ public abstract class RepositoryService {
 	public final static RepositoryService HSQL = new HSQLRepositoryService();
 	public final static RepositoryService MYSQL = new MySqlRepositoryService();
 
-	final static String PROCEDURE_PATTERN = ".+\\@.+\\(.*[\\?\\,]*\\)";
+	final static String PROCEDURE_PATTERN = "^[a-zA-Z0-9_]+\\@.+\\(.*[\\?\\,]*\\)";
 
 	protected RepositoryService() {
 	}

@@ -17,6 +17,9 @@ public class TestVFileName extends TestVFSBase{
 	}
 	
 	public void testMethod() throws Exception {
+		final LocalSubDirFileProvider dir = new LocalSubDirFileProvider();
+		dir.setPrefixDir("./") ;
+		entry.addProvider("afield", dir);
 		VFile fo = entry.resolveFile(VPath.create("afield:/Word.ko-kr/setup.xml"));
 		VFileName vname = fo.getName() ;
 		

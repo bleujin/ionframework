@@ -42,7 +42,8 @@ public class TestUserCommand extends TestBasePG{
 			cb.addBatchParam(1, RandomUtil.nextRandomString(10));
 		}
 		cb.execUpdate() ;
-		
 	}
+	
+	
 	
 }

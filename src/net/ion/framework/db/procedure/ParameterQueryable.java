@@ -28,7 +28,6 @@ public abstract class ParameterQueryable extends AbstractQueryable implements IP
 	protected Map<String, Object> namedParams = new CaseInsensitiveHashMap<Object>();
 
 	private int idx = 0;
-
 	public ParameterQueryable(IDBController dc, String procSQL, int queryType) {
 		super(dc, procSQL, queryType);
 	}

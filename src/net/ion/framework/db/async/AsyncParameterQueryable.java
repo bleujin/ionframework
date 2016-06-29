@@ -13,6 +13,7 @@ import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IParameterQueryable;
 import net.ion.framework.db.procedure.IQueryable;
+import net.ion.framework.db.procedure.ParameterQueryable;
 
 public abstract class AsyncParameterQueryable implements IParameterQueryable {
 
@@ -26,8 +27,6 @@ public abstract class AsyncParameterQueryable implements IParameterQueryable {
 	protected IParameterQueryable inner(){
 		return this.inner ;
 	}
-	
-	
 	
 	public IParameterQueryable addBlob(InputStream input) {
 		inner.addBlob(input) ;
