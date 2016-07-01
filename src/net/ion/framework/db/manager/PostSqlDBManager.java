@@ -51,7 +51,7 @@ public class PostSqlDBManager extends DBManager implements DBType {
 	}
 
 	public static DBManager test() {
-		return new PostSqlDBManager("jdbc:postgresql://127.0.0.1:5432/postgres", "postgres", "redf");
+		return new PostSqlDBManager("jdbc:postgresql://127.0.0.1:5432/ics6", "postgres", "redf");
 	}
 }
 

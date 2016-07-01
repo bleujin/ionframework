@@ -2,8 +2,11 @@ package net.ion.framework.db.postgre;
 
 import java.io.StringReader;
 import java.sql.Array;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import net.ion.framework.db.Rows;
+import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.IUserCommandBatch;
 import net.ion.framework.db.procedure.IUserProcedureBatch;
 import net.ion.framework.util.Debug;
@@ -13,13 +16,25 @@ public class TestPostgreProcedure extends TestBasePG{
 
 
 	public void testSelectProcedure() throws Exception {
-		Rows rows = dc.createUserProcedure("emp@listBy(?)").addParam(5).execQuery() ;
+		Rows rows = dc.createUserProcedure("test@listBy(?)").addParam(5).execQuery() ;
 		while(rows.next()){
 			for (int i = 1; i <= rows.getMetaData().getColumnCount(); i++) {
 				Debug.debug(StringUtil.left(rows.getString(i), 20), rows.getMetaData().getColumnTypeName(i)) ;
 			}
 		}
 	}
+	
+	public void testHandlerQuery() throws Exception {
+		dc.createUserProcedure("test@listBy(?)").addParam(5).execHandlerQuery(new ResultSetHandler<Void>() {
+			public Void handle(ResultSet rs) throws SQLException {
+				while(rs.next()){
+					Debug.line(rs.getString(1));
+				}
+				return null;
+			}
+		}) ;
+	}
+	
 	
 	public void testInsertProcedure() throws Exception {
 		StringBuilder sb = new StringBuilder() ;
@@ -64,6 +79,23 @@ public class TestPostgreProcedure extends TestBasePG{
 		IUserProcedureBatch upt = dc.createUserProcedureBatch("test@add_dummy(?,?)") ;
 		int count = upt.addParam(new int[]{1,2}).addParam(new String[]{"bleujin", "hero"}).execUpdate() ;
 	}
+	
+	public void testSelectTable() throws Exception {
+		dc.createUserCommand("select afieldid, afield_down(afieldid, true) from afield_tblc").execQuery().debugPrint();
+	}
+	
+	
+	public void testBatch() throws Exception {
+		final IUserProcedureBatch proc = dc.createUserProcedureBatch("thoth@initTrigger(?,?,?)");
+		proc.addParam(0, new String[0]) ;
+		proc.addParam(1, new String[0]) ;
+		proc.addParam(2, new String[0]) ;
+		
+		dc.execUpdate(proc) ;
+	}
+	
+	
+	
 	
 	
 }

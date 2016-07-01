@@ -93,8 +93,8 @@
 	
 	
 	
-	<target name="copytoicssql" depends="publish">
-	    <copy file="publish/iframework_${version.number}.${build.number}.jar" todir="D:/newgit/ICS6_SQL/ics/WEB-INF/lib/" />
+	<target name="copy2ics_master" depends="publish">
+	    <copy file="publish/iframework_${version.number}.${build.number}.jar" todir="D:/newgit/ICS6_MASTER/ics/WEB-INF/lib/" />
 	</target>
 	
 	<target name="copy" depends="publish">

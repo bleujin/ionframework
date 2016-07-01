@@ -109,6 +109,7 @@ public class PostgreUserProcedure extends UserProcedure {
 	public Object myHandlerQuery(Connection conn, ResultSetHandler handler) throws SQLException {
 		ResultSet rs = null;
 		try {
+			conn.setAutoCommit(false);
 			makeQueryStatement(conn);
 			cstmt.execute();
 			rs = (ResultSet) cstmt.getObject(1);
