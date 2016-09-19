@@ -26,7 +26,7 @@ public class PostgreSQLDDLCommand extends PostgreSQLUserCommand{
 		try {
 			conn = getDBManager().getConnection();
 			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-			conn.setAutoCommit(true);
+//			conn.setAutoCommit(true);
 
 			result = myUpdate(conn);
 //			conn.commit();
@@ -40,7 +40,7 @@ public class PostgreSQLDDLCommand extends PostgreSQLUserCommand{
 			throw new SQLException("Null Pointer Exception at execUpdate - " + getExceptionMessage(ex, this));
 		} catch (SQLException ex) {
 			cleanThis();
-			conn.rollback();
+//			conn.rollback();
 			throw new SQLException(getExceptionMessage(ex, this), ex.getSQLState(), ex.getErrorCode());
 		} finally {
 			cleanThis();
