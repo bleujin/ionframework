@@ -124,7 +124,7 @@ public abstract class AbstractQueryable implements Queryable {
 
 	}
 
-	public final int execUpdate() throws SQLException {
+	public int execUpdate() throws SQLException {
 		Connection conn = null;
 		int result = 0;
 

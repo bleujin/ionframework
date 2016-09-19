@@ -21,7 +21,7 @@ public class TestPostgreSqlManager extends TestCase {
 
     protected void setUp() throws java.lang.Exception {
         super.setUp();
-        DBManager dbm = new PostSqlDBManager("jdbc:postgresql://social.i-on.net:54321/postgres", "postgres", "") ;
+        DBManager dbm = new PostSqlDBManager("jdbc:postgresql://127.0.0.1:5432/ics6copy", "postgres", "redf") ;
         dc = new DBController("Default", dbm) ;
         dc.addServant(new StdOutServant()) ;
         dc.initSelf() ;
@@ -44,6 +44,10 @@ public class TestPostgreSqlManager extends TestCase {
     }
 
 
+    public void testCreateTable() throws Exception {
+    	String sql = "CREATE DATABASE newdb WITH OWNER = postgres ENCODING = 'UTF8' TABLESPACE = pg_default CONNECTION LIMIT = -1;" ;
+    	new PostgreSQLDDLCommand(dc, sql).execUpdate() ;
+	}
 
     protected void start(){
     }

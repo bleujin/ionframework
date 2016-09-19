@@ -47,7 +47,7 @@ public class PostSqlDBManager extends DBManager implements DBType {
 	}
 
 	protected void heartbeatQuery(IDBController dc) throws SQLException {
-		; // no action
+		getRepositoryService().createUserCommand(dc, "select /* heartbeat query */ 1 ").execQuery();
 	}
 
 	public static DBManager test() {
