@@ -53,7 +53,7 @@ public class CacheDBManager extends DBManager implements CacheManager {
 	public String getDBType() {
 		return dbm.getDBType();
 	}
-
+	
 	@Override
 	public RepositoryService getRepositoryService() {
 		return rservice;
@@ -92,5 +92,9 @@ public class CacheDBManager extends DBManager implements CacheManager {
 		log.fine("Hit Cache : " + this.hitCount + " " + StringUtil.deleteWhitespace(key.toString()));
 		
 		// , cache.countUsageMemory()
+	}
+	
+	public void forceClear(){
+		cache = config.build(this);
 	}
 }

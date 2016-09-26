@@ -40,7 +40,7 @@ public class FakeResultSetMeta implements ResultSetMetaData {
 	}
 
 	public String getColumnLabel(int idx) throws SQLException {
-		return columns.get(idx-1).getName();
+		return columns.get(idx-1).getAlias();
 	}
 
 	public String getColumnName(int idx) throws SQLException {
