@@ -1,10 +1,14 @@
 package net.ion.framework.db;
 
+import java.sql.ResultSetMetaData;
 import java.sql.Types;
 import java.util.List;
 import java.util.Map;
 
 import junit.framework.TestCase;
+import net.ion.framework.db.bean.handlers.JsonArrayHandler;
+import net.ion.framework.db.manager.OracleDBManager;
+import net.ion.framework.util.Debug;
 import net.ion.framework.util.ListUtil;
 import net.ion.framework.util.MapUtil;
 
@@ -32,6 +36,27 @@ public class TestFakeRow extends TestCase {
 		}
 		
 		frows.debugPrint();
+		
+		Object result = frows.toHandle(new JsonArrayHandler()) ;
+		Debug.line(result);
 
+	}
+	
+	public void testColumnLabel() throws Exception {
+		
+		OracleDBManager dbm = OracleDBManager.test() ;
+		DBController dc = new DBController(dbm) ;
+		dc.initSelf(); 
+		
+		
+		Rows rows = dc.createUserCommand("select 1 from dual").execQuery() ;
+		ResultSetMetaData meta = rows.getMetaData() ;
+		
+		for(int i = 1 ; i <= meta.getColumnCount(); i++){
+			Debug.line(meta.getColumnLabel(i), meta.getColumnName(i)) ;
+		}
+		
+		
+		dc.destroySelf();
 	}
 }
