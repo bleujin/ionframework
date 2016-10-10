@@ -45,8 +45,8 @@
         	<!-- h2 1.2.137-->
         	<fatjar.jarsource file="${basedir}\jdbc\h2-1.2.137.jar" relpath=""/>
         	
-        	<!-- oracle 10g -->
-        	<fatjar.jarsource file="${basedir}\jdbc\ojdbc14.jar" relpath=""/>
+        	<!-- oracle 11g 12.1.0.2 -->
+        	<fatjar.jarsource file="${basedir}\jdbc\ojdbc7.jar" relpath=""/>
         </fatjar.build>
     </target>
 
