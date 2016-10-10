@@ -83,15 +83,4 @@ public class PostgreUserProcedureBatch extends UserProcedureBatch {
 	}
 
 	
-//	private void makeQueryStatement(Connection conn) throws SQLException {
-//		cstmt = conn.prepareCall("{? = call " + getProcedureSQL() + "}", ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
-//		setMaxRows(cstmt, getMaxRows());
-//		cstmt.setFetchSize(getFetchSize());
-//
-////		cstmt.setRowPrefetch(getFetchSize());
-//		cstmt.registerOutParameter(1, Types.OTHER);
-//		for (int i = 0; i < getParams().size(); i++) {
-//			setQueryParam(i, getParams().get(i));
-//		}
-//	}
 }
