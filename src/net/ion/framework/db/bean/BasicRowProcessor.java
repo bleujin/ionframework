@@ -123,7 +123,7 @@ public class BasicRowProcessor implements RowProcessor {
 		int columnToProperty[] = new int[cols + 1];
 
 		for (int col = 1; col <= cols; col++) {
-			String columnName = rsmd.getColumnName(col);
+			String columnName = rsmd.getColumnLabel(col);
 			for (int i = 0; i < props.length; i++) {
 
 				if (columnName.equalsIgnoreCase(props[i].getName())) {
@@ -145,7 +145,7 @@ public class BasicRowProcessor implements RowProcessor {
 		int cols = rsmd.getColumnCount();
 
 		for (int i = 1; i <= cols; i++) {
-			result.put(rsmd.getColumnName(i), getValue(rs, i, rsmd));
+			result.put(rsmd.getColumnLabel(i), getValue(rs, i, rsmd));
 		}
 
 		return result;
@@ -159,8 +159,8 @@ public class BasicRowProcessor implements RowProcessor {
 			int column = i + 1;
 			// if(! wantToView(meta, column)) continue ;
 			for (int k = 0; k < attributeNames.length; k++) {
-				if (columnNames[k].equalsIgnoreCase(meta.getColumnName(column))) {
-					result.put(meta.getColumnName(column), getStringValue(rs, column, meta));
+				if (columnNames[k].equalsIgnoreCase(meta.getColumnLabel(column))) {
+					result.put(meta.getColumnLabel(column), getStringValue(rs, column, meta));
 				}
 			}
 		}

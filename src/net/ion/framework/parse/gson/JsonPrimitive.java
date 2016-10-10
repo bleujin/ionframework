@@ -89,6 +89,11 @@ public final class JsonPrimitive extends JsonElement {
 		return new JsonPrimitive(primitive) ;
 	}
 
+	public static JsonElement create(String primitive){
+		return primitive == null ? JsonNull.INSTANCE : new JsonPrimitive(primitive) ;
+	}
+
+
 	void setValue(Object primitive) {
 		if (primitive instanceof Character) {
 			// convert characters to strings since in JSON, characters are represented as a single
