@@ -13,10 +13,13 @@ import java.sql.Array;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Date;
+import java.sql.NClob;
 import java.sql.Ref;
+import java.sql.RowId;
 import java.sql.SQLData;
 import java.sql.SQLException;
 import java.sql.SQLOutput;
+import java.sql.SQLXML;
 import java.sql.Struct;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -155,6 +158,26 @@ public class SQLOutputImpl implements SQLOutput {
 
 	// jdk 1.5 higher.
 	public void writeURL(URL x) throws SQLException {
+		
+	}
+
+	public void writeNString(String x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void writeNClob(NClob x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void writeRowId(RowId x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void writeSQLXML(SQLXML x) throws SQLException {
+		// TODO Auto-generated method stub
 		
 	}
 }

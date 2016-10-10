@@ -18,6 +18,9 @@ import java.sql.SQLException;
 
 class SerialClob implements Clob, Serializable, Cloneable {
 
+	char buf[];
+	long len;
+	
 	SerialClob(Clob clob) throws SQLException {
 		len = clob.length();
 		buf = new char[(int) len];
@@ -76,8 +79,6 @@ class SerialClob implements Clob, Serializable, Cloneable {
 		throw new UnsupportedOperationException();
 	}
 
-	char buf[];
-	long len;
 
 	// jdk 1.5 higher..
 	public OutputStream setAsciiStream(long pos) throws SQLException {
@@ -98,5 +99,15 @@ class SerialClob implements Clob, Serializable, Cloneable {
 
 	public void truncate(long len) throws SQLException {
 		throw new UnsupportedOperationException();
+	}
+
+	public void free() throws SQLException {
+		buf = new char[0] ;
+		// TODO Auto-generated method stub
+	}
+
+	public Reader getCharacterStream(long pos, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

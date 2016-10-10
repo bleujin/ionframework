@@ -18,6 +18,9 @@ import org.apache.commons.io.IOUtils;
 
 class SerialBlob implements Blob, Serializable, Cloneable {
 
+	byte buf[];
+	long len;
+	
 	SerialBlob(Blob blob) throws SQLException {
 		try {
 			len = blob.length();
@@ -71,8 +74,6 @@ class SerialBlob implements Blob, Serializable, Cloneable {
 		return -1L;
 	}
 
-	byte buf[];
-	long len;
 
 	// jdk 1.5 higher
 	public OutputStream setBinaryStream(long pos) throws SQLException {
@@ -89,5 +90,15 @@ class SerialBlob implements Blob, Serializable, Cloneable {
 
 	public void truncate(long len) throws SQLException {
 		
+	}
+
+	public void free() throws SQLException {
+		buf = new byte[0] ;
+		// TODO Auto-generated method stub
+	}
+
+	public InputStream getBinaryStream(long pos, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

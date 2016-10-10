@@ -223,4 +223,14 @@ public class RowSetMetaDataImpl implements RowSetMetaData, Serializable {
 			colInfo[i].tableName = new String("");
 	}
 
+	public <T> T unwrap(Class<T> iface) throws SQLException {
+		if (iface.isInstance(this)) {
+            return iface.cast(this);
+        }
+        throw new SQLException("not supported operation");
+	}
+
+	public boolean isWrapperFor(Class<?> iface) throws SQLException {
+		 return iface.isInstance(this);
+	}
 }

@@ -19,6 +19,11 @@ import java.util.Map;
 
 class SerialArray implements Array, Serializable, Cloneable {
 
+	private Object elements[];
+	private int baseType;
+	private String baseTypeName;
+	private int len;
+	
 	SerialArray(Array array, Map map) throws SQLException {
 		elements = (Object[]) array.getArray(map);
 		baseType = getBaseType();
@@ -94,16 +99,20 @@ class SerialArray implements Array, Serializable, Cloneable {
 		throw new UnsupportedOperationException();
 	}
 
-	public ResultSet getResultSet(long l, int i, Map map) throws SQLException {
-		throw new UnsupportedOperationException();
+	public void free() throws SQLException {
+		elements = new Object[0] ;
+		// TODO Auto-generated method stub
+		
 	}
 
-	public ResultSet getResultSet(Map map) throws SQLException {
-		throw new UnsupportedOperationException();
+	public ResultSet getResultSet(Map<String, Class<?>> map) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
-	private Object elements[];
-	private int baseType;
-	private String baseTypeName;
-	private int len;
+	public ResultSet getResultSet(long index, int count, Map<String, Class<?>> map) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

@@ -13,10 +13,13 @@ import java.sql.Array;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Date;
+import java.sql.NClob;
 import java.sql.Ref;
+import java.sql.RowId;
 import java.sql.SQLData;
 import java.sql.SQLException;
 import java.sql.SQLInput;
+import java.sql.SQLXML;
 import java.sql.Struct;
 import java.sql.Time;
 import java.sql.Timestamp;
@@ -296,6 +299,26 @@ public class SQLInputImpl implements SQLInput {
 
 	// jdk 1.5 higher..
 	public URL readURL() throws SQLException {
+		return null;
+	}
+
+	public NClob readNClob() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String readNString() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public SQLXML readSQLXML() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public RowId readRowId() throws SQLException {
+		// TODO Auto-generated method stub
 		return null;
 	}
 }

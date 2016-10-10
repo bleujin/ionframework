@@ -9,16 +9,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Types;
 
-import org.apache.commons.lang.ArrayUtils;
-import org.apache.commons.lang.StringUtils;
-import org.jmock.core.constraint.IsCloseTo;
-
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
 import net.ion.framework.db.bean.ResultSetHandler;
 import net.ion.framework.db.procedure.UserProcedure;
 import net.ion.framework.util.IOUtil;
-import net.ion.framework.util.StringUtil;
+
+import org.apache.commons.lang.ArrayUtils;
 
 public class PostgreUserProcedure extends UserProcedure {
 
@@ -65,6 +62,7 @@ public class PostgreUserProcedure extends UserProcedure {
 
 	protected String getProcedureSQL() {
 		String procSQL = getProcSQL().replace('@', '$');
+		if (! procSQL.endsWith(")")) procSQL = procSQL.trim() + "()" ; 
 		return procSQL;
 	}
 

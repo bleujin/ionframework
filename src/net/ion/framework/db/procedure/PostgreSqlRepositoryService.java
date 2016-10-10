@@ -21,8 +21,7 @@ public class PostgreSqlRepositoryService extends RepositoryService {
 	}
 
 	public IUserProcedureBatch createUserProcedureBatch(IDBController dc, String proc) {
-		throw new UnsupportedOperationException("if you see this message, call bleujin") ;
-		// return new PostgreUserProcedureBatch(dc, proc);
+		return new PostgreUserProcedureBatch(dc, proc);
 	}
 
 }
