@@ -2,7 +2,10 @@ package net.ion.framework.db;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
+import net.ion.framework.db.bean.handlers.MapListHandler;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OracleCacheDBManager;
 import net.ion.framework.db.manager.OracleDBManager;
@@ -67,4 +70,20 @@ public class TestPage extends TestCase {
 		assertEquals(true, Arrays.equals(new Integer[]{6,7,8}, Page.create(3, 3).subList(iter).toArray(new Integer[0]) )) ;
 	}
 
+	
+	public void testHandlerPage() throws Exception {
+		DBController dc = new DBController(OracleDBManager.test()) ;
+		dc.initSelf();
+		
+		final Page page = Page.create(5, 2, 1);
+		List<Map<String, ? extends Object>> brows = dc.createUserCommand("select table_name from tabs order by table_name").setPage(page).execHandlerQuery(new MapListHandler()) ;
+		Debug.line(brows);
+		
+		Rows arows = dc.createUserCommand("select table_name from tabs order by table_name").setPage(page).execQuery() ;
+		Debug.line(arows.toHandle(new MapListHandler())) ;
+		dc.close();
+	}
+	
+	
+	
 }

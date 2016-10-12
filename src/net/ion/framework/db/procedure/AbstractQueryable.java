@@ -207,9 +207,9 @@ public abstract class AbstractQueryable implements Queryable {
 		}
 	}
 
-	protected void setMaxRows(Statement stmt, int maxRows) throws SQLException {
+	protected void setMaxRows(Statement stmt, int maxrow) throws SQLException {
 		if (getMaxRows() > 0)
-			stmt.setMaxRows(getMaxRows());
+			stmt.setMaxRows(getPage().getListNum() * getPage().getPageNo());
 	}
 
 	public final long getCurrentModifyCount() {
