@@ -75,7 +75,7 @@ public class TestPage extends TestCase {
 		DBController dc = new DBController(OracleDBManager.test()) ;
 		dc.initSelf();
 		
-		final Page page = Page.create(5, 2, 1);
+		final Page page = Page.create(3, 2, 1);
 		List<Map<String, ? extends Object>> brows = dc.createUserCommand("select table_name from tabs order by table_name").setPage(page).execHandlerQuery(new MapListHandler()) ;
 		Debug.line(brows);
 		

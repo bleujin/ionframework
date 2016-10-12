@@ -53,7 +53,10 @@ public abstract class UserCommand extends ParameterQueryable implements IUserCom
 			rs = pstmt.executeQuery();
 //			rs.setFetchSize(DEFAULT_FETCHSIZE);
 			int skip = getPage().getStartLoc() ;
-			while(rs.next() && (--skip) > 0) ;
+			while( skip> 0 ) {
+				rs.next() ;
+				skip-- ;
+			}
 			
 			Object result = handler.handle(rs);
 
