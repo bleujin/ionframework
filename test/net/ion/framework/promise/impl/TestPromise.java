@@ -1,6 +1,7 @@
 package net.ion.framework.promise.impl;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -38,25 +39,34 @@ public class TestPromise extends TestCase {
 			}
 		}) ;
 		
-//		deferred.resolve("done") ;
 //		deferred.reject("oops") ;
 		deferred.notify("100%") ;
+		deferred.resolve("done") ;
 	}
 	
 	public void testDefault() throws Exception {
 		Promise<File, Throwable, Void> promise = new DefaultDeferredManager().when(new Callable<File>(){
 			public File call() throws Exception {
-				// TODO Auto-generated method stub
-				return null;
+				Debug.line("when");
+//				return new File(".");
+				throw new FileNotFoundException() ;
 			}
 		}).fail(new FailCallback<Throwable>(){
-			public void onFail(Throwable result) {
+			public void onFail(Throwable ex) {
+				Debug.line("fail");
+				ex.printStackTrace(); 
+			}
+		}).progress(new ProgressCallback<Void>() {
+			public void onProgress(Void progress) {
+				Debug.line(progress);
 			}
 		}).always(new AlwaysCallback<File, Throwable>() {
-			public void onAlways(State state, File resolved, Throwable rejected) {
+			public void onAlways(State state, File resolved, Throwable ex) {
+				Debug.line(state, resolved, ex);
 			}
 		}) ;
 		
 		
+		Thread.sleep(100);
 	}
 }

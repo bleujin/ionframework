@@ -136,18 +136,19 @@ public abstract class AbstractQueryable implements Queryable {
 			conn.setAutoCommit(false);
 
 			result = myUpdate(conn);
-			conn.commit();
+			
+			getDBManager().commit(conn) ;
 
 		} catch (NullPointerException ex) {
 			if (conn == null) {
 				throw new SQLException("Now first, DBController.initPoolConnection();");
 			}
 			cleanThis();
-			conn.rollback();
+			getDBManager().rollback(conn) ;
 			throw new SQLException("Null Pointer Exception at execUpdate - " + getExceptionMessage(ex, this));
 		} catch (SQLException ex) {
 			cleanThis();
-			conn.rollback();
+			getDBManager().rollback(conn) ;
 			throw new SQLException(getExceptionMessage(ex, this), ex.getSQLState(), ex.getErrorCode());
 		} finally {
 			cleanThis();

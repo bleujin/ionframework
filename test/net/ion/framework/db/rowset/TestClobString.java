@@ -16,6 +16,7 @@ import net.ion.framework.db.cache.CacheConfigImpl;
 import net.ion.framework.db.manager.CacheDBManager;
 import net.ion.framework.db.manager.DBManager;
 import net.ion.framework.db.manager.OracleCacheDBManager;
+import net.ion.framework.db.manager.OracleDBManager;
 import net.ion.framework.db.procedure.IUserCommand;
 import net.ion.framework.util.Debug;
 
@@ -54,6 +55,20 @@ public class TestClobString extends TestCase{
 		
 		dc.destroySelf() ;
 	}
+	
+	
+	public void testClobAppend() throws Exception {
+		OracleDBManager dbm = new OracleDBManager("jdbc:oracle:thin:@125.131.88.153:1521:orcl", "SCOTT", "bleujin") ;
+		DBController dc = new DBController(dbm) ;
+		dc.initSelf(); 
+		
+		String sql = "select deptno, json_agg( dbmsoutput_linesarray( 'id', empno, 'n' ,  'lvl', level, 'n')) || json_agg( dbmsoutput_linesarray( 'name', ename, '' , 'lvl', level, 'n')) parents from emp connect by level <= 3 group by deptno" ;
+		dc.createUserCommand(sql).execQuery().debugPrint();
+		
+		dc.destroySelf();
+	}
+	
+	
 }
 
 

@@ -137,4 +137,12 @@ public abstract class DBManager {
 		return owner;
 	}
 
+	public void commit(Connection conn) throws SQLException {
+		conn.commit(); 
+	}
+
+	public void rollback(Connection conn) throws SQLException {
+		conn.rollback();
+	}
+
 }
