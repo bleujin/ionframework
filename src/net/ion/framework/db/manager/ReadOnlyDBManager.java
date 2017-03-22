@@ -13,13 +13,10 @@ public class ReadOnlyDBManager extends DBManager{
 	
 	private final DBManager dbm;
 	private Connection conn ;
-	private IQueryable setUpQuery;
 	
 	public ReadOnlyDBManager(DBManager dbm){
 		this.dbm = dbm ;
 	}
-	
-	
 	
 	@Override
 	public int getDBManagerType() {
@@ -38,19 +35,18 @@ public class ReadOnlyDBManager extends DBManager{
 
 	@Override
 	protected void myInitPool() throws SQLException {
-		dbm.myInitPool();
+		if (! dbm.isCreated())  dbm.myInitPool();
 		if (conn == null) {
 			conn = dbm.getConnection() ; // single
 			conn.setAutoCommit(false);
-			if (setUpQuery != null) setUpQuery.execUpdate() ;
 		}
 	}
 
 	@Override
 	protected void myDestroyPool() throws Exception {
-		conn.rollback(); 
+		conn.rollback(); // rollback all
+		conn.setAutoCommit(true);
 		dbm.freeConnection(conn);
-		dbm.myDestroyPool(); 
 	}
 
 	@Override
@@ -73,11 +69,6 @@ public class ReadOnlyDBManager extends DBManager{
 	@Override
 	protected void heartbeatQuery(IDBController dc) throws SQLException {
 		dbm.heartbeatQuery(dc);
-	}
-
-	public ReadOnlyDBManager setUp(IQueryable query) {
-		this.setUpQuery = query ;
-		return this ;
 	}
 
 	
