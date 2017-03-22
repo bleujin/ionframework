@@ -13,7 +13,6 @@ public class ReadOnlyDBManager extends DBManager{
 	
 	private final DBManager dbm;
 	private Connection conn ;
-	private IQueryable tearDownQuery;
 	private IQueryable setUpQuery;
 	
 	public ReadOnlyDBManager(DBManager dbm){
@@ -61,8 +60,6 @@ public class ReadOnlyDBManager extends DBManager{
 	
 	@Override
 	public void freeConnection(Connection conn) throws SQLException {
-		if (conn != null) {
-		}
 	}
 	
 	@Override
@@ -83,12 +80,6 @@ public class ReadOnlyDBManager extends DBManager{
 		return this ;
 	}
 
-
-
-	public ReadOnlyDBManager tearDown(IQueryable query) {
-		this.tearDownQuery = query ;
-		return this ;
-	}
 	
 
 
