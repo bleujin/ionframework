@@ -80,9 +80,8 @@ public abstract class AbstractQueryable implements Queryable {
 		Connection conn = null;
 		long start = 0, end = 0;
 		try {
-			conn = getConnection();
+			conn = getDBManager().getConnection(Connection.TRANSACTION_READ_COMMITTED);
 			start = System.nanoTime();
-			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			// setPage(Page.create(1000000, 1)) ; -_-??
 			T result = myHandlerQuery(conn, handler);
 
@@ -107,9 +106,8 @@ public abstract class AbstractQueryable implements Queryable {
 		Connection conn = null;
 		long start = 0, end = 0;
 		try {
-			conn = getConnection();
+			conn = getDBManager().getConnection(Connection.TRANSACTION_READ_COMMITTED);
 			start = System.nanoTime();
-			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 			Rows rows = myQuery(conn);
 			return rows;
 		} catch (UnsupportedOperationException ex) {
@@ -131,9 +129,7 @@ public abstract class AbstractQueryable implements Queryable {
 		long start = System.nanoTime();
 		long end = 0;
 		try {
-			conn = getConnection();
-			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
-			conn.setAutoCommit(false);
+			conn = getDBManager().getConnection(Connection.TRANSACTION_READ_COMMITTED, false);
 
 			result = myUpdate(conn);
 			
@@ -154,9 +150,6 @@ public abstract class AbstractQueryable implements Queryable {
 			cleanThis();
 			end = System.nanoTime();
 			getDBController().handleServant(start, end, this, IQueryable.UPDATE_COMMAND);
-			if (conn != null) {
-				conn.setAutoCommit(true);
-			}
 			getDBManager().freeConnection(conn);
 		}
 
@@ -179,10 +172,6 @@ public abstract class AbstractQueryable implements Queryable {
 
 	private DBManager getDBManager() {
 		return getDBController().getDBManager();
-	}
-
-	private Connection getConnection() throws SQLException {
-		return getDBManager().getConnection();
 	}
 
 	protected final void closeSilence(ResultSet rs, Statement stmt, Connection conn) throws SQLException {

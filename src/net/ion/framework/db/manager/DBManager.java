@@ -97,6 +97,19 @@ public abstract class DBManager {
 	protected abstract void myDestroyPool() throws Exception;
 
 	public abstract Connection getConnection() throws SQLException;
+	
+	public Connection getConnection(int tranLevel, boolean autocommit) throws SQLException {
+		final Connection conn = getConnection(tranLevel);
+		conn.setAutoCommit(autocommit);
+		return conn;
+	}
+
+	public Connection getConnection(int tranLevel) throws SQLException {
+		final Connection conn = getConnection();
+		conn.setTransactionIsolation(tranLevel);
+		return conn;
+	}
+
 
 	public void freeConnection(Connection conn) throws SQLException {
 		if (conn != null) {
@@ -144,5 +157,7 @@ public abstract class DBManager {
 	public void rollback(Connection conn) throws SQLException {
 		conn.rollback();
 	}
+
+
 
 }

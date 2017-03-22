@@ -39,14 +39,15 @@ public class ReadOnlyDBManager extends DBManager{
 		if (conn == null) {
 			conn = dbm.getConnection() ; // single
 			conn.setAutoCommit(false);
+			conn.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
 		}
 	}
 
 	@Override
 	protected void myDestroyPool() throws Exception {
 		conn.rollback(); // rollback all
-		conn.setAutoCommit(true);
 		dbm.freeConnection(conn);
+//		conn.setAutoCommit(false);
 	}
 
 	@Override
@@ -55,7 +56,19 @@ public class ReadOnlyDBManager extends DBManager{
 	}
 	
 	@Override
+	public Connection getConnection(int tranLevel, boolean autocommit) throws SQLException {
+		return conn;
+	}
+
+	@Override
+	public Connection getConnection(int tranLevel) throws SQLException {
+		return conn;
+	}
+
+
+	@Override
 	public void freeConnection(Connection conn) throws SQLException {
+		conn.setAutoCommit(false);
 	}
 	
 	@Override
