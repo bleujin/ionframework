@@ -554,7 +554,7 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 		if (obj instanceof Boolean)
 			return ((Boolean) obj).booleanValue();
 		if (obj instanceof String)
-			return "T".equalsIgnoreCase(obj.toString()) || "TRUE".equalsIgnoreCase(obj.toString()) ;
+			return "T".equalsIgnoreCase(obj.toString()) || "TRUE".equalsIgnoreCase(obj.toString());
 		try {
 			Double double1 = new Double(obj.toString());
 			return double1.compareTo(new Double(0.0D)) != 0;
@@ -1500,14 +1500,14 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 					SerialClob serialClob = new SerialClob((Clob) obj);
 					obj = serialClob;
 
-//					try {
-//						Reader reader = ((Clob)obj).getCharacterStream();
-//						String str = IOUtil.toString(reader);
-//						obj = str ;
-//						reader.close() ;
-//					} catch (IOException e) {
-//						throw new SQLException(e.getMessage()) ;
-//					}
+					// try {
+					// Reader reader = ((Clob)obj).getCharacterStream();
+					// String str = IOUtil.toString(reader);
+					// obj = str ;
+					// reader.close() ;
+					// } catch (IOException e) {
+					// throw new SQLException(e.getMessage()) ;
+					// }
 				} else if (obj instanceof Array)
 					obj = new SerialArray((Array) obj, map);
 				row.initColumnObject(k, obj);
@@ -1515,7 +1515,7 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 
 			cachedRows.add(row);
 		}
-		
+
 		numRows = i;
 		RowSetMD = new RowSetMetaDataImpl();
 		initMetaData(RowSetMD, RSMD);
@@ -1970,42 +1970,36 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 		return lastValueNull;
 	}
 
-
-
-	
-	
 	public RowId getRowId(int columnIndex) throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public RowId getRowId(String columnLabel) throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public void updateRowId(int columnIndex, RowId x) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void updateRowId(String columnLabel, RowId x) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public int getHoldability() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 
 	public boolean isClosed() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
 	public void updateNString(int columnIndex, String nString) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNString(String columnLabel, String nString) throws SQLException {
@@ -2013,163 +2007,163 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 	}
 
 	public void updateNClob(int columnIndex, NClob nClob) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNClob(String columnLabel, NClob nClob) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public NClob getNClob(int columnIndex) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public NClob getNClob(String columnLabel) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public SQLXML getSQLXML(int columnIndex) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public SQLXML getSQLXML(String columnLabel) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateSQLXML(int columnIndex, SQLXML xmlObject) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateSQLXML(String columnLabel, SQLXML xmlObject) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public String getNString(int columnIndex) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public String getNString(String columnLabel) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public Reader getNCharacterStream(int columnIndex) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public Reader getNCharacterStream(String columnLabel) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNCharacterStream(int columnIndex, Reader x, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNCharacterStream(String columnLabel, Reader reader, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateAsciiStream(int columnIndex, InputStream x, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBinaryStream(int columnIndex, InputStream x, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateCharacterStream(int columnIndex, Reader x, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateAsciiStream(String columnLabel, InputStream x, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBinaryStream(String columnLabel, InputStream x, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateCharacterStream(String columnLabel, Reader reader, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBlob(int columnIndex, InputStream inputStream, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBlob(String columnLabel, InputStream inputStream, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateClob(int columnIndex, Reader reader, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateClob(String columnLabel, Reader reader, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNClob(int columnIndex, Reader reader, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNClob(String columnLabel, Reader reader, long length) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNCharacterStream(int columnIndex, Reader x) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNCharacterStream(String columnLabel, Reader reader) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateAsciiStream(int columnIndex, InputStream x) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBinaryStream(int columnIndex, InputStream x) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateCharacterStream(int columnIndex, Reader x) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateAsciiStream(String columnLabel, InputStream x) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBinaryStream(String columnLabel, InputStream x) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateCharacterStream(String columnLabel, Reader reader) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBlob(int columnIndex, InputStream inputStream) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateBlob(String columnLabel, InputStream inputStream) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateClob(int columnIndex, Reader reader) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateClob(String columnLabel, Reader reader) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNClob(int columnIndex, Reader reader) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public void updateNClob(String columnLabel, Reader reader) throws SQLException {
-		 throw new SQLFeatureNotSupportedException("Feature not supported");
+		throw new SQLFeatureNotSupportedException("Feature not supported");
 	}
 
 	public <T> T getObject(int columnIndex, Class<T> type) throws SQLException {
@@ -2182,13 +2176,13 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		if (iface.isInstance(this)) {
-            return iface.cast(this);
-        }
-        throw new SQLException("not supported operation");
+			return iface.cast(this);
+		}
+		throw new SQLException("not supported operation");
 	}
 
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		 return iface.isInstance(this);
+		return iface.isInstance(this);
 	}
 
 }

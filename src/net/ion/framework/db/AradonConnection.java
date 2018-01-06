@@ -19,20 +19,20 @@ import java.util.Map;
 import java.util.Properties;
 import java.util.concurrent.Executor;
 
-public class AradonConnection implements Connection{
+public class AradonConnection implements Connection {
 
 	public static final Connection Fake = new AradonConnection();
 
 	public void clearWarnings() throws SQLException {
-		
+
 	}
 
 	public void close() throws SQLException {
-		
+
 	}
 
 	public void commit() throws SQLException {
-		
+
 	}
 
 	public Statement createStatement() throws SQLException {
@@ -124,31 +124,31 @@ public class AradonConnection implements Connection{
 	}
 
 	public void releaseSavepoint(Savepoint savepoint) throws SQLException {
-		
+
 	}
 
 	public void rollback() throws SQLException {
-		
+
 	}
 
 	public void rollback(Savepoint savepoint) throws SQLException {
-		
+
 	}
 
 	public void setAutoCommit(boolean flag) throws SQLException {
-		
+
 	}
 
 	public void setCatalog(String s) throws SQLException {
-		
+
 	}
 
 	public void setHoldability(int i) throws SQLException {
-		
+
 	}
 
 	public void setReadOnly(boolean flag) throws SQLException {
-		
+
 	}
 
 	public Savepoint setSavepoint() throws SQLException {
@@ -160,105 +160,96 @@ public class AradonConnection implements Connection{
 	}
 
 	public void setTransactionIsolation(int i) throws SQLException {
-		
+
 	}
 
 	public void setTypeMap(Map<String, Class<?>> arg0) throws SQLException {
-		
+
 	}
 
-	
-	
-	
-	
 	public <T> T unwrap(Class<T> iface) throws SQLException {
 		if (iface.isInstance(this)) {
-            return iface.cast(this);
-        }
-        throw new SQLException("not supported operation");
+			return iface.cast(this);
+		}
+		throw new SQLException("not supported operation");
 	}
 
 	public boolean isWrapperFor(Class<?> iface) throws SQLException {
-		 return iface.isInstance(this);
+		return iface.isInstance(this);
 	}
 
 	public Clob createClob() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public Blob createBlob() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public NClob createNClob() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public SQLXML createSQLXML() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public boolean isValid(int timeout) throws SQLException {
-		// TODO Auto-generated method stub
+
 		return false;
 	}
 
 	public void setClientInfo(String name, String value) throws SQLClientInfoException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void setClientInfo(Properties properties) throws SQLClientInfoException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getClientInfo(String name) throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public Properties getClientInfo() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public void setSchema(String schema) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public String getSchema() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return null;
 	}
 
 	public void abort(Executor executor) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public int getNetworkTimeout() throws SQLException {
-		// TODO Auto-generated method stub
+
 		return 0;
 	}
 

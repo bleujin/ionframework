@@ -158,26 +158,22 @@ public class SQLOutputImpl implements SQLOutput {
 
 	// jdk 1.5 higher.
 	public void writeURL(URL x) throws SQLException {
-		
+
 	}
 
 	public void writeNString(String x) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void writeNClob(NClob x) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void writeRowId(RowId x) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void writeSQLXML(SQLXML x) throws SQLException {
-		// TODO Auto-generated method stub
-		
+
 	}
 }

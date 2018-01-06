@@ -61,8 +61,7 @@ public class ResultSetIterator implements Iterator<Object> {
 			return !rs.isLast();
 
 		} catch (SQLException e) {
-			// TODO Logging?
-			// e.printStackTrace();
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -79,8 +78,7 @@ public class ResultSetIterator implements Iterator<Object> {
 			return this.convert.toArray(rs);
 
 		} catch (SQLException e) {
-			// TODO Logging?
-			// e.printStackTrace();
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -95,8 +93,7 @@ public class ResultSetIterator implements Iterator<Object> {
 			this.rs.deleteRow();
 
 		} catch (SQLException e) {
-			// TODO Logging?
-			// e.printStackTrace();
+			e.printStackTrace();
 		}
 	}
 

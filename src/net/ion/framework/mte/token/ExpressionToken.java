@@ -9,11 +9,9 @@ import java.util.concurrent.Callable;
 import net.ion.framework.mte.TemplateContext;
 import net.ion.framework.mte.util.Util;
 
-
 public abstract class ExpressionToken extends AbstractToken {
 
-	public final static String segmentsToString(List<String> segments,
-			int start, int end) {
+	public final static String segmentsToString(List<String> segments, int start, int end) {
 		if (start >= segments.size() || end > segments.size()) {
 			throw new IllegalArgumentException("Range is not inside segments");
 		}
@@ -33,8 +31,7 @@ public abstract class ExpressionToken extends AbstractToken {
 
 	public ExpressionToken(String expression) {
 		if (expression == null) {
-			throw new IllegalArgumentException(
-					"Parameter expression must not be null");
+			throw new IllegalArgumentException("Parameter expression must not be null");
 		}
 		this.setExpression(expression);
 	}

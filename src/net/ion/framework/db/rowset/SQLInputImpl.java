@@ -303,22 +303,22 @@ public class SQLInputImpl implements SQLInput {
 	}
 
 	public NClob readNClob() throws SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public String readNString() throws SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public SQLXML readSQLXML() throws SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 
 	public RowId readRowId() throws SQLException {
-		// TODO Auto-generated method stub
+		
 		return null;
 	}
 }

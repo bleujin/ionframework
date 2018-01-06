@@ -184,82 +184,61 @@ public class BlankConnection implements Connection{
 	}
 
 	public Clob createClob() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Blob createBlob() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public NClob createNClob() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public SQLXML createSQLXML() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public boolean isValid(int timeout) throws SQLException {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
 	public void setClientInfo(String name, String value) throws SQLClientInfoException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void setClientInfo(Properties properties) throws SQLClientInfoException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public String getClientInfo(String name) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Properties getClientInfo() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Array createArrayOf(String typeName, Object[] elements) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public Struct createStruct(String typeName, Object[] attributes) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void setSchema(String schema) throws SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public String getSchema() throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public void abort(Executor executor) throws SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public void setNetworkTimeout(Executor executor, int milliseconds) throws SQLException {
-		// TODO Auto-generated method stub
-		
 	}
 
 	public int getNetworkTimeout() throws SQLException {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

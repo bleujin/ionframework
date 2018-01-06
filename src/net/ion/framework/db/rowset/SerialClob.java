@@ -103,11 +103,9 @@ class SerialClob implements Clob, Serializable, Cloneable {
 
 	public void free() throws SQLException {
 		buf = new char[0] ;
-		// TODO Auto-generated method stub
 	}
 
 	public Reader getCharacterStream(long pos, long length) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }

@@ -94,11 +94,9 @@ class SerialBlob implements Blob, Serializable, Cloneable {
 
 	public void free() throws SQLException {
 		buf = new byte[0] ;
-		// TODO Auto-generated method stub
 	}
 
 	public InputStream getBinaryStream(long pos, long length) throws SQLException {
-		// TODO Auto-generated method stub
 		return null;
 	}
 }
