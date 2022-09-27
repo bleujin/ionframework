@@ -4,8 +4,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
+import org.apache.commons.codec.binary.Base64;
+
 import net.ion.framework.util.StreamUtils;
-import sun.misc.BASE64Encoder;
 
 public class IMGWriter {
 	/**
@@ -23,9 +24,7 @@ public class IMGWriter {
 
 			FileInputStream fis = new FileInputStream(file);
 			byte[] bit = StreamUtils.toByteArray(fis);
-
-			BASE64Encoder encoder = new BASE64Encoder();
-			result = encoder.encode(bit);
+			result = Base64.encodeBase64String(bit) ;
 		} catch (FileNotFoundException e) {
 			System.out.println(e.getMessage());
 		} catch (Exception e) {

@@ -2,13 +2,10 @@ package net.ion.framework.util;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
-import java.security.AccessController;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
-
-import sun.security.action.GetPropertyAction;
 
 /**
  * log entry formater
@@ -29,7 +26,7 @@ public class SimpleFormatter extends Formatter {
 	// Line separator string. This is the value of the line.separator
 	// property at the moment that the SimpleFormatter was created.
 	@SuppressWarnings("unchecked")
-	private String lineSeparator = (String) AccessController.doPrivileged(new GetPropertyAction("line.separator"));
+	private String lineSeparator = System.lineSeparator(); // (String) AccessController.doPrivileged(new GetPropertyAction("line.separator"));
 
 	public SimpleFormatter() {
 		super();
@@ -69,7 +66,7 @@ public class SimpleFormatter extends Formatter {
 		sb.append(": ");
 		sb.append(message);
 
-		// ÆÄ¶ó¹ÌÅÍ Ãâ·Â
+		// ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 		{
 			Object[] ps = record.getParameters();
 			if (ps != null) {

@@ -35,7 +35,7 @@ public class Row implements Serializable {
 	}
 
 	public Integer getInteger(String fieldName) {
-		return (Integer) fields.get(fieldName);
+		return Integer.parseInt(getString(fieldName));
 	}
 
 	public String getString(int fieldIndex) {
@@ -59,7 +59,7 @@ public class Row implements Serializable {
 	}
 
 	public Integer getInteger(int fieldIndex) {
-		return (Integer) fields.get(getFieldName(fieldIndex));
+		return Integer.parseInt(getString(fieldIndex));
 	}
 
 	public boolean getBoolean(String fieldName) {

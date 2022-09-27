@@ -2,6 +2,7 @@ package net.ion.framework.promise.impl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.Callable;
 
@@ -48,8 +49,11 @@ public class TestPromise extends TestCase {
 		Promise<File, Throwable, Void> promise = new DefaultDeferredManager().when(new Callable<File>(){
 			public File call() throws Exception {
 				Debug.line("when");
-//				return new File(".");
-				throw new FileNotFoundException() ;
+				for (int i=0 ; i < 5 ; i++) {
+					Thread.sleep(100) ;
+				}
+				return new File(".");
+//				throw new FileNotFoundException() ;
 			}
 		}).fail(new FailCallback<Throwable>(){
 			public void onFail(Throwable ex) {
@@ -58,15 +62,19 @@ public class TestPromise extends TestCase {
 			}
 		}).progress(new ProgressCallback<Void>() {
 			public void onProgress(Void progress) {
-				Debug.line(progress);
+				Debug.line("P", progress);
 			}
 		}).always(new AlwaysCallback<File, Throwable>() {
 			public void onAlways(State state, File resolved, Throwable ex) {
 				Debug.line(state, resolved, ex);
 			}
+		}).done(new DoneCallback<File>() {
+			public void onDone(File result) {
+				Debug.line("DONE", result);
+			}
 		}) ;
 		
-		
-		Thread.sleep(100);
+
+		Thread.sleep(1000);
 	}
 }

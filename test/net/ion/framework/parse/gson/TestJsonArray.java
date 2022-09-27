@@ -1,15 +1,10 @@
 package net.ion.framework.parse.gson;
 
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
-import sun.tools.jar.resources.jar;
-
-import net.ion.framework.util.ListUtil;
-import net.ion.framework.util.SetUtil;
-
 import junit.framework.TestCase;
+import net.ion.framework.util.SetUtil;
 
 public class TestJsonArray extends TestCase {
 

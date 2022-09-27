@@ -1185,6 +1185,291 @@ public class FakeRows implements Rows {
 		 return iface.isInstance(this);
 	}
 
+	public void setNull(String parameterName, int sqlType) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNull(String parameterName, int sqlType, String typeName) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBoolean(String parameterName, boolean x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setByte(String parameterName, byte x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setShort(String parameterName, short x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setInt(String parameterName, int x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setLong(String parameterName, long x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setFloat(String parameterName, float x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDouble(String parameterName, double x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBigDecimal(String parameterName, BigDecimal x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setString(String parameterName, String x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBytes(String parameterName, byte[] x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setTimestamp(String parameterName, Timestamp x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setAsciiStream(String parameterName, InputStream x, int length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBinaryStream(String parameterName, InputStream x, int length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCharacterStream(String parameterName, Reader reader, int length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setAsciiStream(int parameterIndex, InputStream x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setAsciiStream(String parameterName, InputStream x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBinaryStream(int parameterIndex, InputStream x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBinaryStream(String parameterName, InputStream x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCharacterStream(int parameterIndex, Reader reader) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setCharacterStream(String parameterName, Reader reader) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNCharacterStream(int parameterIndex, Reader value) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setObject(String parameterName, Object x, int targetSqlType, int scale) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setObject(String parameterName, Object x, int targetSqlType) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setObject(String parameterName, Object x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBlob(int parameterIndex, InputStream inputStream, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBlob(int parameterIndex, InputStream inputStream) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBlob(String parameterName, InputStream inputStream, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBlob(String parameterName, Blob x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setBlob(String parameterName, InputStream inputStream) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setClob(int parameterIndex, Reader reader, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setClob(int parameterIndex, Reader reader) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setClob(String parameterName, Reader reader, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setClob(String parameterName, Clob x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setClob(String parameterName, Reader reader) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDate(String parameterName, Date x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setDate(String parameterName, Date x, Calendar cal) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setTime(String parameterName, Time x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setTime(String parameterName, Time x, Calendar cal) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setTimestamp(String parameterName, Timestamp x, Calendar cal) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setSQLXML(int parameterIndex, SQLXML xmlObject) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setSQLXML(String parameterName, SQLXML xmlObject) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setRowId(int parameterIndex, RowId x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setRowId(String parameterName, RowId x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNString(int parameterIndex, String value) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNString(String parameterName, String value) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNCharacterStream(int parameterIndex, Reader value, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNCharacterStream(String parameterName, Reader value, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNCharacterStream(String parameterName, Reader value) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNClob(String parameterName, NClob value) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNClob(String parameterName, Reader reader, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNClob(String parameterName, Reader reader) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNClob(int parameterIndex, Reader reader, long length) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNClob(int parameterIndex, NClob value) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setNClob(int parameterIndex, Reader reader) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setURL(int parameterIndex, URL x) throws SQLException {
+		// TODO Auto-generated method stub
+		
+	}
+
 }
 
 class VColumn implements Serializable{

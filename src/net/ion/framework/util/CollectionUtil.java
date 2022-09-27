@@ -11,4 +11,9 @@ public class CollectionUtil extends CollectionUtils{
 			clos.execute(obj) ;
 		}
 	}
+	
+	public static <T> Collection<T> add(Collection<T> collection, T newElement){
+		collection.add(newElement) ;
+		return collection ;
+	}
 }

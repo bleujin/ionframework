@@ -20,8 +20,29 @@
 	
 	<property name="baseDir" value="." />
 	<property name="targetDir" value="../lib" />
+
 	
-	<target name="jdbc">
+    <target name="jdbc">
+    	<delete file="${targetDir}/jdbc_fat.jar"></delete>
+        <jar destfile="${targetDir}/jdbc_fat.jar">
+        	<zipgroupfileset dir="${basedir}\jdbc" id="id">
+	        	<include name="jdbc2_0-stdext.jar"/> 
+	        	<include name="msbase.jar"/> 
+	        	<include name="mssqlserver.jar"/> 
+	        	<include name="msutil.jar"/> 
+	        	<include name="mysql-connector-java-5.1.6-bin.jar"/> 
+
+	        	<include name="postgresql-42.5.0.jar"/> 
+	        	<include name="mongo-2.6.3.jar"/> 
+	        	<include name="jsqlparser.jar"/> 
+	        	<include name="h2-1.2.137.jar"/> 
+	        	<include name="ojdbc7.jar"/> 
+        	</zipgroupfileset>
+        </jar>
+    </target>	
+	
+	
+	<target name="jdbc_old">
 		<delete file="${targetDir}/jdbc_fat.jar"></delete>
         <fatjar.build output="${targetDir}/jdbc_fat.jar">
             <fatjar.manifest/>
@@ -36,7 +57,7 @@
         	<fatjar.jarsource file="${basedir}\jdbc\mysql-connector-java-5.1.6-bin.jar" relpath=""/>
 
         	<!-- postgre 9.3-->
-        	<fatjar.jarsource file="${basedir}\jdbc\postgresql-9.3-1103.jdbc3.jar" relpath=""/>
+        	<fatjar.jarsource file="${basedir}\jdbc\postgresql-42.5.0.jar" relpath=""/>
         	
         	<!-- mongo 2.1-->
         	<fatjar.jarsource file="${basedir}\jdbc\mongo-2.6.3.jar" relpath=""/>

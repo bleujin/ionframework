@@ -31,5 +31,10 @@ public class SetUtil extends SetUtils{
 		}
 		return result;
 	}
+	
+	public static <V> Set<V> add(Set<V> set, V ele) {
+		set.add(ele) ;
+		return set;
+	}
 
 }

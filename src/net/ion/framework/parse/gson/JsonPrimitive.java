@@ -89,8 +89,8 @@ public final class JsonPrimitive extends JsonElement {
 		return new JsonPrimitive(primitive) ;
 	}
 
-	public static JsonElement create(String primitive){
-		return primitive == null ? JsonNull.INSTANCE : new JsonPrimitive(primitive) ;
+	public static JsonElement createDefault(String primitive, String dftString){
+		return new JsonPrimitive(primitive == null ? dftString : primitive) ;
 	}
 
 

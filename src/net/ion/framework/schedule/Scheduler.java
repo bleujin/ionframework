@@ -3,104 +3,56 @@ package net.ion.framework.schedule;
 import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.Hashtable;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
-import net.ion.framework.logging.LogBroker;
+import org.apache.log4j.Logger;
+
 import net.ion.framework.util.StackTrace;
-
-/**
- * Ư���ð��� ������ �۾��� �ϵ��� �Ѵ�.
- * 
- * @author Kim Sanghoon wizest@i-on.net
- * @version 1.0
- */
 
 public class Scheduler extends Thread {
 	private String name = null;
-	private static IExecutor EXECUTOR = new IExecutor(5, 2) ;
 
-	private Hashtable<String, Job> jobs = null;
-	private Logger logger = null;
-
+	private Hashtable<String, Job> jobs = new Hashtable<String, Job>();
+	private Logger logger = Logger.getLogger(Scheduler.class);
+	private ExecutorService workers ; 
+	
 	public Scheduler() {
-		this("Anonymous scheduler(" + System.currentTimeMillis() + ")"); // ���Ƿ� �̸� ����� �ش�.
-		
+		this("emanon", Executors.newCachedThreadPool()) ;
 	}
-
-	/**
-	 * �����ٷ��� ���Ѵ�.
-	 * 
-	 * @param name
-	 *            String �����ٷ� �̸�
-	 */
-	public Scheduler(String name) {
+	
+	public Scheduler(String name, ExecutorService workers) {
 		super(name);
 		this.name = name;
-		jobs = new Hashtable<String, Job>();
-		logger = LogBroker.getLogger(this);
+		this.workers = workers ;
 		this.setDaemon(true);
 	}
 
-	/**
-	 * ���ο� �۾��� �߰��Ѵ�. <br/>
-	 * ����: job�� name�� ���� ��� ������ job�� ��ü�ȴ�.
-	 * 
-	 * @param job
-	 *            �߰��� job
-	 */
 	public synchronized void addJob(Job job) {
 		this.jobs.put(job.getName(), job);
-		logger.log(Level.INFO, "job added.:" + job);
+		logger.info("job added.:" + job);
 	}
 
-	/**
-	 * job�� �����Ѵ�.
-	 * 
-	 * @param job
-	 *            Job ������ job
-	 */
 	public void removeJob(Job job) {
 		removeJob(job.getName());
 	}
 
-	/**
-	 * job�� �����Ѵ�.
-	 * 
-	 * @param jobName
-	 *            String ������ job �̸�
-	 */
 	public synchronized void removeJob(String jobName) {
 		Job job = getJob(jobName);
-		logger.log(Level.INFO, "job removed.:" + job);
+		if (job == null) return ;
+		
+		logger.info("job removed.:" + job);
 		this.jobs.remove(jobName);
 	}
 
-	/**
-	 * Ư�� job�� ����
-	 * 
-	 * @param jobName
-	 *            String job�̸�
-	 * @return Job
-	 */
 	public Job getJob(String jobName) {
 		return this.jobs.get(jobName);
 	}
 
-	/**
-	 * ��ϵ� ��ü job�� �����Ѵ�.
-	 * 
-	 * @return Job[]
-	 */
 	public Job[] getJobs() {
 		return this.jobs.values().toArray(new Job[0]);
 	}
 
-	/**
-	 * ��ϵ� ��ü job�� �̸� ����� �����Ѵ�.
-	 * 
-	 * @return String[]
-	 */
 	public String[] getJobNames() {
 		return this.jobs.keySet().toArray(new String[0]);
 	}
@@ -124,7 +76,7 @@ public class Scheduler extends Thread {
 	}
 
 	public void run() {
-		logger.log(Level.INFO, "Scheduler started. :" + this.toString());
+		logger.info("Scheduler started. :" + this.toString());
 
 		int minute = 0;
 		Calendar cal = null;
@@ -133,9 +85,6 @@ public class Scheduler extends Thread {
 			while (!isInterrupted()) {
 				cal = Calendar.getInstance();
 
-				// System.out.println("####" + minute + " != "+
-				// cal.get(Calendar.MINUTE));
-				// 1�� ���� �ѹ� jobs�� �˻��ؼ� �����Ѵ�.
 				if (minute != cal.get(Calendar.MINUTE)) {
 					minute = cal.get(Calendar.MINUTE);
 
@@ -148,9 +97,9 @@ public class Scheduler extends Thread {
 
 							if (at.match()) {
 								try {
-									EXECUTOR.runTask(r) ;
+									workers.submit(r) ;
 								} catch (Throwable t) {
-									logger.log(Level.SEVERE, j.toString() + ":" + StackTrace.trace(t));
+									logger.warn(j.toString() + ":" + StackTrace.trace(t));
 								}
 							}
 
@@ -165,63 +114,15 @@ public class Scheduler extends Thread {
 		} catch (Exception e) {
 		}
 
-		logger.log(Level.INFO, "Scheduler stopped. :" + this.toString());
+		logger.info("Scheduler stopped. :" + this.toString());
 	}
 
-	/**
-	 * �����ٷ��� �����Ѵ�.
-	 */
 	public void start() {
 		super.start();
 	}
 
-	/**
-	 * �����ٷ��� �����Ѵ�.
-	 */
 	public void interrupt() {
 		super.interrupt();
 	}
 
-	/**
-	 * serialized �� job ���ڿ��� job object�� �����´�.
-	 * 
-	 * @param serializedJobs
-	 * @return
-	 * @throws SerializedStringException
-	 */
-	// public Job[] deserializeJobs( String serializedJobs ) throws
-	// SerializedStringException
-	// {
-	// Hashtable j=(Hashtable)SerializedString.deserialize(serializedJobs);
-	// Job[] js=(Job[])j.values().toArray(new Job[0]);
-	//
-	// logger.log( Level.INFO, "jobs deserialized." ) ;
-	// return js ;
-	// }
-	/**
-	 * scheduler�� ������ �ִ� jobs �� String���� serialization �Ѵ�.
-	 * 
-	 * @return
-	 * @throws SerializedStringException
-	 */
-	// public String serializeJobs() throws SerializedStringException
-	// {
-	// String s=SerializedString.serialize(jobs);
-	// logger.log(Level.INFO,"jobs serialized.");
-	// return s;
-	// }
-	/**
-	 * serialized�� job ���ڿ��� object�� �����Ͽ� scheduler�� �߰��Ѵ�.
-	 * 
-	 * @param serializedJobs
-	 * @throws SerializedStringException
-	 */
-	// public void loadSerializedJobs( String serializedJobs ) throws
-	// SerializedStringException
-	// {
-	// Job[] js=deserializeJobs(serializedJobs);
-	// for(int i=0;i < js.length;++i) {
-	// addJob(js[i]);
-	// }
-	// }
 }

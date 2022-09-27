@@ -3,18 +3,15 @@ package net.ion.framework.util;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
-import net.ion.framework.collection.map.ConcurrentLinkedHashMap;
-import net.ion.framework.exception.ExecutionRuntimeException;
-import net.ion.framework.exception.FrameworkException;
-
-import org.apache.batik.anim.SetAnimation;
 import org.apache.commons.collections.map.LRUMap;
-import org.h2.util.CacheLRU;
 
 import com.google.common.cache.Cache;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.util.concurrent.UncheckedExecutionException;
+
+import net.ion.framework.collection.map.ConcurrentLinkedHashMap;
+import net.ion.framework.exception.ExecutionRuntimeException;
 
 /**
  * 범용 cache 구현 - 제한 크기를 초과할 경우 LRU 방법에 의해 과거의 값이 제거된다. 사용 방법은 java.util.Map과 유사

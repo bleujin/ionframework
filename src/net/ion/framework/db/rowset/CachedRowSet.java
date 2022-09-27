@@ -2185,4 +2185,5 @@ public class CachedRowSet extends BaseRowSet implements RowSet, RowSetInternal, 
 		return iface.isInstance(this);
 	}
 
+
 }

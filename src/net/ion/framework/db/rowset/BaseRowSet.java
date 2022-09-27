@@ -8,8 +8,11 @@ import java.sql.Array;
 import java.sql.Blob;
 import java.sql.Clob;
 import java.sql.Date;
+import java.sql.NClob;
 import java.sql.Ref;
+import java.sql.RowId;
 import java.sql.SQLException;
+import java.sql.SQLXML;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Calendar;
@@ -17,6 +20,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Vector;
 
+import javax.naming.OperationNotSupportedException;
 import javax.sql.RowSet;
 import javax.sql.RowSetEvent;
 import javax.sql.RowSetListener;
@@ -447,47 +451,279 @@ public abstract class BaseRowSet implements Serializable, Cloneable {
 	public void setUsername(String s) {
 		username = new String(s);
 	}
+	
 
+	
 	// jdk 1.5 higher..
 
 	public java.net.URL getURL(int columnIndex) throws SQLException {
-		return null;
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public java.net.URL getURL(String columnName) throws SQLException {
-		return null;
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateArray(int columnIndex, Array x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateArray(String columnName, Array x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateBlob(int columnIndex, Blob x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateBlob(String columnName, Blob x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateClob(int columnIndex, Clob x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateClob(String columnName, Clob x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateRef(int columnIndex, Ref x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
 	public void updateRef(String columnName, Ref x) throws SQLException {
-		
+		throw new IllegalArgumentException("not supported-set operation") ;
 	}
 
+	public void setNull(String parameterName, int sqlType) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNull(String parameterName, int sqlType, String typeName) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBoolean(String parameterName, boolean x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setByte(String parameterName, byte x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setShort(String parameterName, short x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setInt(String parameterName, int x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setLong(String parameterName, long x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setFloat(String parameterName, float x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setDouble(String parameterName, double x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBigDecimal(String parameterName, BigDecimal x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setString(String parameterName, String x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBytes(String parameterName, byte[] x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setTimestamp(String parameterName, Timestamp x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setAsciiStream(String parameterName, InputStream x, int length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBinaryStream(String parameterName, InputStream x, int length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setCharacterStream(String parameterName, Reader reader, int length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setAsciiStream(int parameterIndex, InputStream x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setAsciiStream(String parameterName, InputStream x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBinaryStream(int parameterIndex, InputStream x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBinaryStream(String parameterName, InputStream x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setCharacterStream(int parameterIndex, Reader reader) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setCharacterStream(String parameterName, Reader reader) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNCharacterStream(int parameterIndex, Reader value) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setObject(String parameterName, Object x, int targetSqlType, int scale) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setObject(String parameterName, Object x, int targetSqlType) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setObject(String parameterName, Object x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBlob(int parameterIndex, InputStream inputStream, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBlob(int parameterIndex, InputStream inputStream) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBlob(String parameterName, InputStream inputStream, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBlob(String parameterName, Blob x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setBlob(String parameterName, InputStream inputStream) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setClob(int parameterIndex, Reader reader, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setClob(int parameterIndex, Reader reader) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setClob(String parameterName, Reader reader, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setClob(String parameterName, Clob x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setClob(String parameterName, Reader reader) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setDate(String parameterName, Date x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setDate(String parameterName, Date x, Calendar cal) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setTime(String parameterName, Time x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setTime(String parameterName, Time x, Calendar cal) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setTimestamp(String parameterName, Timestamp x, Calendar cal) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setSQLXML(int parameterIndex, SQLXML xmlObject) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setSQLXML(String parameterName, SQLXML xmlObject) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setRowId(int parameterIndex, RowId x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setRowId(String parameterName, RowId x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNString(int parameterIndex, String value) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNString(String parameterName, String value) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNCharacterStream(int parameterIndex, Reader value, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNCharacterStream(String parameterName, Reader value, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNCharacterStream(String parameterName, Reader value) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNClob(String parameterName, NClob value) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNClob(String parameterName, Reader reader, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNClob(String parameterName, Reader reader) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNClob(int parameterIndex, Reader reader, long length) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNClob(int parameterIndex, NClob value) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setNClob(int parameterIndex, Reader reader) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+
+	public void setURL(int parameterIndex, java.net.URL x) throws SQLException {
+		throw new IllegalArgumentException("not supported-set operation") ;
+	}
+	
+	
+	
 }

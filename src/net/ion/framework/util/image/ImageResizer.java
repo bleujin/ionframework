@@ -1,10 +1,5 @@
 package net.ion.framework.util.image;
 
-import ij.ImagePlus;
-import ij.io.Opener;
-import ij.process.ImageConverter;
-import ij.process.ImageProcessor;
-
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.FileNotFoundException;
@@ -13,9 +8,10 @@ import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
-import com.sun.image.codec.jpeg.JPEGCodec;
-import com.sun.image.codec.jpeg.JPEGEncodeParam;
-import com.sun.image.codec.jpeg.JPEGImageEncoder;
+import ij.ImagePlus;
+import ij.io.Opener;
+import ij.process.ImageConverter;
+import ij.process.ImageProcessor;
 
 public class ImageResizer {
 	private String sourceFile;
@@ -32,7 +28,7 @@ public class ImageResizer {
 		this.height = height;
 	}
 
-//	// thread not safe.. -_)
+//	
 //	public String resizeTo() throws IOException {
 //		String filePath = StringUtil.substringBeforeLast(sourceFileFullPath, "/");
 //		String fileName = StringUtil.substringAfterLast(sourceFileFullPath, "/");
@@ -65,10 +61,10 @@ public class ImageResizer {
 			GifEncoder encoder = new GifEncoder(bImage, out);
 			encoder.encode();
 		} else if (Opener.JPEG == typeCd || Opener.PNG == typeCd) {
-			JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
-			JPEGEncodeParam param = encoder.getDefaultJPEGEncodeParam(bImage);
-			param.setQuality(10f, true);
-			encoder.encode(bImage, param);
+//			JPEGImageEncoder encoder = JPEGCodec.createJPEGEncoder(out);
+//			JPEGEncodeParam param = encoder.getDefaultJPEGEncodeParam(bImage);
+//			param.setQuality(10f, true);
+//			encoder.encode(bImage, param);
 		} else {
 			throw new IllegalArgumentException("not supported type");
 		}

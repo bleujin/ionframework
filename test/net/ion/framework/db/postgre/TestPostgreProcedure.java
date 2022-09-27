@@ -15,6 +15,15 @@ import net.ion.framework.util.StringUtil;
 public class TestPostgreProcedure extends TestBasePG{
 
 
+	
+	public void testQuery() throws Exception {
+		Debug.line() ;
+
+		Rows rows = dc.createUserProcedure("test@copyby(?)").addParam(5).execQuery() ; 
+		rows.debugPrint();
+		// dc.createUserProcedure("test@copyby(5)").execQuery().debugPrint();
+	}
+	
 	public void testSelectProcedure() throws Exception {
 		Rows rows = dc.createUserProcedure("test@listBy(?)").addParam(5).execQuery() ;
 		while(rows.next()){

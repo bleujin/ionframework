@@ -9,12 +9,7 @@ import java.sql.Types;
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.procedure.UserProcedureBatch;
-import net.ion.framework.util.Debug;
 import net.ion.framework.util.StringUtil;
-
-import org.apache.commons.dbcp.DelegatingConnection;
-import org.apache.ecs.vxml.Value;
-import org.postgresql.ds.PGPooledConnection;
 
 
 public class PostgreUserProcedureBatch extends UserProcedureBatch {
