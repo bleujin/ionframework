@@ -24,7 +24,7 @@ public class TestPromise extends TestCase {
 		Promise promise = deferred.promise() ;
 		promise.done(new DoneCallback() {
 			public void onDone(Object result) {
-				Debug.line(result);
+				Debug.line("done", result);
 			}
 		}).fail(new FailCallback() {
 			public void onFail(Object result) {
@@ -32,7 +32,7 @@ public class TestPromise extends TestCase {
 			}
 		}).progress(new ProgressCallback() {
 			public void onProgress(Object progress) {
-				Debug.line(progress);
+				Debug.line("progress", progress);
 			}
 		}).always(new AlwaysCallback() {
 			public void onAlways(State state, Object resolved, Object rejected) {
@@ -41,8 +41,11 @@ public class TestPromise extends TestCase {
 		}) ;
 		
 //		deferred.reject("oops") ;
-		deferred.notify("100%") ;
-		deferred.resolve("done") ;
+		
+		deferred.notify("") ;
+		deferred.resolve("") ;
+		
+		Thread.sleep(1000);
 	}
 	
 	public void testDefault() throws Exception {
