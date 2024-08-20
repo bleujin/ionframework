@@ -32,3 +32,20 @@ for more example, http://bleujin.tistory.com/153, but that is korean page
 		assertEquals(20, rows.getInt("no2")) ;
 	}
 </code></pre>
+
+<p>if necessary, you can used that multi-procedure handled with exception(CompletableFuture Pattern)</p>
+
+<pre><code>
+	AsyncDBController async = dc.async();
+	String returned = async.execute(ajob -> {
+		ajob.createUserProcedure("emp@insert(?,?)").addParam(20).addParam("hero").execUpdate() ;
+		ajob.createUserProcedure("emp@select").execQuery().debugPrint();
+		if (true) throw new IllegalStateException("expected") ;
+		return "not expected" ;
+	}).exceptionally(ex -> {
+		return "exception" ;
+	}).get() ; 
+	
+	assertEquals("exception", returned);
+	dc.createUserProcedure("emp@select").execQuery().debugPrint();
+</code></pre>
