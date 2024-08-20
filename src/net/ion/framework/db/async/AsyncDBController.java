@@ -1,11 +1,15 @@
 package net.ion.framework.db.async;
 
 import java.io.Closeable;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.concurrent.Callable;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+
 
 import net.ion.framework.db.IDBController;
 import net.ion.framework.db.Rows;
@@ -141,6 +145,32 @@ public class AsyncDBController implements Closeable {
 		});
 	}
 
+	
+	public <T> CompletableFuture<T> execute(AsyncTransactionJob<T> job) {
+		final AsyncDBController self = this;
+		return CompletableFuture.supplyAsync(() -> {
+			try {
+				AsyncSession session = new AsyncSession(self);
+				try {
+					session.beginTran();
+
+					T result = job.handle(session);
+					session.commit();
+					return result;
+				} catch (Throwable ex) {
+					session.rollback(ex);
+					ehandler.handle(ex) ;
+					throw ex ;
+				} finally {
+					session.free();
+				}
+			} catch (Throwable e) {
+				throw new IllegalStateException(e.getMessage()) ;
+			}
+		}) ;
+	}
+	
+	
 	
 	@Deprecated
 	public Result<Integer> updateResult(final IQueryable query){

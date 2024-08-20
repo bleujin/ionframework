@@ -18,7 +18,10 @@ public class TestDBManger extends TestCase {
 		DBController dc = new DBController(dbm) ;
 		dc.initSelf() ;
 		
+		dc.createUserProcedure("emp@createtable").execUpdate() ;
+		dc.createUserProcedure("emp@insert(?,?)").addParam(10).addParam("bleujin").execUpdate() ;
 		
+		dc.createUserProcedure("emp@select").execQuery().debugPrint();
 		
 		
 		dc.destroySelf();
@@ -27,7 +30,7 @@ public class TestDBManger extends TestCase {
 	
 
 	public void testTwicePool() throws Exception {
-		OracleCacheDBManager dbm = new OracleCacheDBManager("jdbc:oracle:thin:@dev-oracle.i-on.net:1521:DEV10G", "dev_ics6", "dev_ics6") ;
+		DBManager dbm = OracleCacheDBManager.test() ;
 		DBController dc1 = new DBController(dbm) ;
 		
 		

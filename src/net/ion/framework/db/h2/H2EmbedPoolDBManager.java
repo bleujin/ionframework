@@ -16,7 +16,7 @@ public class H2EmbedPoolDBManager extends H2EmbedDBManager {
 	public final static H2EmbedPoolDBManager test(){
 		String config = 
 			"{address:'jdbc:h2:mem:test', name:'h2db', userId:'sa', userPwd:'sa', " +
-			"procedures:{'emp@select':'select * from emp', 'emp@createtable':'create table if not exists emp(empno int, ename varchar(40))', 'emp@insert(?,?)':'insert into emp values(:empno, :ename)'} " +
+			"procedures:{'emp@select':'select * from emp', 'emp@createtable':'create table if not exists emp(empno int, ename varchar(40))', 'emp@insert(?,?)':'insert into emp(empno, ename) values(?, ?)'} " +
 			"}" ;
 	
 		HSQLBean hb = JsonParser.fromString(config).getAsJsonObject().getAsObject(HSQLBean.class) ;
