@@ -14,6 +14,7 @@ import net.ion.framework.db.async.AsyncSession;
 import net.ion.framework.db.async.AsyncTransactionJob;
 import net.ion.framework.db.h2.H2EmbedPoolDBManager;
 import net.ion.framework.db.manager.DBManager;
+import net.ion.framework.db.servant.StdOutServant;
 import net.ion.framework.util.Debug;
 
 public class TestTranMethod extends TestCase {
@@ -35,6 +36,17 @@ public class TestTranMethod extends TestCase {
 	public void tearDown() {
 		dc.destroySelf();
 	}
+	
+	public void testServant() throws Exception {
+		dc.addServant(new StdOutServant());
+		dc.createUserProcedure("emp@insert(?,?)").addParam(10).addParam("bleujin").execUpdate() ;
+		AsyncDBController async = dc.async();
+		async.execute(job -> {
+			job.createUserProcedure("emp@insert(?,?)").addParam(20).addParam("hero").execUpdate() ;
+			return null ;
+		}).get() ;
+	}
+	
 	
 	public void testException() throws Exception {
 

@@ -167,7 +167,7 @@ public class AsyncDBController implements Closeable {
 			} catch (Throwable e) {
 				throw new IllegalStateException(e.getMessage()) ;
 			}
-		}) ;
+		}, es) ;
 	}
 	
 	
